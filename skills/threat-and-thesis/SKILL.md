@@ -11,7 +11,7 @@ Maintain the repository's public intelligence feed without publishing unverified
 
 ## Workflow
 
-1. Work from the repository root and read `AGENTS.md` plus [references/source-policy.md](references/source-policy.md).
+1. Work from the repository root and read `AGENTS.md`, `EDITORIAL.md`, plus [references/source-policy.md](references/source-policy.md).
 2. Run `python3 scripts/collect.py --days 14` unless the user supplied a narrower period.
 3. Inspect `data/inbox.json`. Report individual source errors; do not treat one failed feed as proof that no updates exist.
 4. Deduplicate candidates against `content/articles.json` by URL, identifier, and normalized title.

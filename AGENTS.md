@@ -2,6 +2,8 @@
 
 이 저장소는 정보보안·AI 논문과 기술 동향을 선별해 GitHub Pages로 배포한다. 자동 수집 결과는 후보일 뿐이며, 검증 전에는 공개 콘텐츠가 아니다.
 
+작업을 시작할 때 반드시 `EDITORIAL.md`를 읽는다. 문체, 논문 분류, 화면 디자인, 수정 가능 파일, 배포 조건은 그 문서를 기준으로 한다. 출처 세부 정책은 `skills/threat-and-thesis/references/source-policy.md`를 함께 따른다.
+
 ## 정기 큐레이션 절차
 
 1. 저장소 루트에서 `python3 scripts/collect.py --days 14`를 실행한다.
@@ -33,4 +35,4 @@
 - 70–84: 추적 가치가 높은 연구·기술 발표
 - 0–69: 후보 또는 배경 자료. 선별 이유가 약하면 공개하지 않는다.
 
-자세한 출처 정책은 `skills/threat-and-thesis/references/source-policy.md`를 따른다.
+자세한 편집 기준은 `EDITORIAL.md`, 출처 정책은 `skills/threat-and-thesis/references/source-policy.md`를 따른다.

@@ -47,7 +47,7 @@ python3 scripts/collect.py --days 7 --max-per-source 10
 
 ## Hermes Agent 사용
 
-이 저장소 루트에서 Hermes를 실행하면 `AGENTS.md`의 검증·작성 규칙이 자동으로 작업 문맥에 포함됩니다. 별도로 Hermes에게 같은 요구사항을 다시 설명할 필요는 없습니다.
+이 저장소 루트에서 Hermes를 실행하면 `AGENTS.md`가 자동으로 작업 문맥에 포함되고, 그 지침에 따라 `EDITORIAL.md`도 읽습니다. 문체, AI 논문·보안 논문 분류, 디자인, 수정 범위와 배포 조건을 매번 다시 설명할 필요는 없습니다.
 
 한 번 갱신하려면:
 
@@ -94,6 +94,7 @@ git push -u origin main
 - `scripts/collect.py`: CISA KEV, NIST NVD, arXiv 후보 수집기
 - `scripts/validate.py`: 공개 전 콘텐츠 검증기
 - `AGENTS.md`: Hermes의 프로젝트 운영 규칙
+- `EDITORIAL.md`: 문체·논문 분류·디자인·배포 편집 지침
 - `skills/threat-and-thesis/`: 재사용 가능한 큐레이션 스킬
 - `.github/workflows/pages.yml`: GitHub Pages 배포 워크플로
 
