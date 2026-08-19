@@ -27,6 +27,7 @@ Maintain the repository's public intelligence feed without publishing unverified
 - Attribute every concrete claim to the linked source. Never infer version numbers, CVSS values, publication dates, or experimental results.
 - Keep `summary` factual, `whyItMatters` interpretive, and `limitations` explicit.
 - Use `evidenceLevel: preprint` for unreviewed arXiv work. Do not describe a preprint as established evidence.
+- Classify research by its primary contribution: use `ai-paper` for work centered on AI models, agents, or machine learning, and `security-paper` for systems, network, cryptography, or software-security research. Choose one primary class for cross-disciplinary work and explain the judgment in the report.
 - Use defensive `action` text. Do not add exploit instructions, payloads, credential theft steps, or attack automation.
 - Set priority using the ranges in `AGENTS.md`; priority is editorial ordering, not a probability or CVSS substitute.
 - Update `generatedAt` only after the curated file changes.

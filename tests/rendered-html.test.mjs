@@ -2,12 +2,12 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-test("exports the Threat & Thesis dashboard as static HTML", async () => {
+test("exports the Threat & Thesis research letter as static HTML", async () => {
   const html = await readFile(new URL("../out/index.html", import.meta.url), "utf8");
   assert.match(html, /<html[^>]*lang="ko"/i);
   assert.match(html, /<title>Threat &amp; Thesis<\/title>/i);
-  assert.match(html, /보안과 AI의 변화/);
-  assert.match(html, /최신 수집 자료/);
+  assert.match(html, /보안·AI 브리핑/);
+  assert.match(html, /최근 자료/);
   assert.match(html, /OWASP/);
   assert.match(html, /보안 경보/);
   assert.match(html, /AI 보안/);

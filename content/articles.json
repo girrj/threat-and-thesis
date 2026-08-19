@@ -122,7 +122,7 @@
     },
     {
       "id": "nist-adversarial-ml",
-      "kind": "paper",
+      "kind": "ai-paper",
       "title": "NIST, 적대적 머신러닝 공격과 완화 기법 분류체계 정리",
       "originalTitle": "Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations",
       "source": "NIST",
@@ -144,7 +144,7 @@
     },
     {
       "id": "arxiv-2608-17659",
-      "kind": "paper",
+      "kind": "ai-paper",
       "title": "모바일 GUI 에이전트, 일상적 화면 속 간접 프롬프트 인젝션에 취약",
       "originalTitle": "MobileWorldSafety: Benchmarking GUI Agent Safety Against Environmental Injection Attacks in Android Apps",
       "source": "arXiv",
@@ -169,7 +169,7 @@
     },
     {
       "id": "arxiv-2608-17597",
-      "kind": "paper",
+      "kind": "ai-paper",
       "title": "에이전트 하네스 수명주기 전반의 안전 실패를 측정한 HarnessRisk",
       "originalTitle": "HarnessRisk: A Lifecycle-Oriented Benchmark for Agent Harness Safety",
       "source": "arXiv",

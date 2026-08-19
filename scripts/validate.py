@@ -27,7 +27,7 @@ REQUIRED = {
     "priority",
     "evidenceLevel",
 }
-KINDS = {"security", "ai-security", "paper", "technology"}
+KINDS = {"security", "ai-security", "security-paper", "ai-paper", "technology"}
 EVIDENCE = {"official", "peer-reviewed", "preprint", "industry"}
 SEVERITIES = {"critical", "high", "medium", "info"}
 DATE_LABELS = {"게시일", "수정일", "확인일", "기준일"}

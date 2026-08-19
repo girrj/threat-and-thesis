@@ -1,6 +1,6 @@
 # Threat & Thesis
 
-정보보안 권고, AI 보안 프레임워크, 최신 논문과 기술 발표를 원문 링크와 함께 모아 보는 정적 웹서비스입니다. 화면은 Next.js로 만들고 GitHub Pages에 배포하며, Hermes Agent가 수집 후보를 검증하고 `content/articles.json`을 큐레이션합니다.
+정보보안 권고, AI 보안 프레임워크, 보안 논문, AI 논문과 기술 발표를 원문 링크와 함께 모아 보는 정적 웹서비스입니다. 화면은 Next.js로 만들고 GitHub Pages에 배포하며, Hermes Agent가 수집 후보를 검증하고 `content/articles.json`을 큐레이션합니다.
 
 ## 동작 구조
 
