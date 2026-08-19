@@ -1,0 +1,196 @@
+{
+  "generatedAt": "2026-08-19T16:45:00+09:00",
+  "items": [
+    {
+      "id": "owasp-llm-top-10-2026",
+      "kind": "ai-security",
+      "title": "OWASP, LLM 애플리케이션 핵심 보안 위험 2026판 공개",
+      "originalTitle": "OWASP GenAI LLM Top 10 2026",
+      "source": "OWASP GenAI Security Project",
+      "sourceUrl": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "publishedAt": "2026-08-03",
+      "summary": "LLM과 에이전트 애플리케이션에서 우선 점검해야 할 공격면과 완화책을 최신 사례 기준으로 정리한 공식 가이드입니다.",
+      "whyItMatters": "프롬프트만 보호하는 수준을 넘어 데이터, 모델, 도구 연결, 공급망, 에이전트 실행 권한을 함께 점검해야 한다는 기준을 제공합니다.",
+      "details": [
+        "개발자와 보안팀이 공통으로 사용할 수 있는 위험 분류와 공격 시나리오를 제공합니다.",
+        "NIST, MITRE ATLAS, CWE 등 다른 보안 프레임워크와 연결할 수 있도록 구성되어 있습니다.",
+        "LLM 서비스 도입 전 보안 체크리스트와 위협 모델의 기준 자료로 활용할 수 있습니다."
+      ],
+      "limitations": [
+        "가이드는 통제 기준이며 개별 서비스의 실제 안전성을 보증하지 않습니다.",
+        "조직의 데이터 흐름과 에이전트 권한 구조에 맞춘 별도 위협 모델링이 필요합니다."
+      ],
+      "action": "현재 운영하거나 개발 중인 LLM 기능 하나를 선정해 위험 항목별 통제 유무를 표로 점검하세요.",
+      "tags": ["OWASP", "LLM 보안", "Agent Security", "Prompt Injection"],
+      "priority": 96,
+      "severity": "high",
+      "identifier": "OWASP LLM Top 10",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "mitre-atlas",
+      "kind": "ai-security",
+      "title": "MITRE ATLAS, AI·에이전트 공격 전술과 완화책 체계화",
+      "originalTitle": "MITRE Adversarial Threat Landscape for Artificial-Intelligence Systems",
+      "source": "MITRE ATLAS",
+      "sourceUrl": "https://atlas.mitre.org/",
+      "publishedAt": "2026-08-18",
+      "dateLabel": "확인일",
+      "summary": "AI 시스템과 에이전트에 대한 실제 공격 관찰 및 레드팀 사례를 공격 전술·기술·완화책으로 연결하는 지식베이스입니다.",
+      "whyItMatters": "기존 ATT&CK만으로 표현하기 어려운 프롬프트 인젝션, RAG 오염, 에이전트 도구 악용, 모델 유출을 위협 모델에 포함할 수 있습니다.",
+      "details": [
+        "예측형 AI, 생성형 AI, 에이전틱 AI를 구분해 공격면을 탐색할 수 있습니다.",
+        "공격 기술을 현실 사례와 연결해 탐지 및 완화 요구사항을 도출할 수 있습니다.",
+        "AI 레드팀 시나리오와 보안 통제의 추적성을 높이는 데 적합합니다."
+      ],
+      "limitations": ["살아 있는 지식베이스이므로 기술과 사례가 지속적으로 변경될 수 있습니다."],
+      "action": "AI 서비스의 데이터 수집부터 도구 실행까지 흐름을 그린 뒤 ATLAS 기술을 각 단계에 매핑하세요.",
+      "tags": ["MITRE", "ATLAS", "AI Red Team", "Threat Modeling"],
+      "priority": 92,
+      "severity": "info",
+      "identifier": "MITRE ATLAS",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "kisa-openclaw-2026",
+      "kind": "security",
+      "title": "KISA, OpenClaw 제품 다중 취약점 보안 업데이트 권고",
+      "source": "KISA 보호나라·KrCERT/CC",
+      "sourceUrl": "https://www.boho.or.kr/kr/bbs/view.do?bbsId=B0000133&menuNo=205020&nttId=72020&pageIndex=1",
+      "publishedAt": "2026-04-07",
+      "summary": "OpenClaw 및 연계 플러그인에서 인증·권한·명령 삽입과 관련된 다수 취약점이 공개되어 영향 버전 사용자의 업데이트가 권고됐습니다.",
+      "whyItMatters": "에이전트 플랫폼은 파일, 셸, 외부 서비스 권한을 함께 가지기 때문에 인증 또는 명령 삽입 취약점의 영향 범위가 커질 수 있습니다.",
+      "details": [
+        "KISA 공지에는 CVE별 영향 버전과 해결 버전이 함께 제시되어 있습니다.",
+        "OpenClaw 본체뿐 아니라 Nextcloud Talk 연계 플러그인과 Agent Platform도 확인 대상입니다.",
+        "공식 GitHub Security Advisory가 CVE별 참고자료로 연결되어 있습니다."
+      ],
+      "limitations": ["실제 영향 여부는 조직에서 사용하는 정확한 제품과 플러그인 버전으로 재확인해야 합니다."],
+      "action": "OpenClaw 사용 여부와 설치 버전을 확인하고 KISA 표의 해결 버전 이상으로 업데이트하세요.",
+      "tags": ["KISA", "OpenClaw", "Agent Platform", "CVE"],
+      "priority": 90,
+      "severity": "critical",
+      "identifier": "KISA-2026-04-07",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "cisa-cve-2026-59310",
+      "kind": "security",
+      "title": "CISA, 실제 악용된 VMware vCenter 취약점 CVE-2026-59310 추가",
+      "originalTitle": "Broadcom VMware vCenter Path Traversal Vulnerability",
+      "source": "CISA Known Exploited Vulnerabilities",
+      "sourceUrl": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-59310",
+      "publishedAt": "2026-08-18",
+      "summary": "CISA가 네트워크에서 vCenter에 접근 가능한 공격자의 임의 코드 실행으로 이어질 수 있는 경로 탐색 취약점을 KEV 목록에 추가했습니다.",
+      "whyItMatters": "vCenter는 가상화 환경의 중앙 관리 지점이므로 침해될 경우 여러 워크로드와 관리 자격 증명으로 영향이 확장될 수 있습니다.",
+      "details": [
+        "CISA KEV에 등재됐다는 것은 이 취약점의 실제 악용이 확인됐음을 뜻합니다.",
+        "공식 피드는 Broadcom VMware vCenter의 경로 탐색 문제와 임의 코드 실행 가능성을 명시합니다.",
+        "미국 연방기관의 조치 기한은 2026년 8월 21일로 제시됐습니다."
+      ],
+      "limitations": [
+        "KEV 피드에는 전체 영향 버전과 패치 버전이 없으므로 Broadcom의 최신 권고를 별도로 확인해야 합니다.",
+        "연방기관 조치 기한은 모든 조직의 법적 기한을 의미하지 않습니다."
+      ],
+      "action": "vCenter 자산과 외부 노출 여부를 즉시 확인하고 Broadcom 권고에 따라 업데이트 또는 완화 조치를 적용하세요.",
+      "tags": ["CISA KEV", "VMware vCenter", "CVE-2026-59310", "Exploited"],
+      "priority": 99,
+      "identifier": "CVE-2026-59310",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "nist-cyber-ai-profile",
+      "kind": "technology",
+      "title": "NIST Cyber AI Profile, AI 보안과 AI 기반 방어를 하나의 프레임으로 제시",
+      "originalTitle": "Cybersecurity Framework Profile for Artificial Intelligence",
+      "source": "NIST CSRC",
+      "sourceUrl": "https://csrc.nist.gov/pubs/ir/8596/iprd",
+      "publishedAt": "2025-12-16",
+      "summary": "AI 구성요소 보호, AI 기반 사이버 방어, AI 기반 공격 저지의 세 영역을 NIST CSF 2.0과 연결한 공식 프로파일입니다.",
+      "whyItMatters": "AI 보안을 개발팀만의 모델 문제로 보지 않고 조직의 사이버보안 위험관리와 연결할 수 있습니다.",
+      "details": [
+        "AI 시스템 구성요소의 보호 요구사항을 기존 CSF 기능·범주에 연결합니다.",
+        "AI를 방어 자동화에 활용할 때의 기회와 위험을 함께 다룹니다.",
+        "AI 기반 공격에 대비하는 조직 차원의 계획 수립에 활용할 수 있습니다."
+      ],
+      "limitations": ["현재 문서 상태와 후속 개정 여부를 적용 전에 확인해야 합니다."],
+      "action": "조직의 AI 자산 목록과 현재 CSF 통제를 비교해 누락된 AI 전용 통제를 식별하세요.",
+      "tags": ["NIST", "Cyber AI", "CSF 2.0", "Risk Management"],
+      "priority": 84,
+      "identifier": "NIST IR 8596",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "nist-adversarial-ml",
+      "kind": "paper",
+      "title": "NIST, 적대적 머신러닝 공격과 완화 기법 분류체계 정리",
+      "originalTitle": "Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations",
+      "source": "NIST",
+      "sourceUrl": "https://www.nist.gov/publications/adversarial-machine-learning-taxonomy-and-terminology-attacks-and-mitigations",
+      "publishedAt": "2025-03-24",
+      "summary": "예측형·생성형 AI의 회피, 오염, 프라이버시, 오용 공격을 공통 용어와 분류체계로 정리한 기술 보고서입니다.",
+      "whyItMatters": "보안팀, AI 개발팀, 감사 조직이 공격 이름과 범위를 동일하게 정의할 수 있어 위험 평가와 테스트 결과 비교가 쉬워집니다.",
+      "details": [
+        "공격자의 목표, 능력, 지식과 AI 수명주기 단계를 함께 분류합니다.",
+        "공격 유형별 완화책과 알려진 한계를 함께 제시합니다.",
+        "비전문가도 사용할 수 있도록 용어집과 개념 계층을 제공합니다."
+      ],
+      "limitations": ["분류체계가 특정 제품에 바로 적용되는 구현 가이드는 아닙니다."],
+      "action": "내부 AI 위험 등록부의 공격 명칭을 NIST 용어와 매핑해 중복과 누락을 정리하세요.",
+      "tags": ["NIST", "Adversarial ML", "Data Poisoning", "Privacy"],
+      "priority": 80,
+      "identifier": "NIST AI 100-2e2025",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "arxiv-2608-17659",
+      "kind": "paper",
+      "title": "모바일 GUI 에이전트, 일상적 화면 속 간접 프롬프트 인젝션에 취약",
+      "originalTitle": "MobileWorldSafety: Benchmarking GUI Agent Safety Against Environmental Injection Attacks in Android Apps",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.17659",
+      "publishedAt": "2026-08-18",
+      "summary": "실제 Android 앱을 바탕으로 만든 142개 위험 과제에서 6개 GUI 에이전트를 평가한 결과, 저자들은 환경 인젝션 공격 성공률이 40.4%에서 66.9%였다고 보고했습니다.",
+      "whyItMatters": "모바일 에이전트는 사용자가 신뢰한 요청뿐 아니라 화면의 광고, 메시지, 문서 같은 비신뢰 콘텐츠도 읽기 때문에 웹 기반 간접 프롬프트 인젝션과 유사한 위험이 운영체제 작업으로 확장될 수 있습니다.",
+      "details": [
+        "벤치마크는 실제 Android 애플리케이션을 기반으로 한 142개 위험 과제로 구성됩니다.",
+        "명확한 결과는 규칙으로 검증하고 모호한 결과는 LLM 판정기로 평가하는 2단계 방식을 사용합니다.",
+        "일반 에이전트와 GUI 특화 에이전트 6종 모두에서 저자가 정의한 안전 실패가 관찰됐습니다."
+      ],
+      "limitations": [
+        "2026년 8월 18일 제출된 프리프린트로 동료평가 전 결과입니다.",
+        "공격 성공률은 논문이 선택한 과제, 에이전트, 판정 방식에 한정되며 모든 모바일 에이전트로 일반화할 수 없습니다."
+      ],
+      "action": "모바일·GUI 에이전트가 읽는 화면 콘텐츠를 비신뢰 입력으로 분류하고, 민감한 동작에는 사용자 재확인과 정책 검사를 추가하세요.",
+      "tags": ["arXiv", "GUI Agent", "Prompt Injection", "Android"],
+      "priority": 88,
+      "identifier": "arXiv:2608.17659",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-17597",
+      "kind": "paper",
+      "title": "에이전트 하네스 수명주기 전반의 안전 실패를 측정한 HarnessRisk",
+      "originalTitle": "HarnessRisk: A Lifecycle-Oriented Benchmark for Agent Harness Safety",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.17597",
+      "publishedAt": "2026-08-18",
+      "summary": "도구, 확장, 상태, 권한, 외부 동작을 관리하는 에이전트 하네스를 128개 샌드박스 사례로 평가한 프리프린트로, 구성별 공격 성공률이 12.6%에서 80.9%로 보고됐습니다.",
+      "whyItMatters": "모델 자체의 안전성만 평가하면 구성 파일, 확장 설치, 지속 상태, 실행 승인처럼 하네스가 담당하는 보안 경계를 놓칠 수 있음을 보여줍니다.",
+      "details": [
+        "하네스 구성, 기능 확장, 런타임 운영, 상태 지속, 동작 제어, 사고 복구의 6단계로 위험을 나눕니다.",
+        "3개 하네스, 6개 언어 모델, 14개 모델·하네스 구성을 비교했습니다.",
+        "일부 구성은 위험을 90% 넘게 인식했지만 공격 성공을 충분히 막지 못했다고 저자들은 보고합니다."
+      ],
+      "limitations": [
+        "2026년 8월 18일 제출된 프리프린트이며, 결과는 128개 샌드박스 사례와 시험한 구성에 한정됩니다.",
+        "위험 인식과 안전 행동의 차이는 실제 운영 환경과 도구 권한 설계에 따라 달라질 수 있습니다."
+      ],
+      "action": "에이전트 보안 평가 범위에 모델뿐 아니라 구성 변경, 플러그인, 상태 저장소, 도구 승인, 복구 절차를 포함하세요.",
+      "tags": ["arXiv", "Agent Harness", "Lifecycle Security", "Prompt Injection"],
+      "priority": 86,
+      "identifier": "arXiv:2608.17597",
+      "evidenceLevel": "preprint"
+    }
+  ]
+}

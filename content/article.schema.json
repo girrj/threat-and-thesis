@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://threat-and-thesis.local/article.schema.json",
+  "title": "Threat & Thesis curated content",
+  "type": "object",
+  "required": ["generatedAt", "items"],
+  "properties": {
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id", "kind", "title", "source", "sourceUrl", "publishedAt",
+          "summary", "whyItMatters", "details", "tags", "priority", "evidenceLevel"
+        ],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9.-]*$" },
+          "kind": { "enum": ["security", "ai-security", "paper", "technology"] },
+          "title": { "type": "string", "minLength": 1 },
+          "originalTitle": { "type": "string", "minLength": 1 },
+          "source": { "type": "string", "minLength": 1 },
+          "sourceUrl": { "type": "string", "format": "uri" },
+          "publishedAt": { "type": "string", "format": "date" },
+          "dateLabel": { "enum": ["게시일", "수정일", "확인일", "기준일"] },
+          "summary": { "type": "string", "minLength": 1 },
+          "whyItMatters": { "type": "string", "minLength": 1 },
+          "details": { "$ref": "#/$defs/nonEmptyStrings" },
+          "limitations": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "action": { "type": "string", "minLength": 1 },
+          "tags": { "$ref": "#/$defs/nonEmptyStrings" },
+          "priority": { "type": "integer", "minimum": 0, "maximum": 100 },
+          "severity": { "enum": ["critical", "high", "medium", "info"] },
+          "identifier": { "type": "string", "minLength": 1 },
+          "evidenceLevel": { "enum": ["official", "peer-reviewed", "preprint", "industry"] }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "nonEmptyStrings": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}
