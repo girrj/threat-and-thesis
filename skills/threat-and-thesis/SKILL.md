@@ -13,7 +13,7 @@ Maintain the repository's daily ranked research letter without publishing unveri
 
 1. Work from the repository root and read `AGENTS.md`, `EDITORIAL.md`, plus [references/source-policy.md](references/source-policy.md).
 2. Run `python3 scripts/collect.py --since-hours 3`. The script uses per-source cursors and automatically catches up after a missed run. Use `--days N` only for an explicit backfill.
-3. Inspect `data/inbox.json` and `data/source-state.json`. Report individual source errors; do not treat one failed feed as proof that no updates exist.
+3. Inspect `data/inbox.json` and `data/source-state.json`. Report individual source errors; do not treat one failed feed as proof that no updates exist. Treat arXiv `kind` as a classification suggestion, and treat Crossref `publication-record` as discovery metadata rather than proof of peer review.
 4. Deduplicate candidates against `content/articles.json` by URL, identifier, and normalized title.
 5. Open the primary source for every candidate under consideration. Exclude items whose date, identity, or material claim cannot be verified.
 6. Select only consequential items. For papers, read at least the abstract, methodology/result claims, and stated limitations. For vulnerabilities, confirm affected products, exploitation status, and remediation from official records.

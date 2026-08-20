@@ -5,7 +5,7 @@
 ## 동작 구조
 
 ```text
-CISA KEV · NIST NVD · arXiv
+CISA KEV · NIST NVD · arXiv Atom · Crossref
              │
              ▼
  scripts/collect.py ──> data/inbox.json       비공개 후보
@@ -64,7 +64,7 @@ hermes -z "HERMES_PROMPT.md의 작업 프롬프트에 따라 Threat & Thesis를 
 
 3시간 정기 작업 등록용 프롬프트와 정확한 명령은 [`HERMES_PROMPT.md`](HERMES_PROMPT.md)에 있습니다. 기본 일정은 매일 0시, 3시, 6시처럼 3시간 간격입니다.
 
-정기 갱신은 매 실행마다 최근 14일 전체를 다시 읽지 않습니다. `data/source-state.json`의 출처별 마지막 성공 시각부터 새 후보만 받고, 장애로 실행을 놓친 경우에는 최대 7일 범위에서 자동 복구합니다. 공개 변경이 없으면 커밋과 배포도 생략합니다.
+정기 갱신은 매 실행마다 최근 14일 전체를 다시 읽지 않습니다. arXiv는 공식 일일 Atom 피드의 `new`·`cross` 발표를 받고, Crossref는 출판사가 등록한 메타데이터의 갱신 시각과 커서를 사용해 3시간 구간 전체를 읽은 뒤 로컬에서 관련 논문을 거릅니다. 이 방식은 새 DOI와 이후 수정된 발행 정보를 함께 포착하면서 단순 재색인 자료는 줄입니다. `data/source-state.json`의 출처별 마지막 성공 시각부터 이어서 받고, 장애로 실행을 놓친 경우에는 최대 7일 범위에서 복구합니다. 공개 변경이 없으면 커밋과 배포도 생략합니다.
 
 ## GitHub Pages 배포
 

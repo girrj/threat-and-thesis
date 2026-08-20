@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T16:45:00+09:00",
+  "generatedAt": "2026-08-20T21:45:00+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -191,6 +191,131 @@
       "priority": 86,
       "identifier": "arXiv:2608.17597",
       "evidenceLevel": "preprint"
+    },
+    {
+      "id": "usenix26-download-more-ram",
+      "kind": "security-paper",
+      "title": "Download More RAM, Windows VBS의 메모리 신뢰 경계 우회",
+      "originalTitle": "Download More RAM: Dismantling Windows Operating System Defences with Mischievous Memory",
+      "source": "USENIX Security '26",
+      "sourceUrl": "https://www.usenix.org/conference/usenixsecurity26/presentation/collins",
+      "publishedAt": "2026-08-13",
+      "summary": "메모리 모듈의 SPD 정보를 바꿔 물리 접근 없이 메모리 별칭을 만들고, Windows VBS·HVCI가 보호하는 경계를 우회하는 공격을 보인 채택 논문입니다.",
+      "whyItMatters": "운영체제가 신뢰하는 하드웨어 메모리 구성 정보가 관리자 권한 공격자에게 쓰기 가능하면 가상화 기반 보안도 우회될 수 있음을 보여줍니다.",
+      "details": [
+        "저자들은 임의 물리 메모리 읽기·쓰기를 구성해 보안 커널, Windows Defender, EDR과 안티치트 보호를 대상으로 사례를 제시합니다.",
+        "Microsoft는 이 연구에 CVE-2026-23670을 부여하고 공격을 부분적으로 완화하는 패치를 배포했습니다.",
+        "USENIX는 이 논문을 Distinguished Paper Award 수상작으로 표시하고 원문을 공개하고 있습니다."
+      ],
+      "limitations": [
+        "공격에는 로컬 관리자 권한과 SPD 쓰기 보호가 비활성화된 DIMM이 필요합니다.",
+        "저자들이 시험한 공격은 2026년 4월 Windows 업데이트 이후 Secure Boot 시스템에서 현재 형태로는 완화됩니다."
+      ],
+      "action": "Windows 보안 기준에 Secure Boot와 최신 누적 업데이트 상태를 포함하고, 관리 대상 장비의 SPD 쓰기 보호 여부를 확인하세요.",
+      "tags": ["USENIX Security", "Windows VBS", "Memory Aliasing", "CVE-2026-23670"],
+      "priority": 94,
+      "identifier": "USENIX Security 26: Collins",
+      "evidenceLevel": "peer-reviewed"
+    },
+    {
+      "id": "usenix26-dns-cache-poisoning",
+      "kind": "security-paper",
+      "title": "BIND 9 난수 상태 복원으로 되살아난 DNS 캐시 포이즈닝",
+      "originalTitle": "DNS Cache Poisoning Like it's 2006",
+      "source": "USENIX Security '26",
+      "sourceUrl": "https://www.usenix.org/conference/usenixsecurity26/presentation/ben-simhon",
+      "publishedAt": "2026-08-07",
+      "summary": "BIND 9의 의사난수 생성기 상태를 복원해 UDP 출발지 포트와 TXID를 함께 예측하는 DNS 캐시 포이즈닝 공격을 분석한 채택 논문입니다.",
+      "whyItMatters": "출발지 포트 무작위화만으로 고전적인 캐시 포이즈닝이 충분히 막힌다는 운영 가정을 다시 확인해야 합니다.",
+      "details": [
+        "클라이언트 측 방식은 공격자 권한 도메인의 권한 서버 없이 두 도전값을 예측하도록 설계됐습니다.",
+        "저자들은 여러 BIND 9 릴리스와 구성에서 공격을 평가하고, 구형 9.18 계열을 위한 서버 측 방식도 제시합니다.",
+        "ISC와 FreeBSD에 사전 공개됐으며 두 건의 패치와 CVE로 이어졌습니다."
+      ],
+      "limitations": [
+        "평가는 저자들이 구성한 기본 설정 BIND 서버와 소수의 공개 리졸버에 한정됩니다.",
+        "공격은 출발지 IP 스푸핑이 가능하고 대상 도메인이 DNSSEC으로 보호되지 않은 조건을 전제로 합니다."
+      ],
+      "action": "운영 중인 BIND 9 버전과 최신 보안 패치 적용 여부를 확인하고 검증 가능한 영역에는 DNSSEC을 적용하세요.",
+      "tags": ["USENIX Security", "BIND 9", "DNS Cache Poisoning", "DNSSEC"],
+      "priority": 92,
+      "identifier": "USENIX Security 26: Ben-Simhon",
+      "evidenceLevel": "peer-reviewed"
+    },
+    {
+      "id": "usenix26-updsight",
+      "kind": "security-paper",
+      "title": "UpdSight, 데스크톱 소프트웨어 업데이트의 취약한 검증 경로 분석",
+      "originalTitle": "When Updates Backfire: A Black-Box Security Analysis of Desktop Software Update Mechanisms",
+      "source": "USENIX Security '26",
+      "sourceUrl": "https://www.usenix.org/conference/usenixsecurity26/presentation/wan",
+      "publishedAt": "2026-08-07",
+      "summary": "중간자 조건에서 데스크톱 업데이트 절차를 시험하는 UpdSight를 85개 애플리케이션에 적용해 악용 가능한 취약점 22건을 보고한 채택 논문입니다.",
+      "whyItMatters": "패치를 전달하는 업데이트 채널 자체에 서명·무결성·롤백 검사가 빠지면 공급망 침해 경로가 될 수 있습니다.",
+      "details": [
+        "발견 항목에는 다운그레이드, 매니페스트 조작, 설치 프로그램 탈취와 경로 탐색이 포함됩니다.",
+        "저자들에 따르면 22건 중 16건을 벤더가 확인했고, 8개 제품의 문제에 CVE 5건이 부여됐습니다.",
+        "프레임워크는 트래픽 가로채기, 페이로드 무결성 검사와 실행 동작 관찰을 결합합니다."
+      ],
+      "limitations": [
+        "복잡한 매니페스트 해석과 실제 악용 가능성 확인에는 수작업이 필요해 완전 자동화된 분석은 아닙니다.",
+        "로그인이 필요하거나 웹에서만 동작하는 서비스와 실행하지 못한 업데이트 경로는 평가 범위 밖입니다."
+      ],
+      "action": "배포 중인 데스크톱 앱의 업데이트 매니페스트 서명, 설치 파일 무결성 검증과 롤백 방지 여부를 점검하세요.",
+      "tags": ["USENIX Security", "Software Update", "Supply Chain", "Integrity"],
+      "priority": 90,
+      "identifier": "USENIX Security 26: Wan",
+      "evidenceLevel": "peer-reviewed"
+    },
+    {
+      "id": "usenix26-waved",
+      "kind": "security-paper",
+      "title": "WAVED, TCP/IP 구현의 오프패스 약한 검증 14건 발견",
+      "originalTitle": "WAVED: Principled Identification of Off-Path Exploitable Weak Verifications within the TCP/IP Protocol Suite",
+      "source": "USENIX Security '26",
+      "sourceUrl": "https://www.usenix.org/conference/usenixsecurity26/presentation/zhao-yizhou",
+      "publishedAt": "2026-08-06",
+      "summary": "TCP/IP 커널의 데이터 흐름과 분기 제약을 추적하는 WAVED를 Linux와 FreeBSD에 적용해 이전에 알려지지 않은 취약점 14건을 보고한 채택 논문입니다.",
+      "whyItMatters": "원격지 공격자가 연결 경로를 직접 보지 못해도 약한 패킷 검증을 이용해 트래픽 조작이나 서비스 중단을 만들 수 있는 구현 지점을 체계적으로 찾습니다.",
+      "details": [
+        "WAVED는 흐름·문맥·필드에 민감한 포인터 분석과 바이트 단위 오염 전파 그래프를 사용합니다.",
+        "Linux 5.15·6.8과 FreeBSD 14.1의 IPv4·IPv6 구현을 평가했습니다.",
+        "발견한 문제는 운영체제 벤더에 사전 공개됐고 Linux 커뮤니티의 확인을 받았습니다."
+      ],
+      "limitations": [
+        "정적 분석은 런타임 상태를 모두 추적하지 못해 오탐이 발생할 수 있습니다.",
+        "현재 구현은 두 가지 의미적 위험 패턴을 다루며 GRE·IPsec·VPN 같은 터널링 프로토콜은 지원하지 않습니다."
+      ],
+      "action": "인터넷 경계 시스템의 Linux·FreeBSD 커널 권고를 추적하고, 비정상 TCP/IP 상태 변화와 재전송을 탐지 규칙에 포함하세요.",
+      "tags": ["USENIX Security", "TCP/IP", "Static Analysis", "Off-path Attack"],
+      "priority": 87,
+      "identifier": "USENIX Security 26: Zhao",
+      "evidenceLevel": "peer-reviewed"
+    },
+    {
+      "id": "usenix26-ovs-side-channel",
+      "kind": "security-paper",
+      "title": "Open vSwitch 캐시에서 원격 부채널 세 가지 확인",
+      "originalTitle": "Side-Channel Attacks on Open vSwitch",
+      "source": "USENIX Security '26",
+      "sourceUrl": "https://www.usenix.org/conference/usenixsecurity26/presentation/kim-daewoo",
+      "publishedAt": "2026-08-07",
+      "summary": "Open vSwitch의 캐시 계층을 이용해 원격 은닉 채널, 패킷 헤더 복구와 패킷 전송률 감시를 구현한 채택 논문입니다.",
+      "whyItMatters": "같은 가상 스위치를 공유하는 테넌트 사이에서 패킷 내용을 직접 읽지 않고도 네트워크 활동 정보가 새어 나갈 수 있습니다.",
+      "details": [
+        "저자들은 OVS 캐시에서 세 가지 공격 원리를 식별하고 각 원리를 원격 공격으로 구성했습니다.",
+        "패킷 헤더 필드 복구와 피해자의 패킷 전송률 추정을 통해 가상화 환경의 격리 한계를 보였습니다.",
+        "OVS 인스턴스 분리와 캐시 무작위화를 포함한 완화책을 함께 평가했습니다."
+      ],
+      "limitations": [
+        "주요 평가는 격리된 단일 홉 네트워크와 DPDK 데이터패스를 중심으로 이뤄졌습니다.",
+        "공격자는 피해자와 같은 OVS를 공유하는 공개 서비스에 접근할 수 있어야 하며, 커널 데이터패스에서는 일부 공격의 효과가 줄어듭니다."
+      ],
+      "action": "다중 테넌트 환경에서 고신뢰 워크로드의 OVS 공유 범위를 확인하고 분리 배치와 캐시 완화책을 검토하세요.",
+      "tags": ["USENIX Security", "Open vSwitch", "Side Channel", "Cloud Isolation"],
+      "priority": 84,
+      "identifier": "USENIX Security 26: Kim",
+      "evidenceLevel": "peer-reviewed"
     }
   ]
 }

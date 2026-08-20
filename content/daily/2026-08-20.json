@@ -1,6 +1,6 @@
 {
   "date": "2026-08-20",
-  "generatedAt": "2026-08-20T18:21:00+09:00",
+  "generatedAt": "2026-08-20T21:45:00+09:00",
   "rankings": {
     "security": [
       {
@@ -34,7 +34,43 @@
         "reason": "프롬프트 인젝션과 에이전트 도구 악용을 기존 위협 모델에 연결할 수 있습니다."
       }
     ],
-    "security-paper": [],
+    "security-paper": [
+      {
+        "rank": 1,
+        "itemId": "usenix26-download-more-ram",
+        "previousRank": null,
+        "status": "new",
+        "reason": "Windows VBS·HVCI의 하드웨어 신뢰 가정을 깨고 실제 CVE와 패치로 이어진 연구입니다."
+      },
+      {
+        "rank": 2,
+        "itemId": "usenix26-dns-cache-poisoning",
+        "previousRank": null,
+        "status": "new",
+        "reason": "BIND 9의 두 도전값을 함께 예측해 고전적 DNS 캐시 포이즈닝의 현실 조건을 다시 확인했습니다."
+      },
+      {
+        "rank": 3,
+        "itemId": "usenix26-updsight",
+        "previousRank": null,
+        "status": "new",
+        "reason": "85개 데스크톱 앱의 업데이트 경로에서 반복되는 서명·무결성·롤백 검증 문제를 측정했습니다."
+      },
+      {
+        "rank": 4,
+        "itemId": "usenix26-waved",
+        "previousRank": null,
+        "status": "new",
+        "reason": "Linux와 FreeBSD TCP/IP 구현에서 오프패스 공격으로 이어질 수 있는 검증 약점을 체계화했습니다."
+      },
+      {
+        "rank": 5,
+        "itemId": "usenix26-ovs-side-channel",
+        "previousRank": null,
+        "status": "new",
+        "reason": "공유 가상 스위치 캐시가 테넌트 간 정보 유출 경로가 되는 조건과 완화책을 제시했습니다."
+      }
+    ],
     "ai-paper": [
       {
         "rank": 1,

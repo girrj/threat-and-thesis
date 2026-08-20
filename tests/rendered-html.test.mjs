@@ -9,6 +9,7 @@ test("exports the Threat & Thesis research letter as static HTML", async () => {
   assert.match(html, /<h1[^>]*>보안 위협/);
   assert.match(html, /카테고리 순위/);
   assert.match(html, /발행일 선택/);
+  assert.match(html, /<h3[^>]*>영향<\/h3>/);
   assert.match(html, /선정 이유/);
   assert.match(html, /유지/);
   assert.match(html, /CISA/);
@@ -22,6 +23,7 @@ test("exports the Threat & Thesis research letter as static HTML", async () => {
   assert.doesNotMatch(html, /정부·표준기관, 논문 원문과 공식 제품 권고를 우선합니다/);
   assert.doesNotMatch(html, /데일리 보안·AI 순위/);
   assert.doesNotMatch(html, /보안 경보/);
+  assert.doesNotMatch(html, /왜 중요한가/);
   assert.doesNotMatch(html, /href="#intelligence"/);
   assert.doesNotMatch(html, /우선순위 99/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
@@ -61,6 +63,10 @@ test("keeps content, UI, and build configuration wired together", async () => {
   assert.deepEqual(
     dailyPayload.editions[0].rankings["ai-paper"].map(({ rank }) => rank),
     [1, 2, 3],
+  );
+  assert.deepEqual(
+    dailyPayload.editions[0].rankings["security-paper"].map(({ rank }) => rank),
+    [1, 2, 3, 4, 5],
   );
   assert.match(config, /output:\s*"export"/);
   assert.match(packageJson, /"build:pages": "next build"/);

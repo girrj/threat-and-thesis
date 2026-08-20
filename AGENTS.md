@@ -8,6 +8,8 @@
 
 1. 저장소 루트에서 `python3 scripts/collect.py --since-hours 3`를 실행한다. 수집기는 출처별 마지막 성공 시각을 기억하므로 매번 전체 기간을 다시 수집하지 않는다.
 2. `data/inbox.json`의 `sources` 오류와 `candidates`를 확인한다. `data/source-state.json`은 수집 커서, `data/processed.json`은 이미 판단한 후보 기록이다. 이 런타임 파일들은 공개 콘텐츠가 아니다.
+   - arXiv 후보의 `kind`는 카테고리와 초록에 따른 제안값이다. `raw.needsEditorialReview`가 참이거나 AI·보안 신호가 함께 있으면 논문의 핵심 연구 대상을 읽고 최종 분류한다.
+   - Crossref 후보의 `evidenceLevel: publication-record`는 DOI 등록 기록이라는 뜻이지 동료평가 확인이 아니다. 출판사 또는 학회 페이지에서 게재 상태를 확인한 뒤에만 공개 항목에 `peer-reviewed`를 사용한다.
 3. 기존 `content/articles.json`과 URL, 식별자, 정규화한 제목을 비교해 중복을 제외한다.
 4. 후보의 `sourceUrl`과 연결된 1차 출처를 직접 확인한다. 검색 결과 설명이나 제3자 요약만으로 게시하지 않는다.
 5. 가치가 높은 항목만 `content/articles.json`에 추가하거나, 같은 사건의 공식 정보가 바뀐 경우 기존 항목을 수정한다. 실제 변경이 있을 때만 `generatedAt`을 갱신한다.

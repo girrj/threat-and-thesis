@@ -12,6 +12,8 @@ Prefer sources in this order:
 
 Use the most specific stable URL available. A search results page, social post, newsletter excerpt, or generated answer is not a primary source.
 
+arXiv category labels and Crossref metadata are discovery signals. They may suggest a paper class or publication venue, but they do not replace reading the abstract and confirming venue status on the author, publisher, or conference page. A Crossref DOI record alone does not establish peer review.
+
 ## Evidence labels
 
 - `official`: government, standards body, maintained official knowledge base, or vendor advisory.

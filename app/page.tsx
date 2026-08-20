@@ -392,7 +392,7 @@ export default function Home() {
                 </section>
 
                 <section className="detail-section">
-                  <h3>왜 중요한가</h3>
+                  <h3>영향</h3>
                   <p>{selectedEntry.item.whyItMatters}</p>
                 </section>
 
