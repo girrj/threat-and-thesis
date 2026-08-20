@@ -1,6 +1,113 @@
 {
-  "generatedAt": "2026-08-20T21:45:00+09:00",
+  "generatedAt": "2026-08-21T00:22:34+09:00",
   "editions": [
+    {
+      "date": "2026-08-21",
+      "generatedAt": "2026-08-21T00:22:34+09:00",
+      "rankings": {
+        "security": [
+          {
+            "rank": 1,
+            "itemId": "cisa-cve-2026-59310",
+            "previousRank": 1,
+            "status": "same",
+            "reason": "실제 악용이 확인됐고 vCenter가 가상화 환경의 중앙 관리 지점이기 때문입니다."
+          },
+          {
+            "rank": 2,
+            "itemId": "nvd-cve-2026-15706",
+            "previousRank": null,
+            "status": "new",
+            "reason": "원격·무인증으로 스마트미터 관리 애플리케이션의 인증을 우회할 수 있는 Critical 취약점입니다."
+          }
+        ],
+        "ai-security": [
+          {
+            "rank": 1,
+            "itemId": "owasp-llm-top-10-2026",
+            "previousRank": 1,
+            "status": "same",
+            "reason": "LLM과 에이전트 서비스의 보안 점검 기준으로 바로 활용할 수 있는 공식 가이드입니다."
+          },
+          {
+            "rank": 2,
+            "itemId": "mitre-atlas",
+            "previousRank": 2,
+            "status": "same",
+            "reason": "프롬프트 인젝션과 에이전트 도구 악용을 기존 위협 모델에 연결할 수 있습니다."
+          }
+        ],
+        "security-paper": [
+          {
+            "rank": 1,
+            "itemId": "usenix26-download-more-ram",
+            "previousRank": 1,
+            "status": "same",
+            "reason": "Windows VBS·HVCI의 하드웨어 신뢰 가정을 깨고 실제 CVE와 패치로 이어진 연구입니다."
+          },
+          {
+            "rank": 2,
+            "itemId": "usenix26-dns-cache-poisoning",
+            "previousRank": 2,
+            "status": "same",
+            "reason": "BIND 9의 두 도전값을 함께 예측해 고전적 DNS 캐시 포이즈닝의 현실 조건을 다시 확인했습니다."
+          },
+          {
+            "rank": 3,
+            "itemId": "usenix26-updsight",
+            "previousRank": 3,
+            "status": "same",
+            "reason": "85개 데스크톱 앱의 업데이트 경로에서 반복되는 서명·무결성·롤백 검증 문제를 측정했습니다."
+          },
+          {
+            "rank": 4,
+            "itemId": "doi-10-1007-s44196-026-01526-2",
+            "previousRank": null,
+            "status": "new",
+            "reason": "장기 기밀 데이터의 수명과 PQC 전환 준비도를 함께 비교해 마이그레이션 우선순위를 제시합니다."
+          },
+          {
+            "rank": 5,
+            "itemId": "arxiv-2608-18187",
+            "previousRank": null,
+            "status": "new",
+            "reason": "AFL++의 다섯 제어면을 함께 조정하고 조건을 맞춘 비교에서 커버리지 개선을 측정했습니다."
+          }
+        ],
+        "ai-paper": [
+          {
+            "rank": 1,
+            "itemId": "arxiv-2608-18351",
+            "previousRank": null,
+            "status": "new",
+            "reason": "터미널·MCP 에이전트의 작업별 최소 권한을 성공률과 분리해 측정하고 학습했습니다."
+          },
+          {
+            "rank": 2,
+            "itemId": "arxiv-2608-18274",
+            "previousRank": null,
+            "status": "new",
+            "reason": "로컬 PII·비밀정보 탐지 모델의 구조와 운용 한계를 공개해 데이터 최소화 평가에 활용할 수 있습니다."
+          },
+          {
+            "rank": 3,
+            "itemId": "arxiv-2608-17659",
+            "previousRank": 1,
+            "status": "down",
+            "reason": "모바일 GUI 에이전트의 간접 프롬프트 인젝션 위험을 실제 앱 기반 과제로 측정했습니다."
+          }
+        ],
+        "technology": [
+          {
+            "rank": 1,
+            "itemId": "nist-cyber-ai-profile",
+            "previousRank": 1,
+            "status": "same",
+            "reason": "AI 보안을 조직의 기존 사이버보안 위험관리 체계에 연결하는 공식 기준입니다."
+          }
+        ]
+      }
+    },
     {
       "date": "2026-08-20",
       "generatedAt": "2026-08-20T21:45:00+09:00",

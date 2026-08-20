@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-20T21:45:00+09:00",
+  "generatedAt": "2026-08-21T00:22:34+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -21,7 +21,12 @@
         "조직의 데이터 흐름과 에이전트 권한 구조에 맞춘 별도 위협 모델링이 필요합니다."
       ],
       "action": "현재 운영하거나 개발 중인 LLM 기능 하나를 선정해 위험 항목별 통제 유무를 표로 점검하세요.",
-      "tags": ["OWASP", "LLM 보안", "Agent Security", "Prompt Injection"],
+      "tags": [
+        "OWASP",
+        "LLM 보안",
+        "Agent Security",
+        "Prompt Injection"
+      ],
       "priority": 96,
       "severity": "high",
       "identifier": "OWASP LLM Top 10",
@@ -43,9 +48,16 @@
         "공격 기술을 현실 사례와 연결해 탐지 및 완화 요구사항을 도출할 수 있습니다.",
         "AI 레드팀 시나리오와 보안 통제의 추적성을 높이는 데 적합합니다."
       ],
-      "limitations": ["살아 있는 지식베이스이므로 기술과 사례가 지속적으로 변경될 수 있습니다."],
+      "limitations": [
+        "살아 있는 지식베이스이므로 기술과 사례가 지속적으로 변경될 수 있습니다."
+      ],
       "action": "AI 서비스의 데이터 수집부터 도구 실행까지 흐름을 그린 뒤 ATLAS 기술을 각 단계에 매핑하세요.",
-      "tags": ["MITRE", "ATLAS", "AI Red Team", "Threat Modeling"],
+      "tags": [
+        "MITRE",
+        "ATLAS",
+        "AI Red Team",
+        "Threat Modeling"
+      ],
       "priority": 92,
       "severity": "info",
       "identifier": "MITRE ATLAS",
@@ -65,9 +77,16 @@
         "OpenClaw 본체뿐 아니라 Nextcloud Talk 연계 플러그인과 Agent Platform도 확인 대상입니다.",
         "공식 GitHub Security Advisory가 CVE별 참고자료로 연결되어 있습니다."
       ],
-      "limitations": ["실제 영향 여부는 조직에서 사용하는 정확한 제품과 플러그인 버전으로 재확인해야 합니다."],
+      "limitations": [
+        "실제 영향 여부는 조직에서 사용하는 정확한 제품과 플러그인 버전으로 재확인해야 합니다."
+      ],
       "action": "OpenClaw 사용 여부와 설치 버전을 확인하고 KISA 표의 해결 버전 이상으로 업데이트하세요.",
-      "tags": ["KISA", "OpenClaw", "Agent Platform", "CVE"],
+      "tags": [
+        "KISA",
+        "OpenClaw",
+        "Agent Platform",
+        "CVE"
+      ],
       "priority": 90,
       "severity": "critical",
       "identifier": "KISA-2026-04-07",
@@ -93,7 +112,12 @@
         "연방기관 조치 기한은 모든 조직의 법적 기한을 의미하지 않습니다."
       ],
       "action": "vCenter 자산과 외부 노출 여부를 즉시 확인하고 Broadcom 권고에 따라 업데이트 또는 완화 조치를 적용하세요.",
-      "tags": ["CISA KEV", "VMware vCenter", "CVE-2026-59310", "Exploited"],
+      "tags": [
+        "CISA KEV",
+        "VMware vCenter",
+        "CVE-2026-59310",
+        "Exploited"
+      ],
       "priority": 99,
       "identifier": "CVE-2026-59310",
       "evidenceLevel": "official"
@@ -113,9 +137,16 @@
         "AI를 방어 자동화에 활용할 때의 기회와 위험을 함께 다룹니다.",
         "AI 기반 공격에 대비하는 조직 차원의 계획 수립에 활용할 수 있습니다."
       ],
-      "limitations": ["현재 문서 상태와 후속 개정 여부를 적용 전에 확인해야 합니다."],
+      "limitations": [
+        "현재 문서 상태와 후속 개정 여부를 적용 전에 확인해야 합니다."
+      ],
       "action": "조직의 AI 자산 목록과 현재 CSF 통제를 비교해 누락된 AI 전용 통제를 식별하세요.",
-      "tags": ["NIST", "Cyber AI", "CSF 2.0", "Risk Management"],
+      "tags": [
+        "NIST",
+        "Cyber AI",
+        "CSF 2.0",
+        "Risk Management"
+      ],
       "priority": 84,
       "identifier": "NIST IR 8596",
       "evidenceLevel": "official"
@@ -135,9 +166,16 @@
         "공격 유형별 완화책과 알려진 한계를 함께 제시합니다.",
         "비전문가도 사용할 수 있도록 용어집과 개념 계층을 제공합니다."
       ],
-      "limitations": ["분류체계가 특정 제품에 바로 적용되는 구현 가이드는 아닙니다."],
+      "limitations": [
+        "분류체계가 특정 제품에 바로 적용되는 구현 가이드는 아닙니다."
+      ],
       "action": "내부 AI 위험 등록부의 공격 명칭을 NIST 용어와 매핑해 중복과 누락을 정리하세요.",
-      "tags": ["NIST", "Adversarial ML", "Data Poisoning", "Privacy"],
+      "tags": [
+        "NIST",
+        "Adversarial ML",
+        "Data Poisoning",
+        "Privacy"
+      ],
       "priority": 80,
       "identifier": "NIST AI 100-2e2025",
       "evidenceLevel": "official"
@@ -162,7 +200,12 @@
         "공격 성공률은 논문이 선택한 과제, 에이전트, 판정 방식에 한정되며 모든 모바일 에이전트로 일반화할 수 없습니다."
       ],
       "action": "모바일·GUI 에이전트가 읽는 화면 콘텐츠를 비신뢰 입력으로 분류하고, 민감한 동작에는 사용자 재확인과 정책 검사를 추가하세요.",
-      "tags": ["arXiv", "GUI Agent", "Prompt Injection", "Android"],
+      "tags": [
+        "arXiv",
+        "GUI Agent",
+        "Prompt Injection",
+        "Android"
+      ],
       "priority": 88,
       "identifier": "arXiv:2608.17659",
       "evidenceLevel": "preprint"
@@ -187,7 +230,12 @@
         "위험 인식과 안전 행동의 차이는 실제 운영 환경과 도구 권한 설계에 따라 달라질 수 있습니다."
       ],
       "action": "에이전트 보안 평가 범위에 모델뿐 아니라 구성 변경, 플러그인, 상태 저장소, 도구 승인, 복구 절차를 포함하세요.",
-      "tags": ["arXiv", "Agent Harness", "Lifecycle Security", "Prompt Injection"],
+      "tags": [
+        "arXiv",
+        "Agent Harness",
+        "Lifecycle Security",
+        "Prompt Injection"
+      ],
       "priority": 86,
       "identifier": "arXiv:2608.17597",
       "evidenceLevel": "preprint"
@@ -212,7 +260,12 @@
         "저자들이 시험한 공격은 2026년 4월 Windows 업데이트 이후 Secure Boot 시스템에서 현재 형태로는 완화됩니다."
       ],
       "action": "Windows 보안 기준에 Secure Boot와 최신 누적 업데이트 상태를 포함하고, 관리 대상 장비의 SPD 쓰기 보호 여부를 확인하세요.",
-      "tags": ["USENIX Security", "Windows VBS", "Memory Aliasing", "CVE-2026-23670"],
+      "tags": [
+        "USENIX Security",
+        "Windows VBS",
+        "Memory Aliasing",
+        "CVE-2026-23670"
+      ],
       "priority": 94,
       "identifier": "USENIX Security 26: Collins",
       "evidenceLevel": "peer-reviewed"
@@ -237,7 +290,12 @@
         "공격은 출발지 IP 스푸핑이 가능하고 대상 도메인이 DNSSEC으로 보호되지 않은 조건을 전제로 합니다."
       ],
       "action": "운영 중인 BIND 9 버전과 최신 보안 패치 적용 여부를 확인하고 검증 가능한 영역에는 DNSSEC을 적용하세요.",
-      "tags": ["USENIX Security", "BIND 9", "DNS Cache Poisoning", "DNSSEC"],
+      "tags": [
+        "USENIX Security",
+        "BIND 9",
+        "DNS Cache Poisoning",
+        "DNSSEC"
+      ],
       "priority": 92,
       "identifier": "USENIX Security 26: Ben-Simhon",
       "evidenceLevel": "peer-reviewed"
@@ -262,7 +320,12 @@
         "로그인이 필요하거나 웹에서만 동작하는 서비스와 실행하지 못한 업데이트 경로는 평가 범위 밖입니다."
       ],
       "action": "배포 중인 데스크톱 앱의 업데이트 매니페스트 서명, 설치 파일 무결성 검증과 롤백 방지 여부를 점검하세요.",
-      "tags": ["USENIX Security", "Software Update", "Supply Chain", "Integrity"],
+      "tags": [
+        "USENIX Security",
+        "Software Update",
+        "Supply Chain",
+        "Integrity"
+      ],
       "priority": 90,
       "identifier": "USENIX Security 26: Wan",
       "evidenceLevel": "peer-reviewed"
@@ -287,7 +350,12 @@
         "현재 구현은 두 가지 의미적 위험 패턴을 다루며 GRE·IPsec·VPN 같은 터널링 프로토콜은 지원하지 않습니다."
       ],
       "action": "인터넷 경계 시스템의 Linux·FreeBSD 커널 권고를 추적하고, 비정상 TCP/IP 상태 변화와 재전송을 탐지 규칙에 포함하세요.",
-      "tags": ["USENIX Security", "TCP/IP", "Static Analysis", "Off-path Attack"],
+      "tags": [
+        "USENIX Security",
+        "TCP/IP",
+        "Static Analysis",
+        "Off-path Attack"
+      ],
       "priority": 87,
       "identifier": "USENIX Security 26: Zhao",
       "evidenceLevel": "peer-reviewed"
@@ -312,10 +380,169 @@
         "공격자는 피해자와 같은 OVS를 공유하는 공개 서비스에 접근할 수 있어야 하며, 커널 데이터패스에서는 일부 공격의 효과가 줄어듭니다."
       ],
       "action": "다중 테넌트 환경에서 고신뢰 워크로드의 OVS 공유 범위를 확인하고 분리 배치와 캐시 완화책을 검토하세요.",
-      "tags": ["USENIX Security", "Open vSwitch", "Side Channel", "Cloud Isolation"],
+      "tags": [
+        "USENIX Security",
+        "Open vSwitch",
+        "Side Channel",
+        "Cloud Isolation"
+      ],
       "priority": 84,
       "identifier": "USENIX Security 26: Kim",
       "evidenceLevel": "peer-reviewed"
+    },
+    {
+      "id": "nvd-cve-2026-15706",
+      "kind": "security",
+      "title": "Baylan BMS 인증 우회 취약점 CVE-2026-15706 공개",
+      "originalTitle": "CVE-2026-15706: Baylan Smart Meter Management Application Authentication Bypass",
+      "source": "NIST NVD",
+      "sourceUrl": "https://nvd.nist.gov/vuln/detail/CVE-2026-15706",
+      "publishedAt": "2026-08-20",
+      "summary": "Baylan Smart Meter Management Application의 중요 기능에 인증이 누락돼 원격 공격자가 인증을 우회할 수 있는 취약점이 NVD에 등록됐습니다.",
+      "whyItMatters": "스마트미터 관리 애플리케이션의 인증 경계가 무너지면 계량 인프라의 기밀성·무결성·가용성에 영향을 줄 수 있어 사용 버전 확인이 필요합니다.",
+      "details": [
+        "영향 범위는 Baylan Smart Meter Management Application v1.1.10.142 미만으로 기록돼 있습니다.",
+        "제출기관은 네트워크에서 권한과 사용자 상호작용 없이 악용 가능한 CWE-306 문제로 분류했습니다.",
+        "제출기관 산정 CVSS 3.1 기본점수는 9.8입니다."
+      ],
+      "limitations": [
+        "NVD 상태는 Received이며 NVD 자체 분석은 아직 완료되지 않았습니다.",
+        "실제 악용 증거나 CISA KEV 등재는 확인되지 않았고 NVD 기록에는 구체적인 업데이트 절차가 없습니다."
+      ],
+      "action": "Baylan BMS 사용 여부와 버전을 확인하고 v1.1.10.142 이상 제공 여부를 공급자에게 문의하세요.",
+      "tags": [
+        "NVD",
+        "CVE-2026-15706",
+        "Baylan BMS",
+        "Authentication Bypass"
+      ],
+      "priority": 89,
+      "identifier": "CVE-2026-15706",
+      "evidenceLevel": "official",
+      "severity": "critical"
+    },
+    {
+      "id": "arxiv-2608-18187",
+      "kind": "security-paper",
+      "title": "AdaRare, AFL++의 다섯 제어면을 텔레메트리로 공동 조정",
+      "originalTitle": "AdaRare: Telemetry-Guided Joint Profile Control for Greybox Fuzzing",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.18187",
+      "publishedAt": "2026-08-18",
+      "summary": "AFL++의 큐·변이·사전·에너지·비교 해결 제어를 하나의 프로필로 조정하고 5초마다 실행 텔레메트리로 갱신하는 그레이박스 퍼징 기법입니다.",
+      "whyItMatters": "퍼저 내부의 여러 제어면을 따로 튜닝하지 않고 함께 조정해 코드 커버리지와 취약점 탐색 효율을 개선할 수 있는 실험 근거를 제공합니다.",
+      "details": [
+        "기본 AFL++와 비교한 8개 대상 모두에서 중앙값 엣지 커버리지가 높았고 5개 비교가 Holm 보정 후 유의했습니다.",
+        "CmpLog 조건을 맞춘 AFL++와 비교한 5개 후속 대상 모두에서 중앙값 커버리지가 높았고 4개 비교가 Holm 보정 후 유의했습니다.",
+        "조건을 맞추지 않은 펌웨어 사례에서는 별도 환경에서 재현되고 이후 CVE가 부여된 메모리 손상 5건을 보고했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 18일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "후속 대상은 주 실험 결과를 본 뒤 선택됐고 커버리지는 실제 버그 발견의 대리 지표입니다.",
+        "펌웨어 사례는 다른 퍼저와 조건을 맞춘 비교가 아니므로 취약점 발견 우위를 뜻하지 않습니다."
+      ],
+      "action": "내부 퍼징 평가에서 동일 시간·CmpLog 조건으로 AdaRare와 현재 AFL++ 구성을 비교하세요.",
+      "tags": [
+        "arXiv",
+        "AFL++",
+        "Greybox Fuzzing",
+        "Telemetry"
+      ],
+      "priority": 80,
+      "identifier": "arXiv:2608.18187",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "doi-10-1007-s44196-026-01526-2",
+      "kind": "security-paper",
+      "title": "장기 기밀 데이터와 양자내성암호 전환 준비도의 간극 분석",
+      "originalTitle": "Harvest Now, Decrypt Later as a Cross-sector Threat: A Scoping Review of Data-confidentiality Lifetimes Against Post-quantum Migration Readiness",
+      "source": "International Journal of Computational Intelligence Systems",
+      "sourceUrl": "https://doi.org/10.1007/s44196-026-01526-2",
+      "publishedAt": "2026-08-20",
+      "summary": "장기간 기밀성이 필요한 데이터와 산업별 양자내성암호 전환 준비도를 42개 출처로 비교한 스코핑 리뷰입니다.",
+      "whyItMatters": "현재 수집된 암호문을 미래 양자컴퓨터로 복호화하는 위험은 데이터의 기밀 유지기간과 전환 소요기간을 함께 계산해야 우선순위를 정할 수 있습니다.",
+      "details": [
+        "국가안보, 의료·유전체, 생체정보와 법률상 비밀정보는 수십 년 또는 사실상 영구적인 기밀 유지가 필요하다고 정리합니다.",
+        "정부·국방과 범산업 조사는 비교적 근거가 많지만 의료·유전체와 법률 부문의 전환 준비도 근거는 부족하다고 보고합니다.",
+        "동료평가 문헌, 표준·정부 문서와 구분된 회색문헌 등 42개 출처를 검토했습니다."
+      ],
+      "limitations": [
+        "HNDL 노출 평가는 직접 관측값이 아니라 Mosca 부등식과 전문가 전망을 적용한 추론입니다.",
+        "자료 유형이 이질적인 스코핑 리뷰이며 분야별 준비도 근거의 양과 품질이 고르지 않습니다."
+      ],
+      "action": "장기 보존 데이터의 기밀 유지기간을 목록화하고 암호 자산별 PQC 전환 완료 예상 시점과 비교하세요.",
+      "tags": [
+        "PQC",
+        "Harvest Now Decrypt Later",
+        "Cryptographic Agility",
+        "Scoping Review"
+      ],
+      "priority": 84,
+      "identifier": "10.1007/s44196-026-01526-2",
+      "evidenceLevel": "peer-reviewed"
+    },
+    {
+      "id": "arxiv-2608-18351",
+      "kind": "ai-paper",
+      "title": "터미널·MCP 에이전트에 작업별 최소 권한을 학습시킨 프레임워크",
+      "originalTitle": "Task-Conditioned Least-Privilege Learning for Executable Terminal and MCP Agents",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.18351",
+      "publishedAt": "2026-08-18",
+      "summary": "도구 사용 LLM이 작업에 필요한 권한만 선택하도록 결정론적 검증기와 권한 범위를 결합해 Qwen3.5-4B를 사후학습한 연구입니다.",
+      "whyItMatters": "터미널과 MCP 도구를 실행하는 에이전트는 과도한 권한으로도 작업을 완료할 수 있어 성공률과 별도로 권한 최소화를 측정하고 학습할 필요가 있습니다.",
+      "details": [
+        "1,500개 작업으로 학습한 뒤 500개 홀드아웃 작업의 2,896개 에피소드에서 안전 성공률이 64.36%에서 98.48%로 증가했다고 보고합니다.",
+        "같은 평가에서 초과 권한 오류 이벤트는 4.56%에서 0.79%로 감소했습니다.",
+        "실행 전 동작과 실행 후 효과를 여섯 위험 차원으로 감사하고 작업별 충분 권한 범위와 비교합니다."
+      ],
+      "limitations": [
+        "2026년 8월 18일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "주요 평가는 구조화된 작업과 하나의 4B 모델에 한정되며 외부 평가의 개선은 균일하지 않습니다.",
+        "학습된 자제는 권한 게이트나 샌드박스의 강제 통제를 대체하지 않습니다."
+      ],
+      "action": "에이전트 평가에 작업 완료율과 함께 불필요한 도구 호출·쓰기·네트워크 권한 사용률을 기록하세요.",
+      "tags": [
+        "arXiv",
+        "MCP",
+        "AI Agent",
+        "Least Privilege"
+      ],
+      "priority": 89,
+      "identifier": "arXiv:2608.18351",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-18274",
+      "kind": "ai-paper",
+      "title": "OpenAI Privacy Filter, 로컬 PII·비밀정보 탐지 모델 공개",
+      "originalTitle": "Model Card for OpenAI Privacy Filter",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.18274",
+      "publishedAt": "2026-08-18",
+      "summary": "비정형 텍스트에서 개인정보와 비밀정보를 찾아 삭제하기 위한 양방향 토큰 분류 모델의 구조, 사용 범위와 평가 결과를 정리한 모델 카드입니다.",
+      "whyItMatters": "긴 문맥을 외부 서비스로 보내지 않고 로컬에서 데이터 최소화 전처리를 수행할 수 있지만 탐지 누락과 도메인 편차를 별도 통제로 다뤄야 합니다.",
+      "details": [
+        "전체 15억 파라미터 중 토큰당 5천만 파라미터를 활성화하고 최대 128K 토큰 문맥을 처리합니다.",
+        "8개 개인정보 범주와 BIOES 제약 Viterbi 디코더를 지원합니다.",
+        "도메인별 미세조정과 정밀도·재현율 운용점 조정을 전제로 설계됐습니다."
+      ],
+      "limitations": [
+        "2026년 8월 18일 제출된 프리프린트이며 모델 카드의 자체 평가입니다.",
+        "비영어·비라틴 문자, 드문 이름과 새로운 자격증명 형식에서 성능 저하가 예상됩니다.",
+        "익명화나 규제 준수를 보장하는 도구가 아니며 계층화된 개인정보 보호 절차의 한 구성요소입니다."
+      ],
+      "action": "조직 데이터로 탐지 누락과 오탐을 측정하고 고위험 전송에는 별도 DLP·정책 검사를 유지하세요.",
+      "tags": [
+        "arXiv",
+        "PII Detection",
+        "Data Minimization",
+        "Privacy"
+      ],
+      "priority": 86,
+      "identifier": "arXiv:2608.18274",
+      "evidenceLevel": "preprint"
     }
   ]
 }
