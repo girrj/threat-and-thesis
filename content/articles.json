@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T00:22:34+09:00",
+  "generatedAt": "2026-08-21T03:08:37+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -542,6 +542,158 @@
       ],
       "priority": 86,
       "identifier": "arXiv:2608.18274",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "cisa-trueconf-cve-2026-72529-72530",
+      "kind": "security",
+      "title": "CISA, 실제 악용된 TrueConf Server 취약점 2건 KEV 추가",
+      "originalTitle": "TrueConf Server Missing Authentication and Code Injection Vulnerabilities",
+      "source": "CISA Known Exploited Vulnerabilities",
+      "sourceUrl": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "publishedAt": "2026-08-20",
+      "summary": "CISA가 TrueConf Server의 인증 누락 취약점 CVE-2026-72529와 격리 환경 탈출 취약점 CVE-2026-72530을 실제 악용 취약점 목록에 추가했습니다.",
+      "whyItMatters": "인터넷에 노출된 화상회의 서버에서 인증 없이 스크립트를 실행하고 호스트까지 영향을 넓힐 수 있어 신속한 노출 확인과 업데이트가 필요합니다.",
+      "details": [
+        "CVE-2026-72529는 4307/TCP에 접근한 원격 비인증 공격자의 임의 스크립트 실행을 허용할 수 있습니다.",
+        "CVE-2026-72530은 격리 환경에서 실행된 코드가 호스트 운영체제로 탈출할 수 있게 합니다.",
+        "CISA는 두 취약점 모두에 실제 악용 근거가 있다고 표시했으며 랜섬웨어 캠페인 사용 여부는 확인되지 않았습니다."
+      ],
+      "limitations": [
+        "영향 버전과 수정 버전은 조직의 TrueConf Server 배포 계열에 맞춰 벤더 권고에서 다시 확인해야 합니다.",
+        "CISA의 랜섬웨어 캠페인 사용 여부 표시는 두 취약점 모두 Unknown입니다."
+      ],
+      "action": "TrueConf Server의 4307/TCP 노출과 설치 버전을 확인하고 벤더가 제공한 수정 버전으로 업데이트하세요.",
+      "tags": [
+        "CISA KEV",
+        "TrueConf Server",
+        "CVE-2026-72529",
+        "CVE-2026-72530"
+      ],
+      "priority": 99,
+      "severity": "critical",
+      "identifier": "CVE-2026-72529 / CVE-2026-72530",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "nvd-cve-2026-16926",
+      "kind": "security",
+      "title": "IBM AIX·PowerVM VIOS 임의 파일 덮어쓰기 취약점 CVE-2026-16926",
+      "originalTitle": "IBM AIX and PowerVM VIOS Arbitrary File Overwrite Vulnerability",
+      "source": "IBM Security Bulletin",
+      "sourceUrl": "https://www.ibm.com/support/pages/node/7283858",
+      "publishedAt": "2026-08-20",
+      "summary": "IBM AIX 7.2·7.3과 PowerVM VIOS 4.1에서 원격 비인증 공격자가 임의 파일을 덮어쓸 수 있는 CVE-2026-16926이 공개됐습니다.",
+      "whyItMatters": "AIX와 VIOS의 파일 무결성과 가용성에 직접 영향을 줄 수 있고 IBM이 별도 우회책 없이 보안 수정을 권고합니다.",
+      "details": [
+        "IBM은 입력의 특수 요소를 적절히 무력화하지 않아 원격 공격자가 임의 파일을 덮어쓸 수 있다고 설명합니다.",
+        "IBM 기준 CVSS 3.1 점수는 9.1이며 기밀성 영향 없이 무결성과 가용성 영향이 높게 평가됐습니다.",
+        "AIX 7.2·7.3 서비스 팩과 VIOS 4.1 수정 팩이 제공됐으며 적용 절차는 제품별 APAR와 Fix Central에서 확인할 수 있습니다."
+      ],
+      "limitations": [
+        "공식 권고와 NVD에서 실제 악용 정황은 확인되지 않았습니다.",
+        "영향 여부는 설치된 bos.mp64 파일셋과 서비스 팩 수준으로 확인해야 합니다."
+      ],
+      "action": "AIX·VIOS 자산의 파일셋 수준을 IBM 권고와 대조하고 해당 서비스 팩 또는 수정 팩을 적용하세요.",
+      "tags": [
+        "IBM AIX",
+        "PowerVM VIOS",
+        "CVE-2026-16926",
+        "Arbitrary File Overwrite"
+      ],
+      "priority": 89,
+      "severity": "critical",
+      "identifier": "CVE-2026-16926",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "doi-10-3390-electronics15163739",
+      "kind": "ai-paper",
+      "title": "LLM 에이전트 도구 공격을 의도 붕괴로 설명한 AIC 프레임워크",
+      "originalTitle": "A Formal Framework of Architectural Intent Collapse for Tool-Level Attacks on LLM Agents",
+      "source": "Electronics",
+      "sourceUrl": "https://doi.org/10.3390/electronics15163739",
+      "publishedAt": "2026-08-20",
+      "summary": "도구 설명 오염과 프롬프트 인젝션을 서로 다른 출처의 텍스트가 하나의 문맥으로 평탄화되며 의도가 사라지는 Architectural Intent Collapse로 형식화한 논문입니다.",
+      "whyItMatters": "에이전트 보안을 권한 검사만으로 다루지 않고 설명과 명령의 의도 경계를 측정하고 분리해야 한다는 설계 기준을 제안합니다.",
+      "details": [
+        "논문은 의도 분리 정도를 측정하는 Intent Separation Degree와 다섯 가지 의도 위장 공격 유형을 제안합니다.",
+        "25개 프레임워크·모델 조합에서 도구 설명이 길어질수록 ISD가 낮아졌다고 보고합니다.",
+        "저자들은 ISD와 방어 효과 사이에 강한 상관관계(r=-0.97)가 관찰됐다고 보고합니다."
+      ],
+      "limitations": [
+        "새 지표와 분류체계의 재현성과 다른 에이전트 구조에 대한 외적 타당성은 후속 검증이 필요합니다.",
+        "출판사 페이지는 공개 원문을 제공하지만 이번 검토에서는 자동 접근 제한으로 초록과 공개 서지정보 범위에서 핵심 주장을 확인했습니다."
+      ],
+      "action": "에이전트의 도구 메타데이터와 외부 콘텐츠가 시스템 지시와 같은 문맥에서 명령으로 해석될 수 있는 경로를 점검하세요.",
+      "tags": [
+        "LLM Agent",
+        "Tool Security",
+        "Prompt Injection",
+        "Confused Deputy"
+      ],
+      "priority": 88,
+      "identifier": "10.3390/electronics15163739",
+      "evidenceLevel": "peer-reviewed"
+    },
+    {
+      "id": "arxiv-2608-18578",
+      "kind": "ai-paper",
+      "title": "bitsandbytes 4비트 양자화, 반복 갱신 문맥의 최신 값 검색 저하",
+      "originalTitle": "Compress and Forget: bitsandbytes Quantization Amplifies Proactive Interference in LLMs",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.18578",
+      "publishedAt": "2026-08-20",
+      "summary": "세 개의 지시 튜닝 모델에서 bitsandbytes INT4 양자화가 같은 키의 값이 반복 갱신되는 문맥에서 최신 값 검색 정확도를 낮춘다고 보고한 프리프린트입니다.",
+      "whyItMatters": "일반 평균 성능 차이가 작아도 긴 문맥에서 상태가 자주 바뀌는 에이전트와 RAG 워크로드에는 별도의 양자화 회귀 시험이 필요합니다.",
+      "details": [
+        "Qwen2.5-7B, Mistral-7B, Phi-3.5-mini의 FP16·INT8·INT4를 23,075개 고유 trial로 비교했습니다.",
+        "고간섭 조건에서 Qwen의 정확도는 FP16 81.0%에서 INT4 68.3%로 낮아졌고 세 모델 모두 같은 방향의 저하를 보였습니다.",
+        "같은 키의 과거 값으로 돌아가는 오류 비율은 INT4에서 21.5%에서 24.6%로 증가했다고 보고합니다."
+      ],
+      "limitations": [
+        "동료평가 전 프리프린트이며 bitsandbytes의 LLM.int8과 NF4만 평가해 GPTQ·AWQ 등 다른 양자화 방식에는 일반화할 수 없습니다.",
+        "평가는 3.8~7B 모델, greedy decoding과 비교적 짧은 문맥에 한정됩니다."
+      ],
+      "action": "양자화 모델을 배포하기 전에 같은 키가 반복 갱신되는 장문 상태 검색 과제를 별도 회귀 테스트에 포함하세요.",
+      "tags": [
+        "LLM Quantization",
+        "bitsandbytes",
+        "Proactive Interference",
+        "Long Context"
+      ],
+      "priority": 86,
+      "identifier": "arXiv:2608.18578",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-18099",
+      "kind": "ai-paper",
+      "title": "FinSkillBench, 검증된 절차형 스킬이 금융 에이전트 성능 개선",
+      "originalTitle": "FinSkillBench: Evaluating AI Agents and Domain Skills for Investment Management",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.18099",
+      "publishedAt": "2026-08-20",
+      "summary": "투자관리 3개 영역의 12개 하위 과제와 2,603개 에피소드에서 검증된 절차·실행 요소를 묶은 스킬이 에이전트 성능에 미치는 효과를 비교한 프리프린트입니다.",
+      "whyItMatters": "고위험 업무 에이전트에서는 모델 선택뿐 아니라 검증된 절차와 도구 사용법을 패키징하는 방식이 결과 품질과 감사 가능성에 영향을 줄 수 있습니다.",
+      "details": [
+        "9개 모델에서 스킬 없음, 큐레이션 스킬, 에이전트가 즉석 생성한 스킬 조건을 비교했습니다.",
+        "Phi-4를 제외한 평균 점수는 스킬 없음 0.366에서 큐레이션 스킬 0.528로 증가했으며 자체 생성 스킬은 0.371이었습니다.",
+        "별도 Hermes Agent 하네스의 8개 모델·5,280개 에피소드에서도 큐레이션 스킬의 개선 방향이 재현됐습니다."
+      ],
+      "limitations": [
+        "동료평가 전 프리프린트이며 모델·조건·과제 셀당 단일 실행이라 에이전트 루프의 변동성을 측정하지 못했습니다.",
+        "큐레이션 스킬에 실행 가능한 코드가 포함돼 순수한 금융 추론보다 도구가 갖춰진 시스템 성능을 측정합니다."
+      ],
+      "action": "도메인 에이전트 평가에서 모델 단독 조건과 검증된 절차·도구 패키지 조건을 분리해 성공률과 비용을 비교하세요.",
+      "tags": [
+        "AI Agent",
+        "Agent Skills",
+        "Investment Management",
+        "Benchmark"
+      ],
+      "priority": 84,
+      "identifier": "arXiv:2608.18099",
       "evidenceLevel": "preprint"
     }
   ]

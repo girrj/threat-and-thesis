@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-21T00:22:34+09:00",
+  "generatedAt": "2026-08-21T03:08:37+09:00",
   "editions": [
     {
       "date": "2026-08-21",
-      "generatedAt": "2026-08-21T00:22:34+09:00",
+      "generatedAt": "2026-08-21T03:08:37+09:00",
       "rankings": {
         "security": [
           {
@@ -15,6 +15,20 @@
           },
           {
             "rank": 2,
+            "itemId": "cisa-trueconf-cve-2026-72529-72530",
+            "previousRank": null,
+            "status": "new",
+            "reason": "실제 악용된 원격 비인증 실행과 격리 탈출 취약점이 함께 KEV에 추가돼 노출 확인과 패치가 시급합니다."
+          },
+          {
+            "rank": 3,
+            "itemId": "nvd-cve-2026-16926",
+            "previousRank": null,
+            "status": "new",
+            "reason": "AIX·VIOS에서 원격 비인증 파일 덮어쓰기가 가능하고 IBM이 우회책 없이 수정을 권고합니다."
+          },
+          {
+            "rank": 4,
             "itemId": "nvd-cve-2026-15706",
             "previousRank": null,
             "status": "new",
@@ -77,20 +91,41 @@
         "ai-paper": [
           {
             "rank": 1,
+            "itemId": "doi-10-3390-electronics15163739",
+            "previousRank": null,
+            "status": "new",
+            "reason": "LLM 에이전트의 도구 공격을 의도 경계 손실로 형식화하고 25개 프레임워크·모델 조합에서 지표를 평가했습니다."
+          },
+          {
+            "rank": 2,
             "itemId": "arxiv-2608-18351",
             "previousRank": null,
             "status": "new",
             "reason": "터미널·MCP 에이전트의 작업별 최소 권한을 성공률과 분리해 측정하고 학습했습니다."
           },
           {
-            "rank": 2,
+            "rank": 3,
+            "itemId": "arxiv-2608-18578",
+            "previousRank": null,
+            "status": "new",
+            "reason": "평균 성능에 가려지는 4비트 양자화의 반복 갱신 문맥 검색 저하를 세 모델에서 측정했습니다."
+          },
+          {
+            "rank": 4,
+            "itemId": "arxiv-2608-18099",
+            "previousRank": null,
+            "status": "new",
+            "reason": "검증된 절차·실행 스킬이 금융 에이전트의 12개 과제 성능을 높이고 별도 하네스에서도 방향성을 재현했습니다."
+          },
+          {
+            "rank": 5,
             "itemId": "arxiv-2608-18274",
             "previousRank": null,
             "status": "new",
             "reason": "로컬 PII·비밀정보 탐지 모델의 구조와 운용 한계를 공개해 데이터 최소화 평가에 활용할 수 있습니다."
           },
           {
-            "rank": 3,
+            "rank": 6,
             "itemId": "arxiv-2608-17659",
             "previousRank": 1,
             "status": "down",
