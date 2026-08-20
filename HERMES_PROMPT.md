@@ -8,7 +8,7 @@
 Threat & Thesis의 3시간 정기 갱신을 수행해줘. 먼저 AGENTS.md, EDITORIAL.md, skills/threat-and-thesis/SKILL.md, skills/threat-and-thesis/references/source-policy.md를 읽고 그대로 따라라.
 
 1. 작업 시작 전 git status를 확인한다. 기존의 예상하지 못한 로컬 변경이 있으면 덮어쓰지 말고 중단 사유를 보고한다. 작업 트리가 깨끗하면 `git pull --ff-only origin main`으로 배포 저장소의 최신 상태를 받은 뒤 진행하고, fast-forward가 불가능하면 임의 병합하지 말고 중단한다.
-2. python3 scripts/collect.py --since-hours 3을 실행한다. 출처 하나가 실패해도 나머지는 계속 검토하고 실패 출처를 보고한다.
+2. python3 scripts/collect.py --since-hours 3을 실행한다. 첫 실행과 장애 복구 수집은 오래 걸릴 수 있으므로 terminal timeout을 최소 900초로 설정하고, 제한 시간에 걸리면 실행 중인 collect.py 프로세스가 없는지 확인한 뒤에만 다시 실행한다. 출처 하나가 실패해도 나머지는 계속 검토하고 실패 출처를 보고한다.
 3. data/inbox.json 후보를 content/articles.json 및 data/processed.json과 중복 검사한다. arXiv의 kind는 분류 제안일 뿐이므로 raw.needsEditorialReview와 논문의 핵심 연구 대상을 확인한다. Crossref의 publication-record는 DOI 등록 기록이지 동료평가 증명이 아니므로 출판사·학회 페이지에서 게재 상태를 확인한다. 검색 결과나 제3자 요약만 믿지 말고 모든 게시 후보의 1차 출처를 직접 확인한다.
 4. 공개 가치가 확인된 자료만 content/articles.json에 한국어로 반영한다. AI 모델·에이전트·머신러닝 연구는 ai-paper, 일반 시스템·네트워크·암호·소프트웨어 보안 연구는 security-paper로 구분한다. 프리프린트와 공식 자료를 정확히 표시하고 확인되지 않은 수치나 사실을 만들지 않는다. 논문은 출판사·DOI 페이지, 공개 저장소, arXiv, 가능한 경우 OpenAlex·Unpaywall의 공개 원문 위치를 확인한다. 합법적인 공개 원문이 있으면 requiresLibraryAccess를 쓰지 않고, 공개 원문 없이 결제나 구독이 필요한 논문에만 requiresLibraryAccess: true를 추가한다. sourceUrl은 DOI 또는 출판사 페이지를 유지하며, 구독 원문을 읽지 못했다면 공개 초록이 뒷받침하는 내용만 쓰고 limitations에 원문 미확인을 명시한다.
 5. 검토를 끝낸 후보는 채택 여부와 간단한 이유를 data/processed.json에 기록해 다음 실행에서 같은 후보를 반복 검토하지 않는다.

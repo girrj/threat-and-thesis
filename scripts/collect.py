@@ -44,9 +44,9 @@ AI_ARXIV_CATEGORIES = {"cs.AI", "cs.CL", "cs.CV", "cs.LG", "cs.RO"}
 ARXIV_DAILY_FEED = "https://rss.arxiv.org/atom/cs.CR+cs.AI+cs.LG+stat.ML+cs.CL+cs.CV+cs.RO"
 ARXIV_ANNOUNCEMENT_TYPES = {"new", "cross"}
 AI_FOCUS_TERMS = re.compile(
-    r"\b(?:large language model|language model|LLM|VLM|AI agent|agentic|model card|"
+    r"\b(?:large language models?|language models?|LLMs?|VLMs?|AI agents?|agentic|model card|"
     r"prompt injection|jailbreak|adversarial machine learning|model poisoning|"
-    r"machine learning|deep learning|neural network)\b",
+    r"machine[ -]learning|deep[ -]learning|neural networks?)\b",
     re.IGNORECASE,
 )
 SECURITY_SYSTEM_TERMS = re.compile(
@@ -74,14 +74,27 @@ CROSSREF_STRONG_SECURITY_TERMS = re.compile(
     re.IGNORECASE,
 )
 CROSSREF_WEAK_SECURITY_TERMS = re.compile(
-    r"\b(?:security|vulnerabilit\w*|authentication|access control|privacy|threat\w*|"
-    r"exploit\w*)\b",
+    r"\b(?:security|authentication|access control|privacy|threat\w*)\b",
+    re.IGNORECASE,
+)
+CROSSREF_TECHNICAL_VULNERABILITY_TERMS = re.compile(
+    r"\b(?:(?:software|hardware|firmware|kernel|browser|network|web[ -]application|"
+    r"cloud[ -]service|smart[ -]contract|source[ -]code|memory[ -]safety) vulnerabilit\w*|"
+    r"vulnerabilit\w* (?:in|of|within) (?:software|hardware|firmware|kernels?|browsers?|"
+    r"networks?|web[ -]applications?|cloud[ -]services?|smart[ -]contracts?|source[ -]code))\b",
+    re.IGNORECASE,
+)
+CROSSREF_EXPLICIT_EXPLOIT_TERMS = re.compile(
+    r"\b(?:exploit (?:generation|development)|weaponized exploit|zero[ -]day exploit|"
+    r"(?:software|kernel|browser|network|remote|local|memory[ -]corruption) exploit\w*|"
+    r"exploit\w* (?:a |the )?(?:software |memory[ -]corruption )?vulnerabilit\w*)\b",
     re.IGNORECASE,
 )
 CROSSREF_COMPUTING_TERMS = re.compile(
     r"\b(?:computer|computing|cyber|software|hardware|firmware|kernel|operating system|"
     r"network(?:ing| protocol| traffic| packet| attack)|internet|web|cloud|database|"
-    r"source code|program\w*|IoT|blockchain|smart contract|machine learning|"
+    r"source code|computer program\w*|software program\w*|programming|IoT|blockchain|"
+    r"smart contract|machine learning|"
     r"language model|neural network|cryptograph\w*|malware)\b",
     re.IGNORECASE,
 )
@@ -686,7 +699,12 @@ def collect_arxiv_current_or_recover(
 
 
 def crossref_date_info(item: dict[str, Any]) -> tuple[str | None, str | None]:
-    for key in ("published-online", "published-print", "published", "issued"):
+    keys = (
+        ("published",)
+        if "published" in item
+        else ("published-online", "published-print", "issued")
+    )
+    for key in keys:
         date_value = item.get(key)
         if not isinstance(date_value, dict):
             continue
@@ -736,6 +754,10 @@ def crossref_security_relevant(
         return True
     if CROSSREF_STRONG_SECURITY_TERMS.search(body):
         return True
+    if CROSSREF_EXPLICIT_EXPLOIT_TERMS.search(body):
+        return True
+    if CROSSREF_TECHNICAL_VULNERABILITY_TERMS.search(body):
+        return True
     has_weak_signal = bool(CROSSREF_WEAK_SECURITY_TERMS.search(body))
     has_computing_context = bool(CROSSREF_COMPUTING_TERMS.search(body))
     venue_is_specific = bool(CROSSREF_SECURITY_VENUE_TERMS.search(container))
@@ -756,11 +778,18 @@ def fetch_crossref_items(
     now: datetime,
     work_type: str,
     split_depth: int = 0,
+    publication_window: tuple[str, str] | None = None,
 ) -> list[dict[str, Any]]:
     if work_type not in {"journal-article", "proceedings-article"}:
         raise ValueError(f"unsupported Crossref type: {work_type}")
     cutoff = cutoff.replace(microsecond=0)
     now = now.replace(microsecond=0)
+    if publication_window is None:
+        publication_window = (
+            (cutoff.date() - timedelta(days=7)).isoformat(),
+            now.date().isoformat(),
+        )
+    publication_floor, publication_ceiling = publication_window
     cursor = "*"
     items: list[dict[str, Any]] = []
     page_fingerprints: set[tuple[str, ...]] = set()
@@ -770,6 +799,8 @@ def fetch_crossref_items(
                 "filter": (
                     f"from-update-date:{cutoff.strftime('%Y-%m-%dT%H:%M:%S')},"
                     f"until-update-date:{now.strftime('%Y-%m-%dT%H:%M:%S')},"
+                    f"from-pub-date:{publication_floor},"
+                    f"until-pub-date:{publication_ceiling},"
                     f"type:{work_type}"
                 ),
                 "cursor": cursor,
@@ -795,8 +826,20 @@ def fetch_crossref_items(
             if split_depth >= 20 or midpoint <= cutoff or midpoint >= now:
                 raise RuntimeError("Crossref result window is too large to split safely")
             return [
-                *fetch_crossref_items(cutoff, midpoint, work_type, split_depth + 1),
-                *fetch_crossref_items(midpoint, now, work_type, split_depth + 1),
+                *fetch_crossref_items(
+                    cutoff,
+                    midpoint,
+                    work_type,
+                    split_depth + 1,
+                    publication_window,
+                ),
+                *fetch_crossref_items(
+                    midpoint,
+                    now,
+                    work_type,
+                    split_depth + 1,
+                    publication_window,
+                ),
             ]
         page_items = [item for item in page if isinstance(item, dict)]
         fingerprint = tuple(crossref_page_key(item) for item in page_items)
@@ -806,8 +849,20 @@ def fetch_crossref_items(
             if split_depth >= 20 or midpoint <= cutoff or midpoint >= now:
                 raise RuntimeError("Crossref repeated a page inside an unsplittable time window")
             return [
-                *fetch_crossref_items(cutoff, midpoint, work_type, split_depth + 1),
-                *fetch_crossref_items(midpoint, now, work_type, split_depth + 1),
+                *fetch_crossref_items(
+                    cutoff,
+                    midpoint,
+                    work_type,
+                    split_depth + 1,
+                    publication_window,
+                ),
+                *fetch_crossref_items(
+                    midpoint,
+                    now,
+                    work_type,
+                    split_depth + 1,
+                    publication_window,
+                ),
             ]
         page_fingerprints.add(fingerprint)
         items.extend(page_items)

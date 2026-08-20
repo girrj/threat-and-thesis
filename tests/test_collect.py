@@ -136,6 +136,10 @@ class CollectorStateTests(unittest.TestCase):
         self.assertIn("cat%3Acs.AI", url)
         self.assertIn("max_results=100", url)
 
+    def test_ai_focus_terms_accept_plural_and_hyphenated_forms(self):
+        self.assertIsNotNone(collect.AI_FOCUS_TERMS.search("Large Language Models in practice"))
+        self.assertIsNotNone(collect.AI_FOCUS_TERMS.search("A machine-learning benchmark"))
+
     def test_arxiv_recovery_pages_until_it_reaches_the_cutoff(self):
         def feed(arxiv_id: str, published: str) -> bytes:
             return f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -308,6 +312,22 @@ class CollectorStateTests(unittest.TestCase):
                 "Security and Safety",
             )
         )
+        self.assertFalse(
+            collect.crossref_security_relevant(
+                "Dynamic trajectories of inflammatory biomarkers",
+                "Machine learning may predict a patient's clinical vulnerability.",
+                ["Neurology"],
+                "Frontiers in Neurology",
+            )
+        )
+        self.assertFalse(
+            collect.crossref_security_relevant(
+                "A neural network for predictive maintenance",
+                "The model exploits temporal patterns in sensor data.",
+                ["Artificial intelligence"],
+                "Engineering Journal",
+            )
+        )
 
     def test_crossref_filter_keeps_explicit_cybersecurity_and_security_subjects(self):
         self.assertTrue(
@@ -324,6 +344,22 @@ class CollectorStateTests(unittest.TestCase):
                 "We prove a protocol property.",
                 [],
                 "Distributed Systems",
+            )
+        )
+        self.assertTrue(
+            collect.crossref_security_relevant(
+                "Generalizing AI-Based Software Vulnerability Detection",
+                "We evaluate source-code models.",
+                [],
+                "Software Systems Journal",
+            )
+        )
+        self.assertTrue(
+            collect.crossref_security_relevant(
+                "Automatic Exploit Generation",
+                "We evaluate exploit generation against benchmark targets.",
+                [],
+                "Systems Journal",
             )
         )
         self.assertTrue(
@@ -366,6 +402,25 @@ class CollectorStateTests(unittest.TestCase):
 
         self.assertIsNone(published_at)
         self.assertIsNone(precision)
+
+    def test_crossref_generic_publication_date_takes_precedence_over_later_online_date(self):
+        published_at, precision = collect.crossref_date_info(
+            {
+                "published": {"date-parts": [[2025, 1, 1]]},
+                "published-online": {"date-parts": [[2026, 8, 20]]},
+            }
+        )
+
+        self.assertEqual(published_at, "2025-01-01")
+        self.assertEqual(precision, "day")
+        self.assertFalse(
+            collect.crossref_publication_is_recent(
+                published_at,
+                precision,
+                datetime(2026, 8, 20, 9, tzinfo=timezone.utc),
+                datetime(2026, 8, 20, 12, tzinfo=timezone.utc),
+            )
+        )
 
     def test_crossref_old_publication_is_not_a_daily_candidate(self):
         payload = {
@@ -411,6 +466,8 @@ class CollectorStateTests(unittest.TestCase):
         self.assertEqual([row["DOI"] for row in rows], [f"10.1234/{n}" for n in range(1, 6)])
         urls = [call.args[0] for call in mocked.call_args_list]
         self.assertIn("from-update-date%3A2026-08-20T09%3A00%3A00", urls[0])
+        self.assertIn("from-pub-date%3A2026-08-13", urls[0])
+        self.assertIn("until-pub-date%3A2026-08-20", urls[0])
         self.assertIn("sort=updated", urls[0])
         self.assertIn("cursor=%2A", urls[0])
         self.assertIn("cursor=TOKEN", urls[1])
@@ -446,6 +503,9 @@ class CollectorStateTests(unittest.TestCase):
 
         self.assertEqual(mocked.call_count, 4)
         self.assertEqual(len(rows), 1)
+        for call in mocked.call_args_list:
+            self.assertIn("from-pub-date%3A2026-08-13", call.args[0])
+            self.assertIn("until-pub-date%3A2026-08-20", call.args[0])
 
     def test_candidate_deduplication_keeps_one_cross_listed_arxiv_record(self):
         rows = [

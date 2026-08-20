@@ -12,7 +12,7 @@ Maintain the repository's daily ranked research letter without publishing unveri
 ## Workflow
 
 1. Work from the repository root and read `AGENTS.md`, `EDITORIAL.md`, plus [references/source-policy.md](references/source-policy.md).
-2. Run `python3 scripts/collect.py --since-hours 3`. The script uses per-source cursors and automatically catches up after a missed run. Use `--days N` only for an explicit backfill.
+2. Run `python3 scripts/collect.py --since-hours 3` with a terminal timeout of at least 900 seconds. The script uses per-source cursors and automatically catches up after a missed run. Use `--days N` only for an explicit backfill. After a timeout, confirm that no `collect.py` process is still running before retrying.
 3. Inspect `data/inbox.json` and `data/source-state.json`. Report individual source errors; do not treat one failed feed as proof that no updates exist. Treat arXiv `kind` as a classification suggestion, and treat Crossref `publication-record` as discovery metadata rather than proof of peer review.
 4. Deduplicate candidates against `content/articles.json` by URL, identifier, and normalized title.
 5. Open the primary source for every candidate under consideration. Exclude items whose date, identity, or material claim cannot be verified.
