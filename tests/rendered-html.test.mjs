@@ -17,6 +17,9 @@ test("exports the Threat & Thesis research letter as static HTML", async () => {
   assert.match(html, /보안 논문/);
   assert.match(html, /AI 논문/);
   assert.match(html, /최신 기술/);
+  assert.match(html, /<h2[^>]*>출처<\/h2>/);
+  assert.doesNotMatch(html, /확인하는 출처/);
+  assert.doesNotMatch(html, /정부·표준기관, 논문 원문과 공식 제품 권고를 우선합니다/);
   assert.doesNotMatch(html, /데일리 보안·AI 순위/);
   assert.doesNotMatch(html, /보안 경보/);
   assert.doesNotMatch(html, /href="#intelligence"/);
@@ -39,6 +42,9 @@ test("keeps content, UI, and build configuration wired together", async () => {
   assert.match(page, /const CATEGORIES/);
   assert.doesNotMatch(page, /value: "all"/);
   assert.match(page, /sourceUrl/);
+  assert.match(page, /requiresLibraryAccess/);
+  assert.match(page, /SKKU 원문 확인/);
+  assert.match(page, /lib\.skku\.edu\/nsc\/proxy-link/);
   assert.match(layout, /title:\s*"Threat & Thesis"/);
   assert.match(content, /"evidenceLevel"/);
   assert.match(daily, /"previousRank"/);

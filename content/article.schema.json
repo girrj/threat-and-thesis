@@ -34,7 +34,8 @@
           "priority": { "type": "integer", "minimum": 0, "maximum": 100 },
           "severity": { "enum": ["critical", "high", "medium", "info"] },
           "identifier": { "type": "string", "minLength": 1 },
-          "evidenceLevel": { "enum": ["official", "peer-reviewed", "preprint", "industry"] }
+          "evidenceLevel": { "enum": ["official", "peer-reviewed", "preprint", "industry"] },
+          "requiresLibraryAccess": { "const": true }
         }
       }
     }

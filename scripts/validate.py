@@ -115,6 +115,13 @@ def validate_articles(errors: list[str]) -> tuple[dict[str, str], int]:
             errors.append(f"{label}.severity must be one of {sorted(SEVERITIES)}")
         if "dateLabel" in item and item.get("dateLabel") not in DATE_LABELS:
             errors.append(f"{label}.dateLabel must be one of {sorted(DATE_LABELS)}")
+        if "requiresLibraryAccess" in item:
+            if item.get("requiresLibraryAccess") is not True:
+                errors.append(f"{label}.requiresLibraryAccess must be true or omitted")
+            if item.get("kind") not in {"security-paper", "ai-paper"}:
+                errors.append(
+                    f"{label}.requiresLibraryAccess is only valid for research papers"
+                )
         for key in ("title", "source", "summary", "whyItMatters"):
             if not nonempty_string(item.get(key)):
                 errors.append(f"{label}.{key} must be a non-empty string")

@@ -27,6 +27,8 @@ For vulnerabilities, confirm identifier, affected product, publication/update da
 
 For papers, confirm authorship, title, version date, venue status, studied task/data, reported result, and limitations. Avoid converting correlation, a benchmark gain, or a lab demonstration into a general real-world claim.
 
+Before marking a paper as library-only, check the publisher or DOI landing page, an author or institutional repository, arXiv, and an OpenAlex or Unpaywall open-access location when available. Omit `requiresLibraryAccess` whenever a lawful public full text exists. Set `requiresLibraryAccess: true` only for an `ai-paper` or `security-paper` whose full text is actually gated by payment or subscription. Keep `sourceUrl` pointed at the DOI or publisher record, not the university proxy. If the gated full text has not been read, limit claims to the public abstract and say so in `limitations`.
+
 For frameworks and technology releases, confirm document status such as draft/final, version, scope, and official release or update date.
 
 ## Duplicate rules
