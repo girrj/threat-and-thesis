@@ -440,12 +440,18 @@ a { color: inherit; }
   font-size: 10px;
 }
 
+.source-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 24px;
+  margin-top: 24px;
+}
+
 .source-link {
   width: fit-content;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 24px;
   color: var(--accent);
   font-size: 12px;
   font-weight: 800;

@@ -30,6 +30,7 @@ type IntelligenceItem = {
   severity?: "critical" | "high" | "medium" | "info";
   identifier?: string;
   evidenceLevel: "official" | "peer-reviewed" | "preprint" | "industry";
+  requiresLibraryAccess?: true;
 };
 
 type IntelligenceFile = {
@@ -119,6 +120,10 @@ function formatUpdatedAt(value: string) {
     hour12: false,
     timeZone: "Asia/Seoul",
   }).format(new Date(value));
+}
+
+function skkuProxyUrl(sourceUrl: string) {
+  return `https://lib.skku.edu/nsc/proxy-link?url=${encodeURIComponent(sourceUrl)}`;
 }
 
 function movementLabel(ranking: DailyRanking) {
@@ -420,14 +425,26 @@ export default function Home() {
                   {selectedEntry.item.tags.map((tag) => <span key={tag}>#{tag}</span>)}
                 </div>
 
-                <a
-                  className="source-link"
-                  href={selectedEntry.item.sourceUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  원문 확인 <span aria-hidden="true">↗</span>
-                </a>
+                <div className="source-links">
+                  <a
+                    className="source-link"
+                    href={selectedEntry.item.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    출처 확인 <span aria-hidden="true">↗</span>
+                  </a>
+                  {selectedEntry.item.requiresLibraryAccess ? (
+                    <a
+                      className="source-link"
+                      href={skkuProxyUrl(selectedEntry.item.sourceUrl)}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      SKKU 원문 확인 <span aria-hidden="true">↗</span>
+                    </a>
+                  ) : null}
+                </div>
               </article>
             ) : (
               <div className="detail-placeholder">표시할 자료가 없습니다.</div>
@@ -438,8 +455,7 @@ export default function Home() {
 
       <section className="sources" aria-labelledby="sources-title">
         <div>
-          <h2 id="sources-title">확인하는 출처</h2>
-          <p>정부·표준기관, 논문 원문과 공식 제품 권고를 우선합니다.</p>
+          <h2 id="sources-title">출처</h2>
         </div>
         <div className="source-grid">
           {SOURCES.map((source) => <span key={source}>{source}</span>)}

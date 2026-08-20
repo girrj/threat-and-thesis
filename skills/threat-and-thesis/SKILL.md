@@ -17,10 +17,11 @@ Maintain the repository's daily ranked research letter without publishing unveri
 4. Deduplicate candidates against `content/articles.json` by URL, identifier, and normalized title.
 5. Open the primary source for every candidate under consideration. Exclude items whose date, identity, or material claim cannot be verified.
 6. Select only consequential items. For papers, read at least the abstract, methodology/result claims, and stated limitations. For vulnerabilities, confirm affected products, exploitation status, and remediation from official records.
-7. Update `content/articles.json`, today's `content/daily/YYYY-MM-DD.json`, and `data/processed.json`. Preserve older articles, valid source URLs, and completed daily snapshots.
-8. Never create a combined overall ranking. Rank at most 10 current items inside each category, restarting at rank 1 for every category. Compare each item with the same category in the immediately preceding daily edition and record `previousRank`, `status`, and a factual one-sentence `reason`. Use `returning` when an item reappears after missing an edition.
-9. Run `npm run content:validate`, `npm run lint`, and `npm test`. For repository Pages, also run `SITE_BASE_PATH=/REPOSITORY_NAME npm run build:pages` when the repository name is known.
-10. Summarize additions, exclusions, rank changes, feed failures, and verification results. Do not commit or push unless explicitly asked. If nothing public changed, do not make an empty commit.
+7. For each selected paper, check the publisher or DOI page and lawful open-access locations. Add `requiresLibraryAccess: true` only when no public full text exists and payment or institutional subscription is required. Keep the DOI or publisher record in `sourceUrl`; never store a university proxy URL there. If the gated full text has not been read, restrict the entry to claims supported by the public abstract and disclose that limit.
+8. Update `content/articles.json`, today's `content/daily/YYYY-MM-DD.json`, and `data/processed.json`. Preserve older articles, valid source URLs, and completed daily snapshots.
+9. Never create a combined overall ranking. Rank at most 10 current items inside each category, restarting at rank 1 for every category. Compare each item with the same category in the immediately preceding daily edition and record `previousRank`, `status`, and a factual one-sentence `reason`. Use `returning` when an item reappears after missing an edition.
+10. Run `npm run content:validate`, `npm run lint`, and `npm test`. For repository Pages, also run `SITE_BASE_PATH=/REPOSITORY_NAME npm run build:pages` when the repository name is known.
+11. Summarize additions, exclusions, rank changes, feed failures, and verification results. Do not commit or push unless explicitly asked. If nothing public changed, do not make an empty commit.
 
 ## Curation Requirements
 
@@ -40,5 +41,6 @@ Maintain the repository's daily ranked research letter without publishing unveri
 - Today's daily edition exists, its ranks are sequential, and the generated index is current.
 - The static and runtime builds pass.
 - Every new item has a working primary-source URL.
+- `requiresLibraryAccess` appears only on papers with no verified public full text.
 - Preprints and official publications are labeled correctly.
 - The report names items deliberately excluded and why.
