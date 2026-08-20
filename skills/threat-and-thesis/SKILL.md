@@ -18,7 +18,7 @@ Maintain the repository's daily ranked research letter without publishing unveri
 5. Open the primary source for every candidate under consideration. Exclude items whose date, identity, or material claim cannot be verified.
 6. Select only consequential items. For papers, read at least the abstract, methodology/result claims, and stated limitations. For vulnerabilities, confirm affected products, exploitation status, and remediation from official records.
 7. Update `content/articles.json`, today's `content/daily/YYYY-MM-DD.json`, and `data/processed.json`. Preserve older articles, valid source URLs, and completed daily snapshots.
-8. Rank at most 10 current items. Compare them with the immediately preceding daily edition and record `previousRank`, `status`, and a factual one-sentence `reason`. Use `returning` when an item reappears after missing an edition.
+8. Never create a combined overall ranking. Rank at most 10 current items inside each category, restarting at rank 1 for every category. Compare each item with the same category in the immediately preceding daily edition and record `previousRank`, `status`, and a factual one-sentence `reason`. Use `returning` when an item reappears after missing an edition.
 9. Run `npm run content:validate`, `npm run lint`, and `npm test`. For repository Pages, also run `SITE_BASE_PATH=/REPOSITORY_NAME npm run build:pages` when the repository name is known.
 10. Summarize additions, exclusions, rank changes, feed failures, and verification results. Do not commit or push unless explicitly asked. If nothing public changed, do not make an empty commit.
 
@@ -31,7 +31,7 @@ Maintain the repository's daily ranked research letter without publishing unveri
 - Classify research by its primary contribution: use `ai-paper` for work centered on AI models, agents, or machine learning, and `security-paper` for systems, network, cryptography, or software-security research. Choose one primary class for cross-disciplinary work and explain the judgment in the report.
 - Use defensive `action` text. Do not add exploit instructions, payloads, credential theft steps, or attack automation.
 - Set priority using the ranges in `AGENTS.md`; priority is an internal editorial aid, not a probability or CVSS substitute, and is not shown on the site.
-- Build daily ranks from urgency, verified exploitation, source authority, freshness, practical impact, and research contribution. Do not rank by priority alone.
+- Build each category's daily ranks from urgency, verified exploitation, source authority, freshness, practical impact, and research contribution. Do not rank by priority alone or compare unlike categories.
 - Update `generatedAt` only after the curated file changes.
 
 ## Output Checklist

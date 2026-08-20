@@ -50,7 +50,7 @@ type DailyRanking = {
 type DailyEdition = {
   date: string;
   generatedAt: string;
-  rankings: DailyRanking[];
+  rankings: Record<IntelligenceKind, DailyRanking[]>;
 };
 
 type DailyIndex = {
@@ -65,18 +65,29 @@ type RankedItem = {
 
 const data = intelligenceData as IntelligenceFile;
 const daily = dailyData as DailyIndex;
+const articleMap = new Map(data.items.map((item) => [item.id, item]));
 
-const FILTERS: Array<{ value: "all" | IntelligenceKind; label: string }> = [
-  { value: "all", label: "전체" },
-  { value: "security", label: "보안 경보" },
+const CATEGORIES: Array<{ value: IntelligenceKind; label: string }> = [
+  { value: "security", label: "보안 위협" },
   { value: "ai-security", label: "AI 보안" },
   { value: "security-paper", label: "보안 논문" },
   { value: "ai-paper", label: "AI 논문" },
   { value: "technology", label: "최신 기술" },
 ];
 
+const SOURCES = [
+  "CISA KEV",
+  "NIST NVD",
+  "KISA KrCERT",
+  "arXiv",
+  "Semantic Scholar",
+  "MITRE ATLAS",
+  "OWASP GenAI",
+  "공식 제품 권고",
+];
+
 const KIND_LABELS: Record<IntelligenceKind, string> = {
-  security: "보안 경보",
+  security: "보안 위협",
   "ai-security": "AI 보안",
   "security-paper": "보안 논문",
   "ai-paper": "AI 논문",
@@ -126,11 +137,12 @@ function classNames(...values: Array<string | false | undefined>) {
 
 export default function Home() {
   const firstEdition = daily.editions[0];
-  const firstRankedId = firstEdition?.rankings[0]?.itemId ?? data.items[0]?.id ?? "";
   const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState<"all" | IntelligenceKind>("all");
+  const [category, setCategory] = useState<IntelligenceKind>("security");
   const [editionIndex, setEditionIndex] = useState(0);
-  const [selectedId, setSelectedId] = useState(firstRankedId);
+  const [selectedId, setSelectedId] = useState(
+    firstEdition?.rankings.security[0]?.itemId ?? "",
+  );
   const searchRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -144,42 +156,30 @@ export default function Home() {
     return () => window.removeEventListener("keydown", focusSearch);
   }, []);
 
-  const articleMap = useMemo(
-    () => new Map(data.items.map((item) => [item.id, item])),
-    [],
-  );
   const selectedEdition = daily.editions[editionIndex] ?? daily.editions[0];
   const rankedItems = useMemo(
     () =>
-      (selectedEdition?.rankings ?? [])
+      (selectedEdition?.rankings[category] ?? [])
         .map((ranking) => {
           const item = articleMap.get(ranking.itemId);
           return item ? { item, ranking } : null;
         })
         .filter((entry): entry is RankedItem => entry !== null),
-    [articleMap, selectedEdition],
+    [category, selectedEdition],
   );
 
   const filteredItems = useMemo(() => {
     const normalized = query.trim().toLocaleLowerCase("ko-KR");
-    return rankedItems
-      .filter(({ item }) => filter === "all" || item.kind === filter)
-      .filter(({ item }) => {
-        if (!normalized) return true;
-        return [
-          item.title,
-          item.originalTitle,
-          item.source,
-          item.identifier,
-          item.summary,
-          ...item.tags,
-        ]
-          .filter(Boolean)
-          .join(" ")
-          .toLocaleLowerCase("ko-KR")
-          .includes(normalized);
-      });
-  }, [filter, query, rankedItems]);
+    if (!normalized) return rankedItems;
+
+    return rankedItems.filter(({ item }) =>
+      [item.title, item.originalTitle, item.source, item.identifier, item.summary, ...item.tags]
+        .filter(Boolean)
+        .join(" ")
+        .toLocaleLowerCase("ko-KR")
+        .includes(normalized),
+    );
+  }, [query, rankedItems]);
 
   const selectedEntry =
     filteredItems.find(({ item }) => item.id === selectedId) ?? filteredItems[0] ?? null;
@@ -188,12 +188,17 @@ export default function Home() {
     const nextEdition = daily.editions[nextIndex];
     if (!nextEdition) return;
     setEditionIndex(nextIndex);
-    setSelectedId(nextEdition.rankings[0]?.itemId ?? "");
+    setSelectedId(nextEdition.rankings[category][0]?.itemId ?? "");
+  }
+
+  function changeCategory(nextCategory: IntelligenceKind) {
+    setCategory(nextCategory);
+    setSelectedId(selectedEdition.rankings[nextCategory][0]?.itemId ?? "");
   }
 
   return (
     <main className="site-shell">
-      <header className="topbar">
+      <header className="topbar" id="top">
         <a className="brand" href="#top" aria-label="Threat & Thesis 홈">
           <span className="brand-mark" aria-hidden="true">T/T</span>
           <span>
@@ -244,62 +249,45 @@ export default function Home() {
         </p>
       </header>
 
-      <section className="hero" id="top">
-        <div>
-          <p className="edition">3시간 단위 업데이트 · 일자별 기록</p>
-          <h1>데일리 보안·AI 순위</h1>
-          <p className="hero-description">
-            새로 확인된 보안 이슈와 AI 연구를 검증하고, 오늘 먼저 읽을 자료를 근거와 함께 정리합니다.
-          </p>
-        </div>
-        <p className="edition-meta">
-          {selectedEdition ? formatDate(selectedEdition.date) : "발행 준비 중"}
-          <span aria-hidden="true">·</span>
-          순위 {rankedItems.length}건
-          <span aria-hidden="true">·</span>
-          AI 논문 {rankedItems.filter(({ item }) => item.kind === "ai-paper").length}
-          <span aria-hidden="true">·</span>
-          보안 논문 {rankedItems.filter(({ item }) => item.kind === "security-paper").length}
-          <span aria-hidden="true">·</span>
-          이전 발행분 보존
-        </p>
-      </section>
-
       <section className="workspace" aria-labelledby="ranking-title">
         <div className="workspace-heading">
           <div>
-            <h2 id="ranking-title">
-              {editionIndex === 0 ? "오늘의 우선순위" : `${formatDate(selectedEdition.date)} 우선순위`}
-            </h2>
-            <p>순위 변동과 선정 이유를 함께 확인할 수 있습니다.</p>
+            <p className="edition-line">
+              {selectedEdition ? formatDate(selectedEdition.date) : "발행 준비 중"}
+              <span aria-hidden="true">·</span>
+              3시간 단위 갱신
+            </p>
+            <h1 id="ranking-title">{KIND_LABELS[category]} 순위</h1>
+            <p>각 분야 안에서 먼저 확인할 자료와 선정 이유를 정리합니다.</p>
           </div>
           <label className="search-field">
-            <span className="sr-only">자료 검색</span>
+            <span className="sr-only">현재 카테고리 검색</span>
             <input
               ref={searchRef}
               type="search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="제목, CVE, 기술, 출처 검색"
+              placeholder={`${KIND_LABELS[category]}에서 검색`}
             />
             <kbd aria-hidden="true">⌘ K</kbd>
           </label>
         </div>
 
-        <div className="filter-row" role="group" aria-label="자료 유형 필터">
-          {FILTERS.map((filterItem) => (
+        <div className="category-row" role="group" aria-label="분야별 순위">
+          {CATEGORIES.map((categoryItem) => (
             <button
-              key={filterItem.value}
+              key={categoryItem.value}
               type="button"
-              className={classNames("filter-button", filter === filterItem.value && "is-active")}
-              aria-pressed={filter === filterItem.value}
-              onClick={() => setFilter(filterItem.value)}
+              className={classNames(
+                "category-button",
+                category === categoryItem.value && "is-active",
+              )}
+              aria-pressed={category === categoryItem.value}
+              onClick={() => changeCategory(categoryItem.value)}
             >
-              {filterItem.label}{" "}
-              <span className="filter-count">
-                ({filterItem.value === "all"
-                  ? rankedItems.length
-                  : rankedItems.filter(({ item }) => item.kind === filterItem.value).length})
+              {categoryItem.label}{" "}
+              <span className="category-count">
+                ({selectedEdition.rankings[categoryItem.value].length})
               </span>
             </button>
           ))}
@@ -308,8 +296,8 @@ export default function Home() {
         <div className="intelligence-layout">
           <div className="feed" aria-live="polite">
             <div className="feed-meta">
-              <span>{filteredItems.length}건</span>
-              <span>편집 순위</span>
+              <span>{KIND_LABELS[category]} {filteredItems.length}건</span>
+              <span>카테고리 순위</span>
             </div>
 
             {filteredItems.length ? (
@@ -329,7 +317,6 @@ export default function Home() {
                   </span>
                   <span className="feed-card-body">
                     <span className="card-topline">
-                      <span className="kind-label">{KIND_LABELS[item.kind]}</span>
                       <span className={classNames("rank-change", `rank-${ranking.status}`)}>
                         {movementLabel(ranking)}
                       </span>
@@ -346,8 +333,12 @@ export default function Home() {
               ))
             ) : (
               <div className="empty-state">
-                <strong>검색 결과가 없습니다.</strong>
-                <p>검색어를 줄이거나 다른 자료 유형을 선택해 보세요.</p>
+                <strong>
+                  {query
+                    ? "검색 결과가 없습니다."
+                    : `이번 발행본에 선정된 ${KIND_LABELS[category]} 자료가 없습니다.`}
+                </strong>
+                {query ? <p>검색어를 줄이거나 다른 분야를 선택해 보세요.</p> : null}
               </div>
             )}
           </div>
@@ -357,16 +348,16 @@ export default function Home() {
               <article>
                 <div className="detail-header">
                   <span>
-                    {selectedEntry.ranking.rank}위 · {KIND_LABELS[selectedEntry.item.kind]} ·{" "}
+                    {KIND_LABELS[category]} {selectedEntry.ranking.rank}위 ·{" "}
                     {EVIDENCE_LABELS[selectedEntry.item.evidenceLevel]}
                   </span>
                   <span>{movementLabel(selectedEntry.ranking)}</span>
                 </div>
 
-                <h3>{selectedEntry.item.title}</h3>
-                {selectedEntry.item.originalTitle && (
+                <h2>{selectedEntry.item.title}</h2>
+                {selectedEntry.item.originalTitle ? (
                   <p className="original-title">{selectedEntry.item.originalTitle}</p>
-                )}
+                ) : null}
 
                 <dl className="source-meta">
                   <div>
@@ -377,31 +368,31 @@ export default function Home() {
                     <dt>{selectedEntry.item.dateLabel ?? "게시일"}</dt>
                     <dd>{formatDate(selectedEntry.item.publishedAt)}</dd>
                   </div>
-                  {selectedEntry.item.identifier && (
+                  {selectedEntry.item.identifier ? (
                     <div>
                       <dt>식별자</dt>
                       <dd>{selectedEntry.item.identifier}</dd>
                     </div>
-                  )}
+                  ) : null}
                 </dl>
 
                 <section className="detail-section ranking-reason-section">
-                  <h4>선정 이유</h4>
+                  <h3>선정 이유</h3>
                   <p>{selectedEntry.ranking.reason}</p>
                 </section>
 
                 <section className="detail-section">
-                  <h4>핵심 요약</h4>
+                  <h3>핵심 요약</h3>
                   <p>{selectedEntry.item.summary}</p>
                 </section>
 
                 <section className="detail-section">
-                  <h4>왜 중요한가</h4>
+                  <h3>왜 중요한가</h3>
                   <p>{selectedEntry.item.whyItMatters}</p>
                 </section>
 
                 <section className="detail-section">
-                  <h4>주요 내용</h4>
+                  <h3>주요 내용</h3>
                   <ul>
                     {selectedEntry.item.details.map((detail) => <li key={detail}>{detail}</li>)}
                   </ul>
@@ -409,7 +400,7 @@ export default function Home() {
 
                 {selectedEntry.item.limitations?.length ? (
                   <section className="detail-section caution-section">
-                    <h4>한계와 확인사항</h4>
+                    <h3>한계와 확인사항</h3>
                     <ul>
                       {selectedEntry.item.limitations.map((limitation) => (
                         <li key={limitation}>{limitation}</li>
@@ -418,12 +409,12 @@ export default function Home() {
                   </section>
                 ) : null}
 
-                {selectedEntry.item.action && (
+                {selectedEntry.item.action ? (
                   <section className="action-box">
-                    <h4>실무 메모</h4>
+                    <h3>실무 메모</h3>
                     <p>{selectedEntry.item.action}</p>
                   </section>
-                )}
+                ) : null}
 
                 <div className="tag-list" aria-label="태그">
                   {selectedEntry.item.tags.map((tag) => <span key={tag}>#{tag}</span>)}
@@ -439,7 +430,7 @@ export default function Home() {
                 </a>
               </article>
             ) : (
-              <div className="detail-placeholder">표시할 자료를 선택해 주세요.</div>
+              <div className="detail-placeholder">표시할 자료가 없습니다.</div>
             )}
           </aside>
         </div>
@@ -451,9 +442,7 @@ export default function Home() {
           <p>정부·표준기관, 논문 원문과 공식 제품 권고를 우선합니다.</p>
         </div>
         <div className="source-grid">
-          {["CISA KEV", "NIST NVD", "KISA KrCERT", "arXiv", "Semantic Scholar", "MITRE ATLAS", "OWASP GenAI", "공식 제품 권고"].map(
-            (source) => <span key={source}>{source}</span>,
-          )}
+          {SOURCES.map((source) => <span key={source}>{source}</span>)}
         </div>
       </section>
 

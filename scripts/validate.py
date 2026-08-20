@@ -73,7 +73,7 @@ def load_object(path: Path, errors: list[str]) -> dict[str, Any]:
     return payload
 
 
-def validate_articles(errors: list[str]) -> tuple[set[str], int]:
+def validate_articles(errors: list[str]) -> tuple[dict[str, str], int]:
     payload = load_object(CONTENT, errors)
     generated_at = payload.get("generatedAt")
     try:
@@ -88,6 +88,7 @@ def validate_articles(errors: list[str]) -> tuple[set[str], int]:
         items = []
 
     ids: set[str] = set()
+    article_kinds: dict[str, str] = {}
     urls: set[str] = set()
     for index, item in enumerate(items):
         label = f"articles.items[{index}]"
@@ -106,6 +107,8 @@ def validate_articles(errors: list[str]) -> tuple[set[str], int]:
             ids.add(str(item_id))
         if item.get("kind") not in KINDS:
             errors.append(f"{label}.kind must be one of {sorted(KINDS)}")
+        elif isinstance(item_id, str):
+            article_kinds[item_id] = str(item["kind"])
         if item.get("evidenceLevel") not in EVIDENCE:
             errors.append(f"{label}.evidenceLevel must be one of {sorted(EVIDENCE)}")
         if "severity" in item and item.get("severity") not in SEVERITIES:
@@ -140,18 +143,18 @@ def validate_articles(errors: list[str]) -> tuple[set[str], int]:
             not isinstance(limitations, list) or not all(nonempty_string(value) for value in limitations)
         ):
             errors.append(f"{label}.limitations must be a string array")
-    return ids, len(items)
+    return article_kinds, len(items)
 
 
-def validate_daily(errors: list[str], article_ids: set[str]) -> int:
+def validate_daily(errors: list[str], article_kinds: dict[str, str]) -> int:
     paths = sorted(DAILY_DIR.glob("????-??-??.json"))
     if not paths:
         errors.append("content/daily must contain at least one YYYY-MM-DD.json snapshot")
         return 0
 
     editions: list[dict[str, Any]] = []
-    prior_positions: dict[str, int] = {}
-    seen_ids: set[str] = set()
+    prior_positions: dict[str, dict[str, int]] = {kind: {} for kind in KINDS}
+    seen_ids: dict[str, set[str]] = {kind: set() for kind in KINDS}
     for path in paths:
         payload = load_object(path, errors)
         editions.append(payload)
@@ -172,61 +175,94 @@ def validate_daily(errors: list[str], article_ids: set[str]) -> int:
         except ValueError:
             errors.append(f"{label}.generatedAt must be an ISO 8601 timestamp")
 
-        rankings = payload.get("rankings")
-        if not isinstance(rankings, list) or not rankings:
-            errors.append(f"{label}.rankings must be a non-empty array")
-            rankings = []
-        elif len(rankings) > 10:
-            errors.append(f"{label}.rankings must contain at most 10 items")
-        ranks = [row.get("rank") for row in rankings if isinstance(row, dict)]
-        if (
-            any(isinstance(rank, bool) or not isinstance(rank, int) for rank in ranks)
-            or ranks != list(range(1, len(rankings) + 1))
-        ):
-            errors.append(f"{label}.rank values must be sequential from 1")
+        rankings_by_kind = payload.get("rankings")
+        if not isinstance(rankings_by_kind, dict):
+            errors.append(f"{label}.rankings must be an object grouped by category")
+            rankings_by_kind = {}
+        elif set(rankings_by_kind) != KINDS:
+            errors.append(f"{label}.rankings must contain exactly {sorted(KINDS)}")
 
-        current_positions: dict[str, int] = {}
-        for index, row in enumerate(rankings):
-            row_label = f"{label}.rankings[{index}]"
-            if not isinstance(row, dict):
-                errors.append(f"{row_label} must be an object")
-                continue
-            if set(row) != {"rank", "itemId", "previousRank", "status", "reason"}:
-                errors.append(f"{row_label} must contain only rank, itemId, previousRank, status, reason")
-            item_id = row.get("itemId")
-            rank = row.get("rank")
-            previous_rank = row.get("previousRank")
-            status = row.get("status")
-            if item_id not in article_ids:
-                errors.append(f"{row_label}.itemId does not exist in articles.json: {item_id}")
-            if item_id in current_positions:
-                errors.append(f"{label} contains duplicate itemId: {item_id}")
-            if isinstance(item_id, str) and isinstance(rank, int) and not isinstance(rank, bool):
-                current_positions[item_id] = rank
-            if status not in RANKING_STATUSES:
-                errors.append(f"{row_label}.status must be one of {sorted(RANKING_STATUSES)}")
-            if previous_rank is not None and (
-                isinstance(previous_rank, bool) or not isinstance(previous_rank, int) or previous_rank < 1
+        all_current_ids: set[str] = set()
+        edition_count = 0
+        next_positions: dict[str, dict[str, int]] = {kind: {} for kind in KINDS}
+        for kind in sorted(KINDS):
+            rankings = rankings_by_kind.get(kind, [])
+            kind_label = f"{label}.rankings.{kind}"
+            if not isinstance(rankings, list):
+                errors.append(f"{kind_label} must be an array")
+                rankings = []
+            elif len(rankings) > 10:
+                errors.append(f"{kind_label} must contain at most 10 items")
+            edition_count += len(rankings)
+
+            ranks = [row.get("rank") for row in rankings if isinstance(row, dict)]
+            if (
+                any(isinstance(rank, bool) or not isinstance(rank, int) for rank in ranks)
+                or ranks != list(range(1, len(rankings) + 1))
             ):
-                errors.append(f"{row_label}.previousRank must be null or a positive integer")
-            if not nonempty_string(row.get("reason")):
-                errors.append(f"{row_label}.reason must be a non-empty string")
+                errors.append(f"{kind_label} rank values must be sequential from 1")
 
-            if isinstance(item_id, str) and isinstance(rank, int) and not isinstance(rank, bool):
-                actual_previous = prior_positions.get(item_id)
-                if actual_previous is not None:
-                    expected = "same" if actual_previous == rank else "up" if actual_previous > rank else "down"
-                    if previous_rank != actual_previous or status != expected:
-                        errors.append(
-                            f"{row_label} must use previousRank {actual_previous} and status {expected}"
+            current_positions = next_positions[kind]
+            for index, row in enumerate(rankings):
+                row_label = f"{kind_label}[{index}]"
+                if not isinstance(row, dict):
+                    errors.append(f"{row_label} must be an object")
+                    continue
+                if set(row) != {"rank", "itemId", "previousRank", "status", "reason"}:
+                    errors.append(
+                        f"{row_label} must contain only rank, itemId, previousRank, status, reason"
+                    )
+                item_id = row.get("itemId")
+                rank = row.get("rank")
+                previous_rank = row.get("previousRank")
+                status = row.get("status")
+                if item_id not in article_kinds:
+                    errors.append(f"{row_label}.itemId does not exist in articles.json: {item_id}")
+                elif article_kinds[item_id] != kind:
+                    errors.append(
+                        f"{row_label}.itemId belongs to {article_kinds[item_id]}, not {kind}"
+                    )
+                if item_id in all_current_ids:
+                    errors.append(f"{label} contains duplicate itemId: {item_id}")
+                elif isinstance(item_id, str):
+                    all_current_ids.add(item_id)
+                if isinstance(item_id, str) and isinstance(rank, int) and not isinstance(rank, bool):
+                    current_positions[item_id] = rank
+                if status not in RANKING_STATUSES:
+                    errors.append(f"{row_label}.status must be one of {sorted(RANKING_STATUSES)}")
+                if previous_rank is not None and (
+                    isinstance(previous_rank, bool)
+                    or not isinstance(previous_rank, int)
+                    or previous_rank < 1
+                ):
+                    errors.append(f"{row_label}.previousRank must be null or a positive integer")
+                if not nonempty_string(row.get("reason")):
+                    errors.append(f"{row_label}.reason must be a non-empty string")
+
+                if isinstance(item_id, str) and isinstance(rank, int) and not isinstance(rank, bool):
+                    actual_previous = prior_positions[kind].get(item_id)
+                    if actual_previous is not None:
+                        expected = (
+                            "same"
+                            if actual_previous == rank
+                            else "up"
+                            if actual_previous > rank
+                            else "down"
                         )
-                else:
-                    expected = "returning" if item_id in seen_ids else "new"
-                    if previous_rank is not None or status != expected:
-                        errors.append(f"{row_label} must use previousRank null and status {expected}")
+                        if previous_rank != actual_previous or status != expected:
+                            errors.append(
+                                f"{row_label} must use previousRank {actual_previous} and status {expected}"
+                            )
+                    else:
+                        expected = "returning" if item_id in seen_ids[kind] else "new"
+                        if previous_rank is not None or status != expected:
+                            errors.append(f"{row_label} must use previousRank null and status {expected}")
 
-        seen_ids.update(current_positions)
-        prior_positions = current_positions
+        if edition_count == 0:
+            errors.append(f"{label}.rankings must contain at least one ranked item")
+        for kind in KINDS:
+            seen_ids[kind].update(next_positions[kind])
+        prior_positions = next_positions
 
     index_payload = load_object(DAILY_INDEX, errors)
     expected_index = {
@@ -240,8 +276,8 @@ def validate_daily(errors: list[str], article_ids: set[str]) -> int:
 
 def main() -> int:
     errors: list[str] = []
-    article_ids, article_count = validate_articles(errors)
-    edition_count = validate_daily(errors, article_ids)
+    article_kinds, article_count = validate_articles(errors)
+    edition_count = validate_daily(errors, article_kinds)
 
     if errors:
         print(f"Content validation failed with {len(errors)} error(s):", file=sys.stderr)

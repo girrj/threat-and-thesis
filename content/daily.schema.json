@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://threat-and-thesis.local/daily.schema.json",
-  "title": "Threat & Thesis daily ranking",
+  "title": "Threat & Thesis category rankings",
   "type": "object",
   "additionalProperties": false,
   "required": ["date", "generatedAt", "rankings"],
@@ -9,8 +9,21 @@
     "date": { "type": "string", "format": "date" },
     "generatedAt": { "type": "string", "format": "date-time" },
     "rankings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["security", "ai-security", "security-paper", "ai-paper", "technology"],
+      "properties": {
+        "security": { "$ref": "#/$defs/rankingList" },
+        "ai-security": { "$ref": "#/$defs/rankingList" },
+        "security-paper": { "$ref": "#/$defs/rankingList" },
+        "ai-paper": { "$ref": "#/$defs/rankingList" },
+        "technology": { "$ref": "#/$defs/rankingList" }
+      }
+    }
+  },
+  "$defs": {
+    "rankingList": {
       "type": "array",
-      "minItems": 1,
       "maxItems": 10,
       "items": {
         "type": "object",

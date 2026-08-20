@@ -4,126 +4,144 @@
     {
       "date": "2026-08-20",
       "generatedAt": "2026-08-20T18:21:00+09:00",
-      "rankings": [
-        {
-          "rank": 1,
-          "itemId": "cisa-cve-2026-59310",
-          "previousRank": 1,
-          "status": "same",
-          "reason": "실제 악용이 확인됐고 vCenter가 가상화 환경의 중앙 관리 지점이기 때문입니다."
-        },
-        {
-          "rank": 2,
-          "itemId": "owasp-llm-top-10-2026",
-          "previousRank": 2,
-          "status": "same",
-          "reason": "LLM과 에이전트 서비스의 보안 점검 기준으로 바로 활용할 수 있는 공식 가이드입니다."
-        },
-        {
-          "rank": 3,
-          "itemId": "mitre-atlas",
-          "previousRank": 3,
-          "status": "same",
-          "reason": "프롬프트 인젝션과 에이전트 도구 악용을 기존 위협 모델에 연결할 수 있습니다."
-        },
-        {
-          "rank": 4,
-          "itemId": "kisa-openclaw-2026",
-          "previousRank": 4,
-          "status": "same",
-          "reason": "파일과 셸 권한을 가진 에이전트 플랫폼의 다중 취약점으로 영향 범위가 클 수 있습니다."
-        },
-        {
-          "rank": 5,
-          "itemId": "arxiv-2608-17659",
-          "previousRank": 5,
-          "status": "same",
-          "reason": "모바일 GUI 에이전트의 간접 프롬프트 인젝션 위험을 실제 앱 기반 과제로 측정했습니다."
-        },
-        {
-          "rank": 6,
-          "itemId": "arxiv-2608-17597",
-          "previousRank": 6,
-          "status": "same",
-          "reason": "모델 밖의 구성·플러그인·상태·도구 승인까지 에이전트 보안 평가 범위를 넓힙니다."
-        },
-        {
-          "rank": 7,
-          "itemId": "nist-cyber-ai-profile",
-          "previousRank": 7,
-          "status": "same",
-          "reason": "AI 보안을 조직의 기존 사이버보안 위험관리 체계에 연결하는 공식 기준입니다."
-        },
-        {
-          "rank": 8,
-          "itemId": "nist-adversarial-ml",
-          "previousRank": 8,
-          "status": "same",
-          "reason": "AI 공격과 완화책을 공통 용어로 정리해 조직 간 평가 결과를 비교하기 좋습니다."
-        }
-      ]
+      "rankings": {
+        "security": [
+          {
+            "rank": 1,
+            "itemId": "cisa-cve-2026-59310",
+            "previousRank": 1,
+            "status": "same",
+            "reason": "실제 악용이 확인됐고 vCenter가 가상화 환경의 중앙 관리 지점이기 때문입니다."
+          },
+          {
+            "rank": 2,
+            "itemId": "kisa-openclaw-2026",
+            "previousRank": 2,
+            "status": "same",
+            "reason": "파일과 셸 권한을 가진 에이전트 플랫폼의 다중 취약점으로 영향 범위가 클 수 있습니다."
+          }
+        ],
+        "ai-security": [
+          {
+            "rank": 1,
+            "itemId": "owasp-llm-top-10-2026",
+            "previousRank": 1,
+            "status": "same",
+            "reason": "LLM과 에이전트 서비스의 보안 점검 기준으로 바로 활용할 수 있는 공식 가이드입니다."
+          },
+          {
+            "rank": 2,
+            "itemId": "mitre-atlas",
+            "previousRank": 2,
+            "status": "same",
+            "reason": "프롬프트 인젝션과 에이전트 도구 악용을 기존 위협 모델에 연결할 수 있습니다."
+          }
+        ],
+        "security-paper": [],
+        "ai-paper": [
+          {
+            "rank": 1,
+            "itemId": "arxiv-2608-17659",
+            "previousRank": 1,
+            "status": "same",
+            "reason": "모바일 GUI 에이전트의 간접 프롬프트 인젝션 위험을 실제 앱 기반 과제로 측정했습니다."
+          },
+          {
+            "rank": 2,
+            "itemId": "arxiv-2608-17597",
+            "previousRank": 2,
+            "status": "same",
+            "reason": "모델 밖의 구성·플러그인·상태·도구 승인까지 에이전트 보안 평가 범위를 넓힙니다."
+          },
+          {
+            "rank": 3,
+            "itemId": "nist-adversarial-ml",
+            "previousRank": 3,
+            "status": "same",
+            "reason": "AI 공격과 완화책을 공통 용어로 정리해 조직 간 평가 결과를 비교하기 좋습니다."
+          }
+        ],
+        "technology": [
+          {
+            "rank": 1,
+            "itemId": "nist-cyber-ai-profile",
+            "previousRank": 1,
+            "status": "same",
+            "reason": "AI 보안을 조직의 기존 사이버보안 위험관리 체계에 연결하는 공식 기준입니다."
+          }
+        ]
+      }
     },
     {
       "date": "2026-08-19",
       "generatedAt": "2026-08-19T16:45:00+09:00",
-      "rankings": [
-        {
-          "rank": 1,
-          "itemId": "cisa-cve-2026-59310",
-          "previousRank": null,
-          "status": "new",
-          "reason": "실제 악용이 확인됐고 vCenter가 가상화 환경의 중앙 관리 지점이기 때문입니다."
-        },
-        {
-          "rank": 2,
-          "itemId": "owasp-llm-top-10-2026",
-          "previousRank": null,
-          "status": "new",
-          "reason": "LLM과 에이전트 서비스의 보안 점검 기준으로 바로 활용할 수 있는 공식 가이드입니다."
-        },
-        {
-          "rank": 3,
-          "itemId": "mitre-atlas",
-          "previousRank": null,
-          "status": "new",
-          "reason": "프롬프트 인젝션과 에이전트 도구 악용을 기존 위협 모델에 연결할 수 있습니다."
-        },
-        {
-          "rank": 4,
-          "itemId": "kisa-openclaw-2026",
-          "previousRank": null,
-          "status": "new",
-          "reason": "파일과 셸 권한을 가진 에이전트 플랫폼의 다중 취약점으로 영향 범위가 클 수 있습니다."
-        },
-        {
-          "rank": 5,
-          "itemId": "arxiv-2608-17659",
-          "previousRank": null,
-          "status": "new",
-          "reason": "모바일 GUI 에이전트의 간접 프롬프트 인젝션 위험을 실제 앱 기반 과제로 측정했습니다."
-        },
-        {
-          "rank": 6,
-          "itemId": "arxiv-2608-17597",
-          "previousRank": null,
-          "status": "new",
-          "reason": "모델 밖의 구성·플러그인·상태·도구 승인까지 에이전트 보안 평가 범위를 넓힙니다."
-        },
-        {
-          "rank": 7,
-          "itemId": "nist-cyber-ai-profile",
-          "previousRank": null,
-          "status": "new",
-          "reason": "AI 보안을 조직의 기존 사이버보안 위험관리 체계에 연결하는 공식 기준입니다."
-        },
-        {
-          "rank": 8,
-          "itemId": "nist-adversarial-ml",
-          "previousRank": null,
-          "status": "new",
-          "reason": "AI 공격과 완화책을 공통 용어로 정리해 조직 간 평가 결과를 비교하기 좋습니다."
-        }
-      ]
+      "rankings": {
+        "security": [
+          {
+            "rank": 1,
+            "itemId": "cisa-cve-2026-59310",
+            "previousRank": null,
+            "status": "new",
+            "reason": "실제 악용이 확인됐고 vCenter가 가상화 환경의 중앙 관리 지점이기 때문입니다."
+          },
+          {
+            "rank": 2,
+            "itemId": "kisa-openclaw-2026",
+            "previousRank": null,
+            "status": "new",
+            "reason": "파일과 셸 권한을 가진 에이전트 플랫폼의 다중 취약점으로 영향 범위가 클 수 있습니다."
+          }
+        ],
+        "ai-security": [
+          {
+            "rank": 1,
+            "itemId": "owasp-llm-top-10-2026",
+            "previousRank": null,
+            "status": "new",
+            "reason": "LLM과 에이전트 서비스의 보안 점검 기준으로 바로 활용할 수 있는 공식 가이드입니다."
+          },
+          {
+            "rank": 2,
+            "itemId": "mitre-atlas",
+            "previousRank": null,
+            "status": "new",
+            "reason": "프롬프트 인젝션과 에이전트 도구 악용을 기존 위협 모델에 연결할 수 있습니다."
+          }
+        ],
+        "security-paper": [],
+        "ai-paper": [
+          {
+            "rank": 1,
+            "itemId": "arxiv-2608-17659",
+            "previousRank": null,
+            "status": "new",
+            "reason": "모바일 GUI 에이전트의 간접 프롬프트 인젝션 위험을 실제 앱 기반 과제로 측정했습니다."
+          },
+          {
+            "rank": 2,
+            "itemId": "arxiv-2608-17597",
+            "previousRank": null,
+            "status": "new",
+            "reason": "모델 밖의 구성·플러그인·상태·도구 승인까지 에이전트 보안 평가 범위를 넓힙니다."
+          },
+          {
+            "rank": 3,
+            "itemId": "nist-adversarial-ml",
+            "previousRank": null,
+            "status": "new",
+            "reason": "AI 공격과 완화책을 공통 용어로 정리해 조직 간 평가 결과를 비교하기 좋습니다."
+          }
+        ],
+        "technology": [
+          {
+            "rank": 1,
+            "itemId": "nist-cyber-ai-profile",
+            "previousRank": null,
+            "status": "new",
+            "reason": "AI 보안을 조직의 기존 사이버보안 위험관리 체계에 연결하는 공식 기준입니다."
+          }
+        ]
+      }
     }
   ]
 }

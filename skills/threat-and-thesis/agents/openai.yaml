@@ -1,4 +1,4 @@
 interface:
   display_name: "Threat & Thesis"
   short_description: "정보보안·AI 자료를 검증해 GitHub Pages 피드 갱신"
-  default_prompt: "Use $threat-and-thesis to collect, verify, and curate the latest security and AI intelligence for this GitHub Pages repository."
+  default_prompt: "Use $threat-and-thesis to collect, verify, and curate category-specific security and AI rankings for this GitHub Pages repository."
