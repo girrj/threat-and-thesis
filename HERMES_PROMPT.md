@@ -26,7 +26,7 @@ Threat & Thesis의 3시간 정기 갱신을 수행해줘. 먼저 AGENTS.md, EDIT
 hermes cron create "0 */3 * * *" \
   'Threat & Thesis의 3시간 정기 갱신을 수행해줘. 먼저 HERMES_PROMPT.md의 작업 프롬프트와 AGENTS.md, EDITORIAL.md를 읽고 모든 절차를 그대로 수행해. 검증된 공개 변경이 있을 때에만 커밋하고 origin/main에 푸시한 뒤 GitHub Pages 배포 결과까지 보고해. 변경이 없으면 빈 커밋을 만들지 마.' \
   --name "threat-and-thesis-3h" \
-  --workdir "/Users/jaydev/codex_dev/논문_dev"
+  --workdir "/Users/jaydev/codex_dev/threat-and-thesis-hermes"
 ```
 
 등록 후 `hermes cron list`로 작업을 확인한다. GitHub 인증이 만료되면 수집과 검증까지만 끝내고 푸시 실패를 보고해야 한다.
