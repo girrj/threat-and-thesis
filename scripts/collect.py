@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Collect uncurated security and AI research candidates into data/inbox.json."""
+"""Incrementally collect uncurated security and AI research candidates."""
 
 from __future__ import annotations
 
@@ -18,8 +18,13 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "data" / "inbox.json"
-USER_AGENT = "ThreatAndThesis/0.1 (+https://github.com/girrj/threat-and-thesis)"
+DEFAULT_STATE = ROOT / "data" / "source-state.json"
+DEFAULT_PROCESSED = ROOT / "data" / "processed.json"
+ARTICLES = ROOT / "content" / "articles.json"
+USER_AGENT = "ThreatAndThesis/0.2 (+https://github.com/girrj/threat-and-thesis)"
 ARXIV_NS = {"atom": "http://www.w3.org/2005/Atom"}
+STATE_OVERLAP = timedelta(minutes=10)
+MAX_STATE_LOOKBACK = timedelta(days=7)
 
 
 def tls_context() -> ssl.SSLContext:
@@ -48,12 +53,28 @@ def fetch_json(url: str) -> dict[str, Any]:
     return json.loads(fetch(url).decode("utf-8"))
 
 
+def load_json(path: Path, default: dict[str, Any]) -> dict[str, Any]:
+    if not path.exists():
+        return default
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return payload if isinstance(payload, dict) else default
+
+
+def write_json(path: Path, payload: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
 def clean_text(value: str | None) -> str:
     return re.sub(r"\s+", " ", value or "").strip()
 
 
+def parse_datetime(value: str) -> datetime:
+    return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(timezone.utc)
+
+
 def iso_date(value: str) -> str:
-    return datetime.fromisoformat(value.replace("Z", "+00:00")).date().isoformat()
+    return parse_datetime(value).date().isoformat()
 
 
 def collect_cisa(cutoff: datetime, limit: int) -> list[dict[str, Any]]:
@@ -62,7 +83,9 @@ def collect_cisa(cutoff: datetime, limit: int) -> list[dict[str, Any]]:
     rows = []
     for item in payload.get("vulnerabilities", []):
         date_added = datetime.fromisoformat(item["dateAdded"]).replace(tzinfo=timezone.utc)
-        if date_added < cutoff:
+        # KEV exposes only a calendar date, so comparing it to a three-hour timestamp
+        # would incorrectly discard entries added earlier on the same day.
+        if date_added.date() < cutoff.date():
             continue
         cve = item["cveID"]
         rows.append(
@@ -135,7 +158,6 @@ def collect_nvd(cutoff: datetime, now: datetime, limit: int) -> list[dict[str, A
             continue
         metric = cvss_metric(cve)
         cvss = metric.get("cvssData", {})
-        description = english_description(cve)
         rows.append(
             {
                 "id": f"nvd-{cve_id.lower()}",
@@ -144,7 +166,7 @@ def collect_nvd(cutoff: datetime, now: datetime, limit: int) -> list[dict[str, A
                 "source": "NIST National Vulnerability Database",
                 "sourceUrl": f"https://nvd.nist.gov/vuln/detail/{urllib.parse.quote(cve_id)}",
                 "publishedAt": iso_date(cve["published"]),
-                "summary": description,
+                "summary": english_description(cve),
                 "tags": ["NVD", cve_id, "Critical"],
                 "priority": 90,
                 "severity": "critical",
@@ -183,7 +205,7 @@ def collect_arxiv(cutoff: datetime, limit: int) -> list[dict[str, Any]]:
         published = clean_text(entry.findtext("atom:published", namespaces=ARXIV_NS))
         if not published:
             continue
-        published_dt = datetime.fromisoformat(published.replace("Z", "+00:00"))
+        published_dt = parse_datetime(published)
         if published_dt < cutoff:
             continue
         entry_url = clean_text(entry.findtext("atom:id", namespaces=ARXIV_NS))
@@ -216,38 +238,114 @@ def collect_arxiv(cutoff: datetime, limit: int) -> list[dict[str, Any]]:
     return rows
 
 
+def processed_ids(path: Path) -> set[str]:
+    payload = load_json(path, {"items": []})
+    values = payload.get("items", [])
+    ids = set()
+    for value in values if isinstance(values, list) else []:
+        if isinstance(value, str):
+            ids.add(value)
+        elif isinstance(value, dict) and isinstance(value.get("id"), str):
+            ids.add(value["id"])
+    return ids
+
+
+def curated_ids() -> set[str]:
+    payload = load_json(ARTICLES, {"items": []})
+    return {
+        item["id"]
+        for item in payload.get("items", [])
+        if isinstance(item, dict) and isinstance(item.get("id"), str)
+    }
+
+
+def source_cutoff(
+    name: str,
+    state: dict[str, Any],
+    now: datetime,
+    fallback: datetime,
+    force_days: int | None,
+) -> datetime:
+    if force_days is not None:
+        return now - timedelta(days=force_days)
+    sources = state.get("sources", {})
+    source = sources.get(name, {}) if isinstance(sources, dict) else {}
+    last_success = source.get("lastSuccessfulAt") if isinstance(source, dict) else None
+    if not isinstance(last_success, str):
+        return fallback
+    try:
+        return max(parse_datetime(last_success) - STATE_OVERLAP, now - MAX_STATE_LOOKBACK)
+    except ValueError:
+        return fallback
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--days", type=int, default=14, help="lookback window (default: 14)")
+    parser.add_argument("--since-hours", type=int, default=3, help="fallback window without state")
+    parser.add_argument("--days", type=int, help="explicit backfill window; ignores saved cursors")
     parser.add_argument("--max-per-source", type=int, default=15)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--state", type=Path, default=DEFAULT_STATE)
+    parser.add_argument("--processed", type=Path, default=DEFAULT_PROCESSED)
     args = parser.parse_args()
 
-    if args.days < 1 or args.max_per_source < 1:
-        parser.error("--days and --max-per-source must be positive")
+    if args.since_hours < 1 or args.max_per_source < 1 or (args.days is not None and args.days < 1):
+        parser.error("collection windows and --max-per-source must be positive")
 
+    output_path = args.output if args.output.is_absolute() else ROOT / args.output
+    state_path = args.state if args.state.is_absolute() else ROOT / args.state
+    processed_path = args.processed if args.processed.is_absolute() else ROOT / args.processed
     now = datetime.now(timezone.utc)
-    cutoff = now - timedelta(days=args.days)
+    fallback = now - timedelta(hours=args.since_hours)
+    state = load_json(state_path, {"updatedAt": None, "sources": {}})
+    if not isinstance(state.get("sources"), dict):
+        state["sources"] = {}
     candidates: list[dict[str, Any]] = []
     source_status: list[dict[str, Any]] = []
 
     collectors = (
-        ("CISA KEV", lambda: collect_cisa(cutoff, args.max_per_source)),
-        ("NIST NVD", lambda: collect_nvd(cutoff, now, args.max_per_source)),
-        ("arXiv", lambda: collect_arxiv(cutoff, args.max_per_source)),
+        ("CISA KEV", lambda cutoff: collect_cisa(cutoff, args.max_per_source)),
+        ("NIST NVD", lambda cutoff: collect_nvd(cutoff, now, args.max_per_source)),
+        ("arXiv", lambda cutoff: collect_arxiv(cutoff, args.max_per_source)),
     )
     for name, collector in collectors:
+        cutoff = source_cutoff(name, state, now, fallback, args.days)
+        source_entry = state["sources"].setdefault(name, {})
+        source_entry["lastAttemptAt"] = now.isoformat(timespec="seconds")
         try:
-            collected = collector()
+            collected = collector(cutoff)
             candidates.extend(collected)
-            source_status.append({"source": name, "status": "ok", "count": len(collected)})
+            source_entry.update(
+                {
+                    "lastSuccessfulAt": now.isoformat(timespec="seconds"),
+                    "status": "ok",
+                    "error": None,
+                }
+            )
+            source_status.append(
+                {"source": name, "status": "ok", "count": len(collected), "since": cutoff.isoformat()}
+            )
         except Exception as exc:  # keep other feeds usable when one upstream is unavailable
-            source_status.append({"source": name, "status": "error", "error": str(exc)})
+            source_entry.update({"status": "error", "error": str(exc)})
+            source_status.append(
+                {"source": name, "status": "error", "error": str(exc), "since": cutoff.isoformat()}
+            )
 
-    deduplicated = {row["id"]: row for row in candidates}
+    state["updatedAt"] = now.isoformat(timespec="seconds")
+    write_json(state_path, state)
+
+    existing = load_json(output_path, {"candidates": []}).get("candidates", [])
+    pending = [row for row in existing if isinstance(row, dict)] if isinstance(existing, list) else []
+    pending.extend(candidates)
+    excluded = curated_ids() | processed_ids(processed_path)
+    deduplicated = {
+        row["id"]: row
+        for row in pending
+        if isinstance(row.get("id"), str) and row["id"] not in excluded
+    }
     output = {
         "collectedAt": now.isoformat(timespec="seconds"),
-        "lookbackDays": args.days,
+        "fallbackHours": args.since_hours,
         "notice": "Uncurated candidates. Verify every primary source before publishing.",
         "sources": source_status,
         "candidates": sorted(
@@ -256,11 +354,9 @@ def main() -> int:
             reverse=True,
         ),
     }
-    output_path = args.output if args.output.is_absolute() else ROOT / args.output
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    write_json(output_path, output)
 
-    print(f"Collected {len(output['candidates'])} candidates -> {output_path}")
+    print(f"Collected {len(candidates)} new candidate(s); {len(output['candidates'])} pending -> {output_path}")
     for status in source_status:
         detail = status.get("count", status.get("error", "unknown"))
         print(f"- {status['source']}: {status['status']} ({detail})")

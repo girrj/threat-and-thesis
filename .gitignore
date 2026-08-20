@@ -40,6 +40,10 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+__pycache__/
+*.py[cod]
 
-# generated collection inbox; curated content lives in content/articles.json
+# generated collection state; curated content and daily snapshots live in content/
 /data/inbox.json
+/data/source-state.json
+/data/processed.json

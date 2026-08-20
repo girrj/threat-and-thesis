@@ -10,9 +10,11 @@
     "build": "next build",
     "build:pages": "next build",
     "preview": "python3 -m http.server 4173 -d out",
-    "content:collect": "python3 scripts/collect.py",
-    "content:validate": "python3 scripts/validate.py",
-    "test": "npm run content:validate && npm run build:pages && node --test tests/rendered-html.test.mjs",
+    "content:collect": "python3 scripts/collect.py --since-hours 3",
+    "content:index": "python3 scripts/build_daily_index.py",
+    "content:validate": "npm run content:index && python3 scripts/validate.py",
+    "test:collector": "python3 -m unittest discover -s tests -p 'test_*.py'",
+    "test": "npm run test:collector && npm run content:validate && npm run build:pages && node --test tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern .next --ignore-pattern out --ignore-pattern dist"
   },
   "dependencies": {

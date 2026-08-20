@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import intelligenceData from "@/content/articles.json";
+import dailyData from "@/content/daily/index.json";
 
 type IntelligenceKind =
   | "security"
@@ -36,7 +37,34 @@ type IntelligenceFile = {
   items: IntelligenceItem[];
 };
 
+type RankingStatus = "new" | "up" | "down" | "same" | "returning";
+
+type DailyRanking = {
+  rank: number;
+  itemId: string;
+  previousRank: number | null;
+  status: RankingStatus;
+  reason: string;
+};
+
+type DailyEdition = {
+  date: string;
+  generatedAt: string;
+  rankings: DailyRanking[];
+};
+
+type DailyIndex = {
+  generatedAt: string;
+  editions: DailyEdition[];
+};
+
+type RankedItem = {
+  item: IntelligenceItem;
+  ranking: DailyRanking;
+};
+
 const data = intelligenceData as IntelligenceFile;
+const daily = dailyData as DailyIndex;
 
 const FILTERS: Array<{ value: "all" | IntelligenceKind; label: string }> = [
   { value: "all", label: "전체" },
@@ -71,14 +99,38 @@ function formatDate(value: string) {
   }).format(new Date(`${value}T00:00:00+09:00`));
 }
 
+function formatUpdatedAt(value: string) {
+  return new Intl.DateTimeFormat("ko-KR", {
+    month: "numeric",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+    timeZone: "Asia/Seoul",
+  }).format(new Date(value));
+}
+
+function movementLabel(ranking: DailyRanking) {
+  if (ranking.status === "new") return "신규";
+  if (ranking.status === "returning") return "재진입";
+  if (ranking.status === "same") return "유지";
+  if (ranking.previousRank === null) return "";
+
+  const difference = Math.abs(ranking.previousRank - ranking.rank);
+  return ranking.status === "up" ? `▲ ${difference}` : `▼ ${difference}`;
+}
+
 function classNames(...values: Array<string | false | undefined>) {
   return values.filter(Boolean).join(" ");
 }
 
 export default function Home() {
+  const firstEdition = daily.editions[0];
+  const firstRankedId = firstEdition?.rankings[0]?.itemId ?? data.items[0]?.id ?? "";
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<"all" | IntelligenceKind>("all");
-  const [selectedId, setSelectedId] = useState(data.items[0]?.id ?? "");
+  const [editionIndex, setEditionIndex] = useState(0);
+  const [selectedId, setSelectedId] = useState(firstRankedId);
   const searchRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -92,11 +144,27 @@ export default function Home() {
     return () => window.removeEventListener("keydown", focusSearch);
   }, []);
 
+  const articleMap = useMemo(
+    () => new Map(data.items.map((item) => [item.id, item])),
+    [],
+  );
+  const selectedEdition = daily.editions[editionIndex] ?? daily.editions[0];
+  const rankedItems = useMemo(
+    () =>
+      (selectedEdition?.rankings ?? [])
+        .map((ranking) => {
+          const item = articleMap.get(ranking.itemId);
+          return item ? { item, ranking } : null;
+        })
+        .filter((entry): entry is RankedItem => entry !== null),
+    [articleMap, selectedEdition],
+  );
+
   const filteredItems = useMemo(() => {
     const normalized = query.trim().toLocaleLowerCase("ko-KR");
-    return [...data.items]
-      .filter((item) => filter === "all" || item.kind === filter)
-      .filter((item) => {
+    return rankedItems
+      .filter(({ item }) => filter === "all" || item.kind === filter)
+      .filter(({ item }) => {
         if (!normalized) return true;
         return [
           item.title,
@@ -110,23 +178,18 @@ export default function Home() {
           .join(" ")
           .toLocaleLowerCase("ko-KR")
           .includes(normalized);
-      })
-      .sort((a, b) => b.priority - a.priority || b.publishedAt.localeCompare(a.publishedAt));
-  }, [filter, query]);
+      });
+  }, [filter, query, rankedItems]);
 
-  const selectedItem =
-    filteredItems.find((item) => item.id === selectedId) ?? filteredItems[0] ?? null;
+  const selectedEntry =
+    filteredItems.find(({ item }) => item.id === selectedId) ?? filteredItems[0] ?? null;
 
-  const counts = useMemo(
-    () => ({
-      security: data.items.filter((item) => item.kind === "security").length,
-      securityPapers: data.items.filter((item) => item.kind === "security-paper").length,
-      aiPapers: data.items.filter((item) => item.kind === "ai-paper").length,
-      aiSecurity: data.items.filter((item) => item.kind === "ai-security").length,
-      technology: data.items.filter((item) => item.kind === "technology").length,
-    }),
-    [],
-  );
+  function changeEdition(nextIndex: number) {
+    const nextEdition = daily.editions[nextIndex];
+    if (!nextEdition) return;
+    setEditionIndex(nextIndex);
+    setSelectedId(nextEdition.rankings[0]?.itemId ?? "");
+  }
 
   return (
     <main className="site-shell">
@@ -138,41 +201,77 @@ export default function Home() {
             <small>Security research letter</small>
           </span>
         </a>
-        <nav aria-label="주요 메뉴">
-          <a href="#intelligence">인텔리전스</a>
-          <a href="#sources">출처</a>
-        </nav>
-        <p className="freshness">{formatDate(data.generatedAt.slice(0, 10))} 갱신</p>
+
+        <div className="edition-switcher" aria-label="발행일 탐색">
+          <button
+            type="button"
+            onClick={() => changeEdition(editionIndex + 1)}
+            disabled={editionIndex >= daily.editions.length - 1}
+            aria-label="이전 발행일"
+          >
+            ←
+          </button>
+          <label>
+            <span className="sr-only">발행일 선택</span>
+            <select
+              value={selectedEdition?.date}
+              onChange={(event) => {
+                const nextIndex = daily.editions.findIndex(
+                  (edition) => edition.date === event.target.value,
+                );
+                changeEdition(nextIndex);
+              }}
+            >
+              {daily.editions.map((edition) => (
+                <option key={edition.date} value={edition.date}>
+                  {formatDate(edition.date)}
+                </option>
+              ))}
+            </select>
+          </label>
+          <button
+            type="button"
+            onClick={() => changeEdition(editionIndex - 1)}
+            disabled={editionIndex === 0}
+            aria-label="다음 발행일"
+          >
+            →
+          </button>
+        </div>
+
+        <p className="freshness">
+          {selectedEdition ? `${formatUpdatedAt(selectedEdition.generatedAt)} 갱신` : ""}
+        </p>
       </header>
 
       <section className="hero" id="top">
         <div>
-          <p className="edition">Threat intelligence / AI security / Research</p>
-          <h1>보안·AI 브리핑</h1>
+          <p className="edition">3시간 단위 업데이트 · 일자별 기록</p>
+          <h1>데일리 보안·AI 순위</h1>
           <p className="hero-description">
-            공식 보안 권고와 AI 연구를 확인해, 실무에서 판단할 때 필요한 내용만 한국어로 정리합니다.
+            새로 확인된 보안 이슈와 AI 연구를 검증하고, 오늘 먼저 읽을 자료를 근거와 함께 정리합니다.
           </p>
         </div>
         <p className="edition-meta">
-          검증 자료 {data.items.length}건
+          {selectedEdition ? formatDate(selectedEdition.date) : "발행 준비 중"}
           <span aria-hidden="true">·</span>
-          보안 {counts.security}
+          순위 {rankedItems.length}건
           <span aria-hidden="true">·</span>
-          AI 보안 {counts.aiSecurity}
+          AI 논문 {rankedItems.filter(({ item }) => item.kind === "ai-paper").length}
           <span aria-hidden="true">·</span>
-          보안 논문 {counts.securityPapers}
+          보안 논문 {rankedItems.filter(({ item }) => item.kind === "security-paper").length}
           <span aria-hidden="true">·</span>
-          AI 논문 {counts.aiPapers}
-          <span aria-hidden="true">·</span>
-          기술 {counts.technology}
+          이전 발행분 보존
         </p>
       </section>
 
-      <section className="workspace" id="intelligence" aria-labelledby="intelligence-title">
+      <section className="workspace" aria-labelledby="ranking-title">
         <div className="workspace-heading">
           <div>
-            <h2 id="intelligence-title">최근 자료</h2>
-            <p>출처를 확인한 항목을 실무 우선순위에 따라 정리했습니다.</p>
+            <h2 id="ranking-title">
+              {editionIndex === 0 ? "오늘의 우선순위" : `${formatDate(selectedEdition.date)} 우선순위`}
+            </h2>
+            <p>순위 변동과 선정 이유를 함께 확인할 수 있습니다.</p>
           </div>
           <label className="search-field">
             <span className="sr-only">자료 검색</span>
@@ -188,19 +287,19 @@ export default function Home() {
         </div>
 
         <div className="filter-row" role="group" aria-label="자료 유형 필터">
-          {FILTERS.map((item) => (
+          {FILTERS.map((filterItem) => (
             <button
-              key={item.value}
+              key={filterItem.value}
               type="button"
-              className={classNames("filter-button", filter === item.value && "is-active")}
-              aria-pressed={filter === item.value}
-              onClick={() => setFilter(item.value)}
+              className={classNames("filter-button", filter === filterItem.value && "is-active")}
+              aria-pressed={filter === filterItem.value}
+              onClick={() => setFilter(filterItem.value)}
             >
-              {item.label}{" "}
+              {filterItem.label}{" "}
               <span className="filter-count">
-                {item.value === "all"
-                  ? `(${data.items.length})`
-                  : `(${data.items.filter((entry) => entry.kind === item.value).length})`}
+                ({filterItem.value === "all"
+                  ? rankedItems.length
+                  : rankedItems.filter(({ item }) => item.kind === filterItem.value).length})
               </span>
             </button>
           ))}
@@ -209,37 +308,39 @@ export default function Home() {
         <div className="intelligence-layout">
           <div className="feed" aria-live="polite">
             <div className="feed-meta">
-              <span>{filteredItems.length}개 자료</span>
-              <span>우선순위순</span>
+              <span>{filteredItems.length}건</span>
+              <span>편집 순위</span>
             </div>
 
             {filteredItems.length ? (
-              filteredItems.map((item) => (
+              filteredItems.map(({ item, ranking }) => (
                 <button
                   key={item.id}
                   type="button"
                   className={classNames(
                     "feed-card",
-                    selectedItem?.id === item.id && "is-selected",
+                    selectedEntry?.item.id === item.id && "is-selected",
                   )}
                   onClick={() => setSelectedId(item.id)}
-                  aria-pressed={selectedItem?.id === item.id}
+                  aria-pressed={selectedEntry?.item.id === item.id}
                 >
-                  <span className="card-topline">
-                    <span className="kind-label">{KIND_LABELS[item.kind]}</span>
-                    {item.severity && (
-                      <span className={`severity severity-${item.severity}`}>
-                        {item.severity.toUpperCase()}
-                      </span>
-                    )}
-                    <time dateTime={item.publishedAt}>{formatDate(item.publishedAt)}</time>
+                  <span className="rank-number" aria-label={`${ranking.rank}위`}>
+                    {ranking.rank}
                   </span>
-                  <strong>{item.title}</strong>
-                  <span className="card-summary">{item.summary}</span>
-                  <span className="card-footer">
-                    <span>{item.source}</span>
-                    {item.identifier && <code>{item.identifier}</code>}
-                    <span className="priority">우선순위 {item.priority}</span>
+                  <span className="feed-card-body">
+                    <span className="card-topline">
+                      <span className="kind-label">{KIND_LABELS[item.kind]}</span>
+                      <span className={classNames("rank-change", `rank-${ranking.status}`)}>
+                        {movementLabel(ranking)}
+                      </span>
+                      <time dateTime={item.publishedAt}>{formatDate(item.publishedAt)}</time>
+                    </span>
+                    <strong>{item.title}</strong>
+                    <span className="rank-reason">{ranking.reason}</span>
+                    <span className="card-footer">
+                      <span>{item.source}</span>
+                      {item.identifier && <code>{item.identifier}</code>}
+                    </span>
                   </span>
                 </button>
               ))
@@ -252,79 +353,85 @@ export default function Home() {
           </div>
 
           <aside className="detail-panel" aria-live="polite">
-            {selectedItem ? (
+            {selectedEntry ? (
               <article>
                 <div className="detail-header">
                   <span>
-                    {KIND_LABELS[selectedItem.kind]} · {EVIDENCE_LABELS[selectedItem.evidenceLevel]}
+                    {selectedEntry.ranking.rank}위 · {KIND_LABELS[selectedEntry.item.kind]} ·{" "}
+                    {EVIDENCE_LABELS[selectedEntry.item.evidenceLevel]}
                   </span>
-                  <span>우선순위 {selectedItem.priority}</span>
+                  <span>{movementLabel(selectedEntry.ranking)}</span>
                 </div>
 
-                <h3>{selectedItem.title}</h3>
-                {selectedItem.originalTitle && (
-                  <p className="original-title">{selectedItem.originalTitle}</p>
+                <h3>{selectedEntry.item.title}</h3>
+                {selectedEntry.item.originalTitle && (
+                  <p className="original-title">{selectedEntry.item.originalTitle}</p>
                 )}
 
                 <dl className="source-meta">
                   <div>
                     <dt>출처</dt>
-                    <dd>{selectedItem.source}</dd>
+                    <dd>{selectedEntry.item.source}</dd>
                   </div>
                   <div>
-                    <dt>{selectedItem.dateLabel ?? "게시일"}</dt>
-                    <dd>{formatDate(selectedItem.publishedAt)}</dd>
+                    <dt>{selectedEntry.item.dateLabel ?? "게시일"}</dt>
+                    <dd>{formatDate(selectedEntry.item.publishedAt)}</dd>
                   </div>
-                  {selectedItem.identifier && (
+                  {selectedEntry.item.identifier && (
                     <div>
                       <dt>식별자</dt>
-                      <dd>{selectedItem.identifier}</dd>
+                      <dd>{selectedEntry.item.identifier}</dd>
                     </div>
                   )}
                 </dl>
 
+                <section className="detail-section ranking-reason-section">
+                  <h4>선정 이유</h4>
+                  <p>{selectedEntry.ranking.reason}</p>
+                </section>
+
                 <section className="detail-section">
                   <h4>핵심 요약</h4>
-                  <p>{selectedItem.summary}</p>
+                  <p>{selectedEntry.item.summary}</p>
                 </section>
 
                 <section className="detail-section">
                   <h4>왜 중요한가</h4>
-                  <p>{selectedItem.whyItMatters}</p>
+                  <p>{selectedEntry.item.whyItMatters}</p>
                 </section>
 
                 <section className="detail-section">
                   <h4>주요 내용</h4>
                   <ul>
-                    {selectedItem.details.map((detail) => <li key={detail}>{detail}</li>)}
+                    {selectedEntry.item.details.map((detail) => <li key={detail}>{detail}</li>)}
                   </ul>
                 </section>
 
-                {selectedItem.limitations?.length ? (
+                {selectedEntry.item.limitations?.length ? (
                   <section className="detail-section caution-section">
                     <h4>한계와 확인사항</h4>
                     <ul>
-                      {selectedItem.limitations.map((limitation) => (
+                      {selectedEntry.item.limitations.map((limitation) => (
                         <li key={limitation}>{limitation}</li>
                       ))}
                     </ul>
                   </section>
                 ) : null}
 
-                {selectedItem.action && (
+                {selectedEntry.item.action && (
                   <section className="action-box">
                     <h4>실무 메모</h4>
-                    <p>{selectedItem.action}</p>
+                    <p>{selectedEntry.item.action}</p>
                   </section>
                 )}
 
                 <div className="tag-list" aria-label="태그">
-                  {selectedItem.tags.map((tag) => <span key={tag}>#{tag}</span>)}
+                  {selectedEntry.item.tags.map((tag) => <span key={tag}>#{tag}</span>)}
                 </div>
 
                 <a
                   className="source-link"
-                  href={selectedItem.sourceUrl}
+                  href={selectedEntry.item.sourceUrl}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -338,7 +445,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="sources" id="sources" aria-labelledby="sources-title">
+      <section className="sources" aria-labelledby="sources-title">
         <div>
           <h2 id="sources-title">확인하는 출처</h2>
           <p>정부·표준기관, 논문 원문과 공식 제품 권고를 우선합니다.</p>

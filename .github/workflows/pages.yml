@@ -31,7 +31,7 @@ jobs:
         run: npm ci
 
       - name: Validate curated content
-        run: python3 scripts/validate.py
+        run: npm run content:validate
 
       - name: Configure repository base path
         shell: bash

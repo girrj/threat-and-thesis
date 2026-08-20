@@ -1,18 +1,24 @@
 # Threat & Thesis 운영 규칙
 
-이 저장소는 정보보안·AI 논문과 기술 동향을 선별해 GitHub Pages로 배포한다. 자동 수집 결과는 후보일 뿐이며, 검증 전에는 공개 콘텐츠가 아니다.
+이 저장소는 정보보안·AI 논문과 기술 동향을 선별해 날짜별 순위로 보존하고 GitHub Pages로 배포한다. 자동 수집 결과는 후보일 뿐이며, 검증 전에는 공개 콘텐츠가 아니다.
 
-작업을 시작할 때 반드시 `EDITORIAL.md`를 읽는다. 문체, 논문 분류, 화면 디자인, 수정 가능 파일, 배포 조건은 그 문서를 기준으로 한다. 출처 세부 정책은 `skills/threat-and-thesis/references/source-policy.md`를 함께 따른다.
+작업을 시작할 때 반드시 `EDITORIAL.md`를 읽는다. 문체, 논문 분류, 순위, 화면 디자인, 수정 가능 파일, 배포 조건은 그 문서를 기준으로 한다. 출처 세부 정책은 `skills/threat-and-thesis/references/source-policy.md`를 함께 따른다.
 
-## 정기 큐레이션 절차
+## 3시간 갱신 절차
 
-1. 저장소 루트에서 `python3 scripts/collect.py --days 14`를 실행한다.
-2. `data/inbox.json`의 `sources` 오류와 `candidates`를 확인한다.
-3. 기존 `content/articles.json`과 URL, 식별자, 제목을 비교해 중복을 제외한다.
+1. 저장소 루트에서 `python3 scripts/collect.py --since-hours 3`를 실행한다. 수집기는 출처별 마지막 성공 시각을 기억하므로 매번 전체 기간을 다시 수집하지 않는다.
+2. `data/inbox.json`의 `sources` 오류와 `candidates`를 확인한다. `data/source-state.json`은 수집 커서, `data/processed.json`은 이미 판단한 후보 기록이다. 이 런타임 파일들은 공개 콘텐츠가 아니다.
+3. 기존 `content/articles.json`과 URL, 식별자, 정규화한 제목을 비교해 중복을 제외한다.
 4. 후보의 `sourceUrl`과 연결된 1차 출처를 직접 확인한다. 검색 결과 설명이나 제3자 요약만으로 게시하지 않는다.
-5. 가치가 높은 항목만 `content/articles.json`에 추가하고 `generatedAt`을 실제 갱신 시각으로 변경한다.
-6. `python3 scripts/validate.py`, `npm test`, `SITE_BASE_PATH=/REPOSITORY_NAME npm run build:pages`를 차례로 실행한다.
-7. 검증이 모두 통과한 경우에만 변경 내용을 보고한다. 커밋·푸시는 사용자가 명시적으로 요청했을 때만 수행한다.
+5. 가치가 높은 항목만 `content/articles.json`에 추가하거나, 같은 사건의 공식 정보가 바뀐 경우 기존 항목을 수정한다. 실제 변경이 있을 때만 `generatedAt`을 갱신한다.
+6. 오늘 날짜의 `content/daily/YYYY-MM-DD.json`을 만든다. 같은 날짜에는 이 파일을 갱신할 수 있지만 지난 날짜 스냅샷은 사실 오류를 바로잡는 경우 외에는 수정하지 않는다.
+7. 오늘의 공개 항목 가운데 최대 10건을 순위에 넣는다. 긴급성·실제 악용·출처 신뢰도·신선도·실무 영향·연구 기여를 함께 고려하고, 각 항목에 출처로 설명 가능한 `reason`을 한 문장으로 쓴다.
+8. 직전 발행일과 비교해 `previousRank`와 `status`를 기록한다. 처음 등장하면 `new`, 연속 발행에서 상승·하락·유지는 `up`·`down`·`same`, 하루 이상 빠졌다가 돌아오면 `returning`이다.
+9. 공개하지 않은 후보도 `data/processed.json`에 ID와 판단 시각, 간단한 제외 이유를 남겨 다음 실행에서 반복 검토하지 않는다. 새 공식 정보가 생긴 항목은 다시 검토할 수 있다.
+10. `npm run content:validate`, `npm run lint`, `npm test`, `SITE_BASE_PATH=/threat-and-thesis npm run build:pages`를 실행한다.
+11. 검증이 모두 통과한 경우에만 변경 내용을 보고한다. 커밋·푸시는 사용자가 해당 작업에 명시적으로 요청했을 때만 수행한다. 새로 공개할 내용이나 정정이 없으면 파일을 억지로 바꾸거나 빈 커밋을 만들지 않는다.
+
+장애로 3시간 주기를 놓친 경우 수집기는 출처별 마지막 성공 시각부터 최대 7일을 복구 수집한다. 장기 백필이 필요한 경우에만 `python3 scripts/collect.py --days N`을 명시적으로 사용한다.
 
 ## 작성 기준
 
@@ -26,9 +32,11 @@
 - 논문은 주된 연구 질문을 기준으로 분류한다. AI 모델·에이전트·머신러닝이 연구 대상이면 `ai-paper`, 일반 시스템·네트워크·암호·소프트웨어 보안 연구이면 `security-paper`를 사용한다. 두 영역이 겹치면 논문의 핵심 기여가 향하는 쪽 하나만 선택하고 보고에 근거를 남긴다.
 - 살아 있는 지식베이스나 수집 기준일은 `dateLabel: 확인일` 또는 `기준일`로 구분한다.
 - 공개 익스플로잇을 재현하거나 공격 자동화 코드를 작성하지 않는다. 필요한 경우 영향과 방어책만 요약한다.
-- 오래된 항목을 임의로 삭제하지 않는다. 정리나 삭제는 사용자의 지시를 받는다.
+- 오래된 기사와 지난 날짜 스냅샷을 임의로 삭제하지 않는다. 정리나 삭제는 사용자의 지시를 받는다.
 
-## 우선순위
+## 내부 우선도
+
+`articles.json`의 `priority`는 후보 선별과 순위 판단을 돕는 내부 값이며 화면에 점수로 노출하지 않는다. 최종 공개 순위는 숫자 하나만으로 자동 결정하지 않고 당일 맥락과 검증 결과를 반영한다.
 
 - 95–100: 실제 악용 확인, 긴급 패치, 광범위한 공급망 영향
 - 85–94: Critical 취약점, 주요 표준·프레임워크 변화, 실무 영향이 큰 연구
