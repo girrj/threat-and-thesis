@@ -52,22 +52,20 @@ test("keeps content, UI, and build configuration wired together", async () => {
   assert.match(daily, /"previousRank"/);
   assert.match(daily, /"reason"/);
   const dailyPayload = JSON.parse(daily);
-  assert.deepEqual(
-    dailyPayload.editions[0].rankings.security.map(({ rank }) => rank),
-    [1, 2],
-  );
-  assert.deepEqual(
-    dailyPayload.editions[0].rankings["ai-security"].map(({ rank }) => rank),
-    [1, 2],
-  );
-  assert.deepEqual(
-    dailyPayload.editions[0].rankings["ai-paper"].map(({ rank }) => rank),
-    [1, 2, 3],
-  );
-  assert.deepEqual(
-    dailyPayload.editions[0].rankings["security-paper"].map(({ rank }) => rank),
-    [1, 2, 3, 4, 5],
-  );
+  for (const category of [
+    "security",
+    "ai-security",
+    "security-paper",
+    "ai-paper",
+    "technology",
+  ]) {
+    const ranks = dailyPayload.editions[0].rankings[category].map(({ rank }) => rank);
+    assert.ok(ranks.length > 0 && ranks.length <= 10);
+    assert.deepEqual(
+      ranks,
+      Array.from({ length: ranks.length }, (_, index) => index + 1),
+    );
+  }
   assert.match(config, /output:\s*"export"/);
   assert.match(packageJson, /"build:pages": "next build"/);
   assert.match(packageJson, /"dev": "next dev"/);
