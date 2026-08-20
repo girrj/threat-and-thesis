@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T03:08:37+09:00",
+  "generatedAt": "2026-08-21T06:05:58+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -695,6 +695,68 @@
       "priority": 84,
       "identifier": "arXiv:2608.18099",
       "evidenceLevel": "preprint"
+    },
+    {
+      "id": "nvd-cve-2026-66788",
+      "kind": "security",
+      "title": "Red Hat ACM 피어 클러스터 네임스페이스 주입 취약점 CVE-2026-66788",
+      "originalTitle": "Lighthouse: arbitrary local-namespace injection via attacker-controlled labelsourcenamespace",
+      "source": "Red Hat Product Security",
+      "sourceUrl": "https://access.redhat.com/security/cve/CVE-2026-66788",
+      "publishedAt": "2026-08-20",
+      "summary": "Red Hat Advanced Cluster Management for Kubernetes 2의 Lighthouse가 브로커 객체의 공격자 제어 레이블·주석을 신뢰해, 침해된 spoke 클러스터에서 피어 클러스터의 임의 네임스페이스로 리소스를 주입할 수 있는 취약점이 공개됐습니다.",
+      "whyItMatters": "신뢰 경계가 연결된 멀티클러스터 전체로 확장돼 kube-system과 openshift-* 같은 중요 네임스페이스의 권한 상승이나 시스템 침해로 이어질 수 있습니다.",
+      "details": [
+        "Red Hat CNA는 공격자가 EndpointSlice와 ServiceImport를 피어 클러스터의 임의 네임스페이스에 주입할 수 있다고 설명합니다.",
+        "영향 대상에는 Red Hat Advanced Cluster Management for Kubernetes 2의 lighthouse-agent, lighthouse-coredns, subctl, submariner operator 구성요소가 포함됩니다.",
+        "Red Hat 산정 CVSS 3.1 기본점수는 9.9이며 네트워크 접근, 낮은 권한, 사용자 상호작용 없음으로 평가됐습니다."
+      ],
+      "limitations": [
+        "공격에는 spoke 클러스터 침해가 선행돼야 하며 CISA Vulnrichment는 확인 시점의 악용 상태를 none으로 기록했습니다.",
+        "공개 CVE 레코드에는 Red Hat 기준을 충족하는 우회책이나 수정 버전이 제시되지 않았고 NVD 상태는 Received입니다."
+      ],
+      "action": "Red Hat ACM의 spoke·broker 신뢰 관계와 영향 구성요소를 확인하고 Red Hat 보안 권고의 수정 제공 여부를 추적해 적용하세요.",
+      "tags": [
+        "Red Hat ACM",
+        "Kubernetes",
+        "Lighthouse",
+        "CVE-2026-66788"
+      ],
+      "priority": 90,
+      "severity": "critical",
+      "identifier": "CVE-2026-66788",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "nvd-cve-2026-66785",
+      "kind": "security",
+      "title": "Red Hat ACM 멀티클러스터 트래픽 탈취 취약점 CVE-2026-66785",
+      "originalTitle": "Submariner: unvalidated endpoint.spec.subnets propagated into WireGuard AllowedIPs / IPsec enables traffic hijack",
+      "source": "Red Hat Product Security",
+      "sourceUrl": "https://access.redhat.com/security/cve/CVE-2026-66785",
+      "publishedAt": "2026-08-20",
+      "summary": "Red Hat Advanced Cluster Management for Kubernetes 2의 Submariner가 spoke 클러스터가 게시한 서브넷을 충분히 검증하지 않아 피어 클러스터의 트래픽을 공격자 터널로 우회시킬 수 있는 취약점이 공개됐습니다.",
+      "whyItMatters": "침해된 클러스터 하나가 연결된 다른 클러스터의 임의 네트워크 대역을 선언할 수 있어 멀티클러스터 트래픽의 기밀성·무결성·가용성에 영향을 줄 수 있습니다.",
+      "details": [
+        "Red Hat CNA는 조작된 네트워크 엔드포인트가 임의 대역을 선언하면 피어 클러스터의 해당 트래픽이 공격자 터널로 재라우팅될 수 있다고 설명합니다.",
+        "영향 대상에는 Red Hat Advanced Cluster Management for Kubernetes 2의 Lighthouse, Submariner gateway·operator·route-agent 구성요소가 포함됩니다.",
+        "Red Hat 산정 CVSS 3.1 기본점수는 9.9이며 네트워크 접근, 낮은 권한, 사용자 상호작용 없음으로 평가됐습니다."
+      ],
+      "limitations": [
+        "공격에는 악성 또는 침해된 spoke 클러스터가 필요하고 실제 악용 정황은 공식 기록에서 확인되지 않았습니다.",
+        "공개 CVE 레코드에는 Red Hat 기준을 충족하는 우회책이나 수정 버전이 제시되지 않았고 NVD 상태는 Received입니다."
+      ],
+      "action": "Red Hat ACM에서 연결된 spoke 클러스터와 Submariner 엔드포인트 변경을 점검하고 Red Hat 보안 권고의 수정 제공 여부를 추적해 적용하세요.",
+      "tags": [
+        "Red Hat ACM",
+        "Kubernetes",
+        "Submariner",
+        "CVE-2026-66785"
+      ],
+      "priority": 90,
+      "severity": "critical",
+      "identifier": "CVE-2026-66785",
+      "evidenceLevel": "official"
     }
   ]
 }
