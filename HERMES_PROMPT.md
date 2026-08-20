@@ -7,6 +7,8 @@
 ```text
 Threat & Thesis의 3시간 정기 갱신을 수행해줘. 먼저 AGENTS.md, EDITORIAL.md, skills/threat-and-thesis/SKILL.md, skills/threat-and-thesis/references/source-policy.md를 읽고 그대로 따라라.
 
+텔레그램 기본 대상(`telegram`)에 진행 상황을 알린다. 시작할 때 1회, 수집이 끝났을 때 후보 수와 실패 출처를 1회, 작업이 끝났을 때 변경·커밋·배포 결과를 1회 보낸다. 중단이나 실패가 생기면 실패 단계와 필요한 조치만 즉시 보낸다. `hermes send --to telegram "메시지"`를 사용하고, 장문의 로그·토큰·인증정보는 보내지 않는다.
+
 1. 작업 시작 전 git status를 확인한다. 기존의 예상하지 못한 로컬 변경이 있으면 덮어쓰지 말고 중단 사유를 보고한다. 작업 트리가 깨끗하면 `git pull --ff-only origin main`으로 배포 저장소의 최신 상태를 받은 뒤 진행하고, fast-forward가 불가능하면 임의 병합하지 말고 중단한다.
 2. python3 scripts/collect.py --since-hours 3을 실행한다. 첫 실행과 장애 복구 수집은 오래 걸릴 수 있으므로 terminal timeout을 최소 900초로 설정하고, 제한 시간에 걸리면 실행 중인 collect.py 프로세스가 없는지 확인한 뒤에만 다시 실행한다. 출처 하나가 실패해도 나머지는 계속 검토하고 실패 출처를 보고한다.
 3. data/inbox.json 후보를 content/articles.json 및 data/processed.json과 중복 검사한다. arXiv의 kind는 분류 제안일 뿐이므로 raw.needsEditorialReview와 논문의 핵심 연구 대상을 확인한다. Crossref의 publication-record는 DOI 등록 기록이지 동료평가 증명이 아니므로 출판사·학회 페이지에서 게재 상태를 확인한다. 검색 결과나 제3자 요약만 믿지 말고 모든 게시 후보의 1차 출처를 직접 확인한다.
@@ -24,8 +26,9 @@ Threat & Thesis의 3시간 정기 갱신을 수행해줘. 먼저 AGENTS.md, EDIT
 
 ```bash
 hermes cron create "0 */3 * * *" \
-  'Threat & Thesis의 3시간 정기 갱신을 수행해줘. 먼저 HERMES_PROMPT.md의 작업 프롬프트와 AGENTS.md, EDITORIAL.md를 읽고 모든 절차를 그대로 수행해. 검증된 공개 변경이 있을 때에만 커밋하고 origin/main에 푸시한 뒤 GitHub Pages 배포 결과까지 보고해. 변경이 없으면 빈 커밋을 만들지 마.' \
+  'Threat & Thesis의 3시간 정기 갱신을 수행해줘. 먼저 HERMES_PROMPT.md의 작업 프롬프트와 AGENTS.md, EDITORIAL.md를 읽고 모든 절차를 그대로 수행해. 텔레그램 기본 대상에 시작·수집 완료·최종 결과를 짧게 알려. 검증된 공개 변경이 있을 때에만 커밋하고 origin/main에 푸시한 뒤 GitHub Pages 배포 결과까지 보고해. 변경이 없으면 빈 커밋을 만들지 마.' \
   --name "threat-and-thesis-3h" \
+  --deliver telegram \
   --workdir "/Users/jaydev/codex_dev/threat-and-thesis-hermes"
 ```
 

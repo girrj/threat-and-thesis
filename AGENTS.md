@@ -6,6 +6,8 @@
 
 ## 3시간 갱신 절차
 
+텔레그램 기본 대상(`telegram`)에 시작, 수집 완료, 최종 결과를 각각 한 번씩 짧게 알린다. 중단이나 실패는 실패 단계와 필요한 조치만 즉시 알린다. 메시지는 `hermes send --to telegram "메시지"`로 보내며 장문의 로그, 토큰, 인증정보를 포함하지 않는다.
+
 1. 저장소 루트에서 `python3 scripts/collect.py --since-hours 3`를 실행한다. 수집기는 출처별 마지막 성공 시각을 기억하므로 매번 전체 기간을 다시 수집하지 않는다.
 2. `data/inbox.json`의 `sources` 오류와 `candidates`를 확인한다. `data/source-state.json`은 수집 커서, `data/processed.json`은 이미 판단한 후보 기록이다. 이 런타임 파일들은 공개 콘텐츠가 아니다.
    - arXiv 후보의 `kind`는 카테고리와 초록에 따른 제안값이다. `raw.needsEditorialReview`가 참이거나 AI·보안 신호가 함께 있으면 논문의 핵심 연구 대상을 읽고 최종 분류한다.
