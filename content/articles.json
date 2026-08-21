@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T00:12:13+09:00",
+  "generatedAt": "2026-08-22T03:14:52+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -1619,6 +1619,187 @@
       ],
       "priority": 77,
       "identifier": "arXiv:2608.19558",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "cisa-cve-2026-73570",
+      "kind": "security",
+      "title": "CISA, 실제 악용된 Zimbra 명령 주입 취약점 긴급 조치 요구",
+      "originalTitle": "Zimbra Collaboration Suite (ZCS) OS Command Injection Vulnerability",
+      "source": "CISA Known Exploited Vulnerabilities",
+      "sourceUrl": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-73570",
+      "publishedAt": "2026-08-21",
+      "summary": "CISA가 인증되지 않은 공격자의 운영체제 명령 실행으로 이어질 수 있는 Zimbra Collaboration Suite 취약점 CVE-2026-73570을 실제 악용 목록에 추가했습니다.",
+      "whyItMatters": "인터넷에 노출되는 메일 서버의 Zimbra 사용자 권한으로 임의 명령이 실행될 수 있어 패치와 침해 흔적 점검을 함께 서둘러야 합니다.",
+      "details": [
+        "CISA는 조작된 SMTP 요청이 인증 없이 임의 운영체제 명령 실행으로 이어질 수 있다고 설명합니다.",
+        "Zimbra 공식 보안 권고는 SNMP 알림이 활성화된 환경의 모니터링 구성요소 명령 주입 문제로 설명하고 10.1.20을 수정 릴리스로 제시합니다.",
+        "CISA의 조치 기한은 2026년 8월 24일이며 랜섬웨어 캠페인 사용 여부는 Unknown입니다."
+      ],
+      "limitations": [
+        "CISA와 Zimbra가 설명한 공격 경로의 세부 표현이 달라 공개 정보만으로 내부 흐름을 단정할 수 없습니다.",
+        "영향 범위와 설치별 조치 절차는 Zimbra 공식 권고와 조직 구성을 기준으로 다시 확인해야 합니다."
+      ],
+      "action": "Zimbra를 10.1.20 이상의 지원 버전으로 유지하고 SNMP 알림 설정과 SMTP 노출을 확인한 뒤 Zimbra 사용자 권한의 비정상 프로세스·명령 실행 흔적을 점검하세요.",
+      "tags": [
+        "CISA KEV",
+        "Zimbra",
+        "CVE-2026-73570",
+        "Command Injection"
+      ],
+      "priority": 99,
+      "severity": "critical",
+      "identifier": "CVE-2026-73570",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "doi-10-1145-3786795",
+      "kind": "security-paper",
+      "title": "Vital, 취약 포인터 중심 심볼릭 실행으로 메모리 오류 탐색 강화",
+      "originalTitle": "Vital: Vulnerability-Oriented Symbolic Execution via Type-Unsafe Pointer-Guided Monte Carlo Tree Search",
+      "source": "ACM Transactions on Software Engineering and Methodology",
+      "sourceUrl": "https://doi.org/10.1145/3786795",
+      "publishedAt": "2026-08-21",
+      "summary": "타입 안전성을 정적으로 증명할 수 없는 포인터를 취약 경로 신호로 사용해 KLEE의 탐색을 유도하는 심볼릭 실행 기법 Vital을 제안한 동료평가 논문입니다.",
+      "whyItMatters": "경로 폭발 때문에 놓치기 쉬운 메모리 안전성 결함을 사전 수작업 표시 없이 더 효율적으로 찾는 방법과 실제 신규 CVE 발견 사례를 제공합니다.",
+      "details": [
+        "기존 경로 탐색 전략보다 불안전 포인터를 최대 90.03% 더 커버하고 고유 메모리 오류를 최대 57.14% 더 탐지했다고 보고합니다.",
+        "알려진 취약점 탐지 비교에서 실행시간은 최대 30배 단축하고 메모리 사용은 최대 20배 줄였다고 보고합니다.",
+        "실제 평가에서 이전에 알려지지 않은 취약점 1건을 찾아 CVE가 부여됐고 개발자가 수정했습니다."
+      ],
+      "limitations": [
+        "최대 개선치는 모든 대상의 평균 성능이 아니라 특정 비교에서 관찰된 상한입니다.",
+        "ACM 원문 자동 접근이 제한돼 공개 초록과 출판 메타데이터를 중심으로 확인했습니다."
+      ],
+      "action": "조직의 네이티브 코드 분석 파이프라인에서 기존 KLEE 탐색 전략과 동일 시간·메모리 예산으로 재현하고 탐지된 오류를 수동 검증하세요.",
+      "tags": [
+        "Symbolic Execution",
+        "Memory Safety",
+        "KLEE",
+        "Fuzzing"
+      ],
+      "priority": 88,
+      "identifier": "10.1145/3786795",
+      "evidenceLevel": "peer-reviewed"
+    },
+    {
+      "id": "doi-10-1145-3788862",
+      "kind": "security-paper",
+      "title": "Octopus, 만족·불만족 공식을 함께 합성해 SMT 솔버 오류 검증",
+      "originalTitle": "Oracle-Guided SMT Solver Validation via Synthesizing Diverse Formulas with Multiple Assignments",
+      "source": "ACM Transactions on Software Engineering and Methodology",
+      "sourceUrl": "https://doi.org/10.1145/3788862",
+      "publishedAt": "2026-08-21",
+      "summary": "여러 만족 할당과 불만족 코어를 이용해 다양한 만족·불만족 테스트 공식을 합성하는 SMT 솔버 검증 도구 Octopus를 제안한 동료평가 논문입니다.",
+      "whyItMatters": "Z3와 cvc5 같은 SMT 솔버의 잘못된 결과는 프로그램 분석과 검증 도구 전체로 전파될 수 있어 테스트 오라클과 입력 다양성을 강화할 필요가 있습니다.",
+      "details": [
+        "여러 만족 할당에서 부분 공식을 재조합하고 새 공식 조각을 더해 논리 경로의 다양성을 높입니다.",
+        "불만족 시드의 unsat core를 사용해 기존 재조합 기법이 만들기 어려웠던 불만족 테스트도 생성합니다.",
+        "저자들은 13개 버그를 보고했고 작성 시점에 11개가 개발자 확인, 9개가 수정됐다고 밝혔습니다."
+      ],
+      "limitations": [
+        "ACM 원문 자동 접근이 제한돼 공개 초록과 출판 메타데이터를 중심으로 확인했습니다.",
+        "보고된 버그 수와 커버리지 우위가 모든 SMT 이론·버전의 정확성을 보장하지 않습니다."
+      ],
+      "action": "보안 분석에 사용하는 SMT 솔버 버전을 고정하고 회귀 테스트에 다양한 sat·unsat 공식을 추가해 솔버 업데이트 전후 결과 불일치를 확인하세요.",
+      "tags": [
+        "SMT Solver",
+        "Software Testing",
+        "Z3",
+        "cvc5"
+      ],
+      "priority": 84,
+      "identifier": "10.1145/3788862",
+      "evidenceLevel": "peer-reviewed"
+    },
+    {
+      "id": "doi-10-1103-j3xf-bw18",
+      "kind": "security-paper",
+      "title": "양자컴퓨터의 secp256k1 공격 자원 재산정과 암호화폐 대응 시계",
+      "originalTitle": "Securing Elliptic Curve Cryptocurrencies against Quantum Vulnerabilities: Resource Estimates and Mitigations",
+      "source": "PRX Quantum",
+      "sourceUrl": "https://doi.org/10.1103/j3xf-bw18",
+      "publishedAt": "2026-08-21",
+      "summary": "secp256k1 타원곡선 이산로그 문제를 푸는 양자 자원과 암호화폐별 공격 경로·완화책을 분석한 PRX Quantum의 동료평가 Perspective입니다.",
+      "whyItMatters": "공개키가 노출된 자산과 전송 중 거래의 양자 위험을 구분해 PQC 전환과 중간 완화책의 우선순위를 구체화합니다.",
+      "details": [
+        "저자들은 1,200 이하 논리 큐비트와 9천만 이하 Toffoli 게이트 또는 1,450 이하 논리 큐비트와 7천만 이하 게이트의 두 회로 추정치를 제시합니다.",
+        "물리 오류율 10^-3과 평면 연결의 초전도 아키텍처 가정에서 50만 미만 물리 큐비트로 수분 내 실행 가능하다고 추정합니다.",
+        "세부 공격 회로는 공개하지 않고 영지식증명으로 자원 추정치 검증 수단을 제시하며 PQC 전환과 private mempool·commit-reveal 같은 중간 완화를 논의합니다."
+      ],
+      "limitations": [
+        "Perspective 성격의 자원 추정이며 암호학적으로 유의미한 양자컴퓨터가 현재 존재한다는 뜻은 아닙니다.",
+        "실행시간과 물리 큐비트 수는 오류율·연결성·오류정정 주기 등 가정에 민감하고 공개하지 않은 회로를 독립 재현할 수 없습니다."
+      ],
+      "action": "secp256k1 공개키가 장기간 노출되는 자산과 서명 경로를 식별하고 PQC 전환 계획, 키 노출 최소화, 거래 보호 완화를 단계별로 검토하세요.",
+      "tags": [
+        "Quantum Security",
+        "Cryptocurrency",
+        "secp256k1",
+        "PQC"
+      ],
+      "priority": 87,
+      "identifier": "10.1103/j3xf-bw18",
+      "evidenceLevel": "peer-reviewed"
+    },
+    {
+      "id": "arxiv-2608-19652",
+      "kind": "ai-paper",
+      "title": "StateMemBench, 에이전트 메모리가 바뀐 현재 상태를 추적하는지 평가",
+      "originalTitle": "Can Agent Memory Systems Track Evolving State?",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.19652",
+      "publishedAt": "2026-08-20",
+      "summary": "수정된 사실·제약·결정의 최신 상태와 폐기된 상태를 구분하는 234개 다중 세션 시나리오 StateMemBench와 상태 우선 메모리 기법 StateMem을 제안한 프리프린트입니다.",
+      "whyItMatters": "장기 실행 에이전트가 오래된 지시나 결정을 현재 상태로 오인하면 정확성뿐 아니라 권한·정책 준수에도 직접적인 운영 위험이 생깁니다.",
+      "details": [
+        "폐쇄형 후보 채점으로 현재 상태 반영, 폐기된 상태 반영, 기타 실패를 분리합니다.",
+        "StateMem은 supersession과 관계 의존성을 명시적으로 추적해 동일 백본 기준 현재 상태 정확도를 DeepSeek-V4-Flash에서 0.205에서 0.363으로 높였다고 보고합니다.",
+        "기존 여섯 메모리·검색 백엔드에 단일 호출 래퍼로 적용했을 때 32~67%p 개선했으며 길이·비용 통제는 그중 15~32%p를 상태 구조 효과로 추정합니다."
+      ],
+      "limitations": [
+        "2026년 8월 20일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "234개 구성 시나리오와 두 모델 계열의 결과가 실제 장기 운영 에이전트의 모든 상태 변화·도구 실행을 대표하지 않습니다."
+      ],
+      "action": "에이전트 메모리 회귀 테스트에 취소·교체된 지시와 정책 변경 시나리오를 넣고 최신 상태와 폐기 상태의 혼동을 별도 지표로 측정하세요.",
+      "tags": [
+        "Agent Memory",
+        "State Tracking",
+        "Benchmark",
+        "Long-running Agents"
+      ],
+      "priority": 90,
+      "identifier": "arXiv:2608.19652",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-19643",
+      "kind": "ai-paper",
+      "title": "할인 최소제곱의 시간 균일 신뢰경계 오류 지적과 교정식 제시",
+      "originalTitle": "Time-Uniform Self-Normalized Concentration for Discounted Least Squares: Limits and Corrections",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.19643",
+      "publishedAt": "2026-08-20",
+      "summary": "비정상 bandit·강화학습 분석에 쓰인 할인 최소제곱용 시간 균일 self-normalized 경계의 반례와 증명 오류를 제시하고 유효한 교정식을 제안한 프리프린트입니다.",
+      "whyItMatters": "성립하지 않는 신뢰경계를 사용하면 적응형 의사결정 알고리즘의 불확실성과 안전 구간을 실제보다 과신할 수 있습니다.",
+      "details": [
+        "고정 파라미터의 단순한 스칼라 가우시안 반례에서 주장된 유계 반경이 확률 1로 넘어간다고 보입니다.",
+        "종료 시점마다 다른 가우시안 혼합분포를 사용해 고정시점 혼합이 하나의 supermartingale을 이루지 못한 점을 증명 오류로 지목합니다.",
+        "원래 식의 고정 결정 시점 유효성을 구분하고 유한·무한 horizon에 대한 교정 경계를 제공합니다."
+      ],
+      "limitations": [
+        "2026년 8월 20일 제출된 단일 저자 프리프린트이며 동료평가 전입니다.",
+        "결과는 특정 할인·정규화 조건과 조건부 sub-Gaussian 모형 클래스의 이론 보장에 관한 것으로 모든 경험적 RL 성능 실패를 뜻하지 않습니다."
+      ],
+      "action": "해당 가중 self-normalized 경계를 인용한 분석과 구현을 식별하고 고정시점 보장인지 시간 균일 보장인지 확인한 뒤 제안된 교정식으로 민감도를 재계산하세요.",
+      "tags": [
+        "Reinforcement Learning",
+        "Bandits",
+        "Uncertainty",
+        "Theory Validation"
+      ],
+      "priority": 82,
+      "identifier": "arXiv:2608.19643",
       "evidenceLevel": "preprint"
     }
   ]
