@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-21T15:10:08+09:00",
+  "generatedAt": "2026-08-21T18:12:36+09:00",
   "editions": [
     {
       "date": "2026-08-21",
-      "generatedAt": "2026-08-21T15:10:08+09:00",
+      "generatedAt": "2026-08-21T18:12:36+09:00",
       "rankings": {
         "security": [
           {
@@ -29,41 +29,48 @@
           },
           {
             "rank": 4,
+            "itemId": "nvd-cve-2026-77264",
+            "previousRank": null,
+            "status": "new",
+            "reason": "공식 저장소의 안정 버전까지 영향을 받는 무인증 관리자 사칭 취약점이며 확인된 수정판이 없어 즉시 자산 조사가 필요합니다."
+          },
+          {
+            "rank": 5,
             "itemId": "nvd-cve-2026-72843",
             "previousRank": null,
             "status": "new",
             "reason": "무인증 고객 계정 탈취가 가능하고 EverShop 2.2.1로 수정돼 운영자가 즉시 조치할 수 있습니다."
           },
           {
-            "rank": 5,
+            "rank": 6,
             "itemId": "nvd-cve-2026-16926",
             "previousRank": null,
             "status": "new",
             "reason": "AIX·VIOS의 188개 CVE를 해결하는 누적 패키지로 원격 코드 실행을 포함한 광범위한 노출을 한 번에 줄입니다."
           },
           {
-            "rank": 6,
+            "rank": 7,
             "itemId": "nvd-cve-2026-67567",
             "previousRank": null,
             "status": "new",
             "reason": "제한된 HelmRelease 생성 권한이 클러스터 전체 리소스 배포로 확대되며 패치 전 RBAC 완화가 필요합니다."
           },
           {
-            "rank": 7,
+            "rank": 8,
             "itemId": "nvd-cve-2026-66788",
             "previousRank": null,
             "status": "new",
             "reason": "침해된 spoke 클러스터에서 피어의 중요 네임스페이스로 리소스를 주입할 수 있습니다."
           },
           {
-            "rank": 8,
+            "rank": 9,
             "itemId": "nvd-cve-2026-66785",
             "previousRank": null,
             "status": "new",
             "reason": "침해된 spoke가 연결된 피어 클러스터의 임의 대역 트래픽을 공격자 터널로 우회시킬 수 있습니다."
           },
           {
-            "rank": 9,
+            "rank": 10,
             "itemId": "nvd-cve-2026-15706",
             "previousRank": null,
             "status": "new",
@@ -124,27 +131,34 @@
           },
           {
             "rank": 6,
+            "itemId": "doi-10-1038-s41598-026-66614-x",
+            "previousRank": null,
+            "status": "new",
+            "reason": "세 IoT 침입탐지 데이터셋에서 특징·샘플 축소가 재학습 시간과 메모리에 미치는 영향을 함께 측정했습니다."
+          },
+          {
+            "rank": 7,
             "itemId": "arxiv-2608-19266",
             "previousRank": null,
             "status": "new",
             "reason": "OWASP LLM 위험 순위와 6,639건의 공개 사고 데이터가 약하게 일치하는 조건과 불확실성을 분석했습니다."
           },
           {
-            "rank": 7,
+            "rank": 8,
             "itemId": "doi-10-1007-s44196-026-01526-2",
             "previousRank": null,
             "status": "new",
             "reason": "장기 기밀 데이터의 수명과 PQC 전환 준비도를 함께 비교해 마이그레이션 우선순위를 제시합니다."
           },
           {
-            "rank": 8,
+            "rank": 9,
             "itemId": "doi-10-1186-s42400-026-00636-w",
             "previousRank": null,
             "status": "new",
             "reason": "원래 라운드 상수 조건에서 축소 라운드 Schwaemm의 분석 범위와 전체 라운드 한계를 구분했습니다."
           },
           {
-            "rank": 9,
+            "rank": 10,
             "itemId": "arxiv-2608-18187",
             "previousRank": null,
             "status": "new",
@@ -168,59 +182,59 @@
           },
           {
             "rank": 3,
+            "itemId": "arxiv-2608-19861",
+            "previousRank": null,
+            "status": "new",
+            "reason": "단일 행동 검사를 넘어 에이전트의 전체 업무 절차와 지속 상태를 검증하고 공격 과제로 비교했습니다."
+          },
+          {
+            "rank": 4,
             "itemId": "arxiv-2608-19737",
             "previousRank": null,
             "status": "new",
             "reason": "자막의 시간축 배치가 네 멀티모달 모델의 공통 안전 우회면이 될 수 있음을 실험했습니다."
           },
           {
-            "rank": 4,
+            "rank": 5,
             "itemId": "arxiv-2608-18351",
             "previousRank": null,
             "status": "new",
             "reason": "터미널·MCP 에이전트의 작업별 최소 권한을 성공률과 분리해 측정하고 학습했습니다."
           },
           {
-            "rank": 5,
+            "rank": 6,
+            "itemId": "arxiv-2608-19974",
+            "previousRank": null,
+            "status": "new",
+            "reason": "금융 에이전트의 규칙 인용과 실제 주문 행동을 분리해 하드 실행 통제와 구조화 로그의 필요성을 측정했습니다."
+          },
+          {
+            "rank": 7,
             "itemId": "doi-10-3390-electronics15163739",
             "previousRank": null,
             "status": "new",
             "reason": "LLM 에이전트의 도구 공격을 의도 경계 손실로 형식화하고 25개 프레임워크·모델 조합에서 지표를 평가했습니다."
           },
           {
-            "rank": 6,
+            "rank": 8,
+            "itemId": "arxiv-2608-20202",
+            "previousRank": null,
+            "status": "new",
+            "reason": "관련성 있는 과거 기억도 현재 판단을 왜곡할 수 있음을 두 모델 계열과 다섯 메모리 전략에서 비교했습니다."
+          },
+          {
+            "rank": 9,
             "itemId": "arxiv-2608-17597",
             "previousRank": 2,
             "status": "down",
             "reason": "모델 밖의 구성·플러그인·상태·도구 승인까지 에이전트 보안 평가 범위를 넓힙니다."
           },
           {
-            "rank": 7,
-            "itemId": "arxiv-2608-19564",
-            "previousRank": null,
-            "status": "new",
-            "reason": "에이전트가 기억·검증·재질문을 실제 도구 선택으로 구분하는 능력과 영구 저장 오류를 측정했습니다."
-          },
-          {
-            "rank": 8,
+            "rank": 10,
             "itemId": "arxiv-2608-17659",
             "previousRank": 1,
             "status": "down",
             "reason": "모바일 GUI 에이전트의 간접 프롬프트 인젝션 위험을 실제 앱 기반 과제로 측정했습니다."
-          },
-          {
-            "rank": 9,
-            "itemId": "arxiv-2608-18389",
-            "previousRank": null,
-            "status": "new",
-            "reason": "의미가 같은 코드 변형에서도 코드 에이전트의 해결률과 비용이 달라지는 정도를 16개 구성에서 측정했습니다."
-          },
-          {
-            "rank": 10,
-            "itemId": "arxiv-2608-18307",
-            "previousRank": null,
-            "status": "new",
-            "reason": "2,910개 UI 과제로 컴퓨터 사용 에이전트의 실패를 컴포넌트와 관측 방식별로 분해했습니다."
           }
         ],
         "technology": [

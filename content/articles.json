@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T15:10:08+09:00",
+  "generatedAt": "2026-08-21T18:12:36+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -1281,6 +1281,161 @@
       "priority": 82,
       "identifier": "10.1186/s42400-026-00636-w",
       "evidenceLevel": "peer-reviewed"
+    },
+    {
+      "id": "nvd-cve-2026-77264",
+      "kind": "security",
+      "title": "Automation Web Platform 플러그인 인증 우회 취약점 CVE-2026-77264 공개",
+      "originalTitle": "CVE-2026-77264: Automation Web Platform Authentication Bypass",
+      "source": "NIST NVD",
+      "sourceUrl": "https://nvd.nist.gov/vuln/detail/CVE-2026-77264",
+      "publishedAt": "2026-08-21",
+      "summary": "Automation Web Platform WordPress 플러그인 4.8.6 이하에서 공개 OTP 요청 응답에 로그인 토큰이 노출돼 이메일 주소를 아는 비인증 공격자가 계정을 사칭할 수 있는 취약점이 등록됐습니다.",
+      "whyItMatters": "관리자 이메일을 아는 공격자가 인증 없이 관리자 세션을 얻을 수 있어 WordPress 사이트 전체가 침해될 수 있으며, 확인 시점의 공식 저장소 안정 버전도 영향 범위에 포함됩니다.",
+      "details": [
+        "Wordfence CNA는 영향 범위를 Automation Web Platform 4.8.6 이하로 기록했습니다.",
+        "CNA 산정 CVSS 3.1 기본점수는 9.8이며 네트워크에서 권한과 사용자 상호작용 없이 악용 가능한 것으로 평가됐습니다.",
+        "WordPress 공식 저장소의 확인 시점 stable tag는 4.8.6입니다."
+      ],
+      "limitations": [
+        "NVD 상태는 Received이며 CVSS는 NVD 독립 분석이 아니라 CNA 제공 점수입니다.",
+        "실제 악용, CISA KEV 등재, 벤더 보안 권고와 수정 버전은 확인되지 않았습니다."
+      ],
+      "action": "해당 플러그인 사용 여부와 버전을 확인하고 수정판이 확인될 때까지 비활성화하거나 제거한 뒤 관리자 로그인 기록과 기존 세션을 점검하세요.",
+      "tags": [
+        "NVD",
+        "CVE-2026-77264",
+        "WordPress",
+        "Authentication Bypass"
+      ],
+      "priority": 91,
+      "severity": "critical",
+      "identifier": "CVE-2026-77264",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "doi-10-1038-s41598-026-66614-x",
+      "kind": "security-paper",
+      "title": "IoT 침입탐지 재학습 비용을 줄이는 특징·샘플 순차 선택",
+      "originalTitle": "Sequential submodular feature-sample selection for lightweight and update-efficient IoT intrusion detection",
+      "source": "Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-66614-x",
+      "publishedAt": "2026-08-21",
+      "summary": "IoT 침입탐지 모델의 특징 선택과 학습 샘플 coreset 선택을 순차적으로 결합해 재학습 시간과 메모리 사용을 줄이는 SSFSS를 세 공개 데이터셋에서 평가한 동료평가 논문입니다.",
+      "whyItMatters": "엣지 환경에서 탐지 모델을 갱신할 때 정확도뿐 아니라 재학습 시간과 메모리 예산을 함께 비교할 수 있는 구체적인 실험 기준을 제공합니다.",
+      "details": [
+        "RT-IoT2022, Edge-IIoTset, CICIoT2023과 네 가지 분류기에서 특징을 20개로 제한하고 원본 학습 샘플의 5~15%를 선택했습니다.",
+        "저자들은 10% 예산의 최상 축소 모델이 원래 정확도의 97.5~99.5%를 유지했다고 보고했습니다.",
+        "같은 실험에서 최대 70배 학습 가속과 최대 96% peak RAM 감소를 보고했습니다."
+      ],
+      "limitations": [
+        "실험은 실제 IoT 게이트웨이가 아닌 Intel i7·32GB RAM 워크스테이션에서 수행됐습니다.",
+        "세 공개 정적 데이터셋과 세 random seed 결과로 변화하는 운영 트래픽, 제로데이 탐지, 장기 온라인 재학습 성능을 입증하지 않습니다.",
+        "코드는 공개 저장소가 아니라 저자 요청 방식으로 제공됩니다."
+      ],
+      "action": "조직 트래픽과 실제 edge 하드웨어에서 메모리, 재학습 시간, 소수 공격 클래스의 macro-F1을 기존 IDS와 병행 검증하세요.",
+      "tags": [
+        "IoT Security",
+        "Intrusion Detection",
+        "Feature Selection",
+        "Coreset"
+      ],
+      "priority": 78,
+      "identifier": "10.1038/s41598-026-66614-x",
+      "evidenceLevel": "peer-reviewed"
+    },
+    {
+      "id": "arxiv-2608-19861",
+      "kind": "ai-paper",
+      "title": "PolicyGuide, LLM 에이전트의 전체 업무 절차를 정책 그래프로 검증",
+      "originalTitle": "PolicyGuide: From Guarding One Action to Guiding the Whole Workflow for Policy-Compliant LLM Agents",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.19861",
+      "publishedAt": "2026-08-20",
+      "summary": "도메인 정책을 workflow graph로 변환하고 대화 상태와 도구 결과를 사용자 턴마다 검사해 LLM 에이전트의 다단계 절차 준수를 유도하는 프리프린트입니다.",
+      "whyItMatters": "최종 도구 호출 하나만 검사하는 가드는 앞선 절차 누락을 놓칠 수 있어, 고위험 에이전트에서는 업무 흐름 전체와 지속 상태를 함께 검증해야 합니다.",
+      "details": [
+        "세 고객지원 도메인에서 평균 Pass⁴가 unguided 0.42에서 PolicyGuide 0.62로 증가했다고 저자들은 보고했습니다.",
+        "20개 Airline CRAFT 공격 과제의 trial별 공격 성공률은 PolicyGuide 0.087, PolicyGuard 0.125, ReAct 0.200으로 보고됐습니다.",
+        "동일한 workflow를 Claude Sonnet 4.6과 Gemini 2.5 Pro 실행 모델에도 적용해 executor 전이를 시험했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 20일 제출된 프리프린트이며 영어 합성 고객지원 도메인 세 개와 셀당 네 번의 실행에 한정됩니다.",
+        "CRAFT 평가는 Airline 20개 과제만 사용했고 적응형 공격의 강건성을 확인하지 않았습니다.",
+        "검증기는 확률적이며 예외 시 fail-open이어서 이론적 보장이 실제 실행에 그대로 적용되지 않습니다."
+      ],
+      "action": "업무 절차 검증기를 단독 보안 경계로 사용하지 말고 형식화 가능한 고위험 규칙에는 결정론적 fail-closed 검사와 도구 권한 제한을 추가하세요.",
+      "tags": [
+        "arXiv",
+        "LLM Agent",
+        "Policy Compliance",
+        "Workflow Verification"
+      ],
+      "priority": 89,
+      "identifier": "arXiv:2608.19861",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-19974",
+      "kind": "ai-paper",
+      "title": "ReguSim, 금융 LLM 에이전트의 규칙 인용과 실제 행동을 분리 감사",
+      "originalTitle": "ReguSim: Evaluating LLM Agent Rule Grounding in Financial Compliance",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.19974",
+      "publishedAt": "2026-08-20",
+      "summary": "금융 LLM 에이전트의 설명, 시도한 주문, 실행 결과와 감시 근거를 분리해 규칙 준수 여부를 평가하는 시뮬레이터와 벤치마크를 제안한 프리프린트입니다.",
+      "whyItMatters": "에이전트가 규칙을 말로 인용해도 위반 행동을 시도할 수 있어 자연어 설명보다 하드 실행 통제와 구조화된 감사 로그가 우선돼야 합니다.",
+      "details": [
+        "규칙이 보이는 조건에서도 제출 주문 거부율은 DeepSeek V4 Pro 24.2%, Gemini 3.5 Flash 14.8%로 보고됐습니다.",
+        "800개 합성 target의 monitor 평가에서 최고 LLM의 macro cell F1은 63.8%였고 logistic baseline은 71.4%였습니다.",
+        "64개 주문의 bridge study에서 실행 거부 코드를 제공하자 issue-type 정확도가 53.1%에서 87.5%로 증가했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 20일 제출된 프리프린트이며 완전한 시장 시뮬레이터나 법적 판단 시스템이 아닙니다.",
+        "ReguBench는 합성 데이터이므로 실제 시장 위법행위 비율이나 법적 결론으로 해석할 수 없습니다.",
+        "trader 실험은 DeepSeek 중심이며 일부 분석은 제한된 로그 subset을 사용했습니다."
+      ],
+      "action": "설명, 시도한 행동, 실행 결과와 감시 근거를 분리 저장하고 주문 전 결정론적 제한을 적용하며 LLM 감시기는 검토 보조층으로만 사용하세요.",
+      "tags": [
+        "arXiv",
+        "LLM Agent",
+        "Financial Compliance",
+        "Audit Logging"
+      ],
+      "priority": 87,
+      "identifier": "arXiv:2608.19974",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-20202",
+      "kind": "ai-paper",
+      "title": "MemTrapBench, 유효한 과거 기억이 LLM 에이전트 판단을 왜곡하는 조건 측정",
+      "originalTitle": "MemTrapBench: Benchmarking Cognitive Traps in LLM Memory Use",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.20202",
+      "publishedAt": "2026-08-20",
+      "summary": "관련성 있는 과거 기억이 현재 작업의 판단을 방해하는 인지 함정을 1,050개 합성 사례로 구성하고 두 모델 계열과 다섯 메모리 전략을 비교한 프리프린트입니다.",
+      "whyItMatters": "에이전트가 검색한 기억은 관련성이 높아도 현재 작업의 범위, 시점과 권한에 맞지 않을 수 있어 실행 전 재검증이 필요합니다.",
+      "details": [
+        "벤치마크는 Cognitive Bias 350개, Task Boundary 350개, Safety 200개, Trauma 150개 사례로 구성됩니다.",
+        "Gemini의 무메모리 평균은 85.16%, 가장 높은 메모리 전략은 71.17%였고 Qwen에서는 각각 81.83%와 70.13%였습니다.",
+        "함정만 제거하고 관련 이력을 유지한 대조 실험에서 Task Boundary 점수는 31.05%에서 94.39%로 회복됐습니다."
+      ],
+      "limitations": [
+        "2026년 8월 20일 제출된 프리프린트이며 사람이 만든 seed를 GPT-5.4로 확장한 합성 대화를 사용했습니다.",
+        "평가 모델은 두 계열이고 결과 판정에 LLM judge를 사용했습니다.",
+        "악의적 메모리 주입, 저장소 무결성이나 권한 경계 공격을 직접 평가하지 않았습니다."
+      ],
+      "action": "검색된 기억을 자동 지시로 승격하지 말고 현재 작업의 범위, 출처, 시점과 권한을 재검증하며 고위험 행동에는 독립 검증기를 두세요.",
+      "tags": [
+        "arXiv",
+        "Agent Memory",
+        "LLM Safety",
+        "Benchmark"
+      ],
+      "priority": 84,
+      "identifier": "arXiv:2608.20202",
+      "evidenceLevel": "preprint"
     }
   ]
 }
