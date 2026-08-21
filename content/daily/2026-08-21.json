@@ -1,6 +1,6 @@
 {
   "date": "2026-08-21",
-  "generatedAt": "2026-08-21T06:05:58+09:00",
+  "generatedAt": "2026-08-21T09:12:17+09:00",
   "rankings": {
     "security": [
       {
@@ -102,10 +102,10 @@
     "ai-paper": [
       {
         "rank": 1,
-        "itemId": "doi-10-3390-electronics15163739",
+        "itemId": "arxiv-2608-18136",
         "previousRank": null,
         "status": "new",
-        "reason": "LLM 에이전트의 도구 공격을 의도 경계 손실로 형식화하고 25개 프레임워크·모델 조합에서 지표를 평가했습니다."
+        "reason": "인증·정책 검색·권한 도구와 상태 변경을 결합한 107개 적응형 사기 시나리오로 은행 에이전트를 평가했습니다."
       },
       {
         "rank": 2,
@@ -116,31 +116,59 @@
       },
       {
         "rank": 3,
+        "itemId": "doi-10-3390-electronics15163739",
+        "previousRank": null,
+        "status": "new",
+        "reason": "LLM 에이전트의 도구 공격을 의도 경계 손실로 형식화하고 25개 프레임워크·모델 조합에서 지표를 평가했습니다."
+      },
+      {
+        "rank": 4,
+        "itemId": "arxiv-2608-17659",
+        "previousRank": 1,
+        "status": "down",
+        "reason": "모바일 GUI 에이전트의 간접 프롬프트 인젝션 위험을 실제 앱 기반 과제로 측정했습니다."
+      },
+      {
+        "rank": 5,
+        "itemId": "arxiv-2608-18115",
+        "previousRank": null,
+        "status": "new",
+        "reason": "모델 내부 접근 없이 토큰 간 시간 정보를 결합해 미관측 생성 모델로의 환각 탐지 전이를 측정했습니다."
+      },
+      {
+        "rank": 6,
         "itemId": "arxiv-2608-18578",
         "previousRank": null,
         "status": "new",
         "reason": "평균 성능에 가려지는 4비트 양자화의 반복 갱신 문맥 검색 저하를 세 모델에서 측정했습니다."
       },
       {
-        "rank": 4,
-        "itemId": "arxiv-2608-18099",
+        "rank": 7,
+        "itemId": "arxiv-2608-18106",
         "previousRank": null,
         "status": "new",
-        "reason": "검증된 절차·실행 스킬이 금융 에이전트의 12개 과제 성능을 높이고 별도 하네스에서도 방향성을 재현했습니다."
+        "reason": "언어·포기·숫자 신뢰도의 과신 차이를 내부 특징 개입으로 구분해 검증했습니다."
       },
       {
-        "rank": 5,
+        "rank": 8,
+        "itemId": "arxiv-2608-18222",
+        "previousRank": null,
+        "status": "new",
+        "reason": "반복 추론 깊이를 늘릴 때 성능이 유지되거나 붕괴하는 동역학 조건을 계측했습니다."
+      },
+      {
+        "rank": 9,
+        "itemId": "arxiv-2608-18242",
+        "previousRank": null,
+        "status": "new",
+        "reason": "주문형 그래프 과제로 고정 시험세트 암기와 조합 추론 능력을 분리했습니다."
+      },
+      {
+        "rank": 10,
         "itemId": "arxiv-2608-18274",
         "previousRank": null,
         "status": "new",
         "reason": "로컬 PII·비밀정보 탐지 모델의 구조와 운용 한계를 공개해 데이터 최소화 평가에 활용할 수 있습니다."
-      },
-      {
-        "rank": 6,
-        "itemId": "arxiv-2608-17659",
-        "previousRank": 1,
-        "status": "down",
-        "reason": "모바일 GUI 에이전트의 간접 프롬프트 인젝션 위험을 실제 앱 기반 과제로 측정했습니다."
       }
     ],
     "technology": [

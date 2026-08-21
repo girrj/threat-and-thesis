@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T06:05:58+09:00",
+  "generatedAt": "2026-08-21T09:12:17+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -757,6 +757,156 @@
       "severity": "critical",
       "identifier": "CVE-2026-66785",
       "evidenceLevel": "official"
+    },
+    {
+      "id": "arxiv-2608-18136",
+      "kind": "ai-paper",
+      "title": "FraudBench, 은행 에이전트의 적응형 사기 대응을 실행 환경에서 평가",
+      "originalTitle": "FraudBench: Stress-Testing Policy-Grounded Banking Agents Against Adaptive Fraud",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.18136",
+      "publishedAt": "2026-08-20",
+      "summary": "고객 데이터와 정책 문서, 권한 도구를 사용하는 은행 상담 에이전트 4종을 107개 공개 공격 시나리오에서 평가한 프리프린트로, 단일 시행 공격 방어율이 49.5%에서 64.5%였다고 보고했습니다.",
+      "whyItMatters": "고권한 고객지원 에이전트의 안전성은 프롬프트 인젝션뿐 아니라 인증, 정책 검색, 과거 대화와 실제 상태 변경을 함께 놓고 평가해야 합니다.",
+      "details": [
+        "벤치마크는 698개 정책 문서와 17개 권한 도구를 갖춘 합성 은행 환경에서 10개 사기 메커니즘 90건과 연쇄 공격 17건을 평가합니다.",
+        "평가한 네 모델의 단일 시행 공격 방어율은 49.5%에서 64.5%였고, money-mule 공격은 모델별 9건 중 1~2건만 방어했습니다.",
+        "Gemini 3.6 Flash는 정답 정책 문서를 제공한 조건의 64.5%에서 전체 문서를 직접 검색한 조건의 51.0%로 방어율이 낮아졌습니다."
+      ],
+      "limitations": [
+        "2026년 8월 20일 제출된 프리프린트이며 합성 은행과 가상 고객 데이터에 한정됩니다.",
+        "공격 전용 단일 시행 평가이고 정상 고객 대조군과 결정론적 검증기가 없어 모델의 최종 안전 순위나 업무 유용성을 뜻하지 않습니다."
+      ],
+      "action": "고권한 고객지원 에이전트를 인증·권한·정책 검색·상태 변경이 결합된 적응형 공격 시나리오로 평가하세요.",
+      "tags": [
+        "arXiv",
+        "AI Agent Security",
+        "Fraud",
+        "Banking Agent"
+      ],
+      "priority": 91,
+      "identifier": "arXiv:2608.18136",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-18115",
+      "kind": "ai-paper",
+      "title": "토큰 간 시간 정보를 결합해 폐쇄형 LLM 환각을 탐지한 BiGRU",
+      "originalTitle": "Temporal Multi-Signal Fusion for Token-Level Hallucination Detection",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.18115",
+      "publishedAt": "2026-08-20",
+      "summary": "텍스트 통계, 자연어 추론과 surprisal 특징을 BiGRU로 결합해 토큰 단위 환각을 탐지한 연구로, RAGTruth에서 평균 AUC 0.840을 보고했습니다.",
+      "whyItMatters": "모델 내부 상태를 받지 못하는 API 환경에서도 환각이 연속된 구간으로 나타나는 특성을 이용해 출력 검증 계층을 설계할 수 있습니다.",
+      "details": [
+        "33차원 토큰 특징을 BiGRU 시퀀스 분류기에 입력하고 RAGTruth에서 10개 시드와 6개 생성 모델 leave-one-out 평가를 수행했습니다.",
+        "토큰 AUC는 0.840±0.007로 독립 분류기보다 0.11 높았고, 미관측 생성 모델 전이 평균은 0.808이었습니다.",
+        "내부 attention 특징을 사용할 수 있는 공개 모델에서는 결합 AUC가 0.866으로 보고됐습니다."
+      ],
+      "limitations": [
+        "2026년 8월 20일 제출된 프리프린트이며 영어 데이터와 RAGTruth 중심의 평가입니다.",
+        "span F1은 0.394로 비교 기준 0.589보다 낮았고 테스트 때 DeBERTa와 TinyLlama 추론 비용이 추가됩니다."
+      ],
+      "action": "환각 탐지기를 도입할 때 토큰 AUC뿐 아니라 구간 F1, 지연, 다른 생성 모델로의 전이 성능을 함께 측정하세요.",
+      "tags": [
+        "arXiv",
+        "Hallucination Detection",
+        "BiGRU",
+        "RAG"
+      ],
+      "priority": 87,
+      "identifier": "arXiv:2608.18115",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-18106",
+      "kind": "ai-paper",
+      "title": "Qwen3-4B의 언어적 과신을 내부 특징 개입으로 분석",
+      "originalTitle": "Different Facets of Verbalised Overconfidence: an Interpretability Study",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.18106",
+      "publishedAt": "2026-08-20",
+      "summary": "Qwen3-4B의 불확실성 표현을 언어, 답변 포기와 숫자 신뢰도로 나눠 분석하고 중간층 특징 개입으로 일부 과신을 교정한 해석가능성 연구입니다.",
+      "whyItMatters": "모델이 말하는 숫자형 신뢰도와 실제 불확실성 회로가 일치하지 않을 수 있어 self-confidence를 안전 판단에 바로 사용하는 설계를 경계해야 합니다.",
+      "details": [
+        "450개 전제·질문 쌍에서 불확실한 상황을 잘못 확신한 비율은 언어 표현 14%, 답변 포기 27%, 숫자 신뢰도 80%였습니다.",
+        "언어 표현 오류 34건에서 상위 불확실성 특징 20개를 증폭하자 32건이 교정됐습니다.",
+        "같은 특징 개입은 답변 포기 정확도를 72.7%에서 82.7%로 높였지만 숫자 신뢰도 오류는 19.7%에서 20.0%로 거의 바꾸지 못했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 20일 제출된 프리프린트이며 Qwen3-4B 한 모델과 통제된 논리 과제에 한정됩니다.",
+        "숫자 신뢰도에는 개입이 실패했고 다른 모델 계열과 실제 업무에서 같은 내부 특징이 재현되는지는 확인되지 않았습니다."
+      ],
+      "action": "LLM 신뢰도를 자동 의사결정에 사용할 때 표현 형식별 캘리브레이션을 따로 측정하고 외부 검증 신호를 유지하세요.",
+      "tags": [
+        "arXiv",
+        "Mechanistic Interpretability",
+        "Calibration",
+        "Overconfidence"
+      ],
+      "priority": 82,
+      "identifier": "arXiv:2608.18106",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-18222",
+      "kind": "ai-paper",
+      "title": "반복 추론 깊이를 늘려도 붕괴하지 않는 조건을 계측한 CoRe",
+      "originalTitle": "Think Shallow, Solve Deep: Controlling Recurrent Dynamics for Reliable Test-Time Depth",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.18222",
+      "publishedAt": "2026-08-20",
+      "summary": "재귀 깊이 모델의 반복 연산을 수렴·경계·발산 동역학으로 구분하고 학습 때보다 긴 추론에서 출력이 유지되는 조건과 계측법을 제시한 연구입니다.",
+      "whyItMatters": "추론 반복을 늘리면 항상 성능이 좋아진다는 가정 대신, 배포 전에 내부 동역학과 출력 안정성을 측정할 수 있는 기준을 제공합니다.",
+      "details": [
+        "7개 재구현 구조를 고정 데이터와 동일 예산으로 비교하고 Huginn-3.5B 체크포인트에도 동역학 계측을 적용했습니다.",
+        "수렴 연산자는 학습 범위 밖에서 Sudoku 정확도가 0.19에서 0.34로 올랐고 reachability 정확도 0.92를 유지했습니다.",
+        "terminal fixed-point 목적함수를 제거하면 unseen-hard Sudoku 정확도가 0.34에서 0.03으로 낮아졌습니다."
+      ],
+      "limitations": [
+        "2026년 8월 20일 제출된 프리프린트이며 주요 평가는 Sudoku, 그래프 도달성과 덧셈 같은 합성 과제에 집중됩니다.",
+        "출력의 안정성은 정답을 보장하지 않으며 수렴 동역학을 모든 모델에서 학습할 수 있다는 보장도 없습니다."
+      ],
+      "action": "반복 추론 모델에서 추론 깊이별 정확도와 함께 상태 이동량, 출력 마진과 붕괴 여부를 회귀 시험하세요.",
+      "tags": [
+        "arXiv",
+        "Recurrent Reasoning",
+        "Test-Time Compute",
+        "Reliability"
+      ],
+      "priority": 80,
+      "identifier": "arXiv:2608.18222",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-18242",
+      "kind": "ai-paper",
+      "title": "ClosureBench, 오염을 줄인 주문형 그래프 추론 벤치마크",
+      "originalTitle": "ClosureBench: A Constructive Benchmark for Compositional Graph Reasoning",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.18242",
+      "publishedAt": "2026-08-20",
+      "summary": "프로그램으로 정답을 검증하며 인스턴스를 주문형 생성하는 26개 범주의 그래프 추론 벤치마크로, 조합 깊이와 암기 격차를 분리해 측정합니다.",
+      "whyItMatters": "고정 시험세트의 학습 오염을 줄이고 답 직접 생성과 검증 가능한 프로그램 합성의 일반화 차이를 비교할 수 있습니다.",
+      "details": [
+        "그래프 크기, 밀도와 질의 깊이를 조절하는 26개 과제 범주를 L1부터 L3 조합 수준으로 구성했습니다.",
+        "Qwen3-4B 답 생성 미세조정은 학습 분포 정확도 78.5%와 새 홀드아웃 59.2% 사이에 19.3%포인트 차이를 보였습니다.",
+        "프로그램 생성 방식으로 학습한 4B 모델은 홀드아웃 전체 정확도 94.3%를 기록했고 L1에서 L3로의 하락은 1.3%포인트였습니다."
+      ],
+      "limitations": [
+        "2026년 8월 20일 제출된 프리프린트이며 알고리즘으로 정답을 만들 수 있는 합성 그래프 과제에 한정됩니다.",
+        "암기와 프로그램 합성 실험은 주로 단일 4B 기반 모델에 의존하며 사전학습 오염 자체를 탐지하지는 않습니다."
+      ],
+      "action": "추론 모델 평가에 주문형 생성 홀드아웃과 검증 가능한 중간 프로그램을 포함해 고정 세트 암기 효과를 분리하세요.",
+      "tags": [
+        "arXiv",
+        "Reasoning Benchmark",
+        "Data Contamination",
+        "Program Synthesis"
+      ],
+      "priority": 79,
+      "identifier": "arXiv:2608.18242",
+      "evidenceLevel": "preprint"
     }
   ]
 }
