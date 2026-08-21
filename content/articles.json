@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T21:11:19+09:00",
+  "generatedAt": "2026-08-22T00:12:13+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -1528,6 +1528,97 @@
       ],
       "priority": 88,
       "identifier": "arXiv:2608.19303",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "nvd-cve-2026-77776",
+      "kind": "security",
+      "title": "Headroom LLM 프록시, 사용자 메모리 경계 우회 취약점 CVE-2026-77776 수정",
+      "originalTitle": "Headroom Proxy Treats the Client-Supplied x-headroom-user-id Header as an Authenticated Identity",
+      "source": "NIST NVD",
+      "sourceUrl": "https://nvd.nist.gov/vuln/detail/CVE-2026-77776",
+      "publishedAt": "2026-08-21",
+      "summary": "Headroom LLM 프록시 0.36.1 미만에서 클라이언트가 지정한 사용자 ID 헤더를 호출자 신원과 결합하지 않아 다른 사용자의 저장 메모리를 읽거나 변경할 수 있는 취약점이 공개됐습니다.",
+      "whyItMatters": "참조 Docker Compose처럼 프록시를 네트워크에 공개하고 토큰 인증을 강제하지 않은 배포에서는 사용자 간 LLM 메모리의 기밀성과 무결성이 함께 손상될 수 있습니다.",
+      "details": [
+        "CVE CNA 레코드는 PyPI 패키지 headroom-ai 0.36.1 미만을 영향 범위로 기록했습니다.",
+        "CNA 산정 CVSS 4.0 기본점수는 9.3이며 네트워크에서 권한과 사용자 상호작용 없이 악용 가능한 것으로 평가됐습니다.",
+        "벤더는 v0.36.1에서 사용자 헤더를 루프백·허용 목록 호출자에만 신뢰하고 그 외에는 프록시 토큰 또는 운영체제 사용자 신원에 결합하도록 변경했습니다."
+      ],
+      "limitations": [
+        "NVD 상태는 Received이며 점수와 영향 정보는 NVD 독립 분석이 아니라 CNA 제공 자료입니다.",
+        "확인 시점에 공개된 실제 악용 증거나 CISA KEV 등재는 확인되지 않았습니다."
+      ],
+      "action": "headroom-ai를 0.36.1 이상으로 올리고 프록시를 루프백에 바인딩한 뒤 토큰 인증과 사용자 ID 신뢰 허용 목록을 점검하세요.",
+      "tags": [
+        "NVD",
+        "CVE-2026-77776",
+        "Headroom",
+        "LLM Memory"
+      ],
+      "priority": 92,
+      "severity": "critical",
+      "identifier": "CVE-2026-77776",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "doi-10-3390-app16168323",
+      "kind": "ai-paper",
+      "title": "대조학습 CVAE의 NIDS 소수 공격 클래스 개선은 설정에 따라 달라짐",
+      "originalTitle": "Investigating Contrastive Learning for Conditional Variational Autoencoders in Network Intrusion Detection",
+      "source": "Applied Sciences",
+      "sourceUrl": "https://doi.org/10.3390/app16168323",
+      "publishedAt": "2026-08-21",
+      "summary": "세 가지 대조학습 손실을 CVAE에 결합해 네 개 네트워크 침입탐지 데이터셋과 네 개 분류기에서 소수 공격 클래스 합성 효과를 비교한 동료평가 논문입니다.",
+      "whyItMatters": "대조학습 기반 합성 데이터가 항상 기존 오버샘플링보다 낫지 않다는 결과는 NIDS 불균형 대응 기법을 운영 데이터에서 다시 검증해야 함을 보여줍니다.",
+      "details": [
+        "NSL-KDD, UNSW-NB15, CIC-IDS2017, CSE-CIC-IDS2018에서 RF, XGBoost, MLP, KNN을 사용했습니다.",
+        "Contrastive Loss, Soft Nearest Neighbor Loss, Supervised Contrastive Loss를 CVAE에 결합해 비대조 CVAE와 ROS, SMOTE, ADASYN을 비교했습니다.",
+        "효과는 데이터셋, 소수 클래스, 손실함수와 거리척도에 따라 달랐고 일부 조건에서는 SMOTE나 ADASYN이 F1 또는 재현율에서 더 나았습니다."
+      ],
+      "limitations": [
+        "처리된 공개 벤치마크의 표 형태 특징을 사용했으며 실제 운영 트래픽 배포 실험은 없습니다.",
+        "일부 희소 클래스의 표본이 매우 적고 CVAE가 지나치게 평활한 합성 샘플을 만들 수 있습니다."
+      ],
+      "action": "자체 트래픽과 시간 분리 테스트셋에서 클래스별 precision·recall, 경보량과 seed 변동성을 SMOTE·ADASYN 기준선과 비교하세요.",
+      "tags": [
+        "Network Intrusion Detection",
+        "CVAE",
+        "Contrastive Learning",
+        "Class Imbalance"
+      ],
+      "priority": 79,
+      "identifier": "10.3390/app16168323",
+      "evidenceLevel": "peer-reviewed"
+    },
+    {
+      "id": "arxiv-2608-19558",
+      "kind": "ai-paper",
+      "title": "금융 NER 신뢰도, 분포 이동이 커지면 선택적 예측만으로 안전 구간 확보 실패",
+      "originalTitle": "Reliable Financial Named Entity Recognition under Domain Shift",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.19558",
+      "publishedAt": "2026-08-21",
+      "summary": "SEC 문서, 금융 뉴스와 일반 소셜미디어로 분포 이동을 키우며 금융 개체명 인식 모델의 다섯 신뢰도 신호와 선택적 예측을 비교한 프리프린트입니다.",
+      "whyItMatters": "신뢰도 임계값만으로 자동화 위험을 통제하기 어려운 조건을 보여주며 분포 수준 탐지를 선택적 예측보다 앞에 배치할 근거를 제공합니다.",
+      "details": [
+        "BERT 태거와 LoRA로 조정한 Qwen2.5-0.5B·1.5B를 비교했으며 주 실험은 세 seed와 bootstrap 구간을 사용했습니다.",
+        "인도메인에서는 전체 출력 확률이 강했지만 분포 이동에서는 entity-span 확률과 self-consistency가 더 견고했습니다.",
+        "인도메인 상위 신뢰도 40%에서는 문장 오류율이 34.3%에서 2% 미만으로 줄었지만 극단적 OOD에서는 실용적인 깨끗한 부분집합을 확보하지 못했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 20일 제출된 프리프린트이며 학습 데이터는 약 1천 문장, 주 실험 모델은 0.5B급입니다.",
+        "극단적 OOD는 금융 소셜미디어가 아닌 일반 주제 데이터여서 문체·주제·시기·주석 변화가 함께 섞였고 제안한 상위 분포 탐지기는 구현하지 않았습니다."
+      ],
+      "action": "금융 NER 자동화에는 분포 이동 탐지, 지원 도메인의 abstention, 나머지 사람 검토 단계를 분리하고 운영 데이터의 risk-coverage 곡선으로 임계값을 다시 정하세요.",
+      "tags": [
+        "arXiv",
+        "Financial NER",
+        "Domain Shift",
+        "Selective Prediction"
+      ],
+      "priority": 77,
+      "identifier": "arXiv:2608.19558",
       "evidenceLevel": "preprint"
     }
   ]
