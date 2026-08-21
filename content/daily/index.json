@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-21T09:12:17+09:00",
+  "generatedAt": "2026-08-21T12:14:01+09:00",
   "editions": [
     {
       "date": "2026-08-21",
-      "generatedAt": "2026-08-21T09:12:17+09:00",
+      "generatedAt": "2026-08-21T12:14:01+09:00",
       "rankings": {
         "security": [
           {
@@ -11,7 +11,7 @@
             "itemId": "cisa-cve-2026-59310",
             "previousRank": 1,
             "status": "same",
-            "reason": "실제 악용이 확인됐고 vCenter가 가상화 환경의 중앙 관리 지점이기 때문입니다."
+            "reason": "실제 악용이 확인됐고 vCenter가 가상화 환경의 중앙 관리 지점이며 CISA 조치 기한이 오늘이기 때문입니다."
           },
           {
             "rank": 2,
@@ -22,27 +22,48 @@
           },
           {
             "rank": 3,
-            "itemId": "nvd-cve-2026-16926",
+            "itemId": "msrc-cve-2026-69836",
             "previousRank": null,
             "status": "new",
-            "reason": "AIX·VIOS에서 원격 비인증 파일 덮어쓰기가 가능하고 IBM이 우회책 없이 수정을 권고합니다."
+            "reason": "Microsoft가 Entra ID의 무인증 원격 코드 실행 취약점 악용을 확인했으며 서비스 측 완화 이후에도 로그 검토 가치가 있습니다."
           },
           {
             "rank": 4,
-            "itemId": "nvd-cve-2026-66788",
+            "itemId": "nvd-cve-2026-72843",
             "previousRank": null,
             "status": "new",
-            "reason": "침해된 spoke 클러스터에서 피어의 중요 네임스페이스로 리소스를 주입할 수 있는 CVSS 9.9 취약점입니다."
+            "reason": "무인증 고객 계정 탈취가 가능하고 EverShop 2.2.1로 수정돼 운영자가 즉시 조치할 수 있습니다."
           },
           {
             "rank": 5,
+            "itemId": "nvd-cve-2026-16926",
+            "previousRank": null,
+            "status": "new",
+            "reason": "AIX·VIOS의 188개 CVE를 해결하는 누적 패키지로 원격 코드 실행을 포함한 광범위한 노출을 한 번에 줄입니다."
+          },
+          {
+            "rank": 6,
+            "itemId": "nvd-cve-2026-67567",
+            "previousRank": null,
+            "status": "new",
+            "reason": "제한된 HelmRelease 생성 권한이 클러스터 전체 리소스 배포로 확대되며 패치 전 RBAC 완화가 필요합니다."
+          },
+          {
+            "rank": 7,
+            "itemId": "nvd-cve-2026-66788",
+            "previousRank": null,
+            "status": "new",
+            "reason": "침해된 spoke 클러스터에서 피어의 중요 네임스페이스로 리소스를 주입할 수 있습니다."
+          },
+          {
+            "rank": 8,
             "itemId": "nvd-cve-2026-66785",
             "previousRank": null,
             "status": "new",
             "reason": "침해된 spoke가 연결된 피어 클러스터의 임의 대역 트래픽을 공격자 터널로 우회시킬 수 있습니다."
           },
           {
-            "rank": 6,
+            "rank": 9,
             "itemId": "nvd-cve-2026-15706",
             "previousRank": null,
             "status": "new",
@@ -126,52 +147,52 @@
           },
           {
             "rank": 4,
+            "itemId": "arxiv-2608-18389",
+            "previousRank": null,
+            "status": "new",
+            "reason": "의미가 같은 코드 변형에서도 코드 에이전트의 해결률과 비용이 달라지는 정도를 16개 구성에서 측정했습니다."
+          },
+          {
+            "rank": 5,
+            "itemId": "arxiv-2608-18307",
+            "previousRank": null,
+            "status": "new",
+            "reason": "2,910개 UI 과제로 컴퓨터 사용 에이전트의 실패를 컴포넌트와 관측 방식별로 분해했습니다."
+          },
+          {
+            "rank": 6,
             "itemId": "arxiv-2608-17659",
             "previousRank": 1,
             "status": "down",
             "reason": "모바일 GUI 에이전트의 간접 프롬프트 인젝션 위험을 실제 앱 기반 과제로 측정했습니다."
           },
           {
-            "rank": 5,
+            "rank": 7,
             "itemId": "arxiv-2608-18115",
             "previousRank": null,
             "status": "new",
             "reason": "모델 내부 접근 없이 토큰 간 시간 정보를 결합해 미관측 생성 모델로의 환각 탐지 전이를 측정했습니다."
           },
           {
-            "rank": 6,
+            "rank": 8,
             "itemId": "arxiv-2608-18578",
             "previousRank": null,
             "status": "new",
             "reason": "평균 성능에 가려지는 4비트 양자화의 반복 갱신 문맥 검색 저하를 세 모델에서 측정했습니다."
           },
           {
-            "rank": 7,
+            "rank": 9,
             "itemId": "arxiv-2608-18106",
             "previousRank": null,
             "status": "new",
             "reason": "언어·포기·숫자 신뢰도의 과신 차이를 내부 특징 개입으로 구분해 검증했습니다."
           },
           {
-            "rank": 8,
+            "rank": 10,
             "itemId": "arxiv-2608-18222",
             "previousRank": null,
             "status": "new",
             "reason": "반복 추론 깊이를 늘릴 때 성능이 유지되거나 붕괴하는 동역학 조건을 계측했습니다."
-          },
-          {
-            "rank": 9,
-            "itemId": "arxiv-2608-18242",
-            "previousRank": null,
-            "status": "new",
-            "reason": "주문형 그래프 과제로 고정 시험세트 암기와 조합 추론 능력을 분리했습니다."
-          },
-          {
-            "rank": 10,
-            "itemId": "arxiv-2608-18274",
-            "previousRank": null,
-            "status": "new",
-            "reason": "로컬 PII·비밀정보 탐지 모델의 구조와 운용 한계를 공개해 데이터 최소화 평가에 활용할 수 있습니다."
           }
         ],
         "technology": [

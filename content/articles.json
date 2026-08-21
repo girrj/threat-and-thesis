@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T09:12:17+09:00",
+  "generatedAt": "2026-08-21T12:14:01+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -578,33 +578,34 @@
     {
       "id": "nvd-cve-2026-16926",
       "kind": "security",
-      "title": "IBM AIX·PowerVM VIOS 임의 파일 덮어쓰기 취약점 CVE-2026-16926",
-      "originalTitle": "IBM AIX and PowerVM VIOS Arbitrary File Overwrite Vulnerability",
+      "title": "IBM, AIX·PowerVM VIOS 누적 보안 업데이트로 188개 CVE 수정",
+      "originalTitle": "Security Bulletin: Vulnerabilities in IBM AIX and PowerVM VIOS",
       "source": "IBM Security Bulletin",
       "sourceUrl": "https://www.ibm.com/support/pages/node/7283858",
-      "publishedAt": "2026-08-20",
-      "summary": "IBM AIX 7.2·7.3과 PowerVM VIOS 4.1에서 원격 비인증 공격자가 임의 파일을 덮어쓸 수 있는 CVE-2026-16926이 공개됐습니다.",
-      "whyItMatters": "AIX와 VIOS의 파일 무결성과 가용성에 직접 영향을 줄 수 있고 IBM이 별도 우회책 없이 보안 수정을 권고합니다.",
+      "publishedAt": "2026-08-15",
+      "summary": "IBM이 AIX 7.2·7.3과 PowerVM VIOS 4.1의 운영체제·가상화·서드파티 구성요소에 걸친 188개 CVE를 누적 서비스 팩과 수정 팩으로 해결했습니다.",
+      "whyItMatters": "원격 코드 실행과 임의 파일 덮어쓰기 등 영향이 큰 취약점이 하나의 누적 유지보수 패키지에 포함돼 자산별 파일셋 수준과 업데이트 계획을 함께 점검해야 합니다.",
       "details": [
-        "IBM은 입력의 특수 요소를 적절히 무력화하지 않아 원격 공격자가 임의 파일을 덮어쓸 수 있다고 설명합니다.",
-        "IBM 기준 CVSS 3.1 점수는 9.1이며 기밀성 영향 없이 무결성과 가용성 영향이 높게 평가됐습니다.",
-        "AIX 7.2·7.3 서비스 팩과 VIOS 4.1 수정 팩이 제공됐으며 적용 절차는 제품별 APAR와 Fix Central에서 확인할 수 있습니다."
+        "공식 권고는 영향 파일셋으로 bos.mp64를 제시하며 AIX 7.2·7.3과 PowerVM VIOS 4.1을 영향 제품으로 명시합니다.",
+        "수정 수준은 AIX 7.3 TL04 SP2·TL03 SP3·TL02 SP5, AIX 7.2 TL05 SP13과 VIOS 4.1.2.20·4.1.1.30·4.1.0.50입니다.",
+        "서비스 팩 또는 수정 팩 적용을 마치려면 LPAR 재부팅이 필요하며 AIX에서는 Live Update를 사용할 수 있습니다."
       ],
       "limitations": [
-        "공식 권고와 NVD에서 실제 악용 정황은 확인되지 않았습니다.",
-        "영향 여부는 설치된 bos.mp64 파일셋과 서비스 팩 수준으로 확인해야 합니다."
+        "공식 권고와 CISA KEV에서 이 취약점 묶음의 실제 악용 정황은 확인되지 않았습니다.",
+        "별도 우회책은 없으며 설치된 bos.mp64 파일셋과 애플리케이션 호환성을 확인한 뒤 누적 패키지를 적용해야 합니다."
       ],
-      "action": "AIX·VIOS 자산의 파일셋 수준을 IBM 권고와 대조하고 해당 서비스 팩 또는 수정 팩을 적용하세요.",
+      "action": "AIX·VIOS 자산의 bos.mp64 수준을 IBM 권고와 대조하고 해당 서비스 팩 또는 수정 팩을 변경관리 절차에 따라 적용하세요.",
       "tags": [
         "IBM AIX",
         "PowerVM VIOS",
-        "CVE-2026-16926",
-        "Arbitrary File Overwrite"
+        "Security Bulletin",
+        "Cumulative Update"
       ],
-      "priority": 89,
+      "priority": 92,
       "severity": "critical",
-      "identifier": "CVE-2026-16926",
-      "evidenceLevel": "official"
+      "identifier": "IBM-7283858",
+      "evidenceLevel": "official",
+      "dateLabel": "수정일"
     },
     {
       "id": "doi-10-3390-electronics15163739",
@@ -906,6 +907,163 @@
       ],
       "priority": 79,
       "identifier": "arXiv:2608.18242",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "msrc-cve-2026-69836",
+      "kind": "security",
+      "title": "Microsoft, 실제 악용된 Entra ID 원격 코드 실행 취약점 공개",
+      "originalTitle": "Microsoft Entra ID Remote Code Execution Vulnerability",
+      "source": "Microsoft Security Response Center",
+      "sourceUrl": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69836",
+      "publishedAt": "2026-08-20",
+      "summary": "Microsoft가 Entra ID의 신뢰할 수 없는 데이터 역직렬화로 원격 코드 실행이 가능했던 CVE-2026-69836을 공개하고 실제 악용을 확인했습니다.",
+      "whyItMatters": "인증 없이 악용 가능한 ID 제어면 취약점이 실제 공격에 사용됐지만 Microsoft가 서비스 측에서 이미 완화해 고객 패치보다 관련 로그 보존과 후속 조사 여부 확인이 중요합니다.",
+      "details": [
+        "Microsoft는 이 취약점을 Critical로 분류하고 CVSS 3.1 기본점수 10.0을 부여했습니다.",
+        "MSRC 기록은 공개 전 악용 여부를 Exploited: Yes로 표시하고 Publicly Disclosed: No로 기록합니다.",
+        "Microsoft는 취약점을 서비스 측에서 완전히 완화했으며 고객이 적용할 별도 조치는 없다고 명시합니다."
+      ],
+      "limitations": [
+        "MSRC가 공개한 기술 정보는 취약점 유형과 영향에 한정되며 공격 시점·대상·침해지표는 제공하지 않습니다.",
+        "고객 조치가 없다는 설명은 Microsoft의 서비스 측 완화를 뜻하며 개별 테넌트의 과거 침해 여부를 보증하지 않습니다."
+      ],
+      "action": "Entra ID 감사 로그와 관련 Microsoft 알림을 보존·검토하고 조직의 ID 침해 대응 절차에 따라 이상 징후를 확인하세요.",
+      "tags": [
+        "Microsoft Entra ID",
+        "CVE-2026-69836",
+        "Remote Code Execution",
+        "Exploited"
+      ],
+      "priority": 96,
+      "severity": "critical",
+      "identifier": "CVE-2026-69836",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "nvd-cve-2026-72843",
+      "kind": "security",
+      "title": "EverShop 2.2.1, 무인증 고객 계정 탈취 취약점 수정",
+      "originalTitle": "EverShop Missing Authorization Allows Unauthenticated Account Takeover",
+      "source": "EverShop GitHub",
+      "sourceUrl": "https://github.com/evershopcommerce/evershop/issues/952",
+      "publishedAt": "2026-08-20",
+      "summary": "EverShop 2.2.1 미만에서 고객 UUID를 아는 무인증 요청자가 이메일과 비밀번호를 덮어써 계정을 탈취할 수 있는 CVE-2026-72843이 공개됐습니다.",
+      "whyItMatters": "인터넷 쇼핑몰 고객 계정의 인증 정보를 직접 바꿀 수 있고 수정 버전이 제공돼 운영자가 즉시 설치 버전과 업그레이드 계획을 확인할 수 있습니다.",
+      "details": [
+        "고객 갱신 API가 공개 라우트로 선언되고 요청자가 해당 고객의 소유자인지 확인하지 않은 것이 원인입니다.",
+        "고객 UUID는 주문 확인 메일 링크와 관리 URL 등에 포함될 수 있다고 CNA 기록이 설명합니다.",
+        "EverShop 2.2.1은 해당 라우트를 비공개로 바꾸며 릴리스 노트는 보안 수정 때문에 신속한 업그레이드를 권고합니다."
+      ],
+      "limitations": [
+        "NVD 기록은 아직 Received 상태이며 CVSS 3.1 9.8은 VulnCheck CNA가 제출한 점수입니다.",
+        "공식 이슈와 릴리스에서 실제 악용 정황은 확인되지 않았습니다.",
+        "2.2.1에는 데이터베이스 마이그레이션과 호환성 변경이 포함돼 업그레이드 전 릴리스 노트를 확인해야 합니다."
+      ],
+      "action": "EverShop 버전을 확인해 2.2.1 이상으로 올리고 업그레이드 전 확장 기능과 데이터베이스 마이그레이션을 시험하세요.",
+      "tags": [
+        "EverShop",
+        "CVE-2026-72843",
+        "Account Takeover",
+        "Missing Authorization"
+      ],
+      "priority": 91,
+      "severity": "critical",
+      "identifier": "CVE-2026-72843",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "nvd-cve-2026-67567",
+      "kind": "security",
+      "title": "Red Hat ACM, HelmRelease 권한이 클러스터 전체 장악으로 확대되는 취약점 공개",
+      "originalTitle": "Red Hat Advanced Cluster Management HelmRelease Privilege Escalation",
+      "source": "Red Hat Product Security",
+      "sourceUrl": "https://access.redhat.com/security/cve/CVE-2026-67567",
+      "publishedAt": "2026-08-11",
+      "summary": "Red Hat Advanced Cluster Management의 HelmRelease 컨트롤러가 높은 ServiceAccount 권한으로 템플릿을 처리해 테넌트가 클러스터 전역에 임의 리소스를 배포할 수 있는 CVE-2026-67567이 공개됐습니다.",
+      "whyItMatters": "멀티테넌트 환경에서 제한된 사용자 권한이 클러스터 전체 권한으로 확대될 수 있으며 수정 패키지가 제시되기 전에도 RBAC으로 공격 조건을 줄일 수 있습니다.",
+      "details": [
+        "공격자는 클러스터 안에서 HelmRelease 사용자 정의 리소스를 생성할 권한이 있어야 합니다.",
+        "Red Hat은 ACM 2의 multicluster-operators-subscription-rhel9 패키지를 Affected로 표시하고 제품 심각도를 Important로 분류합니다.",
+        "공식 완화책은 신뢰하지 않는 테넌트가 HelmRelease 객체를 생성하거나 수정하지 못하도록 엄격한 RBAC을 적용하는 것입니다."
+      ],
+      "limitations": [
+        "Red Hat 공개 기록에는 아직 영향이 해소된 패키지나 보안 권고가 제시되지 않았습니다.",
+        "CVSS 3.1 9.9는 Red Hat CNA 점수이며 Red Hat 데이터에서 상태가 draft로 표시됩니다.",
+        "공식 기록과 CISA KEV에서 실제 악용 정황은 확인되지 않았습니다."
+      ],
+      "action": "ACM 클러스터에서 HelmRelease 생성·수정 권한을 감사하고 신뢰하지 않는 테넌트의 권한을 RBAC으로 제한하세요.",
+      "tags": [
+        "Red Hat ACM",
+        "Kubernetes",
+        "HelmRelease",
+        "CVE-2026-67567"
+      ],
+      "priority": 89,
+      "severity": "critical",
+      "identifier": "CVE-2026-67567",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "arxiv-2608-18389",
+      "kind": "ai-paper",
+      "title": "코드 형태만 바꿔도 에이전트 해결률과 비용이 흔들리는 Jagged Frontier",
+      "originalTitle": "A Jagged Frontier: Evaluating Robustness of Code Agents to Semantics-Preserving Transformations",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.18389",
+      "publishedAt": "2026-08-18",
+      "summary": "의미를 보존하는 코드 변환을 적용한 SWE-bench 계열 54개 과제에서 두 에이전트 프레임워크와 네 모델의 문제 해결 강건성을 비교한 프리프린트입니다.",
+      "whyItMatters": "코드 에이전트의 성능이 기능적으로 같은 코드 표현과 실행 프레임워크에 따라 달라져 배포 전 변형 기반 회귀 시험이 필요하다는 근거를 제공합니다.",
+      "details": [
+        "제어 흐름 변경, 사용되지 않는 코드 삽입, 식별자 변경 등 14개 변환을 프로젝트 테스트 스위트의 차등 실행으로 확인했습니다.",
+        "16개 모델·프레임워크 구성 중 13개에서 평균 해결률이 낮아졌고 6개 구성은 95% 구간이 0을 제외했습니다.",
+        "가장 큰 평균 해결률 하락은 6.7%포인트였고 성공한 작업에서도 토큰 비용이 구성에 따라 최대 22.9% 증가했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 18일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "SWE-bench Verified 28건과 Pro 26건, Python 저장소, 두 프레임워크와 네 모델에 한정됩니다.",
+        "변환의 의미 보존은 형식 증명이 아니라 프로젝트 테스트 스위트에 대한 차등 시험으로 확인했습니다."
+      ],
+      "action": "코드 에이전트 평가에 식별자 변경과 제어 흐름 변환 같은 의미 보존 변형을 포함해 해결률·비용 회귀를 측정하세요.",
+      "tags": [
+        "arXiv",
+        "Code Agent",
+        "SWE-bench",
+        "Robustness"
+      ],
+      "priority": 88,
+      "identifier": "arXiv:2608.18389",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-18307",
+      "kind": "ai-paper",
+      "title": "ComponentBench, 컴퓨터 사용 에이전트의 UI 컴포넌트 실패를 분해 측정",
+      "originalTitle": "ComponentBench: Diagnosing Component-Level Failures in Computer-Use Agents",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.18307",
+      "publishedAt": "2026-08-18",
+      "summary": "97개 UI 컴포넌트 유형을 세 라이브러리로 구현한 2,910개 과제에서 컴퓨터 사용 에이전트 일곱 종의 성공률과 실행 효율을 진단한 프리프린트입니다.",
+      "whyItMatters": "긴 업무 성공률만으로는 찾기 어려운 드래그·드롭과 탐색 등 개별 상호작용의 병목을 모델과 관측 방식별로 분리해 평가할 수 있습니다.",
+      "details": [
+        "GPT-5 mini는 접근성 트리 조건에서 83.1%, 픽셀 전용 조건에서 48.9%의 성공률을 기록했습니다.",
+        "컴포넌트 계열 평균 성공률은 명령·탐색 91.6%, 드래그·드롭·작업공간 47.7%로 차이가 났습니다.",
+        "가장 빠른 에이전트 구성도 대응하는 사람 기준보다 실행 시간이 3.7배 길었습니다."
+      ],
+      "limitations": [
+        "2026년 8월 18일 제출된 프리프린트이며 arXiv 메타데이터의 COLM 2026 표기는 저자 제공 정보입니다.",
+        "Chromium 기반 웹 UI에 한정되고 CAPTCHA와 맞춤형 위젯은 포함하지 않았습니다.",
+        "주 결과는 모델·모드당 단일 실행이며 컴포넌트 점수가 장기 업무 성공을 예측하는지는 검증하지 않았습니다."
+      ],
+      "action": "컴퓨터 사용 에이전트 평가를 UI 컴포넌트별로 나누고 관측 방식별 성공률과 사람 대비 실행 시간을 함께 기록하세요.",
+      "tags": [
+        "arXiv",
+        "Computer-Use Agent",
+        "GUI Benchmark",
+        "ComponentBench"
+      ],
+      "priority": 87,
+      "identifier": "arXiv:2608.18307",
       "evidenceLevel": "preprint"
     }
   ]
