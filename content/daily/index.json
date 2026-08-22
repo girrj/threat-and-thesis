@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-22T12:12:30+09:00",
+  "generatedAt": "2026-08-22T21:11:43+09:00",
   "editions": [
     {
       "date": "2026-08-22",
-      "generatedAt": "2026-08-22T12:12:30+09:00",
+      "generatedAt": "2026-08-22T21:11:43+09:00",
       "rankings": {
         "security": [
           {
@@ -36,45 +36,45 @@
           },
           {
             "rank": 5,
+            "itemId": "nvd-cve-2026-78003",
+            "previousRank": null,
+            "status": "new",
+            "reason": "인증 없이 Mailgun API 키를 악용해 비밀번호 재설정 메일을 가로챌 수 있고 공식 수정판이 제공됩니다."
+          },
+          {
+            "rank": 6,
             "itemId": "nvd-cve-2026-77776",
             "previousRank": null,
             "status": "new",
             "reason": "네트워크에 노출된 Headroom LLM 프록시에서 다른 사용자의 메모리를 읽거나 변경할 수 있고 수정 버전이 공개됐습니다."
           },
           {
-            "rank": 6,
+            "rank": 7,
             "itemId": "nvd-cve-2026-77264",
             "previousRank": 4,
             "status": "down",
             "reason": "공식 저장소 안정 버전까지 영향을 받는 무인증 관리자 사칭 취약점이며 확인된 수정판이 없어 자산 조사가 필요합니다."
           },
           {
-            "rank": 7,
+            "rank": 8,
             "itemId": "nvd-cve-2026-72843",
             "previousRank": 5,
             "status": "down",
             "reason": "무인증 고객 계정 탈취가 가능하고 EverShop 2.2.1로 수정돼 운영자가 즉시 조치할 수 있습니다."
           },
           {
-            "rank": 8,
+            "rank": 9,
             "itemId": "nvd-cve-2026-16926",
             "previousRank": 6,
             "status": "down",
             "reason": "AIX·VIOS의 188개 CVE를 해결하는 누적 패키지로 광범위한 노출을 줄입니다."
           },
           {
-            "rank": 9,
+            "rank": 10,
             "itemId": "nvd-cve-2026-67567",
             "previousRank": 7,
             "status": "down",
             "reason": "제한된 HelmRelease 생성 권한이 클러스터 전체 리소스 배포로 확대되며 패치 전 RBAC 완화가 필요합니다."
-          },
-          {
-            "rank": 10,
-            "itemId": "nvd-cve-2026-66788",
-            "previousRank": 8,
-            "status": "down",
-            "reason": "침해된 spoke 클러스터에서 피어의 중요 네임스페이스로 리소스를 주입할 수 있습니다."
           }
         ],
         "ai-security": [
