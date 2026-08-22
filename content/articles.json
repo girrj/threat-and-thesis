@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T06:15:45+09:00",
+  "generatedAt": "2026-08-22T09:11:58+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -1893,6 +1893,68 @@
       ],
       "priority": 84,
       "identifier": "arXiv:2608.19807",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-19901",
+      "kind": "ai-paper",
+      "title": "MaliciousSkillBench, 악성 에이전트 스킬 탐지의 출처 일반화 실패 측정",
+      "originalTitle": "MaliciousSkillBench: A Comprehensive Benchmark for Malicious Agent Skill Detection",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.19901",
+      "publishedAt": "2026-08-20",
+      "summary": "13개 공개 출처의 에이전트 스킬을 정규화해 악성 7,505개와 정상 2,235개로 구성한 탐지 벤치마크를 제시한 프리프린트입니다.",
+      "whyItMatters": "에이전트 스킬은 지침·스크립트·서비스 설정을 함께 배포할 수 있어, 출처가 달라져도 탐지 성능이 유지되는지 검증해야 공급망 통제에 사용할 수 있습니다.",
+      "details": [
+        "8,414개 악성 원시 레코드를 7,539개 고유 항목과 4,588개 구조적 계열로 정리했습니다.",
+        "학습형 탐지기의 Macro-F1은 무작위 분할에서 0.882~0.932였지만 출처 분리 평가에서는 0.653~0.665로 낮아졌습니다.",
+        "가장 강한 단어 TF-IDF SVM은 출처 분리 평가에서 악성 재현율 95.6%와 정상 오탐률 62.4%를 함께 기록했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 20일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "정적 스킬 아티팩트를 평가해 패키지 스크립트와 실행 중 동작은 포함하지 않았습니다.",
+        "정상 스킬 출처가 악성 출처보다 좁고 공격·영향 분류가 모든 악성 항목에 제공되지는 않습니다."
+      ],
+      "action": "스킬 탐지기를 무작위 분할뿐 아니라 출처 분리 데이터로 평가하고 오탐 항목은 격리·사람 검토·샌드박스 단계와 결합하세요.",
+      "tags": [
+        "arXiv",
+        "Agent Skills",
+        "Supply Chain",
+        "Benchmark"
+      ],
+      "priority": 93,
+      "identifier": "arXiv:2608.19901",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-20011",
+      "kind": "ai-paper",
+      "title": "Flow 선호 최적화의 보상 해킹 원인으로 매니폴드 이탈 제시",
+      "originalTitle": "Manifold Drift in Flow Preference Optimization: A Root Cause of Reward Hacking",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.20011",
+      "publishedAt": "2026-08-20",
+      "summary": "Flow 기반 생성 모델의 선호 최적화가 사전학습 분포 밖으로 샘플을 이동시키는 조건을 매니폴드 이탈로 정식화하고 완화 목적함수 ThermoDPO를 제안한 프리프린트입니다.",
+      "whyItMatters": "보상 지표 상승만으로 생성 품질과 분포 보존을 판단하면 정렬 과정의 보상 해킹을 놓칠 수 있어 별도 품질·분포 검사가 필요합니다.",
+      "details": [
+        "선호 업데이트가 만든 종단 변위에 매니폴드 법선 성분이 있으면 사전학습 지지집합을 벗어난다는 충분조건을 제시합니다.",
+        "ThermoDPO는 선호 쌍 목적함수에 선호 샘플 기준점을 더해 재구성 거리 대리값을 제어합니다.",
+        "저자 실험에서 가중 ThermoDPO는 장난감 과제 StrictScore 0.899를 기록했고 SD3.5-M 설정에서 네 지표 평균을 기준 모델보다 16.0% 높였다고 보고합니다."
+      ],
+      "limitations": [
+        "2026년 8월 20일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "고정된 승자·패자 데이터의 오프라인 설정만 다뤄 온라인 RLHF의 탐색과 보상 갱신은 검증하지 않았습니다.",
+        "이론적 상계는 개별 재구성 기준이며 전체 생성 분포 보존을 보장하지 않고, 실증도 장난감 과제와 단일 이미지 모델 설정 중심입니다."
+      ],
+      "action": "선호 미세조정에서 보상 점수와 함께 보류 데이터 품질, 사람 평가, 재구성 거리와 분포 이탈 지표를 같은 학습 예산으로 비교하세요.",
+      "tags": [
+        "arXiv",
+        "Preference Optimization",
+        "Reward Hacking",
+        "Flow Matching"
+      ],
+      "priority": 88,
+      "identifier": "arXiv:2608.20011",
       "evidenceLevel": "preprint"
     }
   ]
