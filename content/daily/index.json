@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-22T09:11:58+09:00",
+  "generatedAt": "2026-08-22T12:12:30+09:00",
   "editions": [
     {
       "date": "2026-08-22",
-      "generatedAt": "2026-08-22T09:11:58+09:00",
+      "generatedAt": "2026-08-22T12:12:30+09:00",
       "rankings": {
         "security": [
           {
@@ -175,66 +175,66 @@
           },
           {
             "rank": 2,
+            "itemId": "arxiv-2608-20055",
+            "previousRank": null,
+            "status": "new",
+            "reason": "도구 호출 사이에 유지되는 추론 상태로 숨은 사고 흔적을 추출해 에이전트 API의 새로운 정보 노출면을 확인했습니다."
+          },
+          {
+            "rank": 3,
             "itemId": "arxiv-2608-19901",
             "previousRank": null,
             "status": "new",
             "reason": "악성 에이전트 스킬 탐지기가 출처 분리 평가에서 정상 항목을 대량 오탐하는 공급망 검증 공백을 측정했습니다."
           },
           {
-            "rank": 3,
+            "rank": 4,
             "itemId": "arxiv-2608-19741",
             "previousRank": null,
             "status": "new",
             "reason": "상태 변경 업무를 반복 실행해 에이전트의 단발 성공률과 지속 신뢰성 사이의 격차를 측정했습니다."
           },
           {
-            "rank": 4,
+            "rank": 5,
             "itemId": "arxiv-2608-18136",
             "previousRank": 2,
             "status": "down",
             "reason": "인증·정책·권한 도구가 결합된 은행 환경에서 적응형 사기 대응 에이전트의 실패를 평가했습니다."
           },
           {
-            "rank": 5,
+            "rank": 6,
             "itemId": "arxiv-2608-19799",
             "previousRank": null,
             "status": "new",
             "reason": "과학 소프트웨어 수리에서 공개 테스트를 통과해도 숨은 과학적 계약을 위반하는 에이전트 패치를 측정했습니다."
           },
           {
-            "rank": 6,
+            "rank": 7,
+            "itemId": "arxiv-2608-20122",
+            "previousRank": null,
+            "status": "new",
+            "reason": "사람에게 보이는 적대적 시각 텍스트를 LMM이 놓치는 조건과 영역 수준 방어 성능을 함께 측정했습니다."
+          },
+          {
+            "rank": 8,
             "itemId": "arxiv-2608-19807",
             "previousRank": null,
             "status": "new",
             "reason": "자기일관성으로 놓치는 물리 추론 VLM의 안정적 오답과 텍스트 선입견을 개입 검사로 선별했습니다."
           },
           {
-            "rank": 7,
+            "rank": 9,
             "itemId": "arxiv-2608-19652",
             "previousRank": null,
             "status": "new",
             "reason": "다중 세션에서 에이전트 메모리가 최신 상태와 폐기된 상태를 구분하는지 실행 과제로 측정했습니다."
           },
           {
-            "rank": 8,
+            "rank": 10,
             "itemId": "arxiv-2608-20011",
             "previousRank": null,
             "status": "new",
             "reason": "Flow 선호 최적화의 보상 상승과 생성 분포 이탈을 함께 설명하고 이를 줄이는 목적함수를 평가했습니다."
-          },
-          {
-            "rank": 9,
-            "itemId": "arxiv-2608-19861",
-            "previousRank": 3,
-            "status": "down",
-            "reason": "에이전트의 단일 행동이 아니라 전체 업무 절차와 지속 상태를 정책 그래프로 검증했습니다."
-          },
-          {
-            "rank": 10,
-            "itemId": "arxiv-2608-19737",
-            "previousRank": 4,
-            "status": "down",
-            "reason": "자막 노출 시간 조절이 여러 멀티모달 모델의 공통 안전 우회면이 될 수 있음을 실험했습니다."
           }
         ],
         "technology": [

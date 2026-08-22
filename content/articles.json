@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T09:11:58+09:00",
+  "generatedAt": "2026-08-22T12:12:30+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -1955,6 +1955,68 @@
       ],
       "priority": 88,
       "identifier": "arXiv:2608.20011",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-20055",
+      "kind": "ai-paper",
+      "title": "EchoCoT, 도구 호출 사이에서 숨은 추론 흔적 추출",
+      "originalTitle": "EchoCoT: Extracting Hidden Chain-of-Thought from Large Reasoning Models",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.20055",
+      "publishedAt": "2026-08-20",
+      "summary": "도구 호출 사이에 유지되는 추론 상태와 API 신호를 이용해 블랙박스 추론 모델의 숨은 사고 흔적을 근접 원문 형태로 추출한 프리프린트입니다.",
+      "whyItMatters": "도구 사용 에이전트에서는 최종 답변을 숨기는 것만으로 내부 추론 자산을 보호할 수 없으며 도구 왕복 상태와 사용량 신호까지 위협 모델에 포함해야 합니다.",
+      "details": [
+        "공개 추론 모델 3종과 비공개 프런티어 모델 5종을 평가했습니다.",
+        "공개 모델에서 길이 오차 10% 이내·토큰 정확 일치 90% 이상 기준으로 최대 66.4%의 추출 성공률을 보고했습니다.",
+        "시스템 프롬프트 방어와 API 길이 신호 제한은 공격 성공률을 낮췄지만 적응형 공격을 완전히 막지는 못했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 20일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "비공개 모델은 실제 추론 흔적과 토크나이저를 확인할 수 없어 길이와 공개 요약을 이용한 간접 검증에 의존합니다.",
+        "저자 주석에 따르면 공개 뒤 일부 제공자가 취약 동작을 수정해 해당 서비스에서 당시 공격은 더 이상 재현되지 않습니다."
+      ],
+      "action": "도구 출력을 신뢰하지 않는 입력으로 처리하고 도구 왕복 뒤 추론 상태 재생과 사용량 기반 길이 추정을 함께 레드팀 시험하세요.",
+      "tags": [
+        "arXiv",
+        "Chain of Thought",
+        "Tool Use",
+        "Model Security"
+      ],
+      "priority": 93,
+      "identifier": "arXiv:2608.20055",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-20122",
+      "kind": "ai-paper",
+      "title": "ArmorOCR, 멀티모달 모델의 적대적 시각 텍스트 인식 평가",
+      "originalTitle": "ArmorOCR: Grounded Adversarial Visual Perception via Observation-Transferred Self-Distillation",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.20122",
+      "publishedAt": "2026-08-20",
+      "summary": "사람은 읽을 수 있지만 멀티모달 모델이 놓치거나 오독하는 시각 텍스트를 영역 탐지와 인식으로 함께 평가하고 방어 학습을 제안한 프리프린트입니다.",
+      "whyItMatters": "화면과 문서의 OCR 결과로 행동하는 에이전트는 문자열 인식 실패뿐 아니라 텍스트 위치를 놓치는 문제도 명령 우회와 오작동의 입력면이 될 수 있습니다.",
+      "details": [
+        "AdvSpot은 390개 이미지에 5개 상위 범주와 13개 세부 적대적 OCR 유형의 영역 주석을 제공합니다.",
+        "Qwen3-VL-8B 기반 ArmorOCR는 AdvSpot에서 평균 정확도 55.7%와 평균 위치 IoU 63.3%를 보고했습니다.",
+        "같은 기반 모델의 평균 정확도 31.2%와 위치 IoU 49.1%보다 높았고 일반 OCR 벤치마크 성능은 비슷한 수준으로 보고됐습니다."
+      ],
+      "limitations": [
+        "2026년 8월 20일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "자체 벤치마크는 390개 이미지이고 합성 학습 데이터와 단일 8B 백본에 의존해 실제 웹 UI·문서·다국어 환경 일반화는 확인되지 않았습니다.",
+        "독립된 외부 재현과 다른 멀티모달 모델 계열의 검증이 필요합니다."
+      ],
+      "action": "OCR 기반 에이전트의 회귀 시험에 회전·반전·저대비·배경 융합 텍스트를 넣고 영역 좌표와 원본 화면을 함께 확인한 뒤 고위험 명령은 승인 절차로 보호하세요.",
+      "tags": [
+        "arXiv",
+        "Adversarial OCR",
+        "Multimodal Security",
+        "Vision-Language Model"
+      ],
+      "priority": 88,
+      "identifier": "arXiv:2608.20122",
       "evidenceLevel": "preprint"
     }
   ]
