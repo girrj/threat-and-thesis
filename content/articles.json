@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T21:11:39+09:00",
+  "generatedAt": "2026-08-25T00:21:27+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -2391,6 +2391,38 @@
       "priority": 90,
       "identifier": "arXiv:2608.21100",
       "evidenceLevel": "preprint"
+    },
+    {
+      "id": "nvd-cve-2026-67602",
+      "kind": "security",
+      "title": "phpIPAM REST API 인증 우회 취약점 CVE-2026-67602 수정",
+      "originalTitle": "CVE-2026-67602: phpIPAM REST API Authentication Bypass",
+      "source": "phpIPAM",
+      "sourceUrl": "https://github.com/phpipam/phpipam/releases/tag/v1.8.2",
+      "publishedAt": "2026-08-24",
+      "summary": "phpIPAM 1.8.2 미만의 REST API 객체 캐시가 조회 열을 구분하지 않아 인증되지 않은 공격자가 숫자형 레코드 ID를 API 토큰처럼 사용할 수 있는 취약점이 공개됐습니다.",
+      "whyItMatters": "외부에 노출된 phpIPAM API에서 IP 주소 관리 레코드를 인증 없이 읽고 변경하거나 삭제할 수 있어 버전 확인과 업데이트가 필요합니다.",
+      "details": [
+        "VulnCheck CNA와 NVD는 phpIPAM 1.8.2 미만을 영향 버전으로 기록합니다.",
+        "CNA 설명은 app_id 조회 캐시가 app_code 조회를 만족시켜 REST API 인증을 우회할 수 있다고 밝힙니다.",
+        "phpIPAM 1.8.2 릴리스 노트와 CVE를 명시한 공식 패치 커밋은 캐시 키에 테이블과 조회 식별자를 포함하도록 수정했습니다."
+      ],
+      "limitations": [
+        "NVD 상태는 Received이며 점수와 영향 설명은 NVD의 독립 분석이 아니라 VulnCheck CNA 자료입니다.",
+        "확인 시점에 CISA KEV 등재나 실제 악용 근거는 확인되지 않았습니다.",
+        "공식 릴리스 노트는 수정 사실을 확인하지만 별도 보안 권고에서 공격 지표나 로그 흔적을 제공하지 않습니다."
+      ],
+      "action": "phpIPAM을 1.8.2 이상으로 업데이트하고, 업데이트 전에는 REST API 외부 노출을 제한한 뒤 비정상 대량 조회·변경·삭제 기록과 기존 API 자격증명을 점검하세요.",
+      "tags": [
+        "phpIPAM",
+        "REST API",
+        "Authentication Bypass",
+        "CVE-2026-67602"
+      ],
+      "priority": 90,
+      "severity": "critical",
+      "identifier": "CVE-2026-67602",
+      "evidenceLevel": "official"
     }
   ]
 }
