@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T03:12:39+09:00",
+  "generatedAt": "2026-08-25T06:10:25+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -2454,6 +2454,69 @@
       "severity": "critical",
       "identifier": "CVE-2026-77915",
       "evidenceLevel": "official"
+    },
+    {
+      "id": "cisa-cve-2026-21962",
+      "kind": "security",
+      "title": "CISA, 실제 악용된 Oracle HTTP Server 접근통제 취약점 긴급 조치 요구",
+      "originalTitle": "Oracle HTTP Server and Oracle Weblogic Server Proxy Plug-in Improper Access Control Vulnerability",
+      "source": "CISA Known Exploited Vulnerabilities",
+      "sourceUrl": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-21962",
+      "publishedAt": "2026-08-24",
+      "summary": "CISA가 Oracle HTTP Server와 WebLogic Server Proxy Plug-in의 접근통제 취약점 CVE-2026-21962를 실제 악용 목록에 추가했습니다.",
+      "whyItMatters": "인증 없이 HTTP로 접근해 중요 데이터를 조회·생성·변경·삭제할 수 있어 외부 노출 자산의 패치와 침해 흔적 점검이 시급합니다.",
+      "details": [
+        "Oracle은 지원 버전 12.2.1.4.0, 14.1.1.0.0, 14.1.2.0.0을 영향 대상으로 명시하며 IIS용 Proxy Plug-in은 12.2.1.4.0만 해당한다고 설명합니다.",
+        "CISA는 2026년 8월 24일 이 취약점을 KEV에 추가했고 연방기관 조치 기한을 8월 27일로 정했습니다.",
+        "Oracle의 2026년 1월 Critical Patch Update에 이 취약점의 보안 수정이 포함돼 있습니다."
+      ],
+      "limitations": [
+        "CISA는 알려진 랜섬웨어 캠페인 사용 여부를 Unknown으로 표시합니다.",
+        "공개 권고만으로 공격 주체, 침해 규모, 최초 악용 시점은 확인되지 않습니다."
+      ],
+      "action": "영향 버전의 Oracle HTTP Server와 WebLogic Proxy Plug-in에 January 2026 CPU 수정을 적용하고 외부 노출 및 비정상 데이터 접근·변경 흔적을 점검하세요.",
+      "tags": [
+        "CISA KEV",
+        "Oracle",
+        "CVE-2026-21962",
+        "Access Control"
+      ],
+      "priority": 99,
+      "severity": "critical",
+      "identifier": "CVE-2026-21962",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "arxiv-2608-20664",
+      "kind": "ai-paper",
+      "title": "DreamBench-SWE, 다중 세션 소프트웨어 에이전트의 메모리 위생 평가",
+      "originalTitle": "DreamBench-SWE: A Multi-Session Memory-Hygiene Benchmark for Software Agents",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.20664",
+      "publishedAt": "2026-08-21",
+      "summary": "이전 세션에서만 얻을 수 있는 정보를 후속 코드 작업에 연결하고 숨은 실행 오라클로 결과를 판정하는 소프트웨어 에이전트 메모리 벤치마크를 제안했습니다.",
+      "whyItMatters": "장기 메모리는 오래된 지시와 잘못 학습한 실패 원인을 다음 작업으로 전파할 수 있어 정확한 보존뿐 아니라 폐기·대체 규칙도 실행 기반으로 검증해야 합니다.",
+      "details": [
+        "별도로 사전등록한 후속 감사에서 외부 메모리 없음은 21/180, 결정적 원문 이벤트 메모리는 82/180, typed-plus-raw 참조 방식은 83/180, 고정된 Mem0 literal-storage 설정은 97/180을 통과했습니다.",
+        "사용 가능한 세 메모리 조건은 no-memory 조건과 비교한 Holm 보정 검정에서 모두 차이를 보였습니다.",
+        "원래 실험의 typed-plus-raw hybrid와 원문 이벤트 메모리 비교는 95/180 대 89/180으로 유의하지 않아 메모리 방식 사이의 우월성은 입증하지 못했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 21일 제출된 단독 저자 프리프린트이며 동료평가 전 결과입니다.",
+        "큐레이션된 fixture 저장소와 한 모델 계열 중심 평가여서 실제 대규모 저장소와 다른 에이전트로 일반화되지 않았습니다.",
+        "외부 메모리 제품은 고정된 Mem0 literal-storage 설정 하나만 평가해 제품 전체의 성능이나 메커니즘 우위를 뜻하지 않습니다."
+      ],
+      "action": "에이전트 장기 메모리를 도입하기 전에 no-memory와 원문 이벤트 기준선을 유지하고 stale fact·대체된 지시·잘못 학습한 실패 원인을 다중 세션 실행 테스트로 회귀 평가하세요.",
+      "tags": [
+        "arXiv",
+        "Software Agent",
+        "Agent Memory",
+        "Benchmark"
+      ],
+      "priority": 89,
+      "severity": "info",
+      "identifier": "arXiv:2608.20664",
+      "evidenceLevel": "preprint"
     }
   ]
 }

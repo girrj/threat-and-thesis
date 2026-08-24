@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-25T03:12:39+09:00",
+  "generatedAt": "2026-08-25T06:10:25+09:00",
   "editions": [
     {
       "date": "2026-08-25",
-      "generatedAt": "2026-08-25T03:12:39+09:00",
+      "generatedAt": "2026-08-25T06:10:25+09:00",
       "rankings": {
         "security": [
           {
@@ -15,66 +15,66 @@
           },
           {
             "rank": 2,
-            "itemId": "cisa-cve-2026-59310",
-            "previousRank": 2,
-            "status": "same",
-            "reason": "실제 악용이 확인됐고 vCenter가 가상화 환경의 중앙 관리 지점이며 미조치 자산 확인이 시급합니다."
+            "itemId": "cisa-cve-2026-21962",
+            "previousRank": null,
+            "status": "new",
+            "reason": "실제 악용이 확인됐고 Oracle의 공식 수정과 CISA의 8월 27일 조치 기한이 있어 즉시 대응이 필요합니다."
           },
           {
             "rank": 3,
-            "itemId": "cisa-trueconf-cve-2026-72529-72530",
-            "previousRank": 3,
-            "status": "same",
-            "reason": "실제 악용된 원격 비인증 실행과 격리 탈출 취약점이 함께 KEV에 올라 노출 확인과 패치가 필요합니다."
+            "itemId": "cisa-cve-2026-59310",
+            "previousRank": 2,
+            "status": "down",
+            "reason": "실제 악용이 확인됐고 vCenter가 가상화 환경의 중앙 관리 지점이며 미조치 자산 확인이 시급합니다."
           },
           {
             "rank": 4,
-            "itemId": "msrc-cve-2026-69836",
-            "previousRank": 4,
-            "status": "same",
-            "reason": "Microsoft가 Entra ID의 무인증 원격 코드 실행 취약점 악용을 확인해 로그 검토 가치가 있습니다."
+            "itemId": "cisa-trueconf-cve-2026-72529-72530",
+            "previousRank": 3,
+            "status": "down",
+            "reason": "실제 악용된 원격 비인증 실행과 격리 탈출 취약점이 함께 KEV에 올라 노출 확인과 패치가 필요합니다."
           },
           {
             "rank": 5,
-            "itemId": "nvd-cve-2026-78003",
-            "previousRank": 5,
-            "status": "same",
-            "reason": "인증 없이 Mailgun API 키를 악용해 비밀번호 재설정 메일을 가로챌 수 있고 공식 수정판이 제공됩니다."
+            "itemId": "msrc-cve-2026-69836",
+            "previousRank": 4,
+            "status": "down",
+            "reason": "Microsoft가 Entra ID의 무인증 원격 코드 실행 취약점 악용을 확인해 로그 검토 가치가 있습니다."
           },
           {
             "rank": 6,
-            "itemId": "nvd-cve-2026-77776",
-            "previousRank": 6,
-            "status": "same",
-            "reason": "네트워크에 노출된 Headroom LLM 프록시에서 다른 사용자의 메모리를 읽거나 변경할 수 있고 수정 버전이 공개됐습니다."
+            "itemId": "nvd-cve-2026-78003",
+            "previousRank": 5,
+            "status": "down",
+            "reason": "인증 없이 Mailgun API 키를 악용해 비밀번호 재설정 메일을 가로챌 수 있고 공식 수정판이 제공됩니다."
           },
           {
             "rank": 7,
-            "itemId": "nvd-cve-2026-77264",
-            "previousRank": 7,
-            "status": "same",
-            "reason": "공식 저장소 안정 버전까지 영향을 받는 무인증 관리자 사칭 취약점이며 확인된 수정판이 없어 자산 조사가 필요합니다."
+            "itemId": "nvd-cve-2026-77776",
+            "previousRank": 6,
+            "status": "down",
+            "reason": "네트워크에 노출된 Headroom LLM 프록시에서 다른 사용자의 메모리를 읽거나 변경할 수 있고 수정 버전이 공개됐습니다."
           },
           {
             "rank": 8,
+            "itemId": "nvd-cve-2026-77264",
+            "previousRank": 7,
+            "status": "down",
+            "reason": "공식 저장소 안정 버전까지 영향을 받는 무인증 관리자 사칭 취약점이며 확인된 수정판이 없어 자산 조사가 필요합니다."
+          },
+          {
+            "rank": 9,
             "itemId": "nvd-cve-2026-77915",
             "previousRank": null,
             "status": "new",
             "reason": "인증 없이 관리자 계정을 만들 수 있고 패치 뒤에도 생성 계정이 남아 업데이트와 계정·자격증명 점검이 모두 필요합니다."
           },
           {
-            "rank": 9,
+            "rank": 10,
             "itemId": "nvd-cve-2026-67602",
             "previousRank": null,
             "status": "new",
             "reason": "인증 없이 IP 주소 관리 레코드를 읽고 변경하거나 삭제할 수 있고 phpIPAM 1.8.2 수정판이 제공됩니다."
-          },
-          {
-            "rank": 10,
-            "itemId": "nvd-cve-2026-72843",
-            "previousRank": 8,
-            "status": "down",
-            "reason": "무인증 고객 계정 탈취가 가능하고 EverShop 2.2.1로 수정돼 운영자가 즉시 조치할 수 있습니다."
           }
         ],
         "ai-security": [
@@ -224,10 +224,10 @@
           },
           {
             "rank": 9,
-            "itemId": "arxiv-2608-20631",
-            "previousRank": 9,
-            "status": "same",
-            "reason": "장기 실행 에이전트의 기억 선별이 정확도·토큰 비용·오염 확산에 미치는 영향을 함께 평가했습니다."
+            "itemId": "arxiv-2608-20664",
+            "previousRank": null,
+            "status": "new",
+            "reason": "숨은 실행 오라클과 사전등록 후속 감사로 다중 세션 소프트웨어 에이전트의 메모리 위생을 평가했습니다."
           },
           {
             "rank": 10,
