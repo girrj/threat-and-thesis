@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T15:21:15+09:00",
+  "generatedAt": "2026-08-24T18:10:46+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -2297,6 +2297,68 @@
       ],
       "priority": 86,
       "identifier": "arXiv:2608.20614",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-21095",
+      "kind": "ai-paper",
+      "title": "Trustworthy RAG, 검색 지식 오염과 허위정보 신호를 결합 탐지",
+      "originalTitle": "Trustworthy RAG: An Evaluation Agent for Detecting Misinformation and Knowledge Poisoning in Generative AI Systems",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.21095",
+      "publishedAt": "2026-08-24",
+      "summary": "NLI 검증, 오염 신호, 문서 간 일관성을 결합한 Trust Index로 RAG 검색 문맥의 허위정보와 지식 오염을 평가하는 에이전트를 제안했습니다.",
+      "whyItMatters": "RAG 파이프라인은 모델 자체가 아니라 검색 코퍼스가 오염돼도 답변 신뢰성이 무너질 수 있어 수집·색인 이후의 별도 무결성 검사가 필요합니다.",
+      "details": [
+        "TruthfulQA 혼합 공격에서 Llama 3.3 70B 기준 정확도 91%, 정밀도 100%를 보고했습니다.",
+        "세 LLM에서 Trust Index의 ROC-AUC는 0.73~0.81이었고, 보안 코딩 실험의 instruction injection 차단 F1은 92%였습니다.",
+        "질의당 처리 지연은 약 17초로 보고돼 실시간 응답보다 비동기 검사에 적합합니다."
+      ],
+      "limitations": [
+        "ICSEA 2026 채택 표기가 있으나 공식 프로시딩을 확인하지 못한 프리프린트입니다.",
+        "오염 표본 수가 작고 entity swap과 미묘한 의미 약화 탐지가 약하며, 검출 결과가 생성 모델의 최종 공격 성공률을 뜻하지는 않습니다."
+      ],
+      "action": "RAG 수집 단계의 출처·변경 이력 검사와 함께 검색 후 오염·일관성 검사를 비동기 품질 게이트로 적용하세요.",
+      "tags": [
+        "RAG",
+        "Knowledge Poisoning",
+        "Misinformation",
+        "LLM Security"
+      ],
+      "priority": 90,
+      "severity": "info",
+      "identifier": "arXiv:2608.21095",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-20631",
+      "kind": "ai-paper",
+      "title": "Weighted Memory Tree, 장기 실행 에이전트의 기억 선별과 오염 확산 완화",
+      "originalTitle": "Weighted Memory Tree: Remembering What Matters for Long-Horizon LLM Agents",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.20631",
+      "publishedAt": "2026-08-24",
+      "summary": "작업·하위 작업·행동을 계층화하고 성공 기여도에 따라 기억을 보존·감쇠하는 Weighted Memory Tree를 제안했습니다.",
+      "whyItMatters": "장기 실행 에이전트는 전체 기록을 계속 문맥에 넣을수록 비용과 오염 전파가 커지므로 기억의 출처와 작업 단위를 분리하는 설계가 필요합니다.",
+      "details": [
+        "GAIA-Text 127문항의 세 8B급 모델에서 선형 히스토리 대비 정확도가 평균 9.97%p 높고 프롬프트 토큰은 평균 32.8% 적었다고 보고했습니다.",
+        "100개 통제 메모리 오염 시나리오에서 공격 성공률 0.419, 오염 검색률 0.097, 감염 지속률 0.009를 보고했습니다.",
+        "사건 기반 점수 갱신과 branch folding·suppression·reopening으로 활성 기억 범위를 조절합니다."
+      ],
+      "limitations": [
+        "GAIA와 세 개의 비교적 작은 오픈웨이트 모델 중심 평가이며 실제 웹·코딩 에이전트와 대화 간 전역 메모리는 시험하지 않았습니다.",
+        "보존 점수는 사실의 진위를 직접 판별하지 않으며 오염 평가는 저자가 만든 통제 시나리오에 한정됩니다."
+      ],
+      "action": "장기 실행 에이전트의 기억을 작업별 branch로 격리하고, 고권한 행동 전에는 별도 사실 검증과 메모리 오염 회귀 시험을 적용하세요.",
+      "tags": [
+        "LLM Agent",
+        "Agent Memory",
+        "Memory Poisoning",
+        "Long-Horizon"
+      ],
+      "priority": 89,
+      "severity": "info",
+      "identifier": "arXiv:2608.20631",
       "evidenceLevel": "preprint"
     }
   ]
