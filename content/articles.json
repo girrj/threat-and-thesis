@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T18:10:46+09:00",
+  "generatedAt": "2026-08-24T21:11:39+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -2359,6 +2359,37 @@
       "priority": 89,
       "severity": "info",
       "identifier": "arXiv:2608.20631",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-21100",
+      "kind": "ai-paper",
+      "title": "ReFrame, 폐쇄형 멀티모달 모델의 입력 재구성 안전 정렬",
+      "originalTitle": "ReFrame: Evidence-Guided Test-Time Safety Alignment in Multimodal Large Language Models",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.21100",
+      "publishedAt": "2026-08-21",
+      "summary": "위험 근거와 정상 효용 근거를 분리해 프롬프트와 이미지 전달 방식을 다시 구성하는 학습 없는 멀티모달 안전 정렬 프레임워크를 제안했습니다.",
+      "whyItMatters": "내부 상태나 재학습에 접근할 수 없는 폐쇄형 멀티모달 모델에도 호출 전 안전 게이트웨이를 적용할 수 있는 설계와 평가 근거를 제공합니다.",
+      "details": [
+        "로컬 멀티모달 모델을 공유하는 근거 생성 에이전트와 재작성·라우팅 에이전트를 실제 모델 호출 앞에 배치합니다.",
+        "GPT-4.1, Gemini-3-Flash, Qwen3.5-Flash와 다섯 안전 벤치마크에서 모델별 평균 안전 점수 98.10~98.36, 효용 점수 94.09~95.91을 보고했습니다.",
+        "GPT-4.1의 정상 과제 평균 정확도는 기준 37.28에서 45.95로 증가했다고 보고했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 21일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "안전 판정에 LLM 심사자를 사용했고 평가는 주로 정적·단일 턴 입력이어서 적응형 다중 턴 공격에는 일반화할 수 없습니다.",
+        "입력 전처리 단계가 추가돼 지연과 비용이 늘며 로컬 근거 생성 모델의 오판이 방어 실패로 이어질 수 있습니다."
+      ],
+      "action": "멀티모달 요청을 비신뢰 입력으로 분류하고 모델 호출 전에 위험 근거와 보존할 정상 정보를 분리하는 게이트웨이를 그림자 모드로 평가하세요.",
+      "tags": [
+        "arXiv",
+        "Multimodal LLM",
+        "Safety Alignment",
+        "Jailbreak Defense"
+      ],
+      "priority": 90,
+      "identifier": "arXiv:2608.21100",
       "evidenceLevel": "preprint"
     }
   ]

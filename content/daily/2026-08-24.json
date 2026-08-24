@@ -1,6 +1,6 @@
 {
   "date": "2026-08-24",
-  "generatedAt": "2026-08-24T18:10:46+09:00",
+  "generatedAt": "2026-08-24T21:11:39+09:00",
   "rankings": {
     "security": [
       {
@@ -200,38 +200,38 @@
       },
       {
         "rank": 6,
+        "itemId": "arxiv-2608-21100",
+        "previousRank": null,
+        "status": "new",
+        "reason": "폐쇄형 멀티모달 모델을 수정하지 않고 입력 재구성으로 안전성과 정상 과제 효용을 함께 개선해 운영 적용 가능성을 보였습니다."
+      },
+      {
+        "rank": 7,
         "itemId": "arxiv-2608-21095",
         "previousRank": null,
         "status": "new",
         "reason": "RAG 검색 코퍼스의 허위정보와 지식 오염을 함께 탐지해 현재 목록에 없던 검색 데이터 무결성 방어를 보완합니다."
       },
       {
-        "rank": 7,
+        "rank": 8,
         "itemId": "arxiv-2608-20569",
         "previousRank": null,
         "status": "new",
         "reason": "78,000회 이상 대조 개입에서 모델 자기보고와 내부 신호의 차이를 측정해 감독 설계에 직접 영향을 줍니다."
       },
       {
-        "rank": 8,
+        "rank": 9,
         "itemId": "arxiv-2608-20631",
         "previousRank": null,
         "status": "new",
         "reason": "장기 실행 에이전트의 기억 선별이 정확도·토큰 비용·오염 확산에 미치는 영향을 함께 평가했습니다."
       },
       {
-        "rank": 9,
+        "rank": 10,
         "itemId": "arxiv-2608-19901",
         "previousRank": 3,
         "status": "down",
         "reason": "악성 에이전트 스킬 탐지기가 출처 분리 평가에서 정상 항목을 대량 오탐하는 공급망 검증 공백을 측정했습니다."
-      },
-      {
-        "rank": 10,
-        "itemId": "arxiv-2608-19741",
-        "previousRank": 4,
-        "status": "down",
-        "reason": "상태 변경 업무를 반복 실행해 에이전트의 단발 성공률과 지속 신뢰성 사이의 격차를 측정했습니다."
       }
     ],
     "technology": [
