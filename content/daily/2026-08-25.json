@@ -1,6 +1,6 @@
 {
   "date": "2026-08-25",
-  "generatedAt": "2026-08-25T00:21:27+09:00",
+  "generatedAt": "2026-08-25T03:12:39+09:00",
   "rankings": {
     "security": [
       {
@@ -54,24 +54,24 @@
       },
       {
         "rank": 8,
+        "itemId": "nvd-cve-2026-77915",
+        "previousRank": null,
+        "status": "new",
+        "reason": "인증 없이 관리자 계정을 만들 수 있고 패치 뒤에도 생성 계정이 남아 업데이트와 계정·자격증명 점검이 모두 필요합니다."
+      },
+      {
+        "rank": 9,
         "itemId": "nvd-cve-2026-67602",
         "previousRank": null,
         "status": "new",
         "reason": "인증 없이 IP 주소 관리 레코드를 읽고 변경하거나 삭제할 수 있고 phpIPAM 1.8.2 수정판이 제공됩니다."
       },
       {
-        "rank": 9,
+        "rank": 10,
         "itemId": "nvd-cve-2026-72843",
         "previousRank": 8,
         "status": "down",
         "reason": "무인증 고객 계정 탈취가 가능하고 EverShop 2.2.1로 수정돼 운영자가 즉시 조치할 수 있습니다."
-      },
-      {
-        "rank": 10,
-        "itemId": "nvd-cve-2026-16926",
-        "previousRank": 9,
-        "status": "down",
-        "reason": "AIX·VIOS의 188개 CVE를 해결하는 누적 패키지로 광범위한 노출을 줄입니다."
       }
     ],
     "ai-security": [
