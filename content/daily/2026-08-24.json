@@ -1,0 +1,247 @@
+{
+  "date": "2026-08-24",
+  "generatedAt": "2026-08-24T15:21:15+09:00",
+  "rankings": {
+    "security": [
+      {
+        "rank": 1,
+        "itemId": "cisa-cve-2026-73570",
+        "previousRank": 1,
+        "status": "same",
+        "reason": "실제 악용된 Zimbra 명령 주입이 메일 서버의 원격 명령 실행으로 이어지고 CISA 조치 기한이 촉박합니다."
+      },
+      {
+        "rank": 2,
+        "itemId": "cisa-cve-2026-59310",
+        "previousRank": 2,
+        "status": "same",
+        "reason": "실제 악용이 확인됐고 vCenter가 가상화 환경의 중앙 관리 지점이며 미조치 자산 확인이 시급합니다."
+      },
+      {
+        "rank": 3,
+        "itemId": "cisa-trueconf-cve-2026-72529-72530",
+        "previousRank": 3,
+        "status": "same",
+        "reason": "실제 악용된 원격 비인증 실행과 격리 탈출 취약점이 함께 KEV에 올라 노출 확인과 패치가 필요합니다."
+      },
+      {
+        "rank": 4,
+        "itemId": "msrc-cve-2026-69836",
+        "previousRank": 4,
+        "status": "same",
+        "reason": "Microsoft가 Entra ID의 무인증 원격 코드 실행 취약점 악용을 확인해 로그 검토 가치가 있습니다."
+      },
+      {
+        "rank": 5,
+        "itemId": "nvd-cve-2026-78003",
+        "previousRank": 5,
+        "status": "same",
+        "reason": "인증 없이 Mailgun API 키를 악용해 비밀번호 재설정 메일을 가로챌 수 있고 공식 수정판이 제공됩니다."
+      },
+      {
+        "rank": 6,
+        "itemId": "nvd-cve-2026-77776",
+        "previousRank": 6,
+        "status": "same",
+        "reason": "네트워크에 노출된 Headroom LLM 프록시에서 다른 사용자의 메모리를 읽거나 변경할 수 있고 수정 버전이 공개됐습니다."
+      },
+      {
+        "rank": 7,
+        "itemId": "nvd-cve-2026-77264",
+        "previousRank": 7,
+        "status": "same",
+        "reason": "공식 저장소 안정 버전까지 영향을 받는 무인증 관리자 사칭 취약점이며 확인된 수정판이 없어 자산 조사가 필요합니다."
+      },
+      {
+        "rank": 8,
+        "itemId": "nvd-cve-2026-72843",
+        "previousRank": 8,
+        "status": "same",
+        "reason": "무인증 고객 계정 탈취가 가능하고 EverShop 2.2.1로 수정돼 운영자가 즉시 조치할 수 있습니다."
+      },
+      {
+        "rank": 9,
+        "itemId": "nvd-cve-2026-16926",
+        "previousRank": 9,
+        "status": "same",
+        "reason": "AIX·VIOS의 188개 CVE를 해결하는 누적 패키지로 광범위한 노출을 줄입니다."
+      },
+      {
+        "rank": 10,
+        "itemId": "nvd-cve-2026-78211",
+        "previousRank": null,
+        "status": "new",
+        "reason": "무인증 원격 명령 실행이 가능하고 공식 수정판이 제공되지만 실제 악용은 확인되지 않아 보안 위협 하단에 배치했습니다."
+      }
+    ],
+    "ai-security": [
+      {
+        "rank": 1,
+        "itemId": "owasp-llm-top-10-2026",
+        "previousRank": 1,
+        "status": "same",
+        "reason": "LLM과 에이전트 서비스의 보안 점검 기준으로 바로 활용할 수 있는 공식 가이드입니다."
+      },
+      {
+        "rank": 2,
+        "itemId": "mitre-atlas",
+        "previousRank": 2,
+        "status": "same",
+        "reason": "프롬프트 인젝션과 에이전트 도구 악용을 기존 위협 모델에 연결할 수 있습니다."
+      }
+    ],
+    "security-paper": [
+      {
+        "rank": 1,
+        "itemId": "usenix26-download-more-ram",
+        "previousRank": 1,
+        "status": "same",
+        "reason": "Windows VBS·HVCI의 하드웨어 신뢰 가정을 깨고 실제 CVE와 패치로 이어진 연구입니다."
+      },
+      {
+        "rank": 2,
+        "itemId": "arxiv-2608-20817",
+        "previousRank": null,
+        "status": "new",
+        "reason": "15개 촉각 센서와 실제 로봇 작업에서 비접촉 전자기 조작 영향을 확인해 새로운 물리 공격면을 구체화했습니다."
+      },
+      {
+        "rank": 3,
+        "itemId": "doi-10-1145-3786795",
+        "previousRank": 2,
+        "status": "down",
+        "reason": "불안전 포인터 중심 탐색으로 메모리 오류 탐지를 높이고 실제 신규 CVE 발견까지 이어졌습니다."
+      },
+      {
+        "rank": 4,
+        "itemId": "arxiv-2608-20732",
+        "previousRank": null,
+        "status": "new",
+        "reason": "110만 API 요청과 통제 실험으로 LLM 리셀러의 공유 인프라를 측정해 공급망 집중 위험을 드러냈습니다."
+      },
+      {
+        "rank": 5,
+        "itemId": "arxiv-2608-18180",
+        "previousRank": 3,
+        "status": "down",
+        "reason": "4개 패키지 생태계 34,005개 아티팩트에서 재현 빌드와 독립 검증 가능성의 간극을 측정했습니다."
+      },
+      {
+        "rank": 6,
+        "itemId": "usenix26-dns-cache-poisoning",
+        "previousRank": 4,
+        "status": "down",
+        "reason": "BIND 9의 두 도전값을 함께 예측해 고전적 DNS 캐시 포이즈닝의 현실 조건을 다시 확인했습니다."
+      },
+      {
+        "rank": 7,
+        "itemId": "arxiv-2608-19924",
+        "previousRank": 5,
+        "status": "down",
+        "reason": "기밀 컴퓨팅에서 디스크 롤백·재생·분기를 탐지하는 POSIX 파일시스템을 구현하고 평가했습니다."
+      },
+      {
+        "rank": 8,
+        "itemId": "doi-10-1103-j3xf-bw18",
+        "previousRank": 6,
+        "status": "down",
+        "reason": "secp256k1 양자 공격 자원과 on-spend 위험을 구체화해 PQC 전환 우선순위를 제시합니다."
+      },
+      {
+        "rank": 9,
+        "itemId": "doi-10-1145-3788862",
+        "previousRank": 7,
+        "status": "down",
+        "reason": "만족·불만족 공식을 함께 합성해 Z3·cvc5의 확인된 버그를 찾은 SMT 솔버 검증 연구입니다."
+      },
+      {
+        "rank": 10,
+        "itemId": "usenix26-updsight",
+        "previousRank": 8,
+        "status": "down",
+        "reason": "85개 데스크톱 앱의 업데이트 경로에서 반복되는 서명·무결성·롤백 검증 문제를 측정했습니다."
+      }
+    ],
+    "ai-paper": [
+      {
+        "rank": 1,
+        "itemId": "arxiv-2608-19857",
+        "previousRank": 1,
+        "status": "same",
+        "reason": "거부 응답 뒤의 간접 신호로 컨텍스트 비밀을 복원한 결과가 에이전트 메모리와 비밀 분리 설계에 직접 영향을 줍니다."
+      },
+      {
+        "rank": 2,
+        "itemId": "arxiv-2608-20055",
+        "previousRank": 2,
+        "status": "same",
+        "reason": "도구 호출 사이에 유지되는 추론 상태로 숨은 사고 흔적을 추출해 에이전트 API의 새로운 정보 노출면을 확인했습니다."
+      },
+      {
+        "rank": 3,
+        "itemId": "arxiv-2608-21101",
+        "previousRank": null,
+        "status": "new",
+        "reason": "다섯 에이전트에서 스킬·실행 단계 방어의 공격 성공률 감소와 정상 작업 성공률을 함께 측정했습니다."
+      },
+      {
+        "rank": 4,
+        "itemId": "arxiv-2608-20554",
+        "previousRank": null,
+        "status": "new",
+        "reason": "120개가 넘는 모델에서 안전·보안·프라이버시 상충을 함께 측정해 단일 점수 평가의 공백을 보여줍니다."
+      },
+      {
+        "rank": 5,
+        "itemId": "arxiv-2608-20637",
+        "previousRank": null,
+        "status": "new",
+        "reason": "실행 증거로 CodeQL 질의를 개선해 높은 정밀도를 유지하고 실제 라이브러리 버그 발견까지 이어졌습니다."
+      },
+      {
+        "rank": 6,
+        "itemId": "arxiv-2608-20569",
+        "previousRank": null,
+        "status": "new",
+        "reason": "78,000회 이상 대조 개입에서 모델 자기보고와 내부 신호의 차이를 측정해 감독 설계에 직접 영향을 줍니다."
+      },
+      {
+        "rank": 7,
+        "itemId": "arxiv-2608-20614",
+        "previousRank": null,
+        "status": "new",
+        "reason": "947개 짝지은 실행으로 스킬 문서 검사와 실제 작업 기여의 차이를 측정해 배포 게이트에 적용할 수 있습니다."
+      },
+      {
+        "rank": 8,
+        "itemId": "arxiv-2608-19901",
+        "previousRank": 3,
+        "status": "down",
+        "reason": "악성 에이전트 스킬 탐지기가 출처 분리 평가에서 정상 항목을 대량 오탐하는 공급망 검증 공백을 측정했습니다."
+      },
+      {
+        "rank": 9,
+        "itemId": "arxiv-2608-19741",
+        "previousRank": 4,
+        "status": "down",
+        "reason": "상태 변경 업무를 반복 실행해 에이전트의 단발 성공률과 지속 신뢰성 사이의 격차를 측정했습니다."
+      },
+      {
+        "rank": 10,
+        "itemId": "arxiv-2608-18136",
+        "previousRank": 5,
+        "status": "down",
+        "reason": "인증·정책·권한 도구가 결합된 은행 환경에서 적응형 사기 대응 에이전트의 실패를 평가했습니다."
+      }
+    ],
+    "technology": [
+      {
+        "rank": 1,
+        "itemId": "nist-cyber-ai-profile",
+        "previousRank": 1,
+        "status": "same",
+        "reason": "AI 보안을 조직의 기존 사이버보안 위험관리 체계에 연결하는 공식 기준입니다."
+      }
+    ]
+  }
+}

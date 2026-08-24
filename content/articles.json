@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T21:11:43+09:00",
+  "generatedAt": "2026-08-24T15:21:15+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -2050,6 +2050,254 @@
       "severity": "critical",
       "identifier": "CVE-2026-78003",
       "evidenceLevel": "official"
+    },
+    {
+      "id": "nvd-cve-2026-78211",
+      "kind": "security",
+      "title": "4MOSAn GCB Doctor 무인증 명령 주입 CVE-2026-78211",
+      "originalTitle": "CVE-2026-78211: 4MOSAn GCB Doctor OS Command Injection",
+      "source": "TWCERT/CC",
+      "sourceUrl": "https://www.twcert.org.tw/en/cp-139-11122-3d95a-2.html",
+      "publishedAt": "2026-08-24",
+      "summary": "4MOSAn GCB Doctor의 제거되지 않은 ADOdb 테스트 페이지에서 무인증 원격 공격자가 운영체제 명령을 실행할 수 있는 취약점이 공개됐습니다.",
+      "whyItMatters": "외부에 노출된 관리 서버라면 인증 없이 서버 권한으로 명령이 실행될 수 있어 제품 사용 여부와 업데이트 상태를 우선 확인해야 합니다.",
+      "details": [
+        "영향 범위는 4MOSAn GCB Doctor 20260621 미만으로 기록돼 있습니다.",
+        "TWCERT/CC CNA는 네트워크에서 권한과 사용자 상호작용 없이 악용 가능한 CWE-78 문제로 분류했습니다.",
+        "공식 해결책은 20260621 이상으로 업그레이드하고 FreeBSD-GCB Management Center 보안 업그레이드를 수행하는 것입니다."
+      ],
+      "limitations": [
+        "NVD 상태는 Received이며 NVD 자체 분석은 아직 완료되지 않았습니다.",
+        "CISA KEV 등재나 실제 악용 증거는 확인되지 않았고 영향 제품 범위가 제한적입니다."
+      ],
+      "action": "해당 제품의 외부 노출과 버전을 확인하고 20260621 이상으로 업데이트한 뒤 ADOdb 테스트 페이지 접근과 명령 실행 흔적을 점검하세요.",
+      "tags": [
+        "CVE-2026-78211",
+        "4MOSAn GCB Doctor",
+        "Command Injection",
+        "TWCERT/CC"
+      ],
+      "priority": 90,
+      "severity": "critical",
+      "identifier": "CVE-2026-78211",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "arxiv-2608-20817",
+      "kind": "security-paper",
+      "title": "GhostTac, 비접촉 전자기 간섭으로 로봇 촉각 센서 조작",
+      "originalTitle": "GhostTac: Manipulating Tactile Sensors without Physical Contact",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.20817",
+      "publishedAt": "2026-08-21",
+      "summary": "전자기 간섭을 안정적인 센서 오프셋으로 바꿔 접촉 없이 로봇 촉각 센서 출력을 조작하는 GhostTac을 제시한 프리프린트입니다.",
+      "whyItMatters": "촉각 피드백을 신뢰하는 로봇은 센서 값이 물리적 접촉 없이 변조되면 과도한 힘, 미끄럼 판단 오류와 재질 오분류로 이어질 수 있습니다.",
+      "details": [
+        "8개 제조사의 10개 모듈과 두 로봇 손에 포함된 촉각 센서 15개를 평가했습니다.",
+        "시험한 모든 센서에서 영향을 관찰하고 파지, 미끄럼 감지와 재질 분류 사례로 시스템 영향을 확인했습니다.",
+        "비선형 정류와 제한된 대역폭 증폭을 이용해 온보드 필터를 통과하는 안정적인 오프셋을 만들었습니다."
+      ],
+      "limitations": [
+        "2026년 8월 21일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "주로 정전용량·압저항 센서를 다뤘고 센서 융합과 이상 탐지가 적용된 완성형 로봇의 방어 효과는 평가하지 않았습니다.",
+        "각도 오차와 빠른 움직임에서는 전자기 결합이 약해질 수 있습니다."
+      ],
+      "action": "소유 장비를 차폐된 EMC 환경에서 평가하고 RF 필터·차폐와 촉각·시각·힘 센서 간 물리 일관성 검사를 검토하세요.",
+      "tags": [
+        "arXiv",
+        "Robotics Security",
+        "Tactile Sensor",
+        "Electromagnetic Interference"
+      ],
+      "priority": 91,
+      "identifier": "arXiv:2608.20817",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-20732",
+      "kind": "security-paper",
+      "title": "CacheTracer, LLM API 리셀러의 숨은 공유 인프라 측정",
+      "originalTitle": "Uncovering and Understanding Hidden Dependencies in the LLM API Reseller Ecosystem via Prefix-Cache Side Channels",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.20732",
+      "publishedAt": "2026-08-21",
+      "summary": "프리픽스 캐시 재사용을 API 부채널로 이용해 LLM API 리셀러 사이의 숨은 공통 업스트림을 측정하는 CacheTracer를 제시한 프리프린트입니다.",
+      "whyItMatters": "서로 독립적으로 보이는 리셀러가 같은 업스트림을 공유하면 기밀성·무결성 장애의 영향 범위와 공급망 집중 위험이 예상보다 커질 수 있습니다.",
+      "details": [
+        "39개 엔드포인트의 636개 쌍에 110만 건의 API 요청을 보내 캐시 도달 관계를 측정했습니다.",
+        "측정한 쌍의 37.1%에서 공유 캐시 도달 관계를 관찰했고 포함 구조는 최대 7단계였습니다.",
+        "통제 환경에서 구성한 8개 토폴로지를 모두 복원해 측정 원리를 검증했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 21일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "측정값은 상업적 공급망 자체가 아니라 공유 캐시 가능성의 보수적 하한입니다.",
+        "라우팅·부하·모델과 캐시 정책 변화에 민감하며 미관측 관계가 관계 부재를 뜻하지는 않습니다."
+      ],
+      "action": "계약상 허용된 엔드포인트만 저율로 감사하고 결과를 업체 관계의 단정이 아닌 공유 캐시 가능성으로 해석하세요.",
+      "tags": [
+        "arXiv",
+        "LLM API",
+        "Supply Chain",
+        "Side Channel"
+      ],
+      "priority": 88,
+      "identifier": "arXiv:2608.20732",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-21101",
+      "kind": "ai-paper",
+      "title": "ClawSentry, LLM 에이전트 스킬·실행을 단계별로 감시",
+      "originalTitle": "ClawSentry: A Progressive Multi-Tier Security Monitor for Safeguarding Autonomous LLM Agents",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.21101",
+      "publishedAt": "2026-08-21",
+      "summary": "스킬 최초 심사, 실행 전 단계별 판단, 세션 내 우회 기억과 사후 증거를 외부 게이트웨이로 결합한 LLM 에이전트 방어 연구입니다.",
+      "whyItMatters": "악성 스킬과 재표현된 위험 요청은 단일 도구 호출 검사만 우회할 수 있어 스킬 수명주기와 세션 효과를 연결한 통제가 필요합니다.",
+      "details": [
+        "SkillInject에서 공격 성공률을 39.55%에서 2.61%로 낮췄다고 보고했습니다.",
+        "SkillsSafety의 다섯 작업 에이전트에서 공격 성공률을 33.5~49.7%에서 9.09~15.03%로 줄였습니다.",
+        "정상 스킬의 작업 성공률은 집계 기준 98.7%였고 네 에이전트 하네스에 같은 정책을 적용했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 21일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "공격은 방어를 모르는 비적응형 벤치마크이며 브라우저·GUI, 장기 다중 에이전트와 비영어 작업은 평가하지 않았습니다.",
+        "사후 분석은 이미 발생한 효과를 되돌릴 수 없고 고정 환경의 지연·비용은 직접 측정하지 않았습니다."
+      ],
+      "action": "읽기 전용 그림자 모드에서 먼저 평가하고 고위험 효과에는 결정론적 차단과 사람 승인을 유지한 채 정책 인지형 공격을 별도로 시험하세요.",
+      "tags": [
+        "arXiv",
+        "LLM Agent",
+        "Skill Security",
+        "Runtime Monitoring"
+      ],
+      "priority": 93,
+      "identifier": "arXiv:2608.21101",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-20554",
+      "kind": "ai-paper",
+      "title": "aiXamine, LLM 안전·보안·프라이버시 상충을 통합 평가",
+      "originalTitle": "aiXamine: Unified Black-Box Evaluation of Cross-Dimensional Trade-offs in LLM Safety, Security, and Privacy",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.20554",
+      "publishedAt": "2026-08-20",
+      "summary": "안전·보안·프라이버시를 따로 보지 않고 46개 테스트와 9개 서비스로 함께 측정하는 블랙박스 평가 플랫폼을 제시한 프리프린트입니다.",
+      "whyItMatters": "한 축의 점수 개선이 과잉 거부나 개인정보 보호 약화를 가릴 수 있어 모델과 가드레일 변경을 다차원 회귀 시험으로 검증할 필요가 있습니다.",
+      "details": [
+        "120개가 넘는 LLM을 5,000회 이상 실행해 안전·보안·프라이버시의 교차 영향을 분석했습니다.",
+        "강한 안전 정렬과 과잉 거부의 상충, 다른 축과 낮은 프라이버시 상관성을 보고했습니다.",
+        "같은 기반 구조의 오프정책 증류 사례에서 강건성 점수가 56.9에서 2.6으로 감소했다고 보고했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 20일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "공개 벤치마크를 조합한 블랙박스 평가로 내부 실패 원인을 직접 입증하지 못합니다.",
+        "서비스별 정규화, LLM 판정기와 시점별 API 모델 변경이 결과에 영향을 줄 수 있습니다."
+      ],
+      "action": "모델·가드레일·미세조정 버전 승격 때 안전 성공률, 과잉 거부, 프롬프트 공격, 코드 보안과 개인정보 누출을 같은 회귀 매트릭스에서 평가하세요.",
+      "tags": [
+        "arXiv",
+        "LLM Evaluation",
+        "AI Safety",
+        "Privacy"
+      ],
+      "priority": 92,
+      "identifier": "arXiv:2608.20554",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-20637",
+      "kind": "ai-paper",
+      "title": "ARQ, 실행 증거로 CodeQL 취약점 탐지 질의 개선",
+      "originalTitle": "ARQ: Agentic CodeQL Query Refinement for C/C++ Vulnerability Detection",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.20637",
+      "publishedAt": "2026-08-21",
+      "summary": "합성 C/C++ 프로그램의 실행 결과와 CodeQL 판정 불일치를 근거로 LLM 에이전트가 탐지 질의를 반복 개선하는 ARQ를 제시한 프리프린트입니다.",
+      "whyItMatters": "정적 분석 질의의 오탐·미탐을 실행 가능한 증거로 교정하면 보안 도구 유지보수와 실제 취약점 발견에 활용할 수 있습니다.",
+      "details": [
+        "세 상용 LLM으로 공식 CodeQL 질의 12개를 개선하고 Juliet v1.3과 FormAI v2에서 비교했습니다.",
+        "정밀도 98% 이상을 유지하면서 참양성 탐지를 최대 119.8% 늘렸다고 보고했습니다.",
+        "CodeQL 저장소의 장기 미해결 이슈 3건을 수정하고 libpng와 zlib에서 신규 버그 2건을 찾았습니다."
+      ],
+      "limitations": [
+        "2026년 8월 21일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "12개 질의와 두 데이터셋에 집중했고 한 설정은 회귀 시험 부재로 원본보다 성능이 낮아졌습니다.",
+        "반복 실행의 약 16.7%가 실패하거나 시간초과됐고 상용 모델에 의존합니다."
+      ],
+      "action": "개선 질의를 별도 브랜치에서 기존 회귀 코퍼스와 실제 프로젝트 CI로 재검증하고 경보 변화와 신규 버그를 사람이 확인한 뒤 배포하세요.",
+      "tags": [
+        "arXiv",
+        "CodeQL",
+        "LLM Agent",
+        "Vulnerability Detection"
+      ],
+      "priority": 91,
+      "identifier": "arXiv:2608.20637",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-20569",
+      "kind": "ai-paper",
+      "title": "오픈웨이트 LLM, 내부 계산 변화 자기보고는 우연 수준",
+      "originalTitle": "Open-Weight Masked Introspection: Measuring What Language Models Can Report About Their Own Computation",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.20569",
+      "publishedAt": "2026-08-20",
+      "summary": "오픈웨이트 언어 모델이 자신의 내부 계산에 가한 개입을 언어로 구분해 보고할 수 있는지 대조 조건과 함께 측정한 프리프린트입니다.",
+      "whyItMatters": "모델의 자기설명과 자기비판을 감독 신호로 사용하려면 실제 내부 상태를 반영하는지 외부 검사로 검증해야 합니다.",
+      "details": [
+        "7개 계열 8개 모델에서 residual stream, attention head와 SAE feature 개입을 시험했습니다.",
+        "78,000회가 넘는 측정에서 실제 개입과 sham 조건을 구분한 자기보고 AUROC가 약 0.5007이었습니다.",
+        "같은 activation의 선형 probe는 개입 신호를 75.0~95.8% 정확도로 복원했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 20일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "0.5B~15B 오픈웨이트 모델과 제한된 개입 위치·강도·즉시 질문 조건을 다뤘습니다.",
+        "외부 개입 보고 능력이 정상 추론의 자기성찰 전체를 대표하지 않으며 폐쇄형 대형 모델로 일반화할 수 없습니다."
+      ],
+      "action": "모델의 자기보고를 독립 안전 신호로 사용하지 말고 sham 대조 개입, activation probe 또는 외부 행동 검사와 함께 검증하세요.",
+      "tags": [
+        "arXiv",
+        "Introspection",
+        "Interpretability",
+        "AI Oversight"
+      ],
+      "priority": 89,
+      "identifier": "arXiv:2608.20569",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-20614",
+      "kind": "ai-paper",
+      "title": "ACES, 에이전트 스킬의 실제 추가 가치를 짝지어 평가",
+      "originalTitle": "Evaluating Skills, Not Just Agents: Agentic Continuous Evaluation of Skills",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.20614",
+      "publishedAt": "2026-08-20",
+      "summary": "동일 모델·샌드박스·작업에서 스킬 사용 전후를 짝지어 실행하고 궤적 지표로 Skill Lift를 측정하는 ACES를 제시한 프리프린트입니다.",
+      "whyItMatters": "문서 구조와 정적 검사만 통과한 스킬이 실제 에이전트의 작업 성공과 안전한 도구 사용을 개선하는지는 별도의 실행 평가가 필요합니다.",
+      "details": [
+        "145개 실제 스킬 중 58개 운영 스킬과 네 하네스에서 947개 짝지은 사례를 평가했습니다.",
+        "평균 복합 Skill Lift는 0.2134였고 72.8%의 짝지은 사례에서 양의 lift를 보고했습니다.",
+        "정적 구조 검사와 LLM 판정 점수의 Spearman 상관은 0.14였습니다."
+      ],
+      "limitations": [
+        "2026년 8월 20일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "운영 데이터 일부는 내부 저장소에서 왔고 live judge의 인간 보정과 판정기 간 일치도는 측정하지 않았습니다.",
+        "VPN 뒤 엔드포인트 실패와 시간초과가 절대 점수에 영향을 줄 수 있습니다."
+      ],
+      "action": "스킬 배포 게이트에 동일 조건의 사용 전후 짝지은 실행, 도구 사용·절차 준수·보안 궤적 지표와 모델 업데이트 후 재평가를 추가하세요.",
+      "tags": [
+        "arXiv",
+        "Agent Skills",
+        "Continuous Evaluation",
+        "Skill Lift"
+      ],
+      "priority": 86,
+      "identifier": "arXiv:2608.20614",
+      "evidenceLevel": "preprint"
     }
   ]
 }
