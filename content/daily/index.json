@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-25T18:25:10+09:00",
+  "generatedAt": "2026-08-25T21:21:03+09:00",
   "editions": [
     {
       "date": "2026-08-25",
-      "generatedAt": "2026-08-25T18:25:10+09:00",
+      "generatedAt": "2026-08-25T21:21:03+09:00",
       "rankings": {
         "security": [
           {
@@ -43,38 +43,38 @@
           },
           {
             "rank": 6,
+            "itemId": "vde-2026-083",
+            "previousRank": null,
+            "status": "new",
+            "reason": "산업용 라우터 관리면에서 인증 없이 루트 명령 실행이 가능하고 공식 수정 펌웨어와 임시 완화책이 제공됩니다."
+          },
+          {
+            "rank": 7,
             "itemId": "nvd-cve-2026-78003",
             "previousRank": 5,
             "status": "down",
             "reason": "인증 없이 Mailgun API 키를 악용해 비밀번호 재설정 메일을 가로챌 수 있고 공식 수정판이 제공됩니다."
           },
           {
-            "rank": 7,
+            "rank": 8,
             "itemId": "nvd-cve-2026-77776",
             "previousRank": 6,
             "status": "down",
             "reason": "네트워크에 노출된 Headroom LLM 프록시에서 다른 사용자의 메모리를 읽거나 변경할 수 있고 수정 버전이 공개됐습니다."
           },
           {
-            "rank": 8,
+            "rank": 9,
             "itemId": "nvd-cve-2026-77264",
             "previousRank": 7,
             "status": "down",
             "reason": "공식 저장소 안정 버전까지 영향을 받는 무인증 관리자 사칭 취약점이며 확인된 수정판이 없어 자산 조사가 필요합니다."
           },
           {
-            "rank": 9,
+            "rank": 10,
             "itemId": "nvd-cve-2026-56705",
             "previousRank": null,
             "status": "new",
             "reason": "조건을 갖춘 Adminer에서 인증 전 원격 코드 실행이 가능하고 5.4.3 수정판이 제공되지만 실제 악용은 확인되지 않았습니다."
-          },
-          {
-            "rank": 10,
-            "itemId": "nvd-cve-2026-77915",
-            "previousRank": null,
-            "status": "new",
-            "reason": "인증 없이 관리자 계정을 만들 수 있고 패치 뒤에도 생성 계정이 남아 업데이트와 계정·자격증명 점검이 모두 필요합니다."
           }
         ],
         "ai-security": [
@@ -117,52 +117,52 @@
           },
           {
             "rank": 4,
+            "itemId": "doi-10-1145-3831700",
+            "previousRank": null,
+            "status": "new",
+            "reason": "PQC 가속기의 기능·성능 시험을 통과할 수 있는 소형 하드웨어 백도어를 구현해 공급망 검증의 공백을 보여줍니다."
+          },
+          {
+            "rank": 5,
             "itemId": "arxiv-2608-21977",
             "previousRank": null,
             "status": "new",
             "reason": "15,556개 오픈소스 CVE와 434건 수동 확인으로 NVD CWE 라벨의 오류와 분류 모호성을 구분해 측정했습니다."
           },
           {
-            "rank": 5,
+            "rank": 6,
             "itemId": "arxiv-2608-21615",
             "previousRank": null,
             "status": "new",
             "reason": "6개 모델 구성에서 난독화 가중치의 공동 저랭크 구조를 이용한 복구를 확인해 TEE 오프로딩 보호 가정을 점검합니다."
           },
           {
-            "rank": 6,
+            "rank": 7,
+            "itemId": "doi-10-1145-3834776",
+            "previousRank": null,
+            "status": "new",
+            "reason": "차량 CAN 인증 하드웨어에서 100만 회 이상 전자기 트레이스로 재키잉 구조를 평가해 실물 구현 근거가 있습니다."
+          },
+          {
+            "rank": 8,
             "itemId": "arxiv-2608-22987",
             "previousRank": null,
             "status": "new",
             "reason": "6개 체인의 186,356건을 분석해 공개 프로토콜 제약만으로 익명집합이 크게 줄어드는 범위를 측정했습니다."
           },
           {
-            "rank": 7,
+            "rank": 9,
             "itemId": "arxiv-2608-20732",
             "previousRank": 4,
             "status": "down",
             "reason": "110만 API 요청과 통제 실험으로 LLM 리셀러의 공유 인프라를 측정해 공급망 집중 위험을 드러냈습니다."
           },
           {
-            "rank": 8,
+            "rank": 10,
             "itemId": "arxiv-2608-18180",
             "previousRank": 5,
             "status": "down",
             "reason": "4개 패키지 생태계 34,005개 아티팩트에서 재현 빌드와 독립 검증 가능성의 간극을 측정했습니다."
-          },
-          {
-            "rank": 9,
-            "itemId": "arxiv-2608-22275",
-            "previousRank": null,
-            "status": "new",
-            "reason": "실제 메모리 손상 101건에서 속성 기반 임시 완화의 패치 품질과 토큰 비용을 비교했습니다."
-          },
-          {
-            "rank": 10,
-            "itemId": "arxiv-2608-22889",
-            "previousRank": null,
-            "status": "new",
-            "reason": "281개 실제 CVE 요청과 정상 IoT 트래픽에서 검증 가능한 Suricata 규칙 합성의 탐지율과 오탐을 함께 평가했습니다."
           }
         ],
         "ai-paper": [
@@ -196,45 +196,45 @@
           },
           {
             "rank": 5,
+            "itemId": "arxiv-2608-23550",
+            "previousRank": null,
+            "status": "new",
+            "reason": "공개 CLAUDE.md 보안 규칙 대부분이 실행 전 강제 통제로 연결되지 않는 간극을 실무 표본으로 측정했습니다."
+          },
+          {
+            "rank": 6,
             "itemId": "arxiv-2608-21664",
             "previousRank": null,
             "status": "new",
             "reason": "25개 오픈웨이트 모델에서 자연어 기반 활성값 제어와 잠재공간 모니터 우회를 측정해 모니터링 가정을 점검합니다."
           },
           {
-            "rank": 6,
+            "rank": 7,
             "itemId": "arxiv-2608-20884",
             "previousRank": null,
             "status": "new",
             "reason": "상용 얼굴인식 API의 고보안 임계값에서도 100회 점수 질의로 높은 사칭 성공률을 보여 인증 설계에 직접 영향을 줍니다."
           },
           {
-            "rank": 7,
-            "itemId": "arxiv-2608-21544",
+            "rank": 8,
+            "itemId": "arxiv-2608-22339",
             "previousRank": null,
             "status": "new",
-            "reason": "파라미터에서 억제한 지식이 도구로 복구되는 현상과 궤적 수준 방어를 여러 모델·벤치마크에서 평가했습니다."
+            "reason": "성공 스킬의 무조건 재사용이 잘못된 도구 호출을 강화할 수 있음을 보이고 경계 조건 기반 메모리를 평가했습니다."
           },
           {
-            "rank": 8,
+            "rank": 9,
+            "itemId": "arxiv-2608-22444",
+            "previousRank": null,
+            "status": "new",
+            "reason": "개별 에이전트 감사로 드러나지 않는 집단 포획 위험을 보안 경보 분류에서 측정하고 공격 전 예측 방법을 제시했습니다."
+          },
+          {
+            "rank": 10,
             "itemId": "arxiv-2608-21101",
             "previousRank": 3,
             "status": "down",
             "reason": "다섯 에이전트에서 스킬·실행 단계 방어의 공격 성공률 감소와 정상 작업 성공률을 함께 측정했습니다."
-          },
-          {
-            "rank": 9,
-            "itemId": "arxiv-2608-21895",
-            "previousRank": null,
-            "status": "new",
-            "reason": "6개 모델·6개 입력 방어·13,800건에서 의미 기반 탈옥이 방어 가정을 깨는 양상을 검증했습니다."
-          },
-          {
-            "rank": 10,
-            "itemId": "arxiv-2608-22118",
-            "previousRank": null,
-            "status": "new",
-            "reason": "세 모델 계열과 100만 회가 넘는 호출에서 자기 작성 문서를 검색할 때의 응답 붕괴와 자기출처 편향을 측정했습니다."
           }
         ],
         "technology": [
