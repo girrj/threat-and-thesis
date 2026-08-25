@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T00:13:09+09:00",
+  "generatedAt": "2026-08-26T03:10:30+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -3322,6 +3322,37 @@
       "priority": 91,
       "identifier": "arXiv:2608.22657",
       "evidenceLevel": "preprint"
+    },
+    {
+      "id": "cisa-cve-2026-60004",
+      "kind": "security",
+      "title": "CISA, 실제 악용된 Gitea 코드 주입 취약점 긴급 조치 요구",
+      "originalTitle": "Gitea Code Injection Vulnerability",
+      "source": "CISA Known Exploited Vulnerabilities",
+      "sourceUrl": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-60004",
+      "publishedAt": "2026-08-25",
+      "summary": "CISA가 저장소 쓰기 권한으로 Gitea 서비스 계정의 명령 실행에 이를 수 있는 CVE-2026-60004를 실제 악용 목록에 추가했습니다.",
+      "whyItMatters": "공개 가입이 허용된 Gitea에서는 방문자가 일반 계정과 저장소를 만든 뒤 필요한 쓰기 권한을 얻을 수 있어 인터넷 노출 인스턴스의 조치가 시급합니다.",
+      "details": [
+        "Gitea 공식 권고는 diffpatch 처리 중 실행 가능한 Git 훅이 설치돼 Gitea 운영체제 사용자 권한으로 명령이 실행될 수 있다고 설명합니다.",
+        "공식 권고의 영향 범위는 Gitea 1.17 이상 1.27.1 미만이며 1.27.1에서 수정됐습니다.",
+        "CISA는 2026년 8월 25일 KEV에 추가하고 연방기관 조치 기한을 8월 28일로 정했습니다."
+      ],
+      "limitations": [
+        "공격에는 Git 2.32 이상, 활성화된 diffpatch 경로, 실행 가능한 임시 파일시스템과 저장소 쓰기 권한이 필요합니다.",
+        "CISA는 알려진 랜섬웨어 캠페인 사용 여부를 Unknown으로 표시하며 공개 정보만으로 공격 주체와 침해 규모는 확인되지 않습니다."
+      ],
+      "action": "Gitea를 1.27.1 이상으로 업데이트하고 공개 가입·저장소 생성 정책과 외부 노출을 확인한 뒤 Gitea 서비스 계정의 비정상 명령 실행 및 저장소 변경 흔적을 점검하세요.",
+      "tags": [
+        "CISA KEV",
+        "Gitea",
+        "CVE-2026-60004",
+        "Code Injection"
+      ],
+      "priority": 99,
+      "severity": "critical",
+      "identifier": "CVE-2026-60004",
+      "evidenceLevel": "official"
     }
   ]
 }
