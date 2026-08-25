@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T15:17:11+09:00",
+  "generatedAt": "2026-08-25T18:25:10+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -2858,6 +2858,192 @@
         "Rare Events",
         "LLM Safety",
         "Sequential Monte Carlo"
+      ]
+    },
+    {
+      "id": "arxiv-2608-23471",
+      "kind": "ai-paper",
+      "title": "InjecMEM, 한 번의 대화로 LLM 에이전트 장기 메모리 오염",
+      "originalTitle": "InjecMEM: Memory Injection Attack on LLM Agent Memory Systems",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.23471",
+      "publishedAt": "2026-08-24",
+      "summary": "장기 메모리를 쓰는 LLM 에이전트에 한 번의 대화만 주입해 이후 특정 주제 응답을 미리 정한 출력으로 유도하는 공격을 제안한 프리프린트입니다.",
+      "whyItMatters": "에이전트가 대화 기록을 자동 저장한다면 메모리 저장소 권한이 없는 사용자도 이후 세션의 검색과 응답에 지속적인 영향을 줄 수 있습니다.",
+      "details": [
+        "공격은 주제별 검색을 유도하는 앵커와 문맥·삽입 위치 변화에 견디도록 최적화한 명령을 하나의 대화에 결합합니다.",
+        "논문은 MemoryOS에서 최대 검색 성공률 35.4%와 공격 성공률 76.6%를 보고했습니다.",
+        "MemoryOS와 MemGPT, 여러 모델 백본, 정상 메모리가 누적되는 조건과 비표적 질의를 함께 평가했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 24일 제출된 프리프린트이며 독립 재현 전입니다.",
+        "명령 최적화에는 대상 오픈웨이트 모델의 그래디언트 접근이 필요하고 모델 계열 간 전이는 제한적이었습니다.",
+        "선정한 메모리 시스템과 합성 과제의 최대 성능이며 실제 다사용자 권한 분리와 운영 환경의 피해 규모를 입증하지 않습니다."
+      ],
+      "action": "에이전트 메모리를 사용자·세션·출처별로 격리하고 저장 전 명령성 콘텐츠를 검사하며, 검색된 메모리를 비신뢰 입력으로 처리하세요.",
+      "priority": 93,
+      "identifier": "arXiv:2608.23471",
+      "evidenceLevel": "preprint",
+      "tags": [
+        "arXiv",
+        "Agent Memory",
+        "Memory Injection",
+        "AI Security"
+      ]
+    },
+    {
+      "id": "arxiv-2608-22868",
+      "kind": "ai-paper",
+      "title": "AgentFlow, LLM 에이전트의 데이터 흐름을 정책·런타임에서 통제",
+      "originalTitle": "AgentFlow: A Flow-Centric Policy Language and Framework for Securing LLM Agent Systems",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.22868",
+      "publishedAt": "2026-08-24",
+      "summary": "LLM 에이전트의 민감 데이터, 도구 호출과 위임 경로를 정책 언어로 표현하고 런타임 참조 모니터로 강제하는 프레임워크를 제안한 프리프린트입니다.",
+      "whyItMatters": "개별 요청 검사로 놓치기 쉬운 다단계 유출, 신뢰 세탁과 위임 경계 우회를 데이터 흐름 단위로 제한하는 설계 근거를 제공합니다.",
+      "details": [
+        "레이블된 런타임 에지, 경로 규칙, 작업 범위 capability, controlled release와 stateful taint를 지원합니다.",
+        "AgentDojo 주입 949건에서 확인된 compromise를 33.0%에서 0.0%로 낮추고 집계 utility를 46.7%에서 63.3%로 높였다고 보고했습니다.",
+        "AgentDyn 200건에서는 compromise를 73.5%에서 0.0%로 낮추고 utility를 44.5%에서 43.5%로 유지했다고 보고했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 24일 제출된 프리프린트이며 결과는 저자들이 예비적이라고 명시했습니다.",
+        "0% compromise는 구성한 정책이 관찰할 수 있는 공격 흐름과 평가 벤치마크에 한정됩니다.",
+        "새 도구 의미론, 구현 우회, 실서비스 성능과 정책 작성 비용은 독립적으로 검증되지 않았습니다."
+      ],
+      "action": "민감 데이터·도구·위임 흐름을 목록화하고 정책 참조 모니터를 관찰 모드와 정상 작업 회귀시험으로 검증한 뒤 차단을 적용하세요.",
+      "priority": 92,
+      "identifier": "arXiv:2608.22868",
+      "evidenceLevel": "preprint",
+      "tags": [
+        "arXiv",
+        "LLM Agent",
+        "Information Flow",
+        "Runtime Policy"
+      ]
+    },
+    {
+      "id": "arxiv-2608-21895",
+      "kind": "ai-paper",
+      "title": "의미 기반 탈옥 공격, 입력 방어 6종의 가정 붕괴 확인",
+      "originalTitle": "Breaking the Assumptions: Auditing Input-Side Jailbreak Defenses Against Semantic Attacks",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.21895",
+      "publishedAt": "2026-08-22",
+      "summary": "입력측 탈옥 방어 6종이 전제한 locality, 의미 보존과 분포 변화 가정을 추출하고 의미 기반 공격에서 실패 양상을 검증한 프리프린트입니다.",
+      "whyItMatters": "형식 보증이나 탐지 성능이 특정 공격 가정에 의존한다면 운영 환경의 의미 보존형·다중턴 공격에서는 방어가 무력하거나 역효과를 낼 수 있습니다.",
+      "details": [
+        "14B~35B 오픈웨이트 모델 6개, 방어 6개와 공개 출처 40여 곳의 탈옥 프롬프트 100개로 13,800건을 평가했습니다.",
+        "일부 설정에서 SmoothLLM 적용 뒤 Phi-4의 공격 성공률이 14% 증가했다고 보고했습니다.",
+        "다중턴 탈옥의 87.9%가 CUSUM 순차 모니터의 분포 변화 조건을 만들지 않아 탐지되지 않았다고 보고했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 22일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "로컬 오픈웨이트 모델 6개와 선정한 입력측 방어·공격에 한정되어 폐쇄형 API와 출력·도구 실행 방어로 일반화할 수 없습니다.",
+        "방어를 아는 적응형 공격과 정상 요청의 유용성·지연 비용을 모두 평가하지 않았습니다."
+      ],
+      "action": "입력 방어가 요구하는 공격·분포 가정을 문서화하고 의미 보존형 단일·다중턴 공격과 정상 대조군으로 역효과와 미탐을 재검증하세요.",
+      "priority": 91,
+      "identifier": "arXiv:2608.21895",
+      "evidenceLevel": "preprint",
+      "tags": [
+        "arXiv",
+        "Jailbreak Defense",
+        "Semantic Attack",
+        "AI Safety"
+      ]
+    },
+    {
+      "id": "arxiv-2608-22118",
+      "kind": "ai-paper",
+      "title": "RAG가 자기 작성 문서를 검색하면 응답 다양성 붕괴",
+      "originalTitle": "RAG Collapse: LLM Responses Collapse When Retrieved Documents Are Self-Authored",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.22118",
+      "publishedAt": "2026-08-22",
+      "summary": "LLM이 이전에 작성한 문서를 검색해 다시 참조할 때 응답 다양성과 내용이 붕괴하는 현상을 세 종류의 반복 시뮬레이션으로 측정한 프리프린트입니다.",
+      "whyItMatters": "웹 검색과 RAG 인덱스에 생성 주체를 보존하지 않으면 모델의 자기출처 편향이 반복 검색 과정에서 답변 품질을 악화시킬 수 있습니다.",
+      "details": [
+        "세 모델 계열, 정보 탐색 프롬프트 1,019개, 시뮬레이션 1,528회와 100만 회가 넘는 API 호출을 사용했습니다.",
+        "저자 정의에 따른 응답 붕괴가 1,528회 중 1,216회인 79.6%에서 발생했다고 보고했습니다.",
+        "참조 품질을 통제한 뒤에도 자기 작성 문서가 답변에 불균형하게 인용되는 편향을 확인했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 22일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "상용 AI 검색 결과로 시작한 시뮬레이션이며 현재 인터넷에서 같은 붕괴가 발생 중임을 직접 입증하지 않습니다.",
+        "정보 탐색과 명명된 개체 비교 과제 중심이며 다른 모델의 문서, 에이전트 검색과 완화책은 평가하지 않았습니다."
+      ],
+      "action": "RAG 문서에 생성 주체·모델·작성 시점 provenance를 보존하고 자기출처 집중도, 응답 반복도와 다양성 변화를 운영 지표로 감시하세요.",
+      "priority": 89,
+      "identifier": "arXiv:2608.22118",
+      "evidenceLevel": "preprint",
+      "tags": [
+        "arXiv",
+        "RAG",
+        "Model Collapse",
+        "Provenance"
+      ]
+    },
+    {
+      "id": "arxiv-2608-22987",
+      "kind": "security-paper",
+      "title": "Railgun·Hinkal 공개 제약, 익명집합 평균 40.1~59.0% 축소",
+      "originalTitle": "The Anonymity Gap: Understanding Real Privacy in Shielded UTXO-based Protocols for DeFi",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.22987",
+      "publishedAt": "2026-08-24",
+      "summary": "Shielded UTXO 기반 DeFi 프로토콜의 공개 이력과 규칙만으로 숨은 상태 전이를 추적해 실제 익명집합을 측정하는 비휴리스틱 분석을 제안한 프리프린트입니다.",
+      "whyItMatters": "명목상 풀 크기보다 공개 토큰·증명·트리 제약이 익명성을 크게 줄일 수 있어 프로토콜 설계와 사용자 위험 표시를 다시 점검해야 합니다.",
+      "details": [
+        "6개 EVM 체인의 Railgun 운영 배포 4개와 Hinkal 풀 5개의 전체 이력에서 unshielding spend 186,356건을 분석했습니다.",
+        "시간 기준선과 비교한 평균 익명집합 크기가 배포별 40.1~59.0% 감소했다고 보고했습니다.",
+        "후보 주소가 10개 이하로 남은 거래는 3,679건이며 그중 1,228건은 단일 주소만 남았습니다."
+      ],
+      "limitations": [
+        "2026년 8월 24일 제출된 프리프린트이며 독립 재현 전입니다.",
+        "두 프로토콜의 공개 추적과 unshielding 거래에 한정되어 다른 설계와 off-chain 정보에는 그대로 적용되지 않습니다.",
+        "후보 주소가 하나로 줄어도 실제 사용자 신원을 식별했다는 뜻은 아닙니다."
+      ],
+      "action": "Shielded 프로토콜의 공개 토큰·증명 root·트리 제약이 누적시키는 링크 가능성을 재현하고 사용자별 익명성 표시를 검토하세요.",
+      "priority": 90,
+      "identifier": "arXiv:2608.22987",
+      "evidenceLevel": "preprint",
+      "tags": [
+        "arXiv",
+        "DeFi",
+        "Privacy",
+        "UTXO"
+      ]
+    },
+    {
+      "id": "arxiv-2608-22275",
+      "kind": "security-paper",
+      "title": "CodeMechanic, 메모리 손상 속성으로 임시 fail-stop 완화 생성",
+      "originalTitle": "CodeMechanic: Bug-Property-Guided Program Mitigation",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.22275",
+      "publishedAt": "2026-08-23",
+      "summary": "공간 메모리 손상 크래시에서 위반된 포인터 경계를 복원하고 위험 접근 직전에 제한된 fail-stop 검사를 삽입하는 자동 완화 시스템을 제안한 프리프린트입니다.",
+      "whyItMatters": "PoC 재실행만 통과하도록 프로그램 동작을 바꾸는 LLM 패치보다 복원할 안전 속성을 제한해 긴급 완화의 검토 범위를 줄입니다.",
+      "details": [
+        "실제 ARVO 버그 101건에서 첫 시도 plausible patch를 가장 강한 비교 기준보다 47.6% 더 생성했다고 보고했습니다.",
+        "같은 비교에서 토큰 사용량은 91% 적었다고 보고했습니다.",
+        "수동 감사에서 개발자 수정과 의미적으로 동등한 패치를 비교 기준보다 3.4~4.3배 더 생성했다고 보고했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 23일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "공간 메모리 손상과 ARVO 101건에 한정되어 use-after-free, 경쟁 상태와 논리 취약점으로 일반화할 수 없습니다.",
+        "경계 위반 시 종료해 가용성을 희생하는 임시 완화이며 영구 원인 수정이 아닙니다."
+      ],
+      "action": "생성된 완화는 sanitizer와 정상 회귀 테스트로 검증하고 임시 통제로 추적한 뒤 별도의 원인 수정으로 교체하세요.",
+      "priority": 89,
+      "identifier": "arXiv:2608.22275",
+      "evidenceLevel": "preprint",
+      "tags": [
+        "arXiv",
+        "Memory Safety",
+        "Program Repair",
+        "Fail-stop"
       ]
     }
   ]
