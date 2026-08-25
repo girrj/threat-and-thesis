@@ -1,6 +1,6 @@
 {
   "date": "2026-08-25",
-  "generatedAt": "2026-08-25T09:09:54+09:00",
+  "generatedAt": "2026-08-25T12:14:31+09:00",
   "rankings": {
     "security": [
       {
@@ -61,17 +61,17 @@
       },
       {
         "rank": 9,
+        "itemId": "nvd-cve-2026-56705",
+        "previousRank": null,
+        "status": "new",
+        "reason": "조건을 갖춘 Adminer에서 인증 전 원격 코드 실행이 가능하고 5.4.3 수정판이 제공되지만 실제 악용은 확인되지 않았습니다."
+      },
+      {
+        "rank": 10,
         "itemId": "nvd-cve-2026-77915",
         "previousRank": null,
         "status": "new",
         "reason": "인증 없이 관리자 계정을 만들 수 있고 패치 뒤에도 생성 계정이 남아 업데이트와 계정·자격증명 점검이 모두 필요합니다."
-      },
-      {
-        "rank": 10,
-        "itemId": "nvd-cve-2026-67602",
-        "previousRank": null,
-        "status": "new",
-        "reason": "인증 없이 IP 주소 관리 레코드를 읽고 변경하거나 삭제할 수 있고 phpIPAM 1.8.2 수정판이 제공됩니다."
       }
     ],
     "ai-security": [
@@ -179,59 +179,59 @@
       },
       {
         "rank": 3,
-        "itemId": "arxiv-2608-21101",
-        "previousRank": 3,
-        "status": "same",
-        "reason": "다섯 에이전트에서 스킬·실행 단계 방어의 공격 성공률 감소와 정상 작업 성공률을 함께 측정했습니다."
+        "itemId": "arxiv-2608-20884",
+        "previousRank": null,
+        "status": "new",
+        "reason": "상용 얼굴인식 API의 고보안 임계값에서도 100회 점수 질의로 높은 사칭 성공률을 보여 인증 설계에 직접 영향을 줍니다."
       },
       {
         "rank": 4,
-        "itemId": "arxiv-2608-20554",
-        "previousRank": 4,
-        "status": "same",
-        "reason": "120개가 넘는 모델에서 안전·보안·프라이버시 상충을 함께 측정해 단일 점수 평가의 공백을 보여줍니다."
+        "itemId": "arxiv-2608-21101",
+        "previousRank": 3,
+        "status": "down",
+        "reason": "다섯 에이전트에서 스킬·실행 단계 방어의 공격 성공률 감소와 정상 작업 성공률을 함께 측정했습니다."
       },
       {
         "rank": 5,
-        "itemId": "arxiv-2608-20637",
-        "previousRank": 5,
-        "status": "same",
-        "reason": "실행 증거로 CodeQL 질의를 개선해 높은 정밀도를 유지하고 실제 라이브러리 버그 발견까지 이어졌습니다."
+        "itemId": "arxiv-2608-20554",
+        "previousRank": 4,
+        "status": "down",
+        "reason": "120개가 넘는 모델에서 안전·보안·프라이버시 상충을 함께 측정해 단일 점수 평가의 공백을 보여줍니다."
       },
       {
         "rank": 6,
-        "itemId": "arxiv-2608-21100",
-        "previousRank": 6,
-        "status": "same",
-        "reason": "폐쇄형 멀티모달 모델을 수정하지 않고 입력 재구성으로 안전성과 정상 과제 효용을 함께 개선해 운영 적용 가능성을 보였습니다."
+        "itemId": "arxiv-2608-20637",
+        "previousRank": 5,
+        "status": "down",
+        "reason": "실행 증거로 CodeQL 질의를 개선해 높은 정밀도를 유지하고 실제 라이브러리 버그 발견까지 이어졌습니다."
       },
       {
         "rank": 7,
-        "itemId": "arxiv-2608-21095",
-        "previousRank": 7,
-        "status": "same",
-        "reason": "RAG 검색 코퍼스의 허위정보와 지식 오염을 함께 탐지해 현재 목록에 없던 검색 데이터 무결성 방어를 보완합니다."
+        "itemId": "arxiv-2608-21100",
+        "previousRank": 6,
+        "status": "down",
+        "reason": "폐쇄형 멀티모달 모델을 수정하지 않고 입력 재구성으로 안전성과 정상 과제 효용을 함께 개선해 운영 적용 가능성을 보였습니다."
       },
       {
         "rank": 8,
-        "itemId": "arxiv-2608-20825",
-        "previousRank": null,
-        "status": "new",
-        "reason": "예측 인증만 통과하는 침묵 실패를 분리 정리와 여러 데이터·모델 실험으로 보여 설명 인증을 별도 통제로 제시했습니다."
+        "itemId": "arxiv-2608-21095",
+        "previousRank": 7,
+        "status": "down",
+        "reason": "RAG 검색 코퍼스의 허위정보와 지식 오염을 함께 탐지해 현재 목록에 없던 검색 데이터 무결성 방어를 보완합니다."
       },
       {
         "rank": 9,
-        "itemId": "arxiv-2608-20569",
-        "previousRank": 8,
-        "status": "down",
-        "reason": "78,000회 이상 대조 개입에서 모델 자기보고와 내부 신호의 차이를 측정해 감독 설계에 직접 영향을 줍니다."
+        "itemId": "arxiv-2608-20938",
+        "previousRank": null,
+        "status": "new",
+        "reason": "높은 최종 정확도 아래에서도 AI 평가자의 이유 일관성이 급격히 무너지는 현상을 재현 가능한 영수증으로 측정했습니다."
       },
       {
         "rank": 10,
-        "itemId": "arxiv-2608-20664",
+        "itemId": "arxiv-2608-20929",
         "previousRank": null,
         "status": "new",
-        "reason": "숨은 실행 오라클과 사전등록 후속 감사로 다중 세션 소프트웨어 에이전트의 메모리 위생을 평가했습니다."
+        "reason": "여섯 데이터셋과 후처리 조건에서 생성 이미지 조작 위치의 OOD 탐지 성능을 구체적으로 평가했습니다."
       }
     ],
     "technology": [
