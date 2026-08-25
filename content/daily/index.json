@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-25T12:14:31+09:00",
+  "generatedAt": "2026-08-25T15:17:11+09:00",
   "editions": [
     {
       "date": "2026-08-25",
-      "generatedAt": "2026-08-25T12:14:31+09:00",
+      "generatedAt": "2026-08-25T15:17:11+09:00",
       "rankings": {
         "security": [
           {
@@ -117,52 +117,52 @@
           },
           {
             "rank": 4,
-            "itemId": "arxiv-2608-20732",
-            "previousRank": 4,
-            "status": "same",
-            "reason": "110만 API 요청과 통제 실험으로 LLM 리셀러의 공유 인프라를 측정해 공급망 집중 위험을 드러냈습니다."
+            "itemId": "arxiv-2608-21977",
+            "previousRank": null,
+            "status": "new",
+            "reason": "15,556개 오픈소스 CVE와 434건 수동 확인으로 NVD CWE 라벨의 오류와 분류 모호성을 구분해 측정했습니다."
           },
           {
             "rank": 5,
-            "itemId": "arxiv-2608-18180",
-            "previousRank": 5,
-            "status": "same",
-            "reason": "4개 패키지 생태계 34,005개 아티팩트에서 재현 빌드와 독립 검증 가능성의 간극을 측정했습니다."
+            "itemId": "arxiv-2608-21615",
+            "previousRank": null,
+            "status": "new",
+            "reason": "6개 모델 구성에서 난독화 가중치의 공동 저랭크 구조를 이용한 복구를 확인해 TEE 오프로딩 보호 가정을 점검합니다."
           },
           {
             "rank": 6,
-            "itemId": "usenix26-dns-cache-poisoning",
-            "previousRank": 6,
-            "status": "same",
-            "reason": "BIND 9의 두 도전값을 함께 예측해 고전적 DNS 캐시 포이즈닝의 현실 조건을 다시 확인했습니다."
+            "itemId": "arxiv-2608-20732",
+            "previousRank": 4,
+            "status": "down",
+            "reason": "110만 API 요청과 통제 실험으로 LLM 리셀러의 공유 인프라를 측정해 공급망 집중 위험을 드러냈습니다."
           },
           {
             "rank": 7,
-            "itemId": "arxiv-2608-19924",
-            "previousRank": 7,
-            "status": "same",
-            "reason": "기밀 컴퓨팅에서 디스크 롤백·재생·분기를 탐지하는 POSIX 파일시스템을 구현하고 평가했습니다."
+            "itemId": "arxiv-2608-18180",
+            "previousRank": 5,
+            "status": "down",
+            "reason": "4개 패키지 생태계 34,005개 아티팩트에서 재현 빌드와 독립 검증 가능성의 간극을 측정했습니다."
           },
           {
             "rank": 8,
-            "itemId": "doi-10-1103-j3xf-bw18",
-            "previousRank": 8,
-            "status": "same",
-            "reason": "secp256k1 양자 공격 자원과 on-spend 위험을 구체화해 PQC 전환 우선순위를 제시합니다."
+            "itemId": "arxiv-2608-22889",
+            "previousRank": null,
+            "status": "new",
+            "reason": "281개 실제 CVE 요청과 정상 IoT 트래픽에서 검증 가능한 Suricata 규칙 합성의 탐지율과 오탐을 함께 평가했습니다."
           },
           {
             "rank": 9,
-            "itemId": "doi-10-1145-3788862",
-            "previousRank": 9,
-            "status": "same",
-            "reason": "만족·불만족 공식을 함께 합성해 Z3·cvc5의 확인된 버그를 찾은 SMT 솔버 검증 연구입니다."
+            "itemId": "usenix26-dns-cache-poisoning",
+            "previousRank": 6,
+            "status": "down",
+            "reason": "BIND 9의 두 도전값을 함께 예측해 고전적 DNS 캐시 포이즈닝의 현실 조건을 다시 확인했습니다."
           },
           {
             "rank": 10,
-            "itemId": "usenix26-updsight",
-            "previousRank": 10,
-            "status": "same",
-            "reason": "85개 데스크톱 앱의 업데이트 경로에서 반복되는 서명·무결성·롤백 검증 문제를 측정했습니다."
+            "itemId": "arxiv-2608-19924",
+            "previousRank": 7,
+            "status": "down",
+            "reason": "기밀 컴퓨팅에서 디스크 롤백·재생·분기를 탐지하는 POSIX 파일시스템을 구현하고 평가했습니다."
           }
         ],
         "ai-paper": [
@@ -182,59 +182,59 @@
           },
           {
             "rank": 3,
+            "itemId": "arxiv-2608-21664",
+            "previousRank": null,
+            "status": "new",
+            "reason": "25개 오픈웨이트 모델에서 자연어 기반 활성값 제어와 잠재공간 모니터 우회를 측정해 모니터링 가정을 점검합니다."
+          },
+          {
+            "rank": 4,
+            "itemId": "arxiv-2608-21544",
+            "previousRank": null,
+            "status": "new",
+            "reason": "파라미터에서 억제한 지식이 도구로 복구되는 현상과 궤적 수준 방어를 여러 모델·벤치마크에서 평가했습니다."
+          },
+          {
+            "rank": 5,
             "itemId": "arxiv-2608-20884",
             "previousRank": null,
             "status": "new",
             "reason": "상용 얼굴인식 API의 고보안 임계값에서도 100회 점수 질의로 높은 사칭 성공률을 보여 인증 설계에 직접 영향을 줍니다."
           },
           {
-            "rank": 4,
+            "rank": 6,
             "itemId": "arxiv-2608-21101",
             "previousRank": 3,
             "status": "down",
             "reason": "다섯 에이전트에서 스킬·실행 단계 방어의 공격 성공률 감소와 정상 작업 성공률을 함께 측정했습니다."
           },
           {
-            "rank": 5,
+            "rank": 7,
             "itemId": "arxiv-2608-20554",
             "previousRank": 4,
             "status": "down",
             "reason": "120개가 넘는 모델에서 안전·보안·프라이버시 상충을 함께 측정해 단일 점수 평가의 공백을 보여줍니다."
           },
           {
-            "rank": 6,
+            "rank": 8,
+            "itemId": "arxiv-2608-21736",
+            "previousRank": null,
+            "status": "new",
+            "reason": "양성 표본이 거의 없는 LLM 유해 행동의 확률을 추정해 대규모 배포의 저빈도 안전 실패 측정을 보완합니다."
+          },
+          {
+            "rank": 9,
             "itemId": "arxiv-2608-20637",
             "previousRank": 5,
             "status": "down",
             "reason": "실행 증거로 CodeQL 질의를 개선해 높은 정밀도를 유지하고 실제 라이브러리 버그 발견까지 이어졌습니다."
           },
           {
-            "rank": 7,
+            "rank": 10,
             "itemId": "arxiv-2608-21100",
             "previousRank": 6,
             "status": "down",
             "reason": "폐쇄형 멀티모달 모델을 수정하지 않고 입력 재구성으로 안전성과 정상 과제 효용을 함께 개선해 운영 적용 가능성을 보였습니다."
-          },
-          {
-            "rank": 8,
-            "itemId": "arxiv-2608-21095",
-            "previousRank": 7,
-            "status": "down",
-            "reason": "RAG 검색 코퍼스의 허위정보와 지식 오염을 함께 탐지해 현재 목록에 없던 검색 데이터 무결성 방어를 보완합니다."
-          },
-          {
-            "rank": 9,
-            "itemId": "arxiv-2608-20938",
-            "previousRank": null,
-            "status": "new",
-            "reason": "높은 최종 정확도 아래에서도 AI 평가자의 이유 일관성이 급격히 무너지는 현상을 재현 가능한 영수증으로 측정했습니다."
-          },
-          {
-            "rank": 10,
-            "itemId": "arxiv-2608-20929",
-            "previousRank": null,
-            "status": "new",
-            "reason": "여섯 데이터셋과 후처리 조건에서 생성 이미지 조작 위치의 OOD 탐지 성능을 구체적으로 평가했습니다."
           }
         ],
         "technology": [
