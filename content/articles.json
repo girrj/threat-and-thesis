@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T21:21:03+09:00",
+  "generatedAt": "2026-08-26T00:13:09+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -3228,6 +3228,99 @@
       ],
       "priority": 90,
       "identifier": "arXiv:2608.22444",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "nvd-cve-2026-79657",
+      "kind": "security",
+      "title": "NLTK, 안전 목록 pickle 로더 코드 실행 취약점 CVE-2026-79657 수정",
+      "originalTitle": "Allowlisted pickle loaders still permit code execution in current source",
+      "source": "NLTK GitHub Security Advisory",
+      "sourceUrl": "https://github.com/nltk/nltk/security/advisories/GHSA-x99w-6fgc-pmfw",
+      "publishedAt": "2026-08-11",
+      "summary": "NLTK의 안전 목록 기반 pickle 로더가 모듈 전체를 신뢰해 공격자가 조작한 모델·토크나이저 아티팩트를 불러올 때 임의 명령을 실행할 수 있는 취약점이 공개됐습니다.",
+      "whyItMatters": "신뢰 경계 밖에서 받은 NLTK 아티팩트를 처리하는 서비스는 안전 로더를 사용하더라도 애플리케이션 권한으로 코드가 실행될 수 있습니다.",
+      "details": [
+        "공식 권고는 nltk.picklesec, punkt_pickle_load와 TransitionParser.parse의 넓은 모듈 허용 목록에서 위험한 callable을 호출할 수 있다고 설명합니다.",
+        "공격에는 애플리케이션이 공격자 제어 모델 또는 토크나이저 아티팩트를 해당 로더로 읽는 조건이 필요합니다.",
+        "공식 권고의 구조화된 영향 범위와 CNA 레코드는 3.10.2 이하가 영향받고 3.10.3에서 수정됐다고 명시합니다."
+      ],
+      "limitations": [
+        "공개 재현 자료는 기술적 악용 가능성을 보여주지만 실제 운영 환경의 악용을 뜻하지 않으며 CISA KEV 등재는 확인되지 않았습니다.",
+        "권고 본문에는 수정 전 조사 내용과 후속 수정 검증이 함께 남아 있어 버전 범위는 구조화된 권고와 CNA 레코드를 기준으로 확인했습니다."
+      ],
+      "action": "NLTK를 3.10.3 이상으로 업데이트하고 외부 모델·토크나이저 pickle 로드를 차단하거나 신뢰된 아티팩트로 제한하세요.",
+      "tags": [
+        "NLTK",
+        "CVE-2026-79657",
+        "Pickle",
+        "Remote Code Execution"
+      ],
+      "priority": 93,
+      "severity": "critical",
+      "identifier": "CVE-2026-79657",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "arxiv-2608-22752",
+      "kind": "ai-paper",
+      "title": "Compaction Cliff, 에이전트 메모리 압축에서 안전 규칙 소실 측정",
+      "originalTitle": "The Compaction Cliff in Long-Running AI Agent Memory",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.22752",
+      "publishedAt": "2026-08-24",
+      "summary": "장기 실행 AI 에이전트의 컨텍스트 압축이 일반 로그와 안전 규칙을 같은 방식으로 요약해 필수 제약을 반복적으로 잃는 현상을 측정하고 유형별 보존 방식을 제안한 프리프린트입니다.",
+      "whyItMatters": "컨텍스트 한계에 도달한 에이전트가 압축 뒤에도 안전 정책을 기억한다고 가정하면 장시간 작업에서 권한·행동 제약이 조용히 약화될 수 있습니다.",
+      "details": [
+        "20개 운영형 구성에서 Claude Code의 압축 프롬프트와 Sonnet 4.6은 안전 규칙을 1회 뒤 53%, 5회 뒤 10% 보존했다고 보고했습니다.",
+        "유형별 TypeCompact는 비교한 단일 압축 기준선보다 안전 규칙을 2~4배 더 보존했고 5회 압축 뒤 96% recall을 기록했습니다.",
+        "공개 GitHub 저장소 54,628곳에서 수집한 396,934개 에이전트 구성과 의료·소매·항공 행동 평가를 사용했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 24일 제출된 프리프린트이며 독립 재현 전입니다.",
+        "공개 GitHub 중심 코퍼스라 폐쇄형 조직 환경에 그대로 일반화할 수 없고 5개 유형 주석 일치도는 κ=0.45였습니다.",
+        "분할 시 제약 복제 오버헤드는 최악 219%였고 다회 압축은 네 모델 계열 중 두 계열에서만 평가했습니다."
+      ],
+      "action": "메모리 압축 전 안전 제약을 별도 유형으로 분류해 고충실도로 보존하고 압축 뒤 규칙 누락 검사를 실패-차단 방식으로 적용하세요.",
+      "tags": [
+        "arXiv",
+        "Agent Memory",
+        "Context Compaction",
+        "AI Safety"
+      ],
+      "priority": 93,
+      "identifier": "arXiv:2608.22752",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-22657",
+      "kind": "ai-paper",
+      "title": "Physical Agentic AI, LLM 계획과 로봇 실행 권한 분리",
+      "originalTitle": "Physical Agentic AI: An Architecture for Orchestrating a Robot Crew with LLMs",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.22657",
+      "publishedAt": "2026-08-23",
+      "summary": "LLM은 비실행 계획만 만들고 결정론적 오케스트레이터가 로봇 기술, 상태와 작업 흐름을 매 호출마다 검증한 뒤 실행하도록 분리한 프리프린트입니다.",
+      "whyItMatters": "물리 에이전트에서 도구 설명을 더 제공하는 것만으로는 잘못된 동작을 막지 못하며 최종 실행 권한을 모델 밖의 검증 계층에 두어야 한다는 실험 근거를 제공합니다.",
+      "details": [
+        "기술 목록 검색은 두 시험대의 skill grounding을 51%에서 96%로 높였지만 런타임 강제가 없으면 결함 단계의 23~29%가 계속 실행 경계로 전달됐습니다.",
+        "동일 계획을 비교한 실험에서 결정론적 검증은 false dispatch를 9/35에서 0으로 줄였고 두 시험대의 주입 결함을 모두 차단했습니다.",
+        "Gazebo 드론·UGV와 하드웨어 동등 인터페이스의 휴머노이드·사족보행 시험대, 실제 Unitree 로봇 2회 시연을 평가했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 23일 제출된 프리프린트이며 독립 재현 전입니다.",
+        "실제 하드웨어 시연은 두 번뿐이고 단일 foundation model을 사용해 물리 환경과 다른 모델에 대한 일반화가 확인되지 않았습니다.",
+        "검증 계층은 선언된 계약만 보장하며 허용된 기술 내부의 grasp나 navigation 실패는 막지 못합니다."
+      ],
+      "action": "LLM을 비실행 planner로 제한하고 로봇 자격 증명과 실행 권한은 기술·인자·상태·작업 흐름을 검사하는 결정론적 게이트에만 부여하세요.",
+      "tags": [
+        "arXiv",
+        "Physical AI",
+        "Robot Safety",
+        "Runtime Enforcement"
+      ],
+      "priority": 91,
+      "identifier": "arXiv:2608.22657",
       "evidenceLevel": "preprint"
     }
   ]

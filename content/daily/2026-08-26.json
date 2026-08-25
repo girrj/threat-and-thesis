@@ -1,0 +1,247 @@
+{
+  "date": "2026-08-26",
+  "generatedAt": "2026-08-26T00:13:09+09:00",
+  "rankings": {
+    "security": [
+      {
+        "rank": 1,
+        "itemId": "cisa-cve-2026-73570",
+        "previousRank": 1,
+        "status": "same",
+        "reason": "실제 악용된 Zimbra 명령 주입이 메일 서버의 원격 명령 실행으로 이어지고 CISA 조치 기한이 촉박합니다."
+      },
+      {
+        "rank": 2,
+        "itemId": "cisa-cve-2026-21962",
+        "previousRank": 2,
+        "status": "same",
+        "reason": "실제 악용이 확인됐고 Oracle의 공식 수정과 CISA의 8월 27일 조치 기한이 있어 즉시 대응이 필요합니다."
+      },
+      {
+        "rank": 3,
+        "itemId": "cisa-cve-2026-59310",
+        "previousRank": 3,
+        "status": "same",
+        "reason": "실제 악용이 확인됐고 vCenter가 가상화 환경의 중앙 관리 지점이며 미조치 자산 확인이 시급합니다."
+      },
+      {
+        "rank": 4,
+        "itemId": "cisa-trueconf-cve-2026-72529-72530",
+        "previousRank": 4,
+        "status": "same",
+        "reason": "실제 악용된 원격 비인증 실행과 격리 탈출 취약점이 함께 KEV에 올라 노출 확인과 패치가 필요합니다."
+      },
+      {
+        "rank": 5,
+        "itemId": "msrc-cve-2026-69836",
+        "previousRank": 5,
+        "status": "same",
+        "reason": "Microsoft가 Entra ID의 무인증 원격 코드 실행 취약점 악용을 확인해 로그 검토 가치가 있습니다."
+      },
+      {
+        "rank": 6,
+        "itemId": "nvd-cve-2026-79657",
+        "previousRank": null,
+        "status": "new",
+        "reason": "공격자 제어 NLTK 아티팩트 로드 시 코드 실행으로 이어지고 공식 3.10.3 수정판이 있어 공급망 입력 경계를 점검해야 합니다."
+      },
+      {
+        "rank": 7,
+        "itemId": "vde-2026-083",
+        "previousRank": 6,
+        "status": "down",
+        "reason": "산업용 라우터 관리면에서 인증 없이 루트 명령 실행이 가능하고 공식 수정 펌웨어와 임시 완화책이 제공됩니다."
+      },
+      {
+        "rank": 8,
+        "itemId": "nvd-cve-2026-78003",
+        "previousRank": 7,
+        "status": "down",
+        "reason": "인증 없이 Mailgun API 키를 악용해 비밀번호 재설정 메일을 가로챌 수 있고 공식 수정판이 제공됩니다."
+      },
+      {
+        "rank": 9,
+        "itemId": "nvd-cve-2026-77776",
+        "previousRank": 8,
+        "status": "down",
+        "reason": "네트워크에 노출된 Headroom LLM 프록시에서 다른 사용자의 메모리를 읽거나 변경할 수 있고 수정 버전이 공개됐습니다."
+      },
+      {
+        "rank": 10,
+        "itemId": "nvd-cve-2026-77264",
+        "previousRank": 9,
+        "status": "down",
+        "reason": "공식 저장소 안정 버전까지 영향을 받는 무인증 관리자 사칭 취약점이며 확인된 수정판이 없어 자산 조사가 필요합니다."
+      }
+    ],
+    "ai-security": [
+      {
+        "rank": 1,
+        "itemId": "owasp-llm-top-10-2026",
+        "previousRank": 1,
+        "status": "same",
+        "reason": "LLM과 에이전트 서비스의 보안 점검 기준으로 바로 활용할 수 있는 공식 가이드입니다."
+      },
+      {
+        "rank": 2,
+        "itemId": "mitre-atlas",
+        "previousRank": 2,
+        "status": "same",
+        "reason": "프롬프트 인젝션과 에이전트 도구 악용을 기존 위협 모델에 연결할 수 있습니다."
+      }
+    ],
+    "security-paper": [
+      {
+        "rank": 1,
+        "itemId": "usenix26-download-more-ram",
+        "previousRank": 1,
+        "status": "same",
+        "reason": "Windows VBS·HVCI의 하드웨어 신뢰 가정을 깨고 실제 CVE와 패치로 이어진 연구입니다."
+      },
+      {
+        "rank": 2,
+        "itemId": "arxiv-2608-20817",
+        "previousRank": 2,
+        "status": "same",
+        "reason": "15개 촉각 센서와 실제 로봇 작업에서 비접촉 전자기 조작 영향을 확인해 새로운 물리 공격면을 구체화했습니다."
+      },
+      {
+        "rank": 3,
+        "itemId": "doi-10-1145-3786795",
+        "previousRank": 3,
+        "status": "same",
+        "reason": "불안전 포인터 중심 탐색으로 메모리 오류 탐지를 높이고 실제 신규 CVE 발견까지 이어졌습니다."
+      },
+      {
+        "rank": 4,
+        "itemId": "doi-10-1145-3831700",
+        "previousRank": 4,
+        "status": "same",
+        "reason": "PQC 가속기의 기능·성능 시험을 통과할 수 있는 소형 하드웨어 백도어를 구현해 공급망 검증의 공백을 보여줍니다."
+      },
+      {
+        "rank": 5,
+        "itemId": "arxiv-2608-21977",
+        "previousRank": 5,
+        "status": "same",
+        "reason": "15,556개 오픈소스 CVE와 434건 수동 확인으로 NVD CWE 라벨의 오류와 분류 모호성을 구분해 측정했습니다."
+      },
+      {
+        "rank": 6,
+        "itemId": "arxiv-2608-21615",
+        "previousRank": 6,
+        "status": "same",
+        "reason": "6개 모델 구성에서 난독화 가중치의 공동 저랭크 구조를 이용한 복구를 확인해 TEE 오프로딩 보호 가정을 점검합니다."
+      },
+      {
+        "rank": 7,
+        "itemId": "doi-10-1145-3834776",
+        "previousRank": 7,
+        "status": "same",
+        "reason": "차량 CAN 인증 하드웨어에서 100만 회 이상 전자기 트레이스로 재키잉 구조를 평가해 실물 구현 근거가 있습니다."
+      },
+      {
+        "rank": 8,
+        "itemId": "arxiv-2608-22987",
+        "previousRank": 8,
+        "status": "same",
+        "reason": "6개 체인의 186,356건을 분석해 공개 프로토콜 제약만으로 익명집합이 크게 줄어드는 범위를 측정했습니다."
+      },
+      {
+        "rank": 9,
+        "itemId": "arxiv-2608-20732",
+        "previousRank": 9,
+        "status": "same",
+        "reason": "110만 API 요청과 통제 실험으로 LLM 리셀러의 공유 인프라를 측정해 공급망 집중 위험을 드러냈습니다."
+      },
+      {
+        "rank": 10,
+        "itemId": "arxiv-2608-18180",
+        "previousRank": 10,
+        "status": "same",
+        "reason": "4개 패키지 생태계 34,005개 아티팩트에서 재현 빌드와 독립 검증 가능성의 간극을 측정했습니다."
+      }
+    ],
+    "ai-paper": [
+      {
+        "rank": 1,
+        "itemId": "arxiv-2608-19857",
+        "previousRank": 1,
+        "status": "same",
+        "reason": "거부 응답 뒤의 간접 신호로 컨텍스트 비밀을 복원한 결과가 에이전트 메모리와 비밀 분리 설계에 직접 영향을 줍니다."
+      },
+      {
+        "rank": 2,
+        "itemId": "arxiv-2608-20055",
+        "previousRank": 2,
+        "status": "same",
+        "reason": "도구 호출 사이에 유지되는 추론 상태로 숨은 사고 흔적을 추출해 에이전트 API의 새로운 정보 노출면을 확인했습니다."
+      },
+      {
+        "rank": 3,
+        "itemId": "arxiv-2608-23471",
+        "previousRank": 3,
+        "status": "same",
+        "reason": "한 번의 대화만으로 장기 메모리 검색과 이후 응답을 오염시켜 에이전트 메모리의 지속적 신뢰 경계를 점검합니다."
+      },
+      {
+        "rank": 4,
+        "itemId": "arxiv-2608-22868",
+        "previousRank": 4,
+        "status": "same",
+        "reason": "AgentDojo 949건과 AgentDyn 200건에서 데이터 흐름 정책의 보안·효용을 함께 평가해 에이전트 런타임 통제에 직접 연결됩니다."
+      },
+      {
+        "rank": 5,
+        "itemId": "arxiv-2608-22752",
+        "previousRank": null,
+        "status": "new",
+        "reason": "장기 에이전트의 정상적인 컨텍스트 압축이 안전 규칙을 반복 소실시키는 위험과 유형별 보존 통제를 대규모 구성에서 측정했습니다."
+      },
+      {
+        "rank": 6,
+        "itemId": "arxiv-2608-23550",
+        "previousRank": 5,
+        "status": "down",
+        "reason": "공개 CLAUDE.md 보안 규칙 대부분이 실행 전 강제 통제로 연결되지 않는 간극을 실무 표본으로 측정했습니다."
+      },
+      {
+        "rank": 7,
+        "itemId": "arxiv-2608-22657",
+        "previousRank": null,
+        "status": "new",
+        "reason": "물리 로봇 시험대에서 LLM 계획과 실행 권한을 분리한 결정론적 게이트가 잘못된 dispatch를 차단했습니다."
+      },
+      {
+        "rank": 8,
+        "itemId": "arxiv-2608-21664",
+        "previousRank": 6,
+        "status": "down",
+        "reason": "25개 오픈웨이트 모델에서 자연어 기반 활성값 제어와 잠재공간 모니터 우회를 측정해 모니터링 가정을 점검합니다."
+      },
+      {
+        "rank": 9,
+        "itemId": "arxiv-2608-20884",
+        "previousRank": 7,
+        "status": "down",
+        "reason": "상용 얼굴인식 API의 고보안 임계값에서도 100회 점수 질의로 높은 사칭 성공률을 보여 인증 설계에 직접 영향을 줍니다."
+      },
+      {
+        "rank": 10,
+        "itemId": "arxiv-2608-22339",
+        "previousRank": 8,
+        "status": "down",
+        "reason": "성공 스킬의 무조건 재사용이 잘못된 도구 호출을 강화할 수 있음을 보이고 경계 조건 기반 메모리를 평가했습니다."
+      }
+    ],
+    "technology": [
+      {
+        "rank": 1,
+        "itemId": "nist-cyber-ai-profile",
+        "previousRank": 1,
+        "status": "same",
+        "reason": "AI 보안을 조직의 기존 사이버보안 위험관리 체계에 연결하는 공식 기준입니다."
+      }
+    ]
+  }
+}
