@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T06:10:25+09:00",
+  "generatedAt": "2026-08-25T09:09:54+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -2516,6 +2516,37 @@
       "priority": 89,
       "severity": "info",
       "identifier": "arXiv:2608.20664",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-20825",
+      "kind": "ai-paper",
+      "title": "예측 인증만으로 설명 신뢰성을 보장할 수 없다는 분리 정리",
+      "originalTitle": "Prediction certification cannot replace explanation certification: a competence envelope for trustworthy AI under compound stress",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.20825",
+      "publishedAt": "2026-08-21",
+      "summary": "같은 정확도·보정·conformal coverage를 보이는 두 모델도 설명 충실도와 배포 중 동작은 크게 다를 수 있음을 보이고, 예측과 설명 인증을 결합한 competence envelope를 제안한 프리프린트입니다.",
+      "whyItMatters": "정확도와 신뢰도 점검만 통과한 모델도 데이터 오염이나 환경 변화에서 다른 근거로 판단할 수 있어 설명 안정성과 중단 조건을 별도로 검증해야 합니다.",
+      "details": [
+        "분리 정리는 인증 시점의 예측 분포가 같은 모델을 예측 측 인증만으로 구분할 수 없고 내부 의사결정 구조 정보가 필요하다고 설명합니다.",
+        "텔레그램 메시지 30,066건과 Reddit 게시물 36,642건을 포함해 다섯 모델 클래스, 세 다국어 트랜스포머 표현, 여덟 텍스트 분류 벤치마크에서 예측·설명 인증의 차이를 평가했습니다.",
+        "데이터 오염 실험에서는 공격 성공률이 0.88까지 오르는 동안 conformal coverage가 0.90을 유지했고 설명 안정성 신호는 공격 성공률과 0.79의 상관을 보였다고 보고했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 21일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "설명 인증은 기준 시점의 attribution profile과의 코사인 거리를 사용한 안정성 대리 지표에 의존하며 설명의 인과적 정확성이나 인간 유용성을 보장하지 않습니다.",
+        "시간 변화 구간은 exchangeability 가정이 깨져 conformal coverage를 분포 독립 보장이 아니라 신뢰성 저하를 관찰하는 진단값으로 사용했습니다."
+      ],
+      "action": "모델 승인 기준에서 정확도·보정·coverage와 설명 충실도·안정성을 별도 항목으로 검증하고 인증 범위를 벗어나면 응답 중단이나 사람 검토로 전환하세요.",
+      "tags": [
+        "arXiv",
+        "AI Evaluation",
+        "Explainability",
+        "Conformal Prediction"
+      ],
+      "priority": 91,
+      "identifier": "arXiv:2608.20825",
       "evidenceLevel": "preprint"
     }
   ]

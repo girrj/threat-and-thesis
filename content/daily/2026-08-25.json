@@ -1,6 +1,6 @@
 {
   "date": "2026-08-25",
-  "generatedAt": "2026-08-25T06:10:25+09:00",
+  "generatedAt": "2026-08-25T09:09:54+09:00",
   "rankings": {
     "security": [
       {
@@ -214,24 +214,24 @@
       },
       {
         "rank": 8,
-        "itemId": "arxiv-2608-20569",
-        "previousRank": 8,
-        "status": "same",
-        "reason": "78,000회 이상 대조 개입에서 모델 자기보고와 내부 신호의 차이를 측정해 감독 설계에 직접 영향을 줍니다."
+        "itemId": "arxiv-2608-20825",
+        "previousRank": null,
+        "status": "new",
+        "reason": "예측 인증만 통과하는 침묵 실패를 분리 정리와 여러 데이터·모델 실험으로 보여 설명 인증을 별도 통제로 제시했습니다."
       },
       {
         "rank": 9,
+        "itemId": "arxiv-2608-20569",
+        "previousRank": 8,
+        "status": "down",
+        "reason": "78,000회 이상 대조 개입에서 모델 자기보고와 내부 신호의 차이를 측정해 감독 설계에 직접 영향을 줍니다."
+      },
+      {
+        "rank": 10,
         "itemId": "arxiv-2608-20664",
         "previousRank": null,
         "status": "new",
         "reason": "숨은 실행 오라클과 사전등록 후속 감사로 다중 세션 소프트웨어 에이전트의 메모리 위생을 평가했습니다."
-      },
-      {
-        "rank": 10,
-        "itemId": "arxiv-2608-19901",
-        "previousRank": 10,
-        "status": "same",
-        "reason": "악성 에이전트 스킬 탐지기가 출처 분리 평가에서 정상 항목을 대량 오탐하는 공급망 검증 공백을 측정했습니다."
       }
     ],
     "technology": [
