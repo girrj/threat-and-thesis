@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T03:10:30+09:00",
+  "generatedAt": "2026-08-26T06:12:20+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -3353,6 +3353,69 @@
       "severity": "critical",
       "identifier": "CVE-2026-60004",
       "evidenceLevel": "official"
+    },
+    {
+      "id": "adobe-apsb26-134",
+      "kind": "security",
+      "title": "Adobe Campaign Classic, 비인증 원격 코드 실행 취약점 3건 수정",
+      "originalTitle": "Adobe Security Bulletin APSB26-134",
+      "source": "Adobe Security Bulletin",
+      "sourceUrl": "https://helpx.adobe.com/security/products/campaign/apsb26-134.html",
+      "publishedAt": "2026-08-25",
+      "summary": "Adobe가 Campaign Classic의 서버 측 요청 위조 1건과 OS 명령 주입 2건을 포함한 비인증 원격 코드 실행 취약점 3건을 수정했습니다.",
+      "whyItMatters": "온프레미스 또는 하이브리드 환경의 관리자는 네트워크 경로만으로 Campaign Classic 서버 권한이 노출될 수 있어 수정 빌드 적용이 필요합니다.",
+      "details": [
+        "공식 권고는 CVE-2026-76193을 서버 측 요청 위조, CVE-2026-76195와 CVE-2026-76197을 OS 명령 주입으로 분류하며 모두 임의 코드 실행 영향을 명시합니다.",
+        "Windows와 Linux의 ACC v7 7.4.4 build 9400 이하 온프레미스 및 하이브리드 온프레미스 구성요소가 영향 대상입니다.",
+        "Adobe는 ACC v7 7.4.4 build 9401을 수정 빌드로 제시하고 우선순위 1로 분류했습니다."
+      ],
+      "limitations": [
+        "Adobe는 권고 게시 시점에 실제 악용을 인지하지 못했다고 밝혔으며 CVSS 점수는 실제 악용 증거가 아닙니다.",
+        "Adobe-hosted 인스턴스는 이미 조치돼 고객 행동이 필요 없으며 이번 조치는 온프레미스 구성요소에 해당합니다.",
+        "NVD 레코드는 확인 시점에 Received 상태로 NVD 자체 분석이 완료되지 않았습니다."
+      ],
+      "action": "온프레미스 또는 하이브리드 Adobe Campaign Classic 자산을 확인해 ACC v7 7.4.4 build 9401 이상으로 업데이트하세요.",
+      "tags": [
+        "Adobe Campaign Classic",
+        "APSB26-134",
+        "CVE-2026-76193",
+        "Remote Code Execution"
+      ],
+      "priority": 92,
+      "severity": "critical",
+      "identifier": "APSB26-134",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "arxiv-2608-23474",
+      "kind": "ai-paper",
+      "title": "TimeCatch, 비전언어모델의 시간 순서 이해 한계 측정",
+      "originalTitle": "What's the Catch? Evaluating Temporal Consistency in Vision-Language Models",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.23474",
+      "publishedAt": "2026-08-24",
+      "summary": "연속 프레임의 순서를 바꾸는 통제 실험으로 비전언어모델이 프레임 단위 이상은 찾지만 시간적 불일치는 거의 우연 수준으로 탐지한다는 결과를 보고한 프리프린트입니다.",
+      "whyItMatters": "영상 흐름의 순서와 연속성을 이해한다고 가정한 감시·로봇·검토 시스템은 정적 프레임 성능만으로 배치 안전성을 판단하기 어렵습니다.",
+      "details": [
+        "TimeCatch는 연속 프레임 교환으로 시간 이상을 만들고 Gaussian noise 프레임 치환으로 프레임 단위 이상을 구성했습니다.",
+        "네 개의 합성·실세계 데이터셋에서 이상 탐지와 위치 찾기를 평가했으며 모델은 시간 이상 탐지에서 거의 우연 수준이었다고 보고했습니다.",
+        "인간 참여자는 두 이상 유형에서 거의 최고 수준의 성능을 보였고 모델 규모·프롬프트·시퀀스 길이 분석만으로 격차가 해소되지 않았습니다."
+      ],
+      "limitations": [
+        "2026년 8월 24일 제출된 프리프린트이며 독립 재현 전입니다.",
+        "시간 조작은 주로 인접 프레임 교환에 집중돼 장거리 의존성이나 복잡한 인과 사건 추론을 포괄하지 않습니다.",
+        "진단 벤치마크 결과를 실제 영상 응용의 위해율이나 운영 성능으로 곧바로 일반화할 수 없습니다."
+      ],
+      "action": "영상 VLM 평가에 프레임 순서 교란과 시간 이상 탐지 회귀 테스트를 추가하고 시간 판단이 중요한 경보에는 별도 모델이나 사람 검토를 두세요.",
+      "tags": [
+        "arXiv",
+        "Vision-Language Model",
+        "Temporal Consistency",
+        "AI Evaluation"
+      ],
+      "priority": 87,
+      "identifier": "arXiv:2608.23474",
+      "evidenceLevel": "preprint"
     }
   ]
 }
