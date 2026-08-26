@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T12:16:26+09:00",
+  "generatedAt": "2026-08-26T15:56:16+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -3446,6 +3446,130 @@
       ],
       "priority": 93,
       "identifier": "arXiv:2608.21500",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-23731",
+      "kind": "security-paper",
+      "title": "Stitch, 프로세스·네트워크 상관으로 피벗 공격 실시간 탐지",
+      "originalTitle": "Effective Pivot Attack Detection via System and Network Information",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.23731",
+      "publishedAt": "2026-08-24",
+      "summary": "호스트의 프로세스 실행 정보와 네트워크 흐름을 결합해 내부 피벗 공격을 실시간으로 식별하는 Stitch를 제안한 프리프린트입니다.",
+      "whyItMatters": "경계 장비의 트래픽만으로 놓칠 수 있는 터널·포트포워딩을 호스트의 연결 주체와 함께 추적해 횡적 이동 탐지 근거를 보완할 수 있습니다.",
+      "details": [
+        "Nmap, SSH, Socat, Chisel 기반 피벗을 통제 환경에서 모두 탐지했다고 보고했습니다.",
+        "비교 대상보다 탐지 정확도가 평균 31.49%포인트 높았고 시험 환경 평균 오탐률은 0.18%였습니다.",
+        "대학 공유 서버와 공개 웹 서버에서 80일 넘게 운영했으며 최대 오탐률은 0.006%, 시험 환경의 추가 CPU 사용률은 0.1%였습니다."
+      ],
+      "limitations": [
+        "2026년 8월 24일 제출된 프리프린트이며 소스 코드는 논문 채택 후 공개할 예정이라고 설명합니다.",
+        "호스트가 완전히 장악되면 탐지 프로그램이나 eBPF 상태가 변경될 수 있습니다.",
+        "실제 배포 평가는 오탐 측정 중심이며 패킷 패딩·지연 삽입 같은 적응형 우회의 현장 탐지율은 확인하지 않았습니다."
+      ],
+      "action": "중요 Linux 서버에서 수신·발신 연결과 프로세스 계보를 함께 수집하고 피벗 터널 시나리오로 탐지 공백을 점검하세요.",
+      "tags": [
+        "arXiv",
+        "Lateral Movement",
+        "eBPF",
+        "Network Detection"
+      ],
+      "priority": 91,
+      "identifier": "arXiv:2608.23731",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "doi-10-1007-s10515-026-00646-5",
+      "kind": "ai-paper",
+      "title": "Multi-SALLM, 3개 프로그래밍 언어·23개 자연어로 생성 코드 보안성 비교",
+      "originalTitle": "Multi-SALLM: a multilingual security assessment of generated code",
+      "source": "Automated Software Engineering (Springer Nature)",
+      "sourceUrl": "https://doi.org/10.1007/s10515-026-00646-5",
+      "publishedAt": "2026-08-26",
+      "summary": "코드 생성 모델의 기능 정확도와 취약 코드 생성률을 프로그래밍 언어·자연어별로 분리해 평가한 동료평가 논문입니다.",
+      "whyItMatters": "코드가 테스트를 통과해도 안전하다는 뜻은 아니므로 조직의 코딩 모델 평가는 기능 지표와 취약점 지표를 함께 측정해야 합니다.",
+      "details": [
+        "125개 Python 보안 프롬프트에 Java와 C++ 대응 과제를 만들고 23개 자연어로 번역해 평가했습니다.",
+        "StarCoder2, Qwen2.5-Coder, GPT-4o-Mini, Gemini-2.5-Flash를 CodeQL 정적 분석과 테스트 실행으로 비교했습니다.",
+        "높은 기능 성공률이 낮은 vulnerable@k를 보장하지 않았고 자연어보다 대상 프로그래밍 언어의 영향이 더 컸다고 보고했습니다."
+      ],
+      "limitations": [
+        "세 프로그래밍 언어와 큐레이션 벤치마크에 한정됩니다.",
+        "번역은 원어민 검증 없이 모델 번역·역번역·BERTScore에 의존합니다.",
+        "CodeQL의 언어별 규칙 범위와 오탐·미탐, 낮은 컴파일률이 모델 비교에 영향을 줄 수 있습니다."
+      ],
+      "action": "코드 생성 모델 평가에서 pass@k와 vulnerable@k를 함께 측정하고 실제 저장소 빌드·정적 분석 환경에서 결과를 재검증하세요.",
+      "tags": [
+        "Secure Code Generation",
+        "LLM",
+        "CodeQL",
+        "Multilingual"
+      ],
+      "priority": 92,
+      "identifier": "DOI:10.1007/s10515-026-00646-5",
+      "evidenceLevel": "peer-reviewed"
+    },
+    {
+      "id": "arxiv-2608-23858",
+      "kind": "ai-paper",
+      "title": "AP2 보안 분석, 에이전트 결제 경로에서 위협 48건 식별",
+      "originalTitle": "Beyond the Mandate: A Systematic Security Analysis of the Agent Payments Protocol (AP2)",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.23858",
+      "publishedAt": "2026-08-24",
+      "summary": "Agent Payments Protocol v0.2의 서명 전 컨텍스트와 배치 구조를 분석해 위협 48건과 고위험 위협 8건을 정리한 프리프린트입니다.",
+      "whyItMatters": "최종 mandate 서명이 유효해도 카탈로그·에이전트 통신·도구 입력이 먼저 조작되면 사용자 의도와 다른 결제가 승인될 수 있어 전체 경로 검증이 필요합니다.",
+      "details": [
+        "MAESTRO 기반으로 4개 위협 행위자, 11개 공격 표면과 48개 위협을 모델링했습니다.",
+        "다섯 배치 구조에서 고위험 위협 8건을 식별하고 자체 시험대의 다섯 PoC로 해당 위협을 검토했습니다.",
+        "배치 구조별 스캐너의 평균 재현율은 0.50~1.00으로 보고돼 구조에 따라 탐지 공백이 남았습니다."
+      ],
+      "limitations": [
+        "2026년 8월 24일 제출된 프리프린트이며 실제 공개 AP2 배포가 없어 저자 제작 시험대를 사용했습니다.",
+        "PoC는 AP2 계층의 승인 실패를 보였으며 카드망과 발급사에 대한 후속 영향은 측정하지 않았습니다.",
+        "스캐너는 연구 프로토타입이며 실제 배포의 오탐·미탐률은 평가되지 않았습니다."
+      ],
+      "action": "AP2 도입 전 카탈로그·A2A·MCP 입력과 최종 mandate 사이의 역할·금액·수취인 일관성을 서명 전에 검증하세요.",
+      "tags": [
+        "AP2",
+        "Agent Payments",
+        "Threat Modeling",
+        "AI Agent Security"
+      ],
+      "priority": 92,
+      "identifier": "arXiv:2608.23858",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-23873",
+      "kind": "ai-paper",
+      "title": "Semantic Overlays, 비텍스트 출처 주석으로 프롬프트 인젝션 완화",
+      "originalTitle": "Semantic Overlays: Mitigating Prompt Injection with Annotations Beyond Tokens and Steering Vectors",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.23873",
+      "publishedAt": "2026-08-24",
+      "summary": "외부 입력의 출처를 토큰으로 위조할 수 없는 비텍스트 주석으로 표시하고 동결 모델의 잔차 스트림에 반영하는 프롬프트 인젝션 방어를 제안한 프리프린트입니다.",
+      "whyItMatters": "신뢰 지시와 외부 문서가 같은 텍스트 채널에 섞이는 구조를 바꾸면 모델이 콘텐츠와 권한을 구분할 수 있지만 서빙 계층의 출처 표시도 새로운 신뢰 경계가 됩니다.",
+      "details": [
+        "선택한 prefill 위치에 소형 어댑터를 적용하고 기반 모델은 동결합니다.",
+        "Qwen3.5-9B에서 SEP separation을 24.3%에서 96.5%로 높이고 TensorTrust 공격 성공률을 34.8%에서 6.6%로 낮췄다고 보고했습니다.",
+        "PIArena 네 공격군의 지시 준수율을 0%로 낮췄고 핵심 프롬프트 인젝션 평가는 Llama-3.1-8B-Instruct에서도 반복했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 24일 제출된 프리프린트이며 주 결과는 Qwen3.5-9B 한 규모에 집중됩니다.",
+        "텍스트 전용 단일 턴 공격을 평가했고 다중 턴 도구 에이전트와 최적화 기반 적응 공격은 확인하지 않았습니다.",
+        "서빙 지연을 측정하지 않았고 출처 표시를 담당하는 서빙 계층이 침해되면 보호하지 못합니다."
+      ],
+      "action": "외부 문서와 도구 출력의 출처를 서빙 계층에서 구조적으로 표시하되 최소권한·출력 필터·다중 턴 공격 회귀시험을 함께 유지하세요.",
+      "tags": [
+        "Prompt Injection",
+        "LLM Security",
+        "Semantic Overlay",
+        "Agent Security"
+      ],
+      "priority": 92,
+      "identifier": "arXiv:2608.23873",
       "evidenceLevel": "preprint"
     }
   ]

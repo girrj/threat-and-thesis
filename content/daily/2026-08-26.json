@@ -1,6 +1,6 @@
 {
   "date": "2026-08-26",
-  "generatedAt": "2026-08-26T12:16:26+09:00",
+  "generatedAt": "2026-08-26T15:56:16+09:00",
   "rankings": {
     "security": [
       {
@@ -121,45 +121,45 @@
       },
       {
         "rank": 5,
-        "itemId": "arxiv-2608-21977",
-        "previousRank": 5,
-        "status": "same",
-        "reason": "15,556개 오픈소스 CVE와 434건 수동 확인으로 NVD CWE 라벨의 오류와 분류 모호성을 구분해 측정했습니다."
+        "itemId": "arxiv-2608-23731",
+        "previousRank": null,
+        "status": "new",
+        "reason": "80일 이상 실서버 배포에서 낮은 오탐률을 보이며 프로세스·네트워크 상관 기반 피벗 탐지의 운영 가능성을 검증했습니다."
       },
       {
         "rank": 6,
-        "itemId": "arxiv-2608-21615",
-        "previousRank": 6,
-        "status": "same",
-        "reason": "6개 모델 구성에서 난독화 가중치의 공동 저랭크 구조를 이용한 복구를 확인해 TEE 오프로딩 보호 가정을 점검합니다."
+        "itemId": "arxiv-2608-21977",
+        "previousRank": 5,
+        "status": "down",
+        "reason": "15,556개 오픈소스 CVE와 434건 수동 확인으로 NVD CWE 라벨의 오류와 분류 모호성을 구분해 측정했습니다."
       },
       {
         "rank": 7,
-        "itemId": "doi-10-1145-3834776",
-        "previousRank": 7,
-        "status": "same",
-        "reason": "차량 CAN 인증 하드웨어에서 100만 회 이상 전자기 트레이스로 재키잉 구조를 평가해 실물 구현 근거가 있습니다."
+        "itemId": "arxiv-2608-21615",
+        "previousRank": 6,
+        "status": "down",
+        "reason": "6개 모델 구성에서 난독화 가중치의 공동 저랭크 구조를 이용한 복구를 확인해 TEE 오프로딩 보호 가정을 점검합니다."
       },
       {
         "rank": 8,
-        "itemId": "arxiv-2608-22987",
-        "previousRank": 8,
-        "status": "same",
-        "reason": "6개 체인의 186,356건을 분석해 공개 프로토콜 제약만으로 익명집합이 크게 줄어드는 범위를 측정했습니다."
+        "itemId": "doi-10-1145-3834776",
+        "previousRank": 7,
+        "status": "down",
+        "reason": "차량 CAN 인증 하드웨어에서 100만 회 이상 전자기 트레이스로 재키잉 구조를 평가해 실물 구현 근거가 있습니다."
       },
       {
         "rank": 9,
-        "itemId": "arxiv-2608-20732",
-        "previousRank": 9,
-        "status": "same",
-        "reason": "110만 API 요청과 통제 실험으로 LLM 리셀러의 공유 인프라를 측정해 공급망 집중 위험을 드러냈습니다."
+        "itemId": "arxiv-2608-22987",
+        "previousRank": 8,
+        "status": "down",
+        "reason": "6개 체인의 186,356건을 분석해 공개 프로토콜 제약만으로 익명집합이 크게 줄어드는 범위를 측정했습니다."
       },
       {
         "rank": 10,
-        "itemId": "arxiv-2608-18180",
-        "previousRank": 10,
-        "status": "same",
-        "reason": "4개 패키지 생태계 34,005개 아티팩트에서 재현 빌드와 독립 검증 가능성의 간극을 측정했습니다."
+        "itemId": "arxiv-2608-20732",
+        "previousRank": 9,
+        "status": "down",
+        "reason": "110만 API 요청과 통제 실험으로 LLM 리셀러의 공유 인프라를 측정해 공급망 집중 위험을 드러냈습니다."
       }
     ],
     "ai-paper": [
@@ -200,38 +200,38 @@
       },
       {
         "rank": 6,
+        "itemId": "doi-10-1007-s10515-026-00646-5",
+        "previousRank": null,
+        "status": "new",
+        "reason": "3개 프로그래밍 언어와 23개 자연어에서 기능 정확도와 취약 코드 생성률을 분리해 평가한 동료평가 근거입니다."
+      },
+      {
+        "rank": 7,
+        "itemId": "arxiv-2608-23858",
+        "previousRank": null,
+        "status": "new",
+        "reason": "에이전트 결제의 서명 전 신뢰 경계를 48개 위협과 PoC로 구체화해 AP2 도입 검토에 직접 연결됩니다."
+      },
+      {
+        "rank": 8,
+        "itemId": "arxiv-2608-23873",
+        "previousRank": null,
+        "status": "new",
+        "reason": "토큰으로 위조하기 어려운 출처 주석 채널이 두 모델 계열에서 프롬프트 인젝션 성공률을 낮춘 결과를 보였습니다."
+      },
+      {
+        "rank": 9,
         "itemId": "arxiv-2608-22752",
         "previousRank": null,
         "status": "new",
         "reason": "장기 에이전트의 정상적인 컨텍스트 압축이 안전 규칙을 반복 소실시키는 위험과 유형별 보존 통제를 대규모 구성에서 측정했습니다."
       },
       {
-        "rank": 7,
-        "itemId": "arxiv-2608-23550",
-        "previousRank": 5,
-        "status": "down",
-        "reason": "공개 CLAUDE.md 보안 규칙 대부분이 실행 전 강제 통제로 연결되지 않는 간극을 실무 표본으로 측정했습니다."
-      },
-      {
-        "rank": 8,
-        "itemId": "arxiv-2608-22657",
-        "previousRank": null,
-        "status": "new",
-        "reason": "물리 로봇 시험대에서 LLM 계획과 실행 권한을 분리한 결정론적 게이트가 잘못된 dispatch를 차단했습니다."
-      },
-      {
-        "rank": 9,
+        "rank": 10,
         "itemId": "arxiv-2608-21664",
         "previousRank": 6,
         "status": "down",
         "reason": "25개 오픈웨이트 모델에서 자연어 기반 활성값 제어와 잠재공간 모니터 우회를 측정해 모니터링 가정을 점검합니다."
-      },
-      {
-        "rank": 10,
-        "itemId": "arxiv-2608-20884",
-        "previousRank": 7,
-        "status": "down",
-        "reason": "상용 얼굴인식 API의 고보안 임계값에서도 100회 점수 질의로 높은 사칭 성공률을 보여 인증 설계에 직접 영향을 줍니다."
       }
     ],
     "technology": [
