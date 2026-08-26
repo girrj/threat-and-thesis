@@ -1,6 +1,6 @@
 {
   "date": "2026-08-27",
-  "generatedAt": "2026-08-27T03:26:51+09:00",
+  "generatedAt": "2026-08-27T06:16:41+09:00",
   "rankings": {
     "security": [
       {
@@ -228,10 +228,10 @@
       },
       {
         "rank": 10,
-        "itemId": "arxiv-2608-23783",
+        "itemId": "arxiv-2608-23906",
         "previousRank": null,
         "status": "new",
-        "reason": "8개 LLM과 4개 과제에서 평가 차원 간 의존을 측정해 다차원 LLM 평가의 감사 기준을 구체화했습니다."
+        "reason": "적대적 LLM 행동을 RTGS 연쇄 장애 모델에 연결해 AI 도입의 시스템 수준 위험 평가 절차를 구체화했습니다."
       }
     ],
     "technology": [

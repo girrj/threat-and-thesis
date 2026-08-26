@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27T03:26:51+09:00",
+  "generatedAt": "2026-08-27T06:16:41+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -3879,6 +3879,38 @@
       ],
       "priority": 84,
       "identifier": "arXiv:2608.23783",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-23906",
+      "kind": "ai-paper",
+      "title": "AI 적대 입력의 금융 시스템 연쇄 피해 연결 프레임워크",
+      "originalTitle": "Quantifying System-Level Harms from AI Adoption in Complex Sociotechnical Systems",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.23906",
+      "publishedAt": "2026-08-24",
+      "summary": "AI 구성요소의 적대적 행동 변화를 복잡한 사회기술 시스템의 피해로 연결하는 위험 분석·시험·확률 모델링 프레임워크를 제안한 프리프린트입니다.",
+      "whyItMatters": "중요 인프라에서 모델 단위 정확도나 공격 성공률만 보지 않고, AI 실패가 운영 중단과 연쇄 피해로 번지는 경로를 평가하는 데 활용할 수 있습니다.",
+      "details": [
+        "STPA 기반 손실 시나리오, 구성요소 수준 시험, 확률적 시스템 모델을 추적 가능한 단계로 연결합니다.",
+        "영국 실시간총액결제시스템을 예시로 LLM 거래 권고의 적대적 조작을 금융 전염 모델에 매핑했습니다.",
+        "논문의 예시 모델에서는 조작된 권고가 반영될 때 은행 실패가 늘고, 광범위하거나 독점적인 AI 도입에서 연쇄 장애가 시작되는 충격 임계값이 낮아졌습니다."
+      ],
+      "limitations": [
+        "2026년 8월 24일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "초기 위험 분석과 구성요소-시스템 매핑에는 분석자의 가정·규범 판단과 단순화가 들어갑니다.",
+        "RTGS 사례는 공개 자료를 이용한 개념적 예시이며 금융기관·정책 담당자와의 운영 검증은 후속 과제로 남았습니다."
+      ],
+      "action": "중요 인프라의 AI 도입 검토에서 구성요소 공격 시험 결과를 STPA 손실 시나리오와 시스템 장애 모델에 연결해 영향 범위를 점검하세요.",
+      "tags": [
+        "arXiv",
+        "AI Risk",
+        "Critical Infrastructure",
+        "STPA",
+        "RTGS"
+      ],
+      "priority": 89,
+      "identifier": "arXiv:2608.23906",
       "evidenceLevel": "preprint"
     }
   ]
