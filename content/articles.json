@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27T00:42:12+09:00",
+  "generatedAt": "2026-08-27T03:26:51+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -3757,6 +3757,129 @@
       "priority": 88,
       "identifier": "DOI:10.3390/electronics15173837",
       "evidenceLevel": "peer-reviewed"
+    },
+    {
+      "id": "cisa-cve-2026-8452",
+      "kind": "security",
+      "title": "CISA, 실제 악용된 NetScaler 취약점 CVE-2026-8452 긴급 조치 요구",
+      "originalTitle": "Citrix NetScaler ADC and NetScaler Gateway Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability",
+      "source": "CISA Known Exploited Vulnerabilities",
+      "sourceUrl": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-8452",
+      "publishedAt": "2026-08-26",
+      "summary": "CISA가 NetScaler ADC·Gateway의 메모리 경계 처리 취약점 CVE-2026-8452를 실제 악용 목록에 추가하고 8월 29일까지 조치를 요구했습니다.",
+      "whyItMatters": "Gateway나 AAA 가상 서버로 구성된 인터넷 경계 장비가 대상이며 공개된 조치 기한이 짧아 노출 자산과 수정 빌드를 즉시 확인해야 합니다.",
+      "details": [
+        "NetScaler는 취약점이 예측할 수 없는 동작과 서비스 거부로 이어질 수 있다고 설명합니다.",
+        "ADC·Gateway 14.1은 72.61 미만, 13.1은 63.18 미만이 영향 범위에 포함됩니다.",
+        "ADC 14.1 FIPS는 72.61 미만, 13.1 FIPS·NDcPP는 37.272 미만이 영향 범위에 포함됩니다."
+      ],
+      "limitations": [
+        "영향 조건은 장비가 Gateway 또는 AAA 가상 서버로 구성된 경우이므로 모든 NetScaler 배포가 동일하게 취약한 것은 아닙니다.",
+        "CISA는 랜섬웨어 캠페인 사용 여부를 Unknown으로 표시하며 공격 주체·규모·침해지표를 공개하지 않았습니다."
+      ],
+      "action": "NetScaler 자산의 Gateway·AAA 구성을 확인하고 해당 계열의 수정 빌드 이상으로 업데이트한 뒤 비정상 재시작과 관리 로그를 점검하세요.",
+      "tags": [
+        "CISA KEV",
+        "NetScaler",
+        "CVE-2026-8452",
+        "Gateway"
+      ],
+      "priority": 100,
+      "severity": "critical",
+      "identifier": "CVE-2026-8452",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "cisa-cve-2019-1068",
+      "kind": "security",
+      "title": "CISA, 실제 악용된 SQL Server 취약점 CVE-2019-1068 긴급 조치 요구",
+      "originalTitle": "Microsoft SQL Server Remote Code Execution Vulnerability",
+      "source": "CISA Known Exploited Vulnerabilities",
+      "sourceUrl": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2019-1068",
+      "publishedAt": "2026-08-26",
+      "summary": "CISA가 인증된 공격자의 SQL Server Database Engine 서비스 계정 권한 코드 실행으로 이어질 수 있는 CVE-2019-1068을 실제 악용 목록에 추가했습니다.",
+      "whyItMatters": "2019년 공개된 취약점의 실제 악용이 새로 확인됐고 CISA 조치 기한이 8월 29일이어서 남아 있는 구형 SQL Server 인스턴스를 우선 점검해야 합니다.",
+      "details": [
+        "공격에는 SQL Server 인증과 조작된 쿼리 제출이 필요합니다.",
+        "영향 제품에는 SQL Server 2014, 2016, 2017의 해당 GDR·CU 서비스 계열이 포함됩니다.",
+        "Microsoft는 설치된 버전과 서비스 트랙에 맞는 보안 업데이트를 제공합니다."
+      ],
+      "limitations": [
+        "비인증 원격 코드 실행이 아니며 공격 캠페인의 주체·규모·최초 악용 시점은 공개되지 않았습니다.",
+        "CISA는 랜섬웨어 캠페인 사용 여부를 Unknown으로 표시합니다."
+      ],
+      "action": "SQL Server 인스턴스의 정확한 빌드와 GDR·CU 서비스 트랙을 식별해 Microsoft가 제공한 대응 업데이트를 적용하고 비정상 쿼리와 서비스 계정 활동을 검토하세요.",
+      "tags": [
+        "CISA KEV",
+        "Microsoft SQL Server",
+        "CVE-2019-1068",
+        "RCE"
+      ],
+      "priority": 100,
+      "severity": "critical",
+      "identifier": "CVE-2019-1068",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "cisa-cve-2021-23758",
+      "kind": "security",
+      "title": "CISA, 실제 악용된 AjaxPro 역직렬화 취약점 CVE-2021-23758 추가",
+      "originalTitle": "Ajax.NET Professional Deserialization of Untrusted Data Vulnerability",
+      "source": "CISA Known Exploited Vulnerabilities",
+      "sourceUrl": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2021-23758",
+      "publishedAt": "2026-08-26",
+      "summary": "CISA가 임의 .NET 클래스 역직렬화를 통한 원격 코드 실행으로 이어질 수 있는 AjaxPro 취약점 CVE-2021-23758을 실제 악용 목록에 추가했습니다.",
+      "whyItMatters": "지원·수정 릴리스가 명확하지 않은 오래된 구성요소가 여러 제품에 포함됐을 수 있어 직접 설치뿐 아니라 종속성 사용 여부도 확인해야 합니다.",
+      "details": [
+        "CVE 레코드는 ajaxpro.2의 모든 버전을 영향 범위로 기록합니다.",
+        "CISA는 영향 제품이 지원 종료 상태일 수 있어 사용 중단 또는 지원되는 버전으로의 전환을 권고합니다.",
+        "프로젝트 저장소에는 사용자 정의 형식의 허용 목록을 추가한 변경이 공개돼 있습니다."
+      ],
+      "limitations": [
+        "프로젝트 변경은 CVE별 공식 보안 권고나 명확한 수정 릴리스 표가 아닙니다.",
+        "CISA는 랜섬웨어 캠페인 사용 여부를 Unknown으로 표시하며 공격 범위와 침해지표를 공개하지 않았습니다."
+      ],
+      "action": "AjaxPro·ajaxpro.2 직접 및 전이 종속성을 식별하고 지원되는 대체 구성요소로 전환하거나 제거하며, 즉시 전환이 어렵다면 노출 차단과 허용 형식 제한을 검토하세요.",
+      "tags": [
+        "CISA KEV",
+        "AjaxPro",
+        "CVE-2021-23758",
+        "Deserialization"
+      ],
+      "priority": 97,
+      "severity": "critical",
+      "identifier": "CVE-2021-23758",
+      "evidenceLevel": "official"
+    },
+    {
+      "id": "arxiv-2608-23783",
+      "kind": "ai-paper",
+      "title": "CorrGap, LLM 평가의 차원 간 의존 오류 측정",
+      "originalTitle": "Inter-dimension Dependence for Multi-Dimensional Evaluation of Open-Ended Text",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.23783",
+      "publishedAt": "2026-08-24",
+      "summary": "LLM 심사자가 목표 평가 차원 외의 특성에 의존하는 정도를 측정하는 CorrGap과 비목표 근거를 단계적으로 제거하는 DimCheck를 제안한 프리프린트입니다.",
+      "whyItMatters": "품질·사실성·관련성을 나눠 채점하는 자동 평가에서 한 차원의 오류가 다른 점수에 섞이는지 별도로 감사할 수 있습니다.",
+      "details": [
+        "CorrGap은 정답 점수를 통제한 텍스트 집단 사이에서 LLM 점수와 정답 점수의 상관 차이를 계산합니다.",
+        "연구진은 8개 LLM과 4개 개방형 생성 과제의 대부분 설정에서 차원 간 의존을 관찰했다고 보고합니다.",
+        "DimCheck는 3개 LLM과 4개 과제에서 비목표 근거를 반복 제거해 강한 비교 방법보다 나은 결과를 보였다고 보고합니다."
+      ],
+      "limitations": [
+        "2026년 8월 24일 제출된 프리프린트이며 독립 재현 전입니다.",
+        "명시적 추론 근거를 생성하는 pointwise 점수 평가에 집중해 pairwise·listwise 평가와 추론 비공개 모델에는 직접 검증되지 않았습니다."
+      ],
+      "action": "다차원 LLM 평가를 운영한다면 차원별 인간 표본검사와 함께 CorrGap 방식으로 비목표 차원 의존을 점검하세요.",
+      "tags": [
+        "LLM Evaluation",
+        "LLM-as-a-Judge",
+        "CorrGap",
+        "DimCheck"
+      ],
+      "priority": 84,
+      "identifier": "arXiv:2608.23783",
+      "evidenceLevel": "preprint"
     }
   ]
 }
