@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-26T18:29:25+09:00",
+  "generatedAt": "2026-08-26T21:13:14+09:00",
   "editions": [
     {
       "date": "2026-08-26",
-      "generatedAt": "2026-08-26T18:29:25+09:00",
+      "generatedAt": "2026-08-26T21:13:14+09:00",
       "rankings": {
         "security": [
           {
@@ -196,45 +196,45 @@
           },
           {
             "rank": 5,
+            "itemId": "arxiv-2608-24569",
+            "previousRank": null,
+            "status": "new",
+            "reason": "안전 차단 문구가 남아도 핸드오프 변환이 실행 구속력을 약화시키는 현상과 두 종류의 방어층을 통제 실험으로 분리했습니다."
+          },
+          {
+            "rank": 6,
             "itemId": "arxiv-2608-24306",
             "previousRank": null,
             "status": "new",
             "reason": "세 딥리서치 시스템에서 최종 오류의 발생 에이전트를 추적하고 오케스트레이터 중심 인용 통제의 효과를 측정했습니다."
           },
           {
-            "rank": 6,
+            "rank": 7,
             "itemId": "arxiv-2608-21500",
             "previousRank": null,
             "status": "new",
             "reason": "적응형 간접 프롬프트 인젝션에서 토큰 단위 증류가 기존 방어보다 공격 성공률을 크게 낮춰 에이전트 방어 학습에 직접 연결됩니다."
           },
           {
-            "rank": 7,
+            "rank": 8,
             "itemId": "doi-10-1007-s10515-026-00646-5",
             "previousRank": null,
             "status": "new",
             "reason": "3개 프로그래밍 언어와 23개 자연어에서 기능 정확도와 취약 코드 생성률을 분리해 평가한 동료평가 근거입니다."
           },
           {
-            "rank": 8,
+            "rank": 9,
             "itemId": "arxiv-2608-23858",
             "previousRank": null,
             "status": "new",
             "reason": "에이전트 결제의 서명 전 신뢰 경계를 48개 위협과 PoC로 구체화해 AP2 도입 검토에 직접 연결됩니다."
           },
           {
-            "rank": 9,
+            "rank": 10,
             "itemId": "arxiv-2608-23873",
             "previousRank": null,
             "status": "new",
             "reason": "토큰으로 위조하기 어려운 출처 주석 채널이 두 모델 계열에서 프롬프트 인젝션 성공률을 낮춘 결과를 보였습니다."
-          },
-          {
-            "rank": 10,
-            "itemId": "arxiv-2608-22752",
-            "previousRank": null,
-            "status": "new",
-            "reason": "장기 에이전트의 정상적인 컨텍스트 압축이 안전 규칙을 반복 소실시키는 위험과 유형별 보존 통제를 대규모 구성에서 측정했습니다."
           }
         ],
         "technology": [
