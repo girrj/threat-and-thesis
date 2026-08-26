@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T06:12:20+09:00",
+  "generatedAt": "2026-08-26T12:16:26+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -3415,6 +3415,37 @@
       ],
       "priority": 87,
       "identifier": "arXiv:2608.23474",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-21500",
+      "kind": "ai-paper",
+      "title": "SecOPD, 적응형 프롬프트 인젝션 성공률 9.0%로 낮춰",
+      "originalTitle": "SecOPD: Mitigating Adaptive Prompt Injections by On-Policy Distillation",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.21500",
+      "publishedAt": "2026-08-21",
+      "summary": "간접 프롬프트 인젝션 방어 학습에 토큰 단위 피드백을 주는 Secure On-Policy Distillation을 제안한 프리프린트입니다.",
+      "whyItMatters": "정적 공격 집합에 맞춘 방어가 아니라 현재 모델의 출력 토큰별로 학습 신호를 주어 적응형 공격에 대한 강건성을 높이는 경로를 제시합니다.",
+      "details": [
+        "오염 입력의 rollout 토큰을 깨끗한 입력에 대한 초기 모델 확률로 채점해 방어 모델을 학습합니다.",
+        "Qwen3.6-27B에서 PISmith 적응형 공격 성공률을 Meta-SecAlign의 94.0%에서 9.0%로 낮췄다고 보고합니다.",
+        "학습에 없던 에이전트 도구 호출 평가에서는 공격 성공률 4.7%를 보고해 Meta-SecAlign의 5.5%와 비교했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 21일 제출된 프리프린트이며 독립 재현 전 결과입니다.",
+        "사용자 요청은 정상이고 외부 데이터만 악성인 간접 프롬프트 인젝션에 집중해 직접 탈옥에는 적용되지 않습니다.",
+        "신뢰 입력과 비신뢰 입력을 시스템이 구분할 수 있다고 가정하며 저자들도 향후 적응형 공격이 방어를 깰 수 있다고 명시합니다."
+      ],
+      "action": "모델 방어만 신뢰하지 말고 외부 데이터와 지시를 분리하고 도구 최소권한·출력 검증·적응형 회귀 시험을 함께 적용하세요.",
+      "tags": [
+        "arXiv",
+        "Prompt Injection",
+        "Agent Security",
+        "On-Policy Distillation"
+      ],
+      "priority": 93,
+      "identifier": "arXiv:2608.21500",
       "evidenceLevel": "preprint"
     }
   ]

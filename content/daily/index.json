@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-26T06:12:20+09:00",
+  "generatedAt": "2026-08-26T12:16:26+09:00",
   "editions": [
     {
       "date": "2026-08-26",
-      "generatedAt": "2026-08-26T06:12:20+09:00",
+      "generatedAt": "2026-08-26T12:16:26+09:00",
       "rankings": {
         "security": [
           {
@@ -196,31 +196,31 @@
           },
           {
             "rank": 5,
+            "itemId": "arxiv-2608-21500",
+            "previousRank": null,
+            "status": "new",
+            "reason": "적응형 간접 프롬프트 인젝션에서 토큰 단위 증류가 기존 방어보다 공격 성공률을 크게 낮춰 에이전트 방어 학습에 직접 연결됩니다."
+          },
+          {
+            "rank": 6,
             "itemId": "arxiv-2608-22752",
             "previousRank": null,
             "status": "new",
             "reason": "장기 에이전트의 정상적인 컨텍스트 압축이 안전 규칙을 반복 소실시키는 위험과 유형별 보존 통제를 대규모 구성에서 측정했습니다."
           },
           {
-            "rank": 6,
+            "rank": 7,
             "itemId": "arxiv-2608-23550",
             "previousRank": 5,
             "status": "down",
             "reason": "공개 CLAUDE.md 보안 규칙 대부분이 실행 전 강제 통제로 연결되지 않는 간극을 실무 표본으로 측정했습니다."
           },
           {
-            "rank": 7,
+            "rank": 8,
             "itemId": "arxiv-2608-22657",
             "previousRank": null,
             "status": "new",
             "reason": "물리 로봇 시험대에서 LLM 계획과 실행 권한을 분리한 결정론적 게이트가 잘못된 dispatch를 차단했습니다."
-          },
-          {
-            "rank": 8,
-            "itemId": "arxiv-2608-23474",
-            "previousRank": null,
-            "status": "new",
-            "reason": "네 개 데이터셋과 인간 비교에서 VLM의 시간 순서 이해가 거의 우연 수준임을 보여 영상 AI 평가에 직접 활용할 수 있습니다."
           },
           {
             "rank": 9,
