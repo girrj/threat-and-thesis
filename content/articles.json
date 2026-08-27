@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27T15:30:13+09:00",
+  "generatedAt": "2026-08-27T18:34:04+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -4440,6 +4440,38 @@
       ],
       "priority": 84,
       "identifier": "arXiv:2608.25793",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-25880",
+      "kind": "security-paper",
+      "title": "OOXML 화면과 LLM 추출 증거가 갈리는 21개 Evidence Fork",
+      "originalTitle": "Beyond the Editing Canvas: Evidence Divergence in OOXML-to-LLM Ingestion",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.25880",
+      "publishedAt": "2026-08-26",
+      "summary": "동일한 OOXML 문서가 Microsoft Office 화면과 LLM용 추출기에서 서로 다른 증거를 만들 수 있는 21개 명세상 구성을 확인한 프리프린트입니다.",
+      "whyItMatters": "문서 기반 RAG와 에이전트가 사용자가 본 내용과 다른 숨은 값을 신뢰하면 검토·승인·컴플라이언스 판단이 오염될 수 있습니다.",
+      "details": [
+        "Excel·Word·PowerPoint에서 화면 구성 차이를 만드는 21개 evidence fork를 확인했습니다.",
+        "13개 추출기 모두 적어도 하나의 fork를 노출했고, 4개 네이티브 LLM API의 8,400회 시험에서 함정 값을 반환한 비율이 48~76%였다고 보고했습니다.",
+        "7개 웹 챗봇을 대상으로 1,470회 추가 시험했으며 21개 구성 중 20개에서 적어도 한 인터페이스가 함정 값을 반환했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 26일 제출된 프리프린트로 동료평가 전 결과입니다.",
+        "폐쇄형 서비스의 동작 일치는 특정 추출기나 버전을 확정한 결과가 아니며 서비스 업데이트로 노출 양상이 달라질 수 있습니다.",
+        "시험용 문서의 의도적 함정 값은 실제 업무 문서에서 발생하는 빈도나 피해 규모를 직접 측정하지 않습니다."
+      ],
+      "action": "OOXML 업로드 경로에서 Office 렌더링 결과와 추출 텍스트를 비교하고 숨김·캐시·대체 콘텐츠의 처리 정책과 추출기 버전을 기록하세요.",
+      "tags": [
+        "OOXML",
+        "LLM Ingestion",
+        "Document Security",
+        "RAG",
+        "Evidence Integrity"
+      ],
+      "priority": 91,
+      "identifier": "arXiv:2608.25880",
       "evidenceLevel": "preprint"
     }
   ]

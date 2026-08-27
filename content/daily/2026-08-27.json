@@ -1,6 +1,6 @@
 {
   "date": "2026-08-27",
-  "generatedAt": "2026-08-27T15:30:13+09:00",
+  "generatedAt": "2026-08-27T18:34:04+09:00",
   "rankings": {
     "security": [
       {
@@ -43,48 +43,55 @@
       },
       {
         "rank": 3,
+        "itemId": "arxiv-2608-25880",
+        "previousRank": null,
+        "status": "new",
+        "reason": "13개 추출기와 11개 LLM 인터페이스에서 OOXML 화면·추출 증거의 차이를 검증해 문서 기반 에이전트의 공급망 위험을 구체화했습니다."
+      },
+      {
+        "rank": 4,
         "itemId": "arxiv-2608-25122",
         "previousRank": null,
         "status": "new",
         "reason": "스트립·최적화 바이너리의 PQC 구현을 128/128로 탐지하고 운영 시스템의 6,224개 바이너리까지 검사했습니다."
       },
       {
-        "rank": 4,
+        "rank": 5,
         "itemId": "arxiv-2608-25735",
         "previousRank": null,
         "status": "new",
         "reason": "268만 문서 RAG에서 비공개 밀집 검색의 품질을 유지하면서 추가 지연 0.73초를 보고했습니다."
       },
       {
-        "rank": 5,
+        "rank": 6,
         "itemId": "arxiv-2608-25730",
         "previousRank": null,
         "status": "new",
         "reason": "악성 PR 차단과 근거 기반 취약점 진단을 분리해 자동 보안 리뷰의 실제 진단력을 측정했습니다."
       },
       {
-        "rank": 6,
+        "rank": 7,
         "itemId": "arxiv-2608-25165",
         "previousRank": null,
         "status": "new",
         "reason": "실제 BGP 하이재킹 7,988건과 인터넷 규모 시뮬레이션으로 필터링 보상 유인의 관측 가능성을 검증했습니다."
       },
       {
-        "rank": 7,
+        "rank": 8,
         "itemId": "arxiv-2608-25206",
         "previousRank": null,
         "status": "new",
         "reason": "동적 접근 빈도에 맞춘 인증 자료구조를 구현하고 Ethereum MPT·UBT 대비 증명 비용을 정량화했습니다."
       },
       {
-        "rank": 8,
+        "rank": 9,
         "itemId": "arxiv-2608-25793",
         "previousRank": null,
         "status": "new",
         "reason": "기업 Dockerfile 11,470개에서 보안 오구성과 동종 내부 참조 구현의 개선 여지를 분석했습니다."
       },
       {
-        "rank": 9,
+        "rank": 10,
         "itemId": "doi-10-3390-s26175386",
         "previousRank": null,
         "status": "new",
