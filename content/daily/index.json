@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-27T06:16:41+09:00",
+  "generatedAt": "2026-08-27T09:14:27+09:00",
   "editions": [
     {
       "date": "2026-08-27",
-      "generatedAt": "2026-08-27T06:16:41+09:00",
+      "generatedAt": "2026-08-27T09:14:27+09:00",
       "rankings": {
         "security": [
           {
@@ -224,17 +224,17 @@
           },
           {
             "rank": 9,
-            "itemId": "arxiv-2608-23858",
-            "previousRank": 9,
-            "status": "same",
-            "reason": "에이전트 결제의 서명 전 신뢰 경계를 48개 위협과 PoC로 구체화해 AP2 도입 검토에 직접 연결됩니다."
+            "itemId": "arxiv-2608-24022",
+            "previousRank": null,
+            "status": "new",
+            "reason": "도구 poisoning과 간접 프롬프트 인젝션에서 행동 유도 구간과 출처 권한을 함께 판정해 에이전트 런타임 통제에 직접 연결됩니다."
           },
           {
             "rank": 10,
-            "itemId": "arxiv-2608-23906",
-            "previousRank": null,
-            "status": "new",
-            "reason": "적대적 LLM 행동을 RTGS 연쇄 장애 모델에 연결해 AI 도입의 시스템 수준 위험 평가 절차를 구체화했습니다."
+            "itemId": "arxiv-2608-23858",
+            "previousRank": 9,
+            "status": "down",
+            "reason": "에이전트 결제의 서명 전 신뢰 경계를 48개 위협과 PoC로 구체화해 AP2 도입 검토에 직접 연결됩니다."
           }
         ],
         "technology": [

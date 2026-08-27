@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27T06:16:41+09:00",
+  "generatedAt": "2026-08-27T09:14:27+09:00",
   "items": [
     {
       "id": "owasp-llm-top-10-2026",
@@ -3911,6 +3911,39 @@
       ],
       "priority": 89,
       "identifier": "arXiv:2608.23906",
+      "evidenceLevel": "preprint"
+    },
+    {
+      "id": "arxiv-2608-24022",
+      "kind": "ai-paper",
+      "title": "AttnLocate, 에이전트 도구 호출을 유도한 인젝션 구간 추적",
+      "originalTitle": "What Guides the Agent? Adjudicating Unauthorized Behavior via Localizing Behavior-Guiding Instructions",
+      "source": "arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2608.24022",
+      "publishedAt": "2026-08-25",
+      "summary": "도구 출력과 메타데이터의 간접 프롬프트 인젝션이 에이전트 호출을 유도한 문맥 구간을 attention 패턴에서 찾고, 출처 권한과 비교해 호출을 판정하는 AttnLocate를 제안한 프리프린트입니다.",
+      "whyItMatters": "악성 문구의 존재만 검사하지 않고 실제 도구 호출에 영향을 준 구간과 제공자를 연결해, 에이전트 런타임에서 최소 권한 정책을 적용할 수 있습니다.",
+      "details": [
+        "다층·다중 헤드 attention을 토큰 특징으로 집계하고 1차원 U-Net으로 행동 유도 구간을 탐지합니다.",
+        "MCPTox의 도구 poisoning과 InjecAgent의 간접 프롬프트 인젝션을 10개 에이전트 구성에서 평가했습니다.",
+        "전체 평가에서 평균 mIoU 0.743, AUROC 0.956, 거짓 양성률 0.067에서 참 양성률 0.934를 보고했습니다.",
+        "허용 출처 범위를 달리한 권한 정책에서도 참 양성률 0.909 이상, 거짓 양성률 0.086 이하를 보고했습니다."
+      ],
+      "limitations": [
+        "2026년 8월 25일 제출된 프리프린트이며 동료평가 전 결과입니다.",
+        "주 평가는 모델·데이터셋 조합마다 탐지기를 별도로 학습했고, 모델 내부 attention과 신뢰할 수 있는 문맥 출처 구분이 필요합니다.",
+        "2,048토큰을 넘는 문맥에서 mIoU와 참 양성률이 각각 0.6951과 0.8571로 낮아졌으며 폐쇄형 API 모델과 적응형 공격의 효과는 확인되지 않았습니다."
+      ],
+      "action": "에이전트 문맥의 system·user·tool·result 출처를 보존하고, 도구 호출 전에 해당 출처의 권한이 요청 행동에 충분한지 검사하세요.",
+      "tags": [
+        "arXiv",
+        "Prompt Injection",
+        "AI Agent Security",
+        "Tool Poisoning",
+        "Runtime Defense"
+      ],
+      "priority": 91,
+      "identifier": "arXiv:2608.24022",
       "evidenceLevel": "preprint"
     }
   ]
