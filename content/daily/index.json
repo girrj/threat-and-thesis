@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-27T09:14:27+09:00",
+  "generatedAt": "2026-08-27T15:30:13+09:00",
   "editions": [
     {
       "date": "2026-08-27",
-      "generatedAt": "2026-08-27T09:14:27+09:00",
+      "generatedAt": "2026-08-27T15:30:13+09:00",
       "rankings": {
         "security": [
           {
@@ -32,13 +32,62 @@
         "security-paper": [
           {
             "rank": 1,
+            "itemId": "arxiv-2608-25431",
+            "previousRank": null,
+            "status": "new",
+            "reason": "GPU 정보 흐름 추적을 vLLM·DistServe에 구현해 다중 테넌트 LLM 서빙의 데이터 격리와 성능 비용을 함께 검증했습니다."
+          },
+          {
+            "rank": 2,
             "itemId": "doi-10-3390-electronics15173837",
             "previousRank": null,
             "status": "new",
             "reason": "TEE·스마트계약 기반 분산 퍼징을 네 실제 파서에서 평가해 9개 버그를 발견한 공개 동료평가 연구입니다."
           },
           {
-            "rank": 2,
+            "rank": 3,
+            "itemId": "arxiv-2608-25122",
+            "previousRank": null,
+            "status": "new",
+            "reason": "스트립·최적화 바이너리의 PQC 구현을 128/128로 탐지하고 운영 시스템의 6,224개 바이너리까지 검사했습니다."
+          },
+          {
+            "rank": 4,
+            "itemId": "arxiv-2608-25735",
+            "previousRank": null,
+            "status": "new",
+            "reason": "268만 문서 RAG에서 비공개 밀집 검색의 품질을 유지하면서 추가 지연 0.73초를 보고했습니다."
+          },
+          {
+            "rank": 5,
+            "itemId": "arxiv-2608-25730",
+            "previousRank": null,
+            "status": "new",
+            "reason": "악성 PR 차단과 근거 기반 취약점 진단을 분리해 자동 보안 리뷰의 실제 진단력을 측정했습니다."
+          },
+          {
+            "rank": 6,
+            "itemId": "arxiv-2608-25165",
+            "previousRank": null,
+            "status": "new",
+            "reason": "실제 BGP 하이재킹 7,988건과 인터넷 규모 시뮬레이션으로 필터링 보상 유인의 관측 가능성을 검증했습니다."
+          },
+          {
+            "rank": 7,
+            "itemId": "arxiv-2608-25206",
+            "previousRank": null,
+            "status": "new",
+            "reason": "동적 접근 빈도에 맞춘 인증 자료구조를 구현하고 Ethereum MPT·UBT 대비 증명 비용을 정량화했습니다."
+          },
+          {
+            "rank": 8,
+            "itemId": "arxiv-2608-25793",
+            "previousRank": null,
+            "status": "new",
+            "reason": "기업 Dockerfile 11,470개에서 보안 오구성과 동종 내부 참조 구현의 개선 여지를 분석했습니다."
+          },
+          {
+            "rank": 9,
             "itemId": "doi-10-3390-s26175386",
             "previousRank": null,
             "status": "new",
@@ -48,10 +97,73 @@
         "ai-paper": [
           {
             "rank": 1,
+            "itemId": "arxiv-2608-25776",
+            "previousRank": null,
+            "status": "new",
+            "reason": "자기진화 코딩 에이전트의 악성 스킬 모방·저장·재전파를 6개 모델과 153개 과제에서 재현했습니다."
+          },
+          {
+            "rank": 2,
             "itemId": "arxiv-2608-24022",
             "previousRank": null,
             "status": "new",
             "reason": "도구 poisoning과 간접 프롬프트 인젝션에서 행동 유도 구간과 출처 권한을 함께 판정해 에이전트 런타임 통제에 직접 연결됩니다."
+          },
+          {
+            "rank": 3,
+            "itemId": "arxiv-2608-25490",
+            "previousRank": null,
+            "status": "new",
+            "reason": "16개 멀티모달 모델의 탈옥 취약성을 프롬프트·시각 의미·지시 경로별 통제 실험으로 분해했습니다."
+          },
+          {
+            "rank": 4,
+            "itemId": "arxiv-2608-25697",
+            "previousRank": null,
+            "status": "new",
+            "reason": "모델 내부 신호와 출력 게이트를 서빙 경로에 통합해 공격 성공률·오탐·처리량을 함께 측정했습니다."
+          },
+          {
+            "rank": 5,
+            "itemId": "arxiv-2608-25158",
+            "previousRank": null,
+            "status": "new",
+            "reason": "77개 실행형 과제로 LLM의 개방형 버그 발견을 서로 다른 크래시 기준으로 평가합니다."
+          },
+          {
+            "rank": 6,
+            "itemId": "arxiv-2608-24957",
+            "previousRank": null,
+            "status": "new",
+            "reason": "307개 도구 호출에서 개인정보 노출 비용을 줄이면서 인자 유효성과 지연을 함께 검증했습니다."
+          },
+          {
+            "rank": 7,
+            "itemId": "arxiv-2608-25711",
+            "previousRank": null,
+            "status": "new",
+            "reason": "다중 턴 에이전트의 분산된 위험을 궤적 단위로 재구성해 세 모델 계열과 미관측 도구에서 평가했습니다."
+          },
+          {
+            "rank": 8,
+            "itemId": "arxiv-2608-25371",
+            "previousRank": null,
+            "status": "new",
+            "reason": "작은 감사 배치에서는 잠복하고 운영 배치에서 활성화되는 Vision MoE 백도어를 실증했습니다."
+          },
+          {
+            "rank": 9,
+            "itemId": "arxiv-2608-25321",
+            "previousRank": null,
+            "status": "new",
+            "reason": "엣지 AI FPGA의 가중치와 중간 추론 상태를 광학 프로빙으로 실제 복구해 물리 보안 경계를 보여줍니다."
+          },
+          {
+            "rank": 10,
+            "itemId": "arxiv-2608-25457",
+            "previousRank": null,
+            "status": "new",
+            "reason": "역할별 구조화 협업으로 6개 모델·8개 언어에서 코드 기능성과 보안을 함께 개선했습니다."
           }
         ],
         "technology": []
