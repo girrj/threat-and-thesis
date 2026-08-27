@@ -10,6 +10,8 @@ Prefer sources in this order:
 4. Vendor security advisories and official engineering/research blogs.
 5. Reputable secondary reporting only as discovery context, never as the sole support for a technical claim.
 
+The incremental collector currently monitors CISA KEV, NIST NVD, arXiv, Crossref, Google Security Blog, Google Project Zero, Cloudflare Security Blog, GitHub Security Blog, and the IACR Cryptology ePrint Archive. A feed entry is only a discovery candidate: open and verify the linked primary page before publication.
+
 Use the most specific stable URL available. A search results page, social post, newsletter excerpt, or generated answer is not a primary source.
 
 arXiv category labels and Crossref metadata are discovery signals. They may suggest a paper class or publication venue, but they do not replace reading the abstract and confirming venue status on the author, publisher, or conference page. A Crossref DOI record alone does not establish peer review.
@@ -36,3 +38,5 @@ For frameworks and technology releases, confirm document status such as draft/fi
 ## Duplicate rules
 
 Treat records as duplicates if they share a source URL or identifier. When a later source materially changes an existing item, update that item and use `dateLabel: 수정일`; do not create a near-identical card.
+
+Each KST daily edition uses `selectionMode: new-only`. Include an item only on the first date it is published by this site, use `previousRank: null` and `status: new`, and never carry it forward into a later edition. An empty new-only edition is valid and must be created once when a new KST date begins so the latest view cannot repeat yesterday's items.

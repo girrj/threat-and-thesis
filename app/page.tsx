@@ -51,6 +51,7 @@ type DailyRanking = {
 type DailyEdition = {
   date: string;
   generatedAt: string;
+  selectionMode?: "new-only";
   rankings: Record<IntelligenceKind, DailyRanking[]>;
 };
 
@@ -79,12 +80,13 @@ const CATEGORIES: Array<{ value: IntelligenceKind; label: string }> = [
 const SOURCES = [
   "CISA KEV",
   "NIST NVD",
-  "KISA KrCERT",
   "arXiv",
-  "Semantic Scholar",
-  "MITRE ATLAS",
-  "OWASP GenAI",
-  "공식 제품 권고",
+  "Crossref",
+  "Google Security Blog",
+  "Google Project Zero",
+  "Cloudflare Security Blog",
+  "GitHub Security Blog",
+  "IACR Cryptology ePrint",
 ];
 
 const KIND_LABELS: Record<IntelligenceKind, string> = {
@@ -263,7 +265,7 @@ export default function Home() {
               3시간 단위 갱신
             </p>
             <h1 id="ranking-title">{KIND_LABELS[category]} 순위</h1>
-            <p>각 분야 안에서 먼저 확인할 자료와 선정 이유를 정리합니다.</p>
+            <p>오늘 새로 공개된 자료만 분야별로 정리합니다.</p>
           </div>
           <label className="search-field">
             <span className="sr-only">현재 카테고리 검색</span>

@@ -5,7 +5,7 @@
 ## 동작 구조
 
 ```text
-CISA KEV · NIST NVD · arXiv Atom · Crossref
+CISA KEV · NIST NVD · arXiv · Crossref · 공식 보안 블로그 · IACR ePrint
              │
              ▼
  scripts/collect.py ──> data/inbox.json       비공개 후보
@@ -20,7 +20,7 @@ CISA KEV · NIST NVD · arXiv Atom · Crossref
                   Next.js 정적 빌드 ──> GitHub Pages
 ```
 
-자동 수집 결과는 사이트에 바로 노출되지 않습니다. Hermes가 1차 출처를 확인한 항목만 공개 데이터와 오늘의 카테고리별 순위에 반영합니다. 보안 위협, AI 보안, 보안 논문, AI 논문, 최신 기술은 서로 섞지 않고 각 분야에서 1위부터 다시 시작합니다. 하루가 지난 스냅샷은 보존하므로 화면의 날짜 선택기로 이전 발행분을 다시 볼 수 있습니다.
+자동 수집 결과는 사이트에 바로 노출되지 않습니다. Hermes가 1차 출처를 확인한 항목만 공개 데이터와 오늘의 카테고리별 순위에 반영합니다. 오늘 발행본에는 오늘 처음 공개한 자료만 표시하며 이전 날짜 자료를 유지하거나 교체하지 않습니다. 보안 위협, AI 보안, 보안 논문, AI 논문, 최신 기술은 서로 섞지 않고 각 분야에서 1위부터 다시 시작합니다. 하루가 지난 스냅샷은 보존하므로 날짜 선택기로 그날 새로 공개됐던 자료를 다시 볼 수 있습니다.
 
 논문은 공개 원문을 먼저 찾습니다. 공개 PDF나 저자·기관 저장소 원문이 없고 결제 또는 구독이 필요한 논문에만 상세 화면에 `SKKU 원문 확인` 링크를 표시합니다. 링크는 성균관대학교 프록시를 열 뿐 원문을 자동으로 다운로드하지 않습니다.
 
@@ -68,7 +68,7 @@ hermes -z "HERMES_PROMPT.md의 작업 프롬프트에 따라 Threat & Thesis를 
 
 정기 작업은 등록할 때 지정한 `telegram:<chat_id>` 대화에 시작, 수집 완료, 최종 배포 결과를 짧게 알립니다. 기본 대상인 `telegram`만 사용하면 다른 그룹으로 갈 수 있으므로 명시적 대화 ID를 사용합니다. 실패하면 실패 단계와 필요한 조치만 즉시 알리고 장문의 실행 로그나 인증정보는 전송하지 않습니다.
 
-정기 갱신은 매 실행마다 최근 14일 전체를 다시 읽지 않습니다. arXiv는 공식 일일 Atom 피드의 `new`·`cross` 발표를 받고, Crossref는 출판사가 등록한 메타데이터의 갱신 시각과 커서를 사용해 3시간 구간 전체를 읽은 뒤 로컬에서 관련 논문을 거릅니다. 이 방식은 새 DOI와 이후 수정된 발행 정보를 함께 포착하면서 단순 재색인 자료는 줄입니다. `data/source-state.json`의 출처별 마지막 성공 시각부터 이어서 받고, 장애로 실행을 놓친 경우에는 최대 7일 범위에서 복구합니다. 공개 변경이 없으면 커밋과 배포도 생략합니다.
+정기 갱신은 매 실행마다 최근 14일 전체를 다시 읽지 않습니다. CISA KEV, NIST NVD, arXiv, Crossref에 더해 Google Security Blog, Google Project Zero, Cloudflare Security Blog, GitHub Security Blog, IACR Cryptology ePrint를 증분 수집합니다. `data/source-state.json`의 출처별 마지막 성공 시각부터 이어서 받고, 장애로 실행을 놓친 경우에는 최대 7일 범위에서 복구합니다. 새 KST 날짜가 시작되면 새 자료가 없어도 빈 발행본을 한 번 배포하고, 같은 날 이후 공개 변경이 없으면 커밋과 배포를 생략합니다.
 
 ## GitHub Pages 배포
 

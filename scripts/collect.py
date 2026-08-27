@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 import json
 import os
@@ -17,8 +18,9 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -43,6 +45,13 @@ NVD_PAGE_SIZE = 2000
 AI_ARXIV_CATEGORIES = {"cs.AI", "cs.CL", "cs.CV", "cs.LG", "cs.RO"}
 ARXIV_DAILY_FEED = "https://rss.arxiv.org/atom/cs.CR+cs.AI+cs.LG+stat.ML+cs.CL+cs.CV+cs.RO"
 ARXIV_ANNOUNCEMENT_TYPES = {"new", "cross"}
+OFFICIAL_FEEDS = (
+    ("Google Security Blog", "https://security.googleblog.com/feeds/posts/default", "security", "industry", 74),
+    ("Google Project Zero", "https://projectzero.google/feed.xml", "security", "industry", 82),
+    ("Cloudflare Security Blog", "https://blog.cloudflare.com/tag/security/rss/", "security", "industry", 74),
+    ("GitHub Security Blog", "https://github.blog/security/feed/", "security", "industry", 74),
+    ("IACR Cryptology ePrint Archive", "https://eprint.iacr.org/rss/rss.xml", "security-paper", "preprint", 64),
+)
 AI_FOCUS_TERMS = re.compile(
     r"\b(?:large language models?|language models?|LLMs?|VLMs?|AI agents?|agentic|model card|"
     r"prompt injection|jailbreak|adversarial machine learning|model poisoning|"
@@ -358,6 +367,82 @@ def cap_candidates_by_kind(
         counts[kind] = counts.get(kind, 0) + 1
         selected.append(row)
     return selected
+
+
+def feed_datetime(value: object) -> datetime:
+    text = clean_text(value)
+    try:
+        parsed = parse_datetime(text)
+    except ValueError:
+        parsed = parsedate_to_datetime(text)
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
+
+
+def collect_official_feed(
+    cutoff: datetime,
+    limit: int | None,
+    *,
+    source: str,
+    url: str,
+    kind: str,
+    evidence_level: str,
+    priority: int = 70,
+) -> list[dict[str, Any]]:
+    root = ET.fromstring(fetch(url))
+    atom = "{http://www.w3.org/2005/Atom}"
+    entries = root.findall(f"{atom}entry") or root.findall("./channel/item")
+    rows: list[dict[str, Any]] = []
+    for entry in entries:
+        title = clean_markup(entry.findtext(f"{atom}title") or entry.findtext("title"))
+        published_text = clean_text(
+            entry.findtext(f"{atom}published")
+            or entry.findtext(f"{atom}updated")
+            or entry.findtext("pubDate")
+            or entry.findtext("{http://purl.org/dc/elements/1.1/}date")
+        )
+        if not title or not published_text:
+            continue
+        published = feed_datetime(published_text)
+        if published < cutoff:
+            continue
+        source_url = ""
+        for link in entry.findall(f"{atom}link"):
+            if link.attrib.get("rel", "alternate") == "alternate" and link.attrib.get("href"):
+                source_url = clean_text(link.attrib["href"])
+                break
+        if not source_url:
+            source_url = clean_text(entry.findtext("link"))
+        if not source_url.startswith(("http://", "https://")):
+            continue
+        summary = clean_markup(
+            entry.findtext(f"{atom}summary")
+            or entry.findtext(f"{atom}content")
+            or entry.findtext("description")
+        )
+        normalized_url = normalize_url(source_url) or source_url
+        digest = hashlib.sha256(normalized_url.encode("utf-8")).hexdigest()[:16]
+        rows.append(
+            {
+                "id": f"feed-{digest}",
+                "kind": kind,
+                "title": title,
+                "originalTitle": title,
+                "source": source,
+                "sourceUrl": source_url,
+                "publishedAt": published.date().isoformat(),
+                "summary": summary,
+                "tags": [source],
+                "priority": priority,
+                "evidenceLevel": evidence_level,
+                "raw": {"feedUrl": url, "publishedTimestamp": published.isoformat()},
+            }
+        )
+    return take_limit(
+        sorted(rows, key=lambda row: row["raw"]["publishedTimestamp"], reverse=True),
+        limit,
+    )
 
 
 def collect_cisa(cutoff: datetime, limit: int | None) -> list[dict[str, Any]]:
@@ -1212,7 +1297,9 @@ def main() -> int:
     discovered_candidates: list[dict[str, Any]] = []
     source_status: list[dict[str, Any]] = []
 
-    collectors = [
+    collectors: list[
+        tuple[str, Callable[[datetime], list[dict[str, Any]]], timedelta | None, int]
+    ] = [
         ("CISA KEV", lambda cutoff: collect_cisa(cutoff, None), None, 0),
         ("NIST NVD", lambda cutoff: collect_nvd(cutoff, now, None), None, 0),
         (
@@ -1238,9 +1325,28 @@ def main() -> int:
             0,
         ),
     ]
+    collectors[2:2] = [
+        (
+            source,
+            lambda cutoff, source=source, url=url, kind=kind,
+            evidence_level=evidence_level, priority=priority: collect_official_feed(
+                cutoff,
+                None,
+                source=source,
+                url=url,
+                kind=kind,
+                evidence_level=evidence_level,
+                priority=priority,
+            ),
+            None,
+            0,
+        )
+        for source, url, kind, evidence_level, priority in OFFICIAL_FEEDS
+    ]
+    paper_offset = 2 + len(OFFICIAL_FEEDS)
     if args.days is None:
         collectors.insert(
-            2,
+            paper_offset,
             (
                 "arXiv Daily",
                 lambda cutoff: collect_arxiv_current_or_recover(
@@ -1253,7 +1359,7 @@ def main() -> int:
             ),
         )
     else:
-        collectors[2:2] = [
+        collectors[paper_offset:paper_offset] = [
             (
                 "arXiv Security",
                 lambda cutoff: collect_arxiv_security(cutoff, None),

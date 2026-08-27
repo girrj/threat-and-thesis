@@ -238,6 +238,69 @@ class CollectorStateTests(unittest.TestCase):
         self.assertEqual(rows[0]["kind"], "security-paper")
         self.assertEqual(rows[0]["summary"], "A network result.")
 
+    def test_official_feed_collector_reads_atom_and_uses_alternate_link(self):
+        feed = b"""<?xml version="1.0" encoding="UTF-8"?>
+        <feed xmlns="http://www.w3.org/2005/Atom">
+          <entry>
+            <title>New security engineering release</title>
+            <summary>Official technical details.</summary>
+            <published>2026-08-20T10:00:00Z</published>
+            <link rel="replies" href="https://example.com/comments" />
+            <link rel="alternate" href="https://example.com/security-release" />
+          </entry>
+          <entry>
+            <title>Old release</title>
+            <published>2026-08-19T09:00:00Z</published>
+            <link rel="alternate" href="https://example.com/old" />
+          </entry>
+        </feed>"""
+        with patch.object(collect, "fetch", return_value=feed):
+            rows = collect.collect_official_feed(
+                datetime(2026, 8, 20, 9, tzinfo=timezone.utc),
+                10,
+                source="Example Security Blog",
+                url="https://example.com/feed.xml",
+                kind="security",
+                evidence_level="industry",
+            )
+
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["sourceUrl"], "https://example.com/security-release")
+        self.assertEqual(rows[0]["publishedAt"], "2026-08-20")
+        self.assertEqual(rows[0]["kind"], "security")
+
+    def test_official_feed_collector_reads_rss_and_sorts_newest_first(self):
+        feed = b"""<?xml version="1.0" encoding="UTF-8"?>
+        <rss version="2.0"><channel>
+          <item>
+            <title>Older cryptography paper</title>
+            <description>First abstract.</description>
+            <pubDate>Wed, 20 Aug 2026 10:00:00 +0000</pubDate>
+            <link>https://example.com/paper-1</link>
+          </item>
+          <item>
+            <title>Newer cryptography paper</title>
+            <description>Second abstract.</description>
+            <pubDate>Wed, 20 Aug 2026 11:00:00 +0000</pubDate>
+            <link>https://example.com/paper-2</link>
+          </item>
+        </channel></rss>"""
+        with patch.object(collect, "fetch", return_value=feed):
+            rows = collect.collect_official_feed(
+                datetime(2026, 8, 20, 9, tzinfo=timezone.utc),
+                10,
+                source="Cryptology ePrint Archive",
+                url="https://example.com/rss.xml",
+                kind="security-paper",
+                evidence_level="preprint",
+            )
+
+        self.assertEqual(
+            [row["title"] for row in rows],
+            ["Newer cryptography paper", "Older cryptography paper"],
+        )
+        self.assertTrue(all(row["evidenceLevel"] == "preprint" for row in rows))
+
     def test_crossref_security_collects_recent_relevant_publication_records(self):
         payload = {
             "message": {

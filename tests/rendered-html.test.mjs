@@ -9,9 +9,13 @@ test("exports the Threat & Thesis research letter as static HTML", async () => {
   assert.match(html, /<h1[^>]*>보안 위협/);
   assert.match(html, /카테고리 순위/);
   assert.match(html, /발행일 선택/);
+  assert.match(html, /오늘 새로 공개된 자료만/);
+  assert.match(html, /Google Project Zero/);
+  assert.match(html, /IACR Cryptology ePrint/);
   assert.match(html, /<h3[^>]*>영향<\/h3>/);
   assert.match(html, /선정 이유/);
-  assert.match(html, /유지/);
+  assert.match(html, /신규/);
+  assert.doesNotMatch(html, /유지|상승|하락|재진입/);
   assert.match(html, /CISA/);
   assert.match(html, /보안 위협/);
   assert.match(html, /AI 보안/);
@@ -52,6 +56,7 @@ test("keeps content, UI, and build configuration wired together", async () => {
   assert.match(daily, /"previousRank"/);
   assert.match(daily, /"reason"/);
   const dailyPayload = JSON.parse(daily);
+  assert.equal(dailyPayload.editions[0].selectionMode, "new-only");
   for (const category of [
     "security",
     "ai-security",
@@ -60,7 +65,7 @@ test("keeps content, UI, and build configuration wired together", async () => {
     "technology",
   ]) {
     const ranks = dailyPayload.editions[0].rankings[category].map(({ rank }) => rank);
-    assert.ok(ranks.length > 0 && ranks.length <= 10);
+    assert.ok(ranks.length <= 10);
     assert.deepEqual(
       ranks,
       Array.from({ length: ranks.length }, (_, index) => index + 1),

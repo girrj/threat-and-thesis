@@ -8,6 +8,7 @@
   "properties": {
     "date": { "type": "string", "format": "date" },
     "generatedAt": { "type": "string", "format": "date-time" },
+    "selectionMode": { "enum": ["new-only"] },
     "rankings": {
       "type": "object",
       "additionalProperties": false,

@@ -183,6 +183,9 @@ def validate_daily(errors: list[str], article_kinds: dict[str, str]) -> int:
             errors.append(f"{label}.generatedAt must be an ISO 8601 timestamp")
 
         rankings_by_kind = payload.get("rankings")
+        selection_mode = payload.get("selectionMode")
+        if selection_mode not in {None, "new-only"}:
+            errors.append(f"{label}.selectionMode must be new-only or omitted")
         if not isinstance(rankings_by_kind, dict):
             errors.append(f"{label}.rankings must be an object grouped by category")
             rankings_by_kind = {}
@@ -247,6 +250,16 @@ def validate_daily(errors: list[str], article_kinds: dict[str, str]) -> int:
                     errors.append(f"{row_label}.reason must be a non-empty string")
 
                 if isinstance(item_id, str) and isinstance(rank, int) and not isinstance(rank, bool):
+                    if selection_mode == "new-only" and item_id in seen_ids[kind]:
+                        errors.append(
+                            f"{row_label} new-only item was already published: {item_id}"
+                        )
+                    if selection_mode == "new-only" and (
+                        previous_rank is not None or status != "new"
+                    ):
+                        errors.append(
+                            f"{row_label} new-only item must use previousRank null and status new"
+                        )
                     actual_previous = prior_positions[kind].get(item_id)
                     if actual_previous is not None:
                         expected = (
@@ -265,7 +278,7 @@ def validate_daily(errors: list[str], article_kinds: dict[str, str]) -> int:
                         if previous_rank is not None or status != expected:
                             errors.append(f"{row_label} must use previousRank null and status {expected}")
 
-        if edition_count == 0:
+        if edition_count == 0 and selection_mode != "new-only":
             errors.append(f"{label}.rankings must contain at least one ranked item")
         for kind in KINDS:
             seen_ids[kind].update(next_positions[kind])
